@@ -110,6 +110,14 @@ export function obtenerProyecto(slug: string): Proyecto | null {
     );
   }
 
+  // Cada captura debe existir en public/proyectos/<slug>/
+  const faltan = datos.capturas.filter((c) => !existsSync(path.join(process.cwd(), "public", "proyectos", slug, c.archivo)));
+  if (faltan.length) {
+    throw new ContenidoInvalido(
+      `Capturas que no están en public/proyectos/${slug}/ (${path.relative(process.cwd(), archivoDatos)}): ${faltan.map((c) => c.archivo).join(", ")}`,
+    );
+  }
+
   const textos: Proyecto["textos"] = {};
   for (const archivo of readdirSync(dir).filter((f) => f.endsWith(".mdx"))) {
     const idioma = archivo.replace(/\.mdx$/, "");

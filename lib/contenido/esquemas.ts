@@ -84,7 +84,11 @@ export const esquemaDatosProyecto = z
       .object({ url: z.url({ protocol: /^https$/ }), requiereCuenta: z.boolean() })
       .strict()
       .nullable(),
-    capturas: z.array(z.object({ archivo: texto, alt: traducible(texto) }).strict()),
+    /**
+     * Capturas en public/proyectos/<slug>/ (hechas con datos de demostración).
+     * La primera es la principal (escritorio); `movil: true` marca las de móvil.
+     */
+    capturas: z.array(z.object({ archivo: texto, alt: traducible(texto), movil: z.boolean().optional() }).strict()),
   })
   .strict();
 

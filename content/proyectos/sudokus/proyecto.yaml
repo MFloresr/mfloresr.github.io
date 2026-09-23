@@ -7,4 +7,17 @@ repositorio: https://github.com/MFloresr/sudoku
 demo:
   url: https://sudoku-mflores.vercel.app
   requiereCuenta: true # tiene registro abierto
-capturas: [] # pendientes: con una cuenta de demostración
+capturas: # con una cuenta y datos de demostración
+  - archivo: partida.webp
+    alt:
+      es: Partida en curso de un sudoku de dificultad media con notas a lápiz, cronómetro, vidas y teclado numérico
+      en: Ongoing medium sudoku game with pencil notes, timer, lives and number keypad
+  - archivo: perfil.webp
+    alt:
+      es: Perfil del jugador con sudokus resueltos, racha de días, porcentaje sin perder y récords por dificultad
+      en: Player profile with solved sudokus, day streak, win rate and best times by difficulty
+  - archivo: partida-movil.webp
+    movil: true
+    alt:
+      es: Partida en el móvil con el tablero, las herramientas y el teclado numérico
+      en: Game on mobile with the board, tools and number keypad

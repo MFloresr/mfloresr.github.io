@@ -9,7 +9,7 @@ import { Captura, Chips, ListaGuion } from "@/components/ui/Basicos";
 import { Link } from "@/i18n/navigation";
 import type { Idioma } from "@/i18n/routing";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
-import { nombreTecnologia } from "@/lib/contenido/idioma";
+import { capturasEnIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
 import { listarArticulos, listarSlugsProyectos, obtenerProyecto, obtenerTecnologias } from "@/lib/contenido/leer";
 import { Mdx } from "@/lib/contenido/mdx";
 import { NOMBRE, SITE_URL, alternativas, urlAbsoluta } from "@/lib/sitio";
@@ -89,6 +89,9 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
   }
 
   const d = texto.datos;
+  const [principal, ...resto] = capturasEnIdioma(datos, idioma);
+  const escritorio = resto.filter((c) => !c.movil);
+  const movil = resto.filter((c) => c.movil);
   // Artículos del blog que citan este proyecto
   const articulos = listarArticulos().filter((a) => Object.values(a.textos).some((x) => x.datos.proyectos.includes(slug)));
 
@@ -117,7 +120,17 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
             </Boton>
           )}
         </div>
-        <Captura className="mt-4 h-60 sm:h-96 lg:h-[520px]" />
+        <Captura slug={slug} captura={principal} className="mt-4 aspect-[16/10]" sizes="(min-width: 1280px) 1200px, 100vw" prioridad />
+        {(escritorio.length > 0 || movil.length > 0) && (
+          <div className="flex items-start gap-4">
+            {escritorio.map((c) => (
+              <Captura key={c.archivo} slug={slug} captura={c} className="aspect-[16/10] flex-1" sizes="(min-width: 1280px) 900px, 75vw" />
+            ))}
+            {movil.map((c) => (
+              <Captura key={c.archivo} slug={slug} captura={c} className="aspect-[390/844] w-[22%] shrink-0" sizes="25vw" />
+            ))}
+          </div>
+        )}
       </header>
 
       <div className="contenedor grid gap-12 pt-6 pb-16 lg:grid-cols-[8fr_4fr] lg:gap-16">

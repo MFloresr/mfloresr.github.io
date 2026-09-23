@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 /** Etiqueta de sección: "01 · Proyectos". */
@@ -42,8 +43,37 @@ export function Chips({ items, max, pequenas }: { items: string[]; max?: number;
   );
 }
 
-/** Hueco de captura mientras no haya imágenes reales (se harán con datos de demostración). */
-export async function Captura({ className = "" }: { className?: string }) {
+/**
+ * Captura de un proyecto (public/proyectos/<slug>/<archivo>), recortada por arriba para llenar
+ * la caja que marca `className`. Sin captura, muestra el hueco de "pendiente".
+ */
+export async function Captura({
+  slug,
+  captura,
+  className = "",
+  sizes = "100vw",
+  prioridad = false,
+}: {
+  slug?: string;
+  captura?: { archivo: string; alt: string } | null;
+  className?: string;
+  sizes?: string;
+  prioridad?: boolean;
+}) {
+  if (slug && captura) {
+    return (
+      <div className={`relative overflow-hidden rounded-xl border border-linea bg-chip ${className}`}>
+        <Image
+          src={`/proyectos/${slug}/${captura.archivo}`}
+          alt={captura.alt}
+          fill
+          sizes={sizes}
+          preload={prioridad}
+          className="object-cover object-top"
+        />
+      </div>
+    );
+  }
   const t = await getTranslations("ui");
   return (
     <div className={`flex items-center justify-center rounded-xl border border-dashed border-linea bg-chip px-4 text-center ${className}`}>

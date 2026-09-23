@@ -4,7 +4,7 @@ import { Captura, Chips } from "@/components/ui/Basicos";
 import { Flecha } from "@/components/ui/Iconos";
 import { Link } from "@/i18n/navigation";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
-import { nombreTecnologia } from "@/lib/contenido/idioma";
+import { capturasEnIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
 import type { Proyecto } from "@/lib/contenido/leer";
 import { obtenerTecnologias } from "@/lib/contenido/leer";
 
@@ -18,7 +18,7 @@ export default async function TarjetaProyecto({ proyecto, idioma }: { proyecto: 
 
   return (
     <article className="flex h-full flex-col gap-3.5 rounded-2xl border border-linea bg-superficie p-4">
-      <Captura className="h-44" />
+      <Captura slug={slug} captura={capturasEnIdioma(datos, idioma)[0]} className="h-44" sizes="(min-width: 768px) 33vw, 100vw" />
       <span className="font-mono text-xs text-tenue">
         {t(`status.${datos.estado}`)} · {datos.anio}
       </span>

@@ -4,7 +4,7 @@ import { Captura, Chips } from "@/components/ui/Basicos";
 import { Externo, Flecha } from "@/components/ui/Iconos";
 import { Link } from "@/i18n/navigation";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
-import { nombreTecnologia } from "@/lib/contenido/idioma";
+import { capturasEnIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
 import { listarProyectos, obtenerTecnologias } from "@/lib/contenido/leer";
 import { metadatosPagina } from "@/lib/metadatos";
 
@@ -29,7 +29,7 @@ export default async function PaginaProyectos() {
           const href = `/projects/${slug}`;
           return (
             <li key={slug} className="grid gap-6 border-b border-linea py-10 md:grid-cols-[5fr_6fr] md:items-center md:gap-12">
-              <Captura className="h-56 md:h-72" />
+              <Captura slug={slug} captura={capturasEnIdioma(datos, idioma)[0]} className="h-56 md:h-72" sizes="(min-width: 768px) 45vw, 100vw" prioridad={i === 0} />
               <article className="flex flex-col gap-3.5">
                 <span className="font-mono text-[13px] text-tenue">
                   0{i + 1} · {t(`projects.status.${datos.estado}`)} · {datos.anio}
