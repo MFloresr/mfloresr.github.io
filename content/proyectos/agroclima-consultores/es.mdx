@@ -1,0 +1,39 @@
+---
+revisado: true
+titulo: AgroClima Consultores
+resumen: Web corporativa con panel de datos climáticos para una consultoría meteorológica agrícola de Lleida, gestionable por el cliente sin conocimientos técnicos.
+contexto: Proyecto académico simulado como encargo profesional completo, de la propuesta a la entrega.
+objetivo: Una web corporativa que el propio consultor pueda actualizar sin programar, con un panel de datos climáticos útil para agricultores.
+problema: El consultor necesitaba presentar sus servicios, recibir solicitudes de contacto de forma fiable y mostrar el valor de sus estaciones meteorológicas, sin depender de un programador para cambiar textos o fotos.
+usuario: Agricultores y cooperativas de la zona (Segrià, Pla d'Urgell, Noguera) como visitantes, y el propio consultor como gestor del contenido.
+estadoTexto: Terminado y entregado como ejercicio; versión de demostración publicada. Lighthouse en móvil con 100 en rendimiento, accesibilidad y buenas prácticas.
+funcionalidades:
+  - 15 páginas, entre ellas servicios, casos de éxito, contacto, páginas legales y un blog preparado.
+  - Panel de datos climáticos con tres fincas de ejemplo; los datos son simulados y verosímiles para Lleida, y está preparado para conectarse a estaciones reales.
+  - Indicadores agronómicos (evapotranspiración, punto de rocío, horas de hoja húmeda, riesgo orientativo de mildiu) y alertas con recomendaciones.
+  - Formulario de contacto que guarda primero la solicitud y después avisa por email, con reintento diario y antispam.
+  - Gestor de contenidos en castellano, simplificado para alguien no técnico; al publicar, la web se reconstruye sola.
+  - Logo propio y fotos con licencia libre acreditadas.
+retos:
+  - titulo: Un cliente no técnico
+    texto: Gestor de contenidos simplificado, guía paso a paso para ordenador y móvil y publicación automática.
+  - titulo: No perder ninguna solicitud
+    texto: Primero se guarda en la base de datos y después se envía el aviso; una tarea diaria reintenta los avisos fallidos y mantiene activa la base de datos gratuita.
+  - titulo: Rendimiento con gráficas y mapa
+    texto: Componentes interactivos que solo se cargan donde hacen falta; se corrigió un salto visual del panel (CLS de 0,32 a 0,02).
+  - titulo: Preparado para datos reales
+    texto: Todas las fuentes de datos devuelven el mismo formato, así que conectar estaciones reales solo requiere una fuente nueva.
+mejoras:
+  - Conectar el panel a las estaciones meteorológicas reales mediante la API de FieldClimate, con caché de 10–15 minutos.
+  - Poner en marcha el blog, que ya está preparado, con artículos del consultor.
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Astro · páginas estáticas con islas Svelte (gráficas y mapa)
+    - titulo: Funciones en Vercel
+      detalle: formulario de contacto y tarea diaria
+      destacado: true
+    - titulo: Servicios
+      detalle: Sanity (contenido) · Supabase (solicitudes) · Resend (avisos) · Turnstile (antispam)
+  nota: Al publicar en Sanity, la web se reconstruye sola.
+---

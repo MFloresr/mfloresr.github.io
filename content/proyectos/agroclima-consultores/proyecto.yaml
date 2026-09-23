@@ -1,0 +1,23 @@
+orden: 3
+destacado: false
+estado: terminado
+anio: 2026
+tecnologias: [astro, svelte, typescript, supabase, postgresql, sanity, vercel]
+repositorio: https://github.com/MFloresr/agroclima-consultores-web
+demo:
+  url: https://agroclima-consultores-prueba.vercel.app
+  requiereCuenta: false
+capturas: # de la demo pública
+  - archivo: inicio.webp
+    alt:
+      es: Portada de la web de AgroClima Consultores con el aviso de proyecto de demostración
+      en: AgroClima Consultores home page with the demo project notice
+  - archivo: panel.webp
+    alt:
+      es: Panel de datos climáticos de una finca de ejemplo con temperatura, humedad, lluvia, viento, una alerta y gráficas
+      en: Climate data dashboard for a sample farm with temperature, humidity, rain, wind, an alert and charts
+  - archivo: panel-movil.webp
+    movil: true
+    alt:
+      es: Panel de datos climáticos en el móvil
+      en: Climate data dashboard on mobile

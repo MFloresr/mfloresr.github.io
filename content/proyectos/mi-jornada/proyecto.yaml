@@ -1,0 +1,24 @@
+# Datos comunes a todos los idiomas
+orden: 1
+destacado: true # pendiente de confirmar qué proyecto va primero
+estado: produccion
+anio: 2026
+tecnologias: [python, django, drf, apis-rest, vue, javascript, vite, tailwind, daisyui, postgresql, supabase, sqlite, gemini, vercel]
+repositorio: https://github.com/MFloresr/mi_jornada
+demo:
+  url: https://mi-jornada-flores9.vercel.app
+  requiereCuenta: true # no hay registro público: falta decidir cómo se muestra
+capturas: # con una cuenta y datos de demostración, nunca con datos reales
+  - archivo: hoy.webp
+    alt:
+      es: Pantalla Hoy de Mi Jornada con una jornada en curso, las horas de la semana y del mes y los últimos días registrados
+      en: Mi Jornada's Today screen with a shift in progress, the week's and month's hours and the latest logged days
+  - archivo: estadisticas.webp
+    alt:
+      es: Estadísticas del mes con horas, importe, días trabajados, gráfico de horas por día y horas por lugar
+      en: Monthly stats with hours, amount, days worked, a chart of hours per day and hours by place
+  - archivo: hoy-movil.webp
+    movil: true
+    alt:
+      es: Pantalla Hoy en el móvil con el botón para terminar la jornada
+      en: Today screen on mobile with the button to end the shift

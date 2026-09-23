@@ -1,0 +1,39 @@
+---
+borrador: false
+titulo: How my sudoku engine decides whether a board is easy, medium or hard
+resumen: Counting empty cells isn't enough to tell how hard a sudoku is. This is how I solved it in my Sudokus project, by solving it the way a person would.
+fecha: 2026-09-23
+categoria: proyectos
+etiquetas: [python, django, algoritmos]
+destacado: true
+proyectos: [sudokus]
+---
+
+When I started the Sudokus project, each board's difficulty came from an external dataset and almost all of them came out as "easy". The underlying problem is that **the number of empty cells doesn't measure difficulty**: two sudokus with the same gaps can require very different reasoning.
+
+## Solving like a person
+
+The solution was to write a second solver, separate from the one that checks the solution is unique. This one doesn't try combinations: it applies the techniques a person would use and records the hardest one it needed.
+
+1. **Level 1:** cells with a single possible candidate, and numbers that only fit in one cell of their row, column or box.
+2. **Level 2:** locked candidates and naked pairs, which rule out options without placing numbers.
+3. **Level 3:** if those techniques can't complete the board, guessing or advanced techniques are needed.
+
+With that level and the number of gaps, the grading looks like this:
+
+```python
+def calificar(celdas):
+    nivel = _tecnicas_necesarias(celdas)
+    huecos = celdas.count(0)
+    if nivel >= 3:
+        return "dificil"
+    if nivel == 2 or huecos >= 46:
+        return "media"
+    return "facil"
+```
+
+## Generating sudokus of the requested difficulty
+
+The same engine generates new boards: it starts from a random solved board, removes cells in symmetric pairs as long as the solution stays unique and, finally, checks that the grade matches the requested difficulty. If it doesn't, it tries again.
+
+That's how the 424 published sudokus were generated, without relying on third-party data.

@@ -1,0 +1,44 @@
+---
+revisado: true
+titulo: Sudokus
+resumen: Juego de sudoku web con cuentas de usuario, partidas guardadas, estadísticas y un motor propio que genera y califica todos los sudokus.
+contexto: null
+objetivo: Ofrecer un sudoku web completo en el que cada jugador guarda sus partidas y sigue su evolución.
+problema: Muchos sudokus online no guardan el progreso, tienen dificultades poco calibradas o permiten hacer trampa. Aquí cada partida se guarda en la cuenta, la dificultad se calcula resolviendo el sudoku como lo haría una persona y cada jugada se valida en el servidor.
+usuario: Cualquier persona que quiera jugar al sudoku en el móvil o en el ordenador y seguir su progreso.
+estadoTexto: Publicado en septiembre de 2026 con 424 sudokus (237 fáciles, 127 medios y 60 difíciles), todos generados por su propio motor, y 27 pruebas automáticas. La recuperación de contraseña por email está pendiente de configurar en producción.
+funcionalidades:
+  - Tablero con resaltado de fila, columna, caja y números iguales.
+  - Teclado en pantalla con los números restantes y teclado físico (números, flechas, N para notas, Supr, Ctrl+Z).
+  - Notas a lápiz, deshacer, borrar, pistas, cronómetro con pausa y 3 vidas.
+  - Cada jugada se valida en el servidor; la solución nunca llega al navegador.
+  - Partidas guardadas por usuario, con continuar y reintentar.
+  - Pantalla de victoria (tiempo, errores, pistas y récord) y de derrota.
+  - Listado por estado y dificultad con miniaturas; nueva partida al azar entre los no jugados.
+  - 'Perfil con estadísticas: resueltos, racha de días, porcentaje sin perder, récord y media por dificultad.'
+  - Registro, entrada con email y recuperación de contraseña.
+  - Motor propio que resuelve (solución única), califica la dificultad y genera sudokus.
+retos:
+  - titulo: Calificar la dificultad de forma objetiva
+    texto: En lugar de contar pistas, un resolvedor aplica técnicas humanas (singles, candidatos bloqueados, parejas) y asigna el nivel según la técnica más difícil que necesita.
+  - titulo: Contenido 100 % propio
+    texto: Todos los sudokus los genera el motor con solución única comprobada; se descartaron los de un dataset externo al no poder garantizar su licencia.
+  - titulo: Sin trampas ni conflictos
+    texto: La solución solo está en el servidor, cada jugada bloquea la partida en la base de datos y no puede haber dos partidas en curso del mismo sudoku.
+  - titulo: Credenciales seguras
+    texto: La contraseña de la base de datos se generó en local y a Supabase solo se envió su hash SCRAM.
+mejoras:
+  - Configurar en producción la recuperación de contraseña por email.
+  - Añadir técnicas más avanzadas al motor para ofrecer un nivel experto.
+  - Añadir más juegos a la plataforma.
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Alpine.js · tablero, notas y teclado
+    - titulo: Django
+      detalle: 'vistas + API JSON · motor: resolver, calificar y generar'
+      destacado: true
+    - titulo: PostgreSQL
+      detalle: Supabase · esquema y rol propios
+  nota: Django se despliega en Vercel (Londres). La solución de cada sudoku no sale del servidor.
+---

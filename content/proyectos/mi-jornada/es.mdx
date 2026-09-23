@@ -1,0 +1,45 @@
+---
+revisado: true
+titulo: Mi Jornada
+resumen: Aplicación web para registrar jornadas laborales y saber en todo momento cuántas horas se han trabajado y cuánto dinero se ha generado.
+contexto: null
+objetivo: Registrar jornadas laborales y calcular automáticamente la duración trabajada y el importe de cada registro.
+problema: Llevar la cuenta de horas y sueldo a mano (papel, notas u hojas de cálculo) es lento y propenso a errores, sobre todo con horarios partidos, pausas para comer o varios lugares de trabajo.
+usuario: null
+estadoTexto: En producción. En septiembre de 2026 se migró de PythonAnywhere a Vercel y Supabase. El backend cuenta con 16 pruebas automáticas. No tiene registro público.
+funcionalidades:
+  - Inicio de sesión con email; la sesión se mantiene al recargar.
+  - Fichar la jornada con la hora exacta, con pausa de comida y opción de descartarla; si cruza la medianoche se pide revisarla.
+  - Registros con fecha, entrada, salida, lugar, descripción y descanso de comida; duración e importe calculados automáticamente, conservando el sueldo por hora de cada registro.
+  - Validación de horarios (la salida debe ser posterior a la entrada).
+  - Formulario corto con Hoy/Ayer, lugares sugeridos, repetir el último día y duplicar un día.
+  - Listado filtrable por mes y lugar, con exportación a CSV compatible con Excel en castellano.
+  - Calendario mensual con las horas de cada día.
+  - 'Estadísticas del mes: horas, importe, media diaria, gráfico por día y horas por lugar.'
+  - Asistente "Escríbelo o díctalo" con IA que convierte frases como «ayer de 8 a 14 y de 16 a 19 en la obra» en registros; no guarda nada hasta que el usuario confirma.
+  - Recuperación de contraseña por email.
+  - Modo claro y oscuro; diseño para móvil y escritorio.
+  - Panel de administración con el sueldo por hora de cada usuario.
+retos:
+  - titulo: Django y Vue en Vercel
+    texto: El frontend se compila y Django lo sirve como archivos estáticos dentro de una Vercel Function.
+  - titulo: Conexiones agotadas en producción
+    texto: El pooler de Supabase admite 15 clientes y las conexiones persistentes lo llenaban; se resolvió cerrando la conexión en cada petición y liberándola mientras la IA responde.
+  - titulo: Fichar con fiabilidad
+    texto: Zona horaria de Madrid, como máximo una jornada activa por usuario y tratamiento de las jornadas que cruzan la medianoche.
+  - titulo: IA útil con un plan gratuito
+    texto: Salida estructurada validada en el servidor, confirmación obligatoria, modelos de reserva si el principal está saturado y límite de usos diario.
+mejoras:
+  - Registro público o cuenta de demostración, para poder probarla sin pedir acceso.
+  - Que cada usuario pueda cambiar su sueldo por hora desde su perfil.
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Vue 3 + Vite · aplicación de una página
+    - titulo: Django + DRF
+      detalle: API REST · asistente de IA con Gemini
+      destacado: true
+    - titulo: PostgreSQL
+      detalle: Supabase · esquema y rol propios
+  nota: Django sirve también el frontend compilado y se despliega en Vercel.
+---

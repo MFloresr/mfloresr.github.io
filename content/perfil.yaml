@@ -1,0 +1,83 @@
+# Datos públicos del perfil. Los textos llevan una versión por idioma:
+# si falta el idioma (o vale null) se muestra como "Pendiente". No se inventa nada.
+
+nombre: Mario Flores
+ubicacion: Barcelona, Catalunya
+
+rol:
+  es: Desarrollador Full-Stack
+  en: Full-Stack Developer
+
+# Mensaje principal acordado con Mario
+mensaje:
+  es: Desarrollador Full-Stack con experiencia complementaria en sistemas, redes y soporte técnico, capaz de crear aplicaciones web completas y soluciones prácticas para empresas.
+  en: Full-Stack Developer with complementary experience in systems, networking and technical support, able to build complete web applications and practical solutions for businesses.
+
+contacto:
+  email: mrsitofull@gmail.com
+  linkedin: https://www.linkedin.com/in/mario-its-me
+  github: https://github.com/MFloresr
+
+formacion:
+  - titulo:
+      es: Formación profesional en Administración de Sistemas Informáticos en Red (ASIR)
+      en: Vocational training in Networked Computer Systems Administration (ASIR)
+    centro: null # pendiente
+    fechas: null # pendiente
+
+# Qué busca (confirmado por Mario)
+busca:
+  es:
+    - Empleo como desarrollador web, especialmente full-stack, backend o frontend.
+    - Oportunidades en sistemas, redes, soporte técnico e infraestructura.
+    - Proyectos freelance.
+  en:
+    - A job as a web developer, especially full-stack, backend or frontend.
+    - Opportunities in systems, networking, technical support and infrastructure.
+    - Freelance projects.
+
+# Perfil principal: desarrollo (resumen de lo que Mario declaró)
+desarrollo:
+  es:
+    - Aplicaciones web completas, del backend al frontend.
+    - APIs REST e integración entre frontend y backend.
+    - Bases de datos.
+    - Gestión de proyectos con Git y GitHub.
+  en:
+    - Complete web applications, from backend to frontend.
+    - REST APIs and frontend–backend integration.
+    - Databases.
+    - Project management with Git and GitHub.
+
+# Uso de IA en el desarrollo (confirmado por Mario)
+asistenciaIA:
+  es: En el desarrollo de mis proyectos he utilizado Claude Code como asistente y soporte.
+  en: I have used Claude Code as an assistant and for support while developing my projects.
+
+# Por qué el perfil complementario suma (palabras de Mario)
+complementarioIntro:
+  es: Un perfil complementario que me permite entender mejor la infraestructura, el despliegue, el mantenimiento, las necesidades de los usuarios y la resolución de problemas técnicos.
+  en: A complementary profile that helps me better understand infrastructure, deployment, maintenance, user needs and technical troubleshooting.
+
+# Perfil complementario: sistemas, redes, hardware y soporte (confirmado por Mario)
+complementario:
+  es:
+    - Administración de sistemas Windows y Linux.
+    - Configuración, montaje y mantenimiento de equipos informáticos.
+    - Diagnóstico y resolución de incidencias de hardware y software.
+    - Redes básicas y administración de redes.
+    - Configuración de equipos, periféricos y aplicaciones.
+    - Atención y soporte técnico a usuarios.
+    - WSL y configuración de entornos de desarrollo.
+    - Instalación y configuración de software.
+    - Resolución de problemas de conectividad, sistemas y aplicaciones.
+  en:
+    - Windows and Linux systems administration.
+    - Assembly, setup and maintenance of computers.
+    - Diagnosis and resolution of hardware and software issues.
+    - Basic networking and network administration.
+    - Setup of computers, peripherals and applications.
+    - User support and technical assistance.
+    - WSL and development environment setup.
+    - Software installation and configuration.
+    - Troubleshooting connectivity, system and application issues.
