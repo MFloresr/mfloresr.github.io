@@ -9,6 +9,7 @@ import { Captura, Chips, ListaGuion } from "@/components/ui/Basicos";
 import { Link } from "@/i18n/navigation";
 import type { Idioma } from "@/i18n/routing";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
+import { nombreTecnologia } from "@/lib/contenido/idioma";
 import { listarArticulos, listarSlugsProyectos, obtenerProyecto, obtenerTecnologias } from "@/lib/contenido/leer";
 import { Mdx } from "@/lib/contenido/mdx";
 import { NOMBRE, SITE_URL, alternativas, urlAbsoluta } from "@/lib/sitio";
@@ -66,7 +67,7 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
   const tb = await getTranslations("blog");
   const { datos } = proyecto;
   const texto = proyecto.textos[idioma];
-  const nombres = new Map(obtenerTecnologias().map((tec) => [tec.id, tec.nombre]));
+  const nombres = new Map(obtenerTecnologias().map((tec) => [tec.id, nombreTecnologia(tec, idioma)]));
   const pendiente = <Pendiente>{tp("field")}</Pendiente>;
   const parrafo = (valor: string | null) => (valor ? <p className="text-[17px] leading-relaxed text-tenue">{valor}</p> : pendiente);
   const sinProtocolo = (url: string) => url.replace(/^https:\/\//, "");

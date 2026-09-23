@@ -2,7 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Chips } from "@/components/ui/Basicos";
 import { Link } from "@/i18n/navigation";
 import { GRUPOS, type IdiomaContenido } from "@/lib/contenido/esquemas";
-import { enIdioma } from "@/lib/contenido/idioma";
+import { enIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
 import { obtenerTecnologias, proyectosQueUsan } from "@/lib/contenido/leer";
 import { metadatosPagina } from "@/lib/metadatos";
 
@@ -39,7 +39,7 @@ export default async function PaginaTecnologias() {
               const contexto = tec.contexto ? enIdioma(tec.contexto, idioma) : null;
               return (
                 <div key={tec.id} className="grid gap-1 border-b border-linea py-3.5 sm:grid-cols-[260px_1fr] sm:items-baseline sm:gap-4">
-                  <dt className="text-[17px] font-medium">{tec.nombre}</dt>
+                  <dt className="text-[17px] font-medium">{nombreTecnologia(tec, idioma)}</dt>
                   <dd className="text-[15px] text-tenue">
                     {proyectos.length > 0 ? (
                       <span className="flex flex-wrap gap-x-1.5">
@@ -74,7 +74,7 @@ export default async function PaginaTecnologias() {
           {porGrupo(false).map(({ grupo, lista }) => (
             <div key={grupo} className="flex flex-col gap-2.5">
               <h3 className="font-mono text-[13px] font-normal text-tenue">{tg(grupo)}</h3>
-              <Chips items={lista.map((tec) => tec.nombre)} />
+              <Chips items={lista.map((tec) => nombreTecnologia(tec, idioma))} />
             </div>
           ))}
         </div>

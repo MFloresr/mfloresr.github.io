@@ -1,0 +1,43 @@
+---
+revisado: false
+titulo: Mi Jornada
+resumen: Web app to log working days and always know how many hours have been worked and how much money has been earned.
+contexto: null
+objetivo: Log working days and automatically calculate the time worked and the amount earned for each entry.
+problema: Tracking hours and pay by hand (paper, notes or spreadsheets) is slow and error-prone, especially with split shifts, lunch breaks or several workplaces.
+usuario: null
+estadoTexto: In production. In September 2026 it was migrated from PythonAnywhere to Vercel and Supabase. The backend has 16 automated tests. There is no public sign-up.
+funcionalidades:
+  - Email login; the session persists across reloads.
+  - Clock in and out with the exact time, with a lunch break that can be discarded; shifts that cross midnight are flagged for review.
+  - Entries with date, start, end, place, description and lunch break; duration and amount are calculated automatically, keeping the hourly wage of each entry.
+  - Time validation (the end must be after the start).
+  - Short form with Today/Yesterday, suggested places, repeat last day and duplicate a day.
+  - List filterable by month and place, with CSV export compatible with Spanish-locale Excel.
+  - Monthly calendar with each day's hours.
+  - 'Monthly stats: hours, amount, daily average, chart by day and hours by place.'
+  - AI "Type it or dictate it" assistant that turns sentences like "yesterday from 8 to 2 and from 4 to 7 at the site" into entries; nothing is saved until the user confirms.
+  - Password recovery by email.
+  - Light and dark mode; layout for mobile and desktop.
+  - Admin panel with each user's hourly wage.
+retos:
+  - titulo: Django and Vue on Vercel
+    texto: The frontend is built and Django serves it as static files inside a Vercel Function.
+  - titulo: Exhausted connections in production
+    texto: The Supabase pooler allows 15 clients and persistent connections filled it up; it was fixed by closing the connection on each request and releasing it while the AI responds.
+  - titulo: Reliable clock-in
+    texto: Madrid time zone, at most one active shift per user and handling of shifts that cross midnight.
+  - titulo: Useful AI on a free plan
+    texto: Structured output validated on the server, mandatory confirmation, fallback models when the main one is overloaded and a daily usage limit.
+mejoras: null
+arquitectura:
+  nodos:
+    - titulo: Browser
+      detalle: Vue 3 + Vite · single-page app
+    - titulo: Django + DRF
+      detalle: REST API · AI assistant with Gemini
+      destacado: true
+    - titulo: PostgreSQL
+      detalle: Supabase · dedicated schema and role
+  nota: Django also serves the built frontend and is deployed on Vercel.
+---

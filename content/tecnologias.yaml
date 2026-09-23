@@ -5,6 +5,7 @@
 # grupo: backend | frontend | datos | infraestructura | herramientas | ia
 # Opcionales:
 # - incluye: [ids]  → "dónde la uso" suma los proyectos que usan esas tecnologías (p. ej. Bases de datos → PostgreSQL)
+# - nombre puede ser { es, en } cuando el nombre se traduce (p. ej. Bases de datos → Databases)
 # - contexto: {es, en} → dónde la uso cuando no aparece en ningún proyecto (solo lo que Mario ha confirmado)
 
 - { id: python, nombre: Python, grupo: backend, destacada: true }
@@ -24,7 +25,7 @@
 - { id: astro, nombre: Astro, grupo: frontend, destacada: false }
 - { id: svelte, nombre: Svelte, grupo: frontend, destacada: false }
 
-- { id: bases-de-datos, nombre: Bases de datos, grupo: datos, destacada: true, incluye: [postgresql, sqlite, supabase] }
+- { id: bases-de-datos, nombre: { es: Bases de datos, en: Databases }, grupo: datos, destacada: true, incluye: [postgresql, sqlite, supabase] }
 - { id: postgresql, nombre: PostgreSQL, grupo: datos, destacada: false }
 - { id: sqlite, nombre: SQLite, grupo: datos, destacada: false }
 - { id: supabase, nombre: Supabase, grupo: datos, destacada: false }
@@ -35,32 +36,32 @@
   nombre: Linux
   grupo: infraestructura
   destacada: true
-  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR), en: null }
+  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR), en: Systems administration and technical support (ASIR training) }
 - id: windows
   nombre: Windows
   grupo: infraestructura
   destacada: true
-  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR), en: null }
+  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR), en: Systems administration and technical support (ASIR training) }
 - id: redes
   nombre: Redes
   grupo: infraestructura
   destacada: true
-  contexto: { es: Redes básicas y administración de redes (formación ASIR), en: null }
+  contexto: { es: Redes básicas y administración de redes (formación ASIR), en: Basic networking and network administration (ASIR training) }
 - id: wsl
   nombre: WSL
   grupo: infraestructura
   destacada: true
-  contexto: { es: Configuración de entornos de desarrollo, en: null }
+  contexto: { es: Configuración de entornos de desarrollo, en: Development environment setup }
 
 - id: git
   nombre: Git
   grupo: herramientas
   destacada: true
-  contexto: { es: Control de versiones de todos mis proyectos, en: null }
+  contexto: { es: Control de versiones de todos mis proyectos, en: Version control for all my projects }
 - id: github
   nombre: GitHub
   grupo: herramientas
   destacada: true
-  contexto: { es: Repositorios públicos de todos mis proyectos, en: null }
+  contexto: { es: Repositorios públicos de todos mis proyectos, en: Public repositories for all my projects }
 
-- { id: gemini, nombre: API de Gemini, grupo: ia, destacada: false }
+- { id: gemini, nombre: { es: API de Gemini, en: Gemini API }, grupo: ia, destacada: false }

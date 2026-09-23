@@ -24,7 +24,8 @@ export const GRUPOS = ["backend", "frontend", "datos", "infraestructura", "herra
 export const esquemaTecnologia = z
   .object({
     id: slug,
-    nombre: texto,
+    /** Nombre propio (igual en todos los idiomas) o una versión por idioma si se traduce. */
+    nombre: z.union([texto, traducible(texto)]),
     grupo: z.enum(GRUPOS),
     destacada: z.boolean(),
     /** Otras tecnologías que cuentan como uso de esta (p. ej. Bases de datos → PostgreSQL). */

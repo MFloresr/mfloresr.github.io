@@ -4,6 +4,7 @@ import { Captura, Chips } from "@/components/ui/Basicos";
 import { Flecha } from "@/components/ui/Iconos";
 import { Link } from "@/i18n/navigation";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
+import { nombreTecnologia } from "@/lib/contenido/idioma";
 import type { Proyecto } from "@/lib/contenido/leer";
 import { obtenerTecnologias } from "@/lib/contenido/leer";
 
@@ -12,7 +13,7 @@ export default async function TarjetaProyecto({ proyecto, idioma }: { proyecto: 
   const t = await getTranslations("projects");
   const { slug, datos, textos } = proyecto;
   const texto = textos[idioma]?.datos;
-  const nombres = new Map(obtenerTecnologias().map((tec) => [tec.id, tec.nombre]));
+  const nombres = new Map(obtenerTecnologias().map((tec) => [tec.id, nombreTecnologia(tec, idioma)]));
   const href = `/projects/${slug}`;
 
   return (

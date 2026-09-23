@@ -1,0 +1,37 @@
+---
+revisado: false
+titulo: AgroClima Consultores
+resumen: Corporate website with a climate data dashboard for an agricultural weather consultancy in Lleida, manageable by the client without technical knowledge.
+contexto: Academic project simulated as a complete professional commission, from proposal to delivery.
+objetivo: A corporate website the consultant can update without coding, with a climate data dashboard that is useful to farmers.
+problema: The consultant needed to present their services, receive contact requests reliably and show the value of their weather stations, without depending on a developer to change text or photos.
+usuario: Farmers and cooperatives in the area (Segrià, Pla d'Urgell, Noguera) as visitors, and the consultant as content manager.
+estadoTexto: Finished and delivered as an exercise; demo version published. Mobile Lighthouse scores of 100 for performance, accessibility and best practices.
+funcionalidades:
+  - 15 pages, including services, case studies, contact, legal pages and a blog ready to use.
+  - Climate data dashboard with three sample farms; the data is simulated but realistic for Lleida, and it is ready to connect to real stations.
+  - Agronomic indicators (evapotranspiration, dew point, leaf wetness hours, indicative downy mildew risk) and alerts with recommendations.
+  - Contact form that first stores the request and then sends an email notification, with a daily retry and spam protection.
+  - Content management in Spanish, simplified for a non-technical person; publishing rebuilds the site automatically.
+  - Custom logo and credited, freely licensed photos.
+retos:
+  - titulo: A non-technical client
+    texto: Simplified content management, a step-by-step guide for desktop and mobile, and automatic publishing.
+  - titulo: Never losing a request
+    texto: The request is stored in the database first and the notification is sent afterwards; a daily task retries failed notifications and keeps the free database active.
+  - titulo: Performance with charts and a map
+    texto: Interactive components that load only where needed; a layout shift in the dashboard was fixed (CLS from 0.32 to 0.02).
+  - titulo: Ready for real data
+    texto: Every data source returns the same format, so connecting real stations only requires a new source.
+mejoras: null
+arquitectura:
+  nodos:
+    - titulo: Browser
+      detalle: Astro · static pages with Svelte islands (charts and map)
+    - titulo: Vercel Functions
+      detalle: contact form and daily task
+      destacado: true
+    - titulo: Services
+      detalle: Sanity (content) · Supabase (requests) · Resend (notifications) · Turnstile (anti-spam)
+  nota: Publishing in Sanity rebuilds the site automatically.
+---

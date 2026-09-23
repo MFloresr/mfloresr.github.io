@@ -9,7 +9,7 @@ import { Chips, Etiqueta, ListaGuion } from "@/components/ui/Basicos";
 import { Externo, Flecha } from "@/components/ui/Iconos";
 import { Link } from "@/i18n/navigation";
 import { GRUPOS, type IdiomaContenido } from "@/lib/contenido/esquemas";
-import { enIdioma } from "@/lib/contenido/idioma";
+import { enIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
 import { listarArticulos, listarProyectos, obtenerPerfil, obtenerTecnologias } from "@/lib/contenido/leer";
 import { metadatosPagina } from "@/lib/metadatos";
 
@@ -34,7 +34,7 @@ export default async function Inicio() {
 
   // Tecnologías declaradas por Mario, agrupadas por uso
   const destacadas = obtenerTecnologias().filter((tec) => tec.destacada);
-  const grupos = GRUPOS.map((g) => ({ grupo: g, nombres: destacadas.filter((tec) => tec.grupo === g).map((tec) => tec.nombre) })).filter(
+  const grupos = GRUPOS.map((g) => ({ grupo: g, nombres: destacadas.filter((tec) => tec.grupo === g).map((tec) => nombreTecnologia(tec, idioma)) })).filter(
     (g) => g.nombres.length,
   );
 

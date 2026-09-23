@@ -4,6 +4,7 @@ import { Captura, Chips } from "@/components/ui/Basicos";
 import { Externo, Flecha } from "@/components/ui/Iconos";
 import { Link } from "@/i18n/navigation";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
+import { nombreTecnologia } from "@/lib/contenido/idioma";
 import { listarProyectos, obtenerTecnologias } from "@/lib/contenido/leer";
 import { metadatosPagina } from "@/lib/metadatos";
 
@@ -12,7 +13,7 @@ export const generateMetadata = () => metadatosPagina("projects", "/projects");
 export default async function PaginaProyectos() {
   const idioma = (await getLocale()) as IdiomaContenido;
   const t = await getTranslations();
-  const nombres = new Map(obtenerTecnologias().map((tec) => [tec.id, tec.nombre]));
+  const nombres = new Map(obtenerTecnologias().map((tec) => [tec.id, nombreTecnologia(tec, idioma)]));
   const proyectos = listarProyectos();
 
   return (
