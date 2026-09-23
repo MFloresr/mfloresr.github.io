@@ -28,4 +28,14 @@ retos:
   - titulo: Credenciales seguras
     texto: La contraseña de la base de datos se generó en local y a Supabase solo se envió su hash SCRAM.
 mejoras: null
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Alpine.js · tablero, notas y teclado
+    - titulo: Django
+      detalle: 'vistas + API JSON · motor: resolver, calificar y generar'
+      destacado: true
+    - titulo: PostgreSQL
+      detalle: Supabase · esquema y rol propios
+  nota: Django se despliega en Vercel (Londres). La solución de cada sudoku no sale del servidor.
 ---

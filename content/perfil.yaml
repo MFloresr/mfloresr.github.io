@@ -33,6 +33,15 @@ busca:
     - Proyectos freelance.
   en: null
 
+# Perfil principal: desarrollo (resumen de lo que Mario declaró)
+desarrollo:
+  es:
+    - Aplicaciones web completas, del backend al frontend.
+    - APIs REST e integración entre frontend y backend.
+    - Bases de datos.
+    - Gestión de proyectos con Git y GitHub.
+  en: null
+
 # Perfil complementario: sistemas, redes, hardware y soporte (confirmado por Mario)
 complementario:
   es:

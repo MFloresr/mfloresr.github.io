@@ -3,6 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import Cabecera from "@/components/layout/Cabecera";
 import Pie from "@/components/layout/Pie";
 import { routing } from "@/i18n/routing";
+import { geist, geistMono, instrumentSerif } from "../fuentes";
 import "../globals.css";
 
 // Aplica el tema guardado (o el del sistema) antes de pintar, para evitar parpadeos
@@ -17,7 +18,7 @@ export default async function LayoutIdioma({ children }: LayoutProps<"/[locale]"
   const t = await getTranslations("nav");
 
   return (
-    <html lang={idioma} suppressHydrationWarning>
+    <html lang={idioma} suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
       </head>
@@ -30,7 +31,7 @@ export default async function LayoutIdioma({ children }: LayoutProps<"/[locale]"
             {t("skipToContent")}
           </a>
           <Cabecera />
-          <main id="contenido" className="mx-auto w-full max-w-5xl flex-1 px-4 py-12 sm:px-6">
+          <main id="contenido" className="flex-1">
             {children}
           </main>
           <Pie />

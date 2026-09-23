@@ -24,8 +24,8 @@ export default function SelectorIdioma() {
           lang={codigo}
           aria-current={codigo === idioma ? "true" : undefined}
           title={t(codigo)}
-          className={`rounded-md px-2 py-1 font-medium uppercase ${
-            codigo === idioma ? "bg-linea text-texto" : "text-tenue hover:text-texto"
+          className={`rounded-md px-2 py-1.5 font-mono text-xs uppercase ${
+            codigo === idioma ? "bg-chip text-texto" : "text-tenue hover:text-texto"
           }`}
         >
           {codigo}

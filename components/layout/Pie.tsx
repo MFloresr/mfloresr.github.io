@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { obtenerPerfil } from "@/lib/contenido/leer";
+import Pendiente from "@/components/Pendiente";
 import { enIdioma } from "@/lib/contenido/idioma";
+import { obtenerPerfil } from "@/lib/contenido/leer";
 
 export default async function Pie() {
   const t = await getTranslations("footer");
@@ -11,20 +12,20 @@ export default async function Pie() {
 
   const enlaces = [
     { clave: "email", url: email ? `mailto:${email}` : null },
-    { clave: "linkedin", url: linkedin },
     { clave: "github", url: github },
+    { clave: "linkedin", url: linkedin },
   ] as const;
 
   return (
     <footer className="border-t border-linea">
-      <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      <div className="contenedor flex flex-col gap-4 py-8 text-sm md:flex-row md:items-center md:justify-between">
         <p>
-          <span className="font-semibold">{perfil.nombre}</span>{" "}
+          <strong className="font-semibold">{perfil.nombre}</strong>{" "}
           <span className="text-tenue">
             · {rol ?? tp("label")} · {perfil.ubicacion.split(",")[0]}
           </span>
         </p>
-        <ul aria-label={t("links")} className="flex flex-wrap gap-4">
+        <ul aria-label={t("links")} className="flex flex-wrap items-center gap-5">
           {enlaces.map(({ clave, url }) => (
             <li key={clave}>
               {url ? (
@@ -32,9 +33,7 @@ export default async function Pie() {
                   {t(clave)}
                 </a>
               ) : (
-                <span className="text-pendiente-texto" title={tp("contactDetail")}>
-                  {t(clave)} · {tp("label")}
-                </span>
+                <Pendiente>{t(clave)}</Pendiente>
               )}
             </li>
           ))}

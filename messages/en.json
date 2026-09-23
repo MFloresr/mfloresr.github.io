@@ -104,5 +104,50 @@
     "infraestructura": "Infrastructure",
     "herramientas": "Tools",
     "ia": "AI"
+  },
+  "home": {
+    "status": "Open to opportunities · {ciudad}",
+    "title": "{nombre},<br></br><acento>full-stack</acento> developer.",
+    "ctaProjects": "View projects",
+    "ctaContact": "Get in touch",
+    "lookingFor": "What I'm looking for",
+    "projectsLabel": "Projects",
+    "allProjects": "All projects",
+    "offerLabel": "What I bring",
+    "offerTitle": "I build complete applications and understand the infrastructure they run on.",
+    "diagram": {
+      "frontend": "Frontend",
+      "backend": "Backend & APIs",
+      "database": "Database",
+      "deploy": "Deployment",
+      "systems": "Systems & users",
+      "main": "Full-stack development · main profile",
+      "plus": "Systems & support · complement",
+      "label": "From frontend to systems: full-stack development is the main profile and systems the complement."
+    },
+    "devTitle": "Full-stack development",
+    "sysTitle": "Systems, networking & support",
+    "sysNote": "ASIR vocational training",
+    "seeAbout": "See everything in About",
+    "techLabel": "Technologies",
+    "techTitle": "What I work with.",
+    "techText": "No percentages: each technology links to the projects where I've used it.",
+    "techLink": "See all and where I use them",
+    "blogLabel": "Blog",
+    "blogTitle": "Technical blog.",
+    "blogSoon": "Coming soon",
+    "blogText": "Articles on how these projects were built, technical decisions and lessons learned.",
+    "contactTitle": "Let's <acento>talk</acento>.",
+    "contactEmail": "Send an email"
+  },
+  "ui": {
+    "screenshotPending": "Screenshot pending · will be taken with demo data",
+    "cvPending": "CV (PDF)",
+    "external": "(opens in a new tab)",
+    "more": "+{n}",
+    "diagramLabel": "Architecture diagram",
+    "facts": "Overview",
+    "year": "Year",
+    "status": "Status"
   }
 }

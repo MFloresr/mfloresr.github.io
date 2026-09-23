@@ -4,31 +4,41 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /*
- * Colores provisionales y neutros del esqueleto (fase 1).
- * La paleta y la tipografía definitivas llegan con los bocetos (fase 3).
+ * Diseño aprobado en los bocetos (fase 3): fondo blanco roto, tinta casi negra y un único acento.
+ * Para cambiar el acento basta con --acento y --acento-suave en ambos modos.
  */
 :root {
-  --fondo: #fafaf9;
+  --fondo: #f7f6f3;
   --superficie: #ffffff;
-  --texto: #1c1917;
-  --tenue: #57534e;
-  --linea: #e7e5e4;
-  --acento: #1d4ed8;
-  --pendiente-fondo: #fff7ed;
-  --pendiente-borde: #fdba74;
-  --pendiente-texto: #9a3412;
+  --texto: #16181d;
+  --tenue: #595e69;
+  --linea: #e3e1db;
+  --chip: #efede8;
+  --acento: #2b59c3;
+  --acento-suave: #e8eefb;
+  --sobre-acento: #ffffff;
+  --invertido: #16181d;
+  --sobre-invertido: #f7f6f3;
+  --pendiente-fondo: #fff4e5;
+  --pendiente-borde: #d9a55e;
+  --pendiente-texto: #7a4309;
 }
 
 [data-theme="dark"] {
-  --fondo: #0c0a09;
-  --superficie: #1c1917;
-  --texto: #f5f5f4;
-  --tenue: #a8a29e;
-  --linea: #292524;
-  --acento: #93c5fd;
-  --pendiente-fondo: #2a1a0e;
-  --pendiente-borde: #c2410c;
-  --pendiente-texto: #fdba74;
+  --fondo: #111214;
+  --superficie: #17191c;
+  --texto: #ecedee;
+  --tenue: #9ba1ab;
+  --linea: #2a2d32;
+  --chip: #1f2226;
+  --acento: #8fb0ff;
+  --acento-suave: #1b2438;
+  --sobre-acento: #111214;
+  --invertido: #ecedee;
+  --sobre-invertido: #111214;
+  --pendiente-fondo: #2a2116;
+  --pendiente-borde: #9a6a2c;
+  --pendiente-texto: #f2c38a;
 }
 
 @theme inline {
@@ -37,10 +47,32 @@
   --color-texto: var(--texto);
   --color-tenue: var(--tenue);
   --color-linea: var(--linea);
+  --color-chip: var(--chip);
   --color-acento: var(--acento);
+  --color-acento-suave: var(--acento-suave);
+  --color-sobre-acento: var(--sobre-acento);
+  --color-invertido: var(--invertido);
+  --color-sobre-invertido: var(--sobre-invertido);
   --color-pendiente-fondo: var(--pendiente-fondo);
   --color-pendiente-borde: var(--pendiente-borde);
   --color-pendiente-texto: var(--pendiente-texto);
+  --font-sans: var(--fuente-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--fuente-mono), ui-monospace, monospace;
+  --font-serif: var(--fuente-serif), Georgia, serif;
+}
+
+/* Ancho y márgenes comunes de las secciones */
+@utility contenedor {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1280px;
+  padding-inline: 1.25rem;
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 6rem;
+  }
 }
 
 @layer base {
@@ -51,11 +83,12 @@
     color-scheme: dark;
   }
   body {
-    @apply bg-fondo text-texto antialiased;
+    @apply bg-fondo font-sans text-texto antialiased;
   }
   :focus-visible {
     outline: 2px solid var(--acento);
-    outline-offset: 2px;
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 

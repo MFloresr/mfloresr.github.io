@@ -104,5 +104,50 @@
     "infraestructura": "Infraestructura",
     "herramientas": "Herramientas",
     "ia": "IA"
+  },
+  "home": {
+    "status": "Abierto a oportunidades · {ciudad}",
+    "title": "{nombre},<br></br>desarrollador <acento>full-stack</acento>.",
+    "ctaProjects": "Ver proyectos",
+    "ctaContact": "Contactar",
+    "lookingFor": "Qué busco",
+    "projectsLabel": "Proyectos",
+    "allProjects": "Todos los proyectos",
+    "offerLabel": "Lo que aporto",
+    "offerTitle": "Desarrollo aplicaciones completas y entiendo la infraestructura en la que funcionan.",
+    "diagram": {
+      "frontend": "Frontend",
+      "backend": "Backend y APIs",
+      "database": "Base de datos",
+      "deploy": "Despliegue",
+      "systems": "Sistemas y usuarios",
+      "main": "Desarrollo full-stack · perfil principal",
+      "plus": "Sistemas y soporte · complemento",
+      "label": "Del frontend a los sistemas: el desarrollo full-stack es el perfil principal y los sistemas, el complemento."
+    },
+    "devTitle": "Desarrollo full-stack",
+    "sysTitle": "Sistemas, redes y soporte",
+    "sysNote": "formación ASIR",
+    "seeAbout": "Ver todo en Sobre mí",
+    "techLabel": "Tecnologías",
+    "techTitle": "Con qué trabajo.",
+    "techText": "Sin porcentajes: cada tecnología enlaza a los proyectos donde la he usado.",
+    "techLink": "Ver todas y dónde las uso",
+    "blogLabel": "Blog",
+    "blogTitle": "Blog técnico.",
+    "blogSoon": "Próximamente",
+    "blogText": "Artículos sobre el desarrollo de estos proyectos, decisiones técnicas y lo aprendido.",
+    "contactTitle": "¿Hablamos<acento>?</acento>",
+    "contactEmail": "Escribir un email"
+  },
+  "ui": {
+    "screenshotPending": "Captura pendiente · se hará con datos de demostración",
+    "cvPending": "CV en PDF",
+    "external": "(se abre en una pestaña nueva)",
+    "more": "+{n}",
+    "diagramLabel": "Diagrama de arquitectura",
+    "facts": "Ficha",
+    "year": "Año",
+    "status": "Estado"
   }
 }

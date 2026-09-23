@@ -38,7 +38,7 @@ export default function BotonTema() {
       onClick={alternar}
       aria-label={etiqueta}
       title={etiqueta}
-      className="flex size-9 items-center justify-center rounded-md text-tenue hover:bg-linea hover:text-texto"
+      className="flex size-10 items-center justify-center rounded-lg text-tenue hover:bg-chip hover:text-texto"
     >
       {/* Sol en modo oscuro, luna en modo claro (se decide por CSS para evitar parpadeos) */}
       <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="hidden dark:block">

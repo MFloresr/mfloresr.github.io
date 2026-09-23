@@ -2,7 +2,7 @@
 
 Portfolio profesional de Mario Flores, desarrollador full-stack en Barcelona.
 
-> **Estado:** en reconstrucción en la rama `v2` (fase 2: sistema de contenido).
+> **Estado:** en reconstrucción en la rama `v2` (fase 4: diseño aplicado a inicio y proyectos).
 > La web publicada sigue siendo la de `main` hasta que la nueva versión esté aprobada.
 
 ## Tecnología

@@ -49,6 +49,7 @@ export const esquemaPerfil = z
       z.object({ titulo: traducible(texto), centro: texto.nullable(), fechas: texto.nullable() }).strict(),
     ),
     busca: traducible(z.array(texto).min(1)),
+    desarrollo: traducible(z.array(texto).min(1)),
     complementario: traducible(z.array(texto).min(1)),
   })
   .strict();
@@ -86,6 +87,17 @@ export const esquemaTextoProyecto = z
     funcionalidades: z.array(texto).min(1).nullable(),
     retos: z.array(z.object({ titulo: texto, texto: texto }).strict()).min(1).nullable(),
     mejoras: z.array(texto).min(1).nullable(),
+    /** Diagrama de arquitectura: 2 a 4 piezas en orden y una nota opcional. */
+    arquitectura: z
+      .object({
+        nodos: z
+          .array(z.object({ titulo: texto, detalle: texto, destacado: z.boolean().optional() }).strict())
+          .min(2)
+          .max(4),
+        nota: texto.nullable(),
+      })
+      .strict()
+      .nullable(),
   })
   .strict();
 
