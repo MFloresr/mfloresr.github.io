@@ -10,7 +10,7 @@
     },
     "about": {
       "title": "About",
-      "description": "Who Mario Flores is: full-stack development and a background in network systems administration."
+      "description": "Who Mario Flores is: full-stack development, systems experience, and training in web development (DAW) and network systems administration (ASIR)."
     },
     "technologies": {
       "title": "Technologies",
@@ -159,7 +159,11 @@
     "development": "Full-stack development",
     "education": "Education",
     "systems": "Systems, networking & support",
-    "projectsLink": "See the projects that show it"
+    "projectsLink": "See the projects that show it",
+    "experience": "Experience",
+    "certifications": "Certifications",
+    "skills": "How I work",
+    "languages": "Languages"
   },
   "technologies": {
     "intro": "Grouped by use and linked to the projects where I've applied them. No percentages, no loose logos.",

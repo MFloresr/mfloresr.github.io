@@ -13,40 +13,57 @@
 - { id: drf, nombre: Django REST Framework, grupo: backend, destacada: true }
 - { id: php, nombre: PHP, grupo: backend, destacada: true }
 - { id: laravel, nombre: Laravel, grupo: backend, destacada: true }
-- { id: apis-rest, nombre: APIs REST, grupo: backend, destacada: true }
+- { id: apis-rest, nombre: { es: APIs REST, en: REST APIs }, grupo: backend, destacada: true }
 
 - { id: vue, nombre: Vue 3, grupo: frontend, destacada: true }
+- id: html
+  nombre: HTML
+  grupo: frontend
+  destacada: true
+  contexto: { es: En todos mis proyectos web, en: In all my web projects }
+- id: css
+  nombre: CSS
+  grupo: frontend
+  destacada: true
+  contexto: { es: En todos mis proyectos web, en: In all my web projects }
 - { id: javascript, nombre: JavaScript, grupo: frontend, destacada: true }
 - { id: typescript, nombre: TypeScript, grupo: frontend, destacada: false }
 - { id: vite, nombre: Vite, grupo: frontend, destacada: false }
+- { id: axios, nombre: Axios, grupo: frontend, destacada: false }
 - { id: tailwind, nombre: Tailwind CSS, grupo: frontend, destacada: false }
 - { id: daisyui, nombre: daisyUI, grupo: frontend, destacada: false }
 - { id: alpine, nombre: Alpine.js, grupo: frontend, destacada: false }
 - { id: astro, nombre: Astro, grupo: frontend, destacada: false }
 - { id: svelte, nombre: Svelte, grupo: frontend, destacada: false }
 
-- { id: bases-de-datos, nombre: { es: Bases de datos, en: Databases }, grupo: datos, destacada: true, incluye: [postgresql, sqlite, supabase] }
+- { id: bases-de-datos, nombre: { es: Bases de datos, en: Databases }, grupo: datos, destacada: true, incluye: [postgresql, mysql, sqlite, supabase] }
 - { id: postgresql, nombre: PostgreSQL, grupo: datos, destacada: false }
+- { id: mysql, nombre: MySQL, grupo: datos, destacada: true }
 - { id: sqlite, nombre: SQLite, grupo: datos, destacada: false }
 - { id: supabase, nombre: Supabase, grupo: datos, destacada: false }
 - { id: sanity, nombre: Sanity (CMS), grupo: datos, destacada: false }
 
 - { id: vercel, nombre: Vercel, grupo: infraestructura, destacada: false }
+- id: pythonanywhere
+  nombre: PythonAnywhere
+  grupo: infraestructura
+  destacada: false
+  contexto: { es: 'Primer despliegue de Mi Jornada, antes de migrarla a Vercel', en: 'First deployment of Mi Jornada, before moving it to Vercel' }
 - id: linux
   nombre: Linux
   grupo: infraestructura
   destacada: true
-  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR), en: Systems administration and technical support (ASIR training) }
+  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR y experiencia profesional), en: Systems administration and technical support (ASIR training and work experience) }
 - id: windows
   nombre: Windows
   grupo: infraestructura
   destacada: true
-  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR), en: Systems administration and technical support (ASIR training) }
+  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR y experiencia profesional), en: Systems administration and technical support (ASIR training and work experience) }
 - id: redes
-  nombre: Redes
+  nombre: { es: Redes, en: Networking }
   grupo: infraestructura
   destacada: true
-  contexto: { es: Redes básicas y administración de redes (formación ASIR), en: Basic networking and network administration (ASIR training) }
+  contexto: { es: Redes locales y administración de redes (formación ASIR y experiencia profesional), en: Local networks and network administration (ASIR training and work experience) }
 - id: wsl
   nombre: WSL
   grupo: infraestructura
@@ -63,6 +80,17 @@
   grupo: herramientas
   destacada: true
   contexto: { es: Repositorios públicos de todos mis proyectos, en: Public repositories for all my projects }
+
+- id: vscode
+  nombre: VS Code
+  grupo: herramientas
+  destacada: true
+  contexto: { es: Mi editor de código, en: My code editor }
+- id: npm
+  nombre: npm
+  grupo: herramientas
+  destacada: true
+  contexto: { es: Dependencias y compilación del frontend en mis proyectos, en: Frontend dependencies and builds in my projects }
 
 - id: claude-code
   nombre: Claude Code

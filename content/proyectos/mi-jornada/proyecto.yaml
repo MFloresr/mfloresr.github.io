@@ -3,7 +3,7 @@ orden: 1
 destacado: true # pendiente de confirmar qué proyecto va primero
 estado: produccion
 anio: 2026
-tecnologias: [python, django, drf, apis-rest, vue, javascript, vite, tailwind, daisyui, postgresql, supabase, sqlite, gemini, vercel]
+tecnologias: [python, django, drf, apis-rest, vue, javascript, axios, vite, tailwind, daisyui, postgresql, supabase, sqlite, gemini, vercel]
 repositorio: https://github.com/MFloresr/mi_jornada
 demo:
   url: https://mi-jornada-flores9.vercel.app

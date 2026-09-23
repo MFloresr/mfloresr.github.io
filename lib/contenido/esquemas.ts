@@ -59,9 +59,23 @@ export const esquemaPerfil = z
         github: z.url({ protocol: /^https$/ }).nullable(),
       })
       .strict(),
+    resumen: traducible(texto),
+    experiencia: z.array(
+      z
+        .object({
+          puesto: traducible(texto),
+          empresa: texto,
+          fechas: traducible(texto),
+          tareas: traducible(z.array(texto).min(1)),
+        })
+        .strict(),
+    ),
     formacion: z.array(
       z.object({ titulo: traducible(texto), centro: texto.nullable(), fechas: texto.nullable() }).strict(),
     ),
+    certificaciones: traducible(z.array(texto).min(1)),
+    idiomas: traducible(z.array(texto).min(1)),
+    competencias: traducible(z.array(texto).min(1)),
     busca: traducible(z.array(texto).min(1)),
     desarrollo: traducible(z.array(texto).min(1)),
     /** Cómo usa la IA al desarrollar (declarado por Mario). */

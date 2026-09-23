@@ -28,6 +28,10 @@ export default async function SobreMi() {
   const pendiente = <Pendiente>{tp("field")}</Pendiente>;
 
   const mensaje = enIdioma(perfil.mensaje, idioma);
+  const resumen = enIdioma(perfil.resumen, idioma);
+  const certificaciones = enIdioma(perfil.certificaciones, idioma);
+  const idiomas = enIdioma(perfil.idiomas, idioma);
+  const competencias = enIdioma(perfil.competencias, idioma);
   const busca = enIdioma(perfil.busca, idioma);
   const desarrollo = enIdioma(perfil.desarrollo, idioma);
   const asistenciaIA = enIdioma(perfil.asistenciaIA, idioma);
@@ -56,6 +60,7 @@ export default async function SobreMi() {
         <header className="flex flex-col gap-4.5">
           <h1 className="text-[44px] font-semibold tracking-[-0.03em] sm:text-6xl">{t("intro")}</h1>
           {mensaje ? <p className="text-lg leading-normal sm:text-[22px]">{mensaje}</p> : pendiente}
+          {resumen && <p className="text-[17px] leading-relaxed text-tenue">{resumen}</p>}
         </header>
 
         <Seccion titulo={t("lookingFor")}>{busca ? <ListaGuion items={busca} className="text-[17px]" /> : pendiente}</Seccion>
@@ -69,13 +74,32 @@ export default async function SobreMi() {
           </Link>
         </Seccion>
 
+        <Seccion titulo={t("experience")}>
+          <ol className="border-y border-linea">
+            {perfil.experiencia.map((e) => {
+              const tareas = enIdioma(e.tareas, idioma);
+              return (
+                <li key={e.empresa} className="grid gap-2 py-4.5 sm:grid-cols-[180px_1fr] sm:gap-4">
+                  <span className="font-mono text-[13px] leading-6 text-tenue">{enIdioma(e.fechas, idioma) ?? pendiente}</span>
+                  <div className="flex flex-col items-start gap-2">
+                    <strong className="text-[17px] font-semibold">
+                      {enIdioma(e.puesto, idioma) ?? pendiente} <span className="font-normal text-tenue">· {e.empresa}</span>
+                    </strong>
+                    {tareas && <ListaGuion items={tareas} className="text-[15px]" />}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </Seccion>
+
         <Seccion titulo={t("education")}>
           <ul className="border-y border-linea">
             {perfil.formacion.map((f, i) => {
               const titulo = enIdioma(f.titulo, idioma);
               return (
                 <li key={i} className="grid gap-2 py-4.5 sm:grid-cols-[180px_1fr] sm:gap-4">
-                  <span>{f.fechas ?? <Pendiente>{tp("dates")}</Pendiente>}</span>
+                  <span className="font-mono text-[13px] leading-6 text-tenue">{f.fechas ?? <Pendiente>{tp("dates")}</Pendiente>}</span>
                   <div className="flex flex-col items-start gap-2">
                     {titulo ? <strong className="text-[17px] font-semibold">{titulo}</strong> : pendiente}
                     {f.centro ? <span className="text-tenue">{f.centro}</span> : <Pendiente>{tp("school")}</Pendiente>}
@@ -84,6 +108,12 @@ export default async function SobreMi() {
               );
             })}
           </ul>
+          {certificaciones && (
+            <div className="flex flex-col gap-2 pt-2">
+              <h3 className="font-mono text-[13px] text-tenue">{t("certifications")}</h3>
+              <ListaGuion items={certificaciones} className="text-[15px]" />
+            </div>
+          )}
         </Seccion>
 
         <Seccion titulo={t("systems")}>
@@ -103,6 +133,11 @@ export default async function SobreMi() {
             pendiente
           )}
         </Seccion>
+
+        <div className="grid gap-12 sm:grid-cols-2 sm:gap-8">
+          <Seccion titulo={t("skills")}>{competencias ? <ListaGuion items={competencias} className="text-[15px]" /> : pendiente}</Seccion>
+          <Seccion titulo={t("languages")}>{idiomas ? <ListaGuion items={idiomas} className="text-[15px]" /> : pendiente}</Seccion>
+        </div>
       </div>
     </div>
   );
