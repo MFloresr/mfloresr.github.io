@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "home": {
+      "title": "Mario Flores · Desarrollador Full-Stack",
+      "description": "Portfolio de Mario Flores, desarrollador full-stack en Barcelona con experiencia complementaria en sistemas, redes y soporte técnico."
+    },
+    "projects": { "title": "Proyectos", "description": "Proyectos de Mario Flores: aplicaciones web completas, del backend al despliegue." },
+    "about": { "title": "Sobre mí", "description": "Quién es Mario Flores: desarrollo full-stack y formación en administración de sistemas en red." },
+    "technologies": { "title": "Tecnologías", "description": "Tecnologías que utiliza Mario Flores y en qué proyectos las ha aplicado." },
+    "blog": { "title": "Blog", "description": "Artículos técnicos sobre desarrollo web, sistemas, despliegue y los proyectos de Mario Flores." },
+    "contact": { "title": "Contacto", "description": "Cómo contactar con Mario Flores: email y perfiles profesionales." }
+  },
+  "nav": {
+    "label": "Navegación principal",
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "technologies": "Tecnologías",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "skipToContent": "Saltar al contenido"
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
+  "theme": {
+    "toDark": "Cambiar a modo oscuro",
+    "toLight": "Cambiar a modo claro"
+  },
+  "footer": {
+    "role": "Desarrollador Full-Stack · Barcelona",
+    "links": "Enlaces profesionales",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "pending": {
+    "label": "Pendiente",
+    "contact": "Dato de contacto pendiente de confirmar",
+    "home": "Contenido del inicio: se redactará tras aprobar los bocetos (fase 4).",
+    "projects": "Listado de proyectos: llega con el sistema de contenido (fase 2) y el diseño (fase 4).",
+    "project": "Ficha del proyecto: se publicará cuando apruebes su borrador (fase 2).",
+    "about": "Sobre mí: formación en ASIR, perfil full-stack y sistemas como complemento (fase 5).",
+    "technologies": "Tecnologías agrupadas por uso y enlazadas a los proyectos (fase 5).",
+    "blog": "Blog: listado de artículos en MDX (fase 6).",
+    "contact": "Email y perfiles profesionales: pendientes de confirmar (fase 5)."
+  },
+  "projects": {
+    "names": {
+      "mi-jornada": "Mi Jornada",
+      "sudokus": "Sudokus",
+      "agroclima-consultores": "AgroClima Consultores"
+    }
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o ha cambiado de dirección.",
+    "back": "Volver al inicio"
+  }
+}
