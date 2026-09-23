@@ -4,7 +4,7 @@ import { routing, type Idioma } from "@/i18n/routing";
  * Datos del sitio. La URL base sale de SITE_URL para poder pasar a un dominio
  * propio (p. ej. https://marioflores.dev) cambiando solo esa variable.
  */
-export const SITE_URL = (process.env.SITE_URL ?? "https://marioflores.vercel.app").replace(/\/$/, "");
+export const SITE_URL = (process.env.SITE_URL ?? "https://mfloresr-portfolio.vercel.app").replace(/\/$/, "");
 
 export const NOMBRE = "Mario Flores";
 

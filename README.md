@@ -89,7 +89,7 @@ npm run contenido
 | Variable | Descripción |
 |---|---|
 | `OCULTAR_BORRADORES` | Con `1`, oculta los borradores del blog también fuera de producción (para probar). |
-| `SITE_URL` | URL pública, para las URL canónicas, el sitemap y los hreflang. Por defecto `https://marioflores.vercel.app`. Cambiarla es lo único necesario para pasar a un dominio propio. |
+| `SITE_URL` | URL pública, para las URL canónicas, el sitemap y los hreflang. Por defecto `https://mfloresr-portfolio.vercel.app`. Cambiarla es lo único necesario para pasar a un dominio propio. |
 
 ## Despliegue
 
