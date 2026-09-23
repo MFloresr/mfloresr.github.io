@@ -119,3 +119,27 @@ export type Tecnologia = z.infer<typeof esquemaTecnologia>;
 export type Perfil = z.infer<typeof esquemaPerfil>;
 export type DatosProyecto = z.infer<typeof esquemaDatosProyecto>;
 export type TextoProyecto = z.infer<typeof esquemaTextoProyecto>;
+
+// ---------- Blog ----------
+
+export const CATEGORIAS = ["proyectos", "desarrollo", "sistemas", "despliegue", "ia"] as const;
+
+/** Frontmatter de un artículo (content/blog/<slug>/<idioma>.mdx). */
+export const esquemaArticulo = z
+  .object({
+    /** Borradores: se ven en local y en las vistas previas de Vercel, nunca en producción. */
+    borrador: z.boolean(),
+    titulo: texto,
+    resumen: texto,
+    fecha: z.iso.date(),
+    actualizado: z.iso.date().nullable().optional(),
+    categoria: z.enum(CATEGORIAS),
+    etiquetas: z.array(slug).max(8),
+    destacado: z.boolean(),
+    portada: z.object({ archivo: texto, alt: texto }).strict().nullable().optional(),
+    /** Slugs de proyectos relacionados (se comprueba que existan). */
+    proyectos: z.array(slug),
+  })
+  .strict();
+
+export type Articulo = z.infer<typeof esquemaArticulo>;

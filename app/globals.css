@@ -100,3 +100,76 @@
     animation: none !important;
   }
 }
+
+/* ---------- Texto de artículos (MDX) ---------- */
+.prosa {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--texto);
+}
+.prosa > * + * {
+  margin-top: 1.25em;
+}
+.prosa h2 {
+  margin-top: 2.2em;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.prosa h3 {
+  margin-top: 1.8em;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.prosa a {
+  color: var(--acento);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.prosa ul,
+.prosa ol {
+  padding-left: 1.4em;
+}
+.prosa ul {
+  list-style: disc;
+}
+.prosa ol {
+  list-style: decimal;
+}
+.prosa li + li {
+  margin-top: 0.4em;
+}
+.prosa li::marker {
+  color: var(--acento);
+}
+.prosa blockquote {
+  border-radius: 12px;
+  background: var(--chip);
+  padding: 1em 1.2em;
+  color: var(--tenue);
+}
+.prosa :not(pre) > code {
+  border-radius: 6px;
+  background: var(--chip);
+  padding: 0.15em 0.4em;
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+}
+.prosa pre {
+  overflow-x: auto;
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  background: var(--superficie);
+  padding: 1em 1.2em;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+/* Shiki con dos temas: se elige el color según el modo */
+.prosa pre span {
+  color: var(--shiki-light);
+}
+[data-theme="dark"] .prosa pre span {
+  color: var(--shiki-dark);
+}

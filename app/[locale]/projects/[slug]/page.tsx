@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import TarjetaArticulo from "@/components/blog/TarjetaArticulo";
 import Pendiente from "@/components/Pendiente";
 import Arquitectura from "@/components/proyectos/Arquitectura";
 import Boton from "@/components/ui/Boton";
@@ -8,7 +9,7 @@ import { Captura, Chips, ListaGuion } from "@/components/ui/Basicos";
 import { Link } from "@/i18n/navigation";
 import type { Idioma } from "@/i18n/routing";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
-import { listarSlugsProyectos, obtenerProyecto, obtenerTecnologias } from "@/lib/contenido/leer";
+import { listarArticulos, listarSlugsProyectos, obtenerProyecto, obtenerTecnologias } from "@/lib/contenido/leer";
 import { Mdx } from "@/lib/contenido/mdx";
 import { NOMBRE, SITE_URL, alternativas, urlAbsoluta } from "@/lib/sitio";
 
@@ -62,6 +63,7 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
   const t = await getTranslations("projects");
   const tui = await getTranslations("ui");
   const tp = await getTranslations("pending");
+  const tb = await getTranslations("blog");
   const { datos } = proyecto;
   const texto = proyecto.textos[idioma];
   const nombres = new Map(obtenerTecnologias().map((tec) => [tec.id, tec.nombre]));
@@ -86,6 +88,8 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
   }
 
   const d = texto.datos;
+  // Artículos del blog que citan este proyecto
+  const articulos = listarArticulos().filter((a) => Object.values(a.textos).some((x) => x.datos.proyectos.includes(slug)));
 
   return (
     <article>
@@ -178,6 +182,20 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
           </dl>
         </aside>
       </div>
+      {articulos.length > 0 && (
+        <section aria-labelledby="t-articulos" className="contenedor flex flex-col gap-4 border-t border-linea py-10 md:py-14">
+          <h2 id="t-articulos" className="text-[22px] font-semibold">
+            {tb("relatedArticles")}
+          </h2>
+          <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {articulos.map((a) => (
+              <li key={a.slug}>
+                <TarjetaArticulo entrada={a} idioma={idioma} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </article>
   );
 }

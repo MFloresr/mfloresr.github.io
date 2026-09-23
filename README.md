@@ -20,7 +20,8 @@ Portfolio profesional de Mario Flores, desarrollador full-stack en Barcelona.
 app/
   [locale]/            páginas por idioma: inicio, projects, about, technologies, blog, contact
     projects/[slug]/   fichas de proyecto (mi-jornada, sudokus, agroclima-consultores)
-    blog/[slug]/       artículos (a partir de la fase 6)
+    blog/[slug]/       artículos
+    blog/tag/[tag]/    artículos por etiqueta
     [...rest]/         cualquier otra ruta → 404 traducido
   sitemap.ts, robots.ts
 components/layout/     cabecera, navegación, menú móvil, selector de idioma, tema y pie
@@ -52,12 +53,20 @@ content/
   proyectos/<slug>/
     proyecto.yaml                datos comunes: estado, año, tecnologías (ids del catálogo), repositorio, demo, capturas
     es.mdx, en.mdx...            textos por idioma (frontmatter) y cuerpo MDX opcional
+  blog/<slug>/
+    es.mdx, en.mdx...            artículo por idioma: frontmatter (título, resumen, fecha, categoría,
+                                 etiquetas, destacado, proyectos relacionados) y cuerpo MDX
 ```
 
 - **Nada se inventa.** Un campo con `null` se muestra como **Pendiente** (`components/Pendiente.tsx`).
 - `revisado: false` en una ficha muestra el aviso "borrador pendiente de revisión".
 - Si falta el `.mdx` de un idioma, la ficha muestra "traducción pendiente" y enlaza a la versión en castellano.
 - En YAML, un texto que contenga `: ` va entre comillas.
+- **Blog:** categorías fijas (`proyectos`, `desarrollo`, `sistemas`, `despliegue`, `ia`) y etiquetas libres.
+  Los proyectos citados en `proyectos:` deben existir o el build falla. Un artículo escrito en un solo
+  idioma aparece en ambos con el aviso "Solo en castellano" y enlace a la versión original (sin indexar).
+  `borrador: true` solo se ve en local y en vistas previas; nunca en producción. El código se resalta
+  al compilar (Shiki, tema claro y oscuro), sin JavaScript en el navegador.
 
 ```bash
 npm run contenido                 # valida y lista todo lo pendiente
@@ -79,6 +88,7 @@ npm run contenido
 
 | Variable | Descripción |
 |---|---|
+| `OCULTAR_BORRADORES` | Con `1`, oculta los borradores del blog también fuera de producción (para probar). |
 | `SITE_URL` | URL pública, para las URL canónicas, el sitemap y los hreflang. Por defecto `https://marioflores.vercel.app`. Cambiarla es lo único necesario para pasar a un dominio propio. |
 
 ## Despliegue

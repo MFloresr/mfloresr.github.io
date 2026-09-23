@@ -140,7 +140,8 @@
     "blogSoon": "Próximamente",
     "blogText": "Artículos sobre el desarrollo de estos proyectos, decisiones técnicas y lo aprendido.",
     "contactTitle": "¿Hablamos<acento>?</acento>",
-    "contactEmail": "Escribir un email"
+    "contactEmail": "Escribir un email",
+    "blogAll": "Ver todos los artículos"
   },
   "ui": {
     "screenshotPending": "Captura pendiente · se hará con datos de demostración",
@@ -174,5 +175,38 @@
     "linkedin": "LinkedIn",
     "cv": "CV",
     "location": "Ubicación"
+  },
+  "blog": {
+    "intro": "Artículos sobre el desarrollo de mis proyectos, decisiones técnicas, sistemas, despliegue y lo que voy aprendiendo.",
+    "featured": "Destacados",
+    "recent": "Recientes",
+    "tags": "Etiquetas",
+    "categories": "Categorías",
+    "empty": "Todavía no hay artículos publicados. Próximamente.",
+    "readingTime": "{minutos} min de lectura",
+    "updated": "Actualizado el {fecha}",
+    "onlyIn": "Solo en {idioma}",
+    "draft": "Borrador",
+    "draftNotice": "Borrador: solo visible en local y en vistas previas, nunca en producción.",
+    "notTranslated": "Este artículo aún no está traducido a este idioma.",
+    "readOriginal": "Leer en {idioma}",
+    "related": "Proyectos relacionados",
+    "relatedArticles": "Artículos relacionados",
+    "back": "Todos los artículos",
+    "tagTitle": "Artículos con la etiqueta «{etiqueta}»",
+    "readArticle": "Leer artículo",
+    "languages": {
+      "es": "castellano",
+      "en": "inglés",
+      "ca": "catalán",
+      "fr": "francés"
+    },
+    "categoryNames": {
+      "proyectos": "Proyectos",
+      "desarrollo": "Desarrollo",
+      "sistemas": "Sistemas",
+      "despliegue": "Despliegue",
+      "ia": "IA aplicada"
+    }
   }
 }

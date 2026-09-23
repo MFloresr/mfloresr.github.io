@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
+import TarjetaArticulo from "@/components/blog/TarjetaArticulo";
 import DatosEstructurados from "@/components/DatosEstructurados";
 import DiagramaPerfil from "@/components/inicio/DiagramaPerfil";
 import Pendiente from "@/components/Pendiente";
@@ -9,7 +10,7 @@ import { Externo, Flecha } from "@/components/ui/Iconos";
 import { Link } from "@/i18n/navigation";
 import { GRUPOS, type IdiomaContenido } from "@/lib/contenido/esquemas";
 import { enIdioma } from "@/lib/contenido/idioma";
-import { listarProyectos, obtenerPerfil, obtenerTecnologias } from "@/lib/contenido/leer";
+import { listarArticulos, listarProyectos, obtenerPerfil, obtenerTecnologias } from "@/lib/contenido/leer";
 import { metadatosPagina } from "@/lib/metadatos";
 
 export const generateMetadata = () => metadatosPagina("home", "");
@@ -22,6 +23,7 @@ export default async function Inicio() {
   const tg = await getTranslations("groups");
   const perfil = obtenerPerfil();
   const proyectos = listarProyectos();
+  const articulos = listarArticulos().slice(0, 2);
   const ciudad = perfil.ubicacion.split(",")[0];
 
   const mensaje = enIdioma(perfil.mensaje, idioma);
@@ -170,10 +172,26 @@ export default async function Inicio() {
               {t("blogTitle")}
             </h2>
           </div>
-          <div className="flex flex-col justify-center gap-2.5 rounded-2xl border border-dashed border-linea p-6">
-            <span className="text-[17px] font-medium">{t("blogSoon")}</span>
-            <span className="text-[15px] text-tenue">{t("blogText")}</span>
-          </div>
+          {articulos.length > 0 ? (
+            <div className="flex flex-col gap-4">
+              <ul className="grid gap-5 md:grid-cols-2">
+                {articulos.map((a) => (
+                  <li key={a.slug}>
+                    <TarjetaArticulo entrada={a} idioma={idioma} />
+                  </li>
+                ))}
+              </ul>
+              <Link href="/blog" className="inline-flex items-center gap-1.5 self-start text-[15px] font-medium text-acento">
+                {t("blogAll")}
+                <Flecha />
+              </Link>
+            </div>
+          ) : (
+            <div className="flex flex-col justify-center gap-2.5 rounded-2xl border border-dashed border-linea p-6">
+              <span className="text-[17px] font-medium">{t("blogSoon")}</span>
+              <span className="text-[15px] text-tenue">{t("blogText")}</span>
+            </div>
+          )}
         </div>
       </section>
 

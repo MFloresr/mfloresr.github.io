@@ -1,0 +1,41 @@
+---
+borrador: true
+titulo: Cómo decide mi motor de sudokus si un tablero es fácil, medio o difícil
+resumen: Contar las casillas vacías no basta para saber lo difícil que es un sudoku. Así lo resolví en mi proyecto Sudokus, resolviéndolo como lo haría una persona.
+fecha: 2026-09-23
+categoria: proyectos
+etiquetas: [python, django, algoritmos]
+destacado: true
+proyectos: [sudokus]
+---
+
+> **Borrador pendiente de revisión.** Este artículo es una propuesta: no se publicará hasta que Mario lo revise.
+
+Cuando empecé el proyecto Sudokus, la dificultad de cada tablero venía de un dataset externo y casi todos salían como "fácil". El problema de fondo es que **el número de casillas vacías no mide la dificultad**: dos sudokus con los mismos huecos pueden necesitar razonamientos muy distintos.
+
+## Resolver como una persona
+
+La solución fue escribir un segundo resolvedor, distinto del que comprueba que la solución es única. Este no prueba combinaciones: aplica las técnicas que usaría una persona y anota la más difícil que ha necesitado.
+
+1. **Nivel 1:** casillas con un único candidato posible y números que solo caben en una casilla de su fila, columna o caja.
+2. **Nivel 2:** candidatos bloqueados y parejas desnudas, que descartan opciones sin colocar números.
+3. **Nivel 3:** si con esas técnicas no se completa el tablero, hace falta tantear o usar técnicas avanzadas.
+
+Con ese nivel y el número de huecos, la calificación queda así:
+
+```python
+def calificar(celdas):
+    nivel = _tecnicas_necesarias(celdas)
+    huecos = celdas.count(0)
+    if nivel >= 3:
+        return "dificil"
+    if nivel == 2 or huecos >= 46:
+        return "media"
+    return "facil"
+```
+
+## Generar sudokus de la dificultad pedida
+
+El mismo motor genera tableros nuevos: parte de un tablero resuelto al azar, quita casillas por parejas simétricas mientras la solución siga siendo única y, al final, comprueba que la calificación coincide con la dificultad pedida. Si no coincide, lo intenta de nuevo.
+
+Así se generaron los 424 sudokus publicados, sin depender de datos de terceros.

@@ -3,10 +3,12 @@ import path from "node:path";
 import { parse as parseYaml } from "yaml";
 import { z } from "zod";
 import {
+  esquemaArticulo,
   esquemaDatosProyecto,
   esquemaPerfil,
   esquemaTecnologias,
   esquemaTextoProyecto,
+  type Articulo,
   type DatosProyecto,
   type IdiomaContenido,
   type Perfil,
@@ -142,4 +144,68 @@ export function proyectosQueUsan(idTecnologia: string): Proyecto[] {
   const tecnologia = obtenerTecnologias().find((t) => t.id === idTecnologia);
   const ids = new Set([idTecnologia, ...(tecnologia?.incluye ?? [])]);
   return listarProyectos().filter((p) => p.datos.tecnologias.some((t) => ids.has(t)));
+}
+
+// ---------- Blog ----------
+
+export type ArticuloIdioma = { datos: Articulo; cuerpo: string; minutos: number };
+export type EntradaBlog = {
+  slug: string;
+  /** Versiones por idioma que existen (y se pueden publicar en este entorno). */
+  textos: Partial<Record<IdiomaContenido, ArticuloIdioma>>;
+};
+
+const DIR_BLOG = path.join(RAIZ, "blog");
+
+/** Los borradores solo se muestran fuera de producción (local o vistas previas de Vercel). */
+export function mostrarBorradores(): boolean {
+  return process.env.VERCEL_ENV !== "production" && process.env.OCULTAR_BORRADORES !== "1";
+}
+
+/** Minutos de lectura aproximados (unas 200 palabras por minuto, sin contar el código). */
+function minutosLectura(cuerpo: string): number {
+  const sinCodigo = cuerpo.replace(/```[\s\S]*?```/g, " ");
+  const palabras = sinCodigo.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(palabras / 200));
+}
+
+let cacheBlog: EntradaBlog[] | undefined;
+
+/** Artículos publicables en este entorno, del más reciente al más antiguo. */
+export function listarArticulos(): EntradaBlog[] {
+  if (cacheBlog) return cacheBlog;
+  const slugsProyectos = new Set(listarSlugsProyectos());
+  const entradas: EntradaBlog[] = [];
+  if (existsSync(DIR_BLOG)) {
+    for (const dir of readdirSync(DIR_BLOG, { withFileTypes: true }).filter((d) => d.isDirectory())) {
+      const textos: EntradaBlog["textos"] = {};
+      for (const archivo of readdirSync(path.join(DIR_BLOG, dir.name)).filter((f) => f.endsWith(".mdx"))) {
+        const idioma = archivo.replace(/\.mdx$/, "");
+        const ruta = path.join(DIR_BLOG, dir.name, archivo);
+        if (!["es", "en", "ca", "fr"].includes(idioma)) {
+          throw new ContenidoInvalido(`Idioma desconocido en el nombre del archivo: ${path.relative(process.cwd(), ruta)}`);
+        }
+        const { datos: frontmatter, cuerpo } = separarFrontmatter(ruta);
+        const datos = validar(esquemaArticulo, frontmatter, ruta);
+        const desconocidos = datos.proyectos.filter((p) => !slugsProyectos.has(p));
+        if (desconocidos.length) {
+          throw new ContenidoInvalido(`Proyectos relacionados que no existen (${path.relative(process.cwd(), ruta)}): ${desconocidos.join(", ")}`);
+        }
+        if (datos.borrador && !mostrarBorradores()) continue;
+        textos[idioma as IdiomaContenido] = { datos, cuerpo, minutos: minutosLectura(cuerpo) };
+      }
+      if (Object.keys(textos).length) entradas.push({ slug: dir.name, textos });
+    }
+  }
+  const fecha = (e: EntradaBlog) => Object.values(e.textos)[0]!.datos.fecha;
+  cacheBlog = entradas.sort((a, b) => fecha(b).localeCompare(fecha(a)));
+  return cacheBlog;
+}
+
+/** Versión de un artículo para un idioma: la suya o, si falta, la primera que exista. */
+export function textoArticulo(entrada: EntradaBlog, idioma: IdiomaContenido) {
+  const propio = entrada.textos[idioma];
+  if (propio) return { texto: propio, idioma, traducido: true };
+  const [otroIdioma, texto] = Object.entries(entrada.textos)[0] as [IdiomaContenido, ArticuloIdioma];
+  return { texto, idioma: otroIdioma, traducido: false };
 }

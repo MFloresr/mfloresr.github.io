@@ -140,7 +140,8 @@
     "blogSoon": "Coming soon",
     "blogText": "Articles on how these projects were built, technical decisions and lessons learned.",
     "contactTitle": "Let's <acento>talk</acento>.",
-    "contactEmail": "Send an email"
+    "contactEmail": "Send an email",
+    "blogAll": "See all articles"
   },
   "ui": {
     "screenshotPending": "Screenshot pending · will be taken with demo data",
@@ -174,5 +175,38 @@
     "linkedin": "LinkedIn",
     "cv": "CV",
     "location": "Location"
+  },
+  "blog": {
+    "intro": "Articles on how my projects were built, technical decisions, systems, deployment and what I keep learning.",
+    "featured": "Featured",
+    "recent": "Recent",
+    "tags": "Tags",
+    "categories": "Categories",
+    "empty": "No articles published yet. Coming soon.",
+    "readingTime": "{minutos} min read",
+    "updated": "Updated on {fecha}",
+    "onlyIn": "Only in {idioma}",
+    "draft": "Draft",
+    "draftNotice": "Draft: only visible locally and in previews, never in production.",
+    "notTranslated": "This article has not been translated into this language yet.",
+    "readOriginal": "Read in {idioma}",
+    "related": "Related projects",
+    "relatedArticles": "Related articles",
+    "back": "All articles",
+    "tagTitle": "Articles tagged “{etiqueta}”",
+    "readArticle": "Read article",
+    "languages": {
+      "es": "Spanish",
+      "en": "English",
+      "ca": "Catalan",
+      "fr": "French"
+    },
+    "categoryNames": {
+      "proyectos": "Projects",
+      "desarrollo": "Development",
+      "sistemas": "Systems",
+      "despliegue": "Deployment",
+      "ia": "Applied AI"
+    }
   }
 }
