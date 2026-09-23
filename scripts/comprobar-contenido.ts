@@ -19,7 +19,7 @@ const tecnologias = obtenerTecnologias();
 for (const [campo, valor] of Object.entries(perfil.contacto)) {
   if (valor === null) pendientes.push(`perfil.contacto.${campo}`);
 }
-for (const campo of ["rol", "mensaje", "busca", "desarrollo", "complementarioIntro", "complementario"] as const) {
+for (const campo of ["rol", "mensaje", "busca", "desarrollo", "asistenciaIA", "complementarioIntro", "complementario"] as const) {
   for (const idioma of idiomas) if (!perfil[campo][idioma]) pendientes.push(`perfil.${campo} [${idioma}]`);
 }
 perfil.formacion.forEach((f, i) => {

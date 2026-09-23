@@ -64,4 +64,10 @@
   destacada: true
   contexto: { es: Repositorios públicos de todos mis proyectos, en: Public repositories for all my projects }
 
+- id: claude-code
+  nombre: Claude Code
+  grupo: herramientas
+  destacada: true
+  contexto: { es: Asistente y soporte en el desarrollo de mis proyectos, en: Assistant and support while developing my projects }
+
 - { id: gemini, nombre: { es: API de Gemini, en: Gemini API }, grupo: ia, destacada: false }
