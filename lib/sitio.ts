@@ -13,9 +13,9 @@ export const NOMBRE = "Mario Flores";
  * se muestra como "pendiente" y no se puede publicar así (fase de calidad).
  */
 export const CONTACTO = {
-  email: null as string | null,
-  linkedin: null as string | null,
-  github: null as string | null, // propuesta: https://github.com/MFloresr (por confirmar)
+  email: "mrsitofull@gmail.com" as string | null,
+  linkedin: null as string | null, // pendiente: URL del perfil público
+  github: "https://github.com/MFloresr" as string | null,
 };
 
 /** Secciones de la web (mismo slug en todos los idiomas). */
