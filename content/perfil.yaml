@@ -1,0 +1,48 @@
+# Datos públicos del perfil. Los textos llevan una versión por idioma:
+# si falta el idioma (o vale null) se muestra como "Pendiente". No se inventa nada.
+
+nombre: Mario Flores
+ubicacion: Barcelona, Catalunya
+
+rol:
+  es: Desarrollador Full-Stack
+  en: Full-Stack Developer
+
+# Mensaje principal acordado con Mario
+mensaje:
+  es: Desarrollador Full-Stack con experiencia complementaria en sistemas, redes y soporte técnico, capaz de crear aplicaciones web completas y soluciones prácticas para empresas.
+  en: null
+
+contacto:
+  email: mrsitofull@gmail.com
+  linkedin: null # pendiente: URL del perfil público
+  github: https://github.com/MFloresr
+
+formacion:
+  - titulo:
+      es: Formación profesional en Administración de Sistemas Informáticos en Red (ASIR)
+      en: null
+    centro: null # pendiente
+    fechas: null # pendiente
+
+# Qué busca (confirmado por Mario)
+busca:
+  es:
+    - Empleo como desarrollador web, especialmente full-stack, backend o frontend.
+    - Oportunidades en sistemas, redes, soporte técnico e infraestructura.
+    - Proyectos freelance.
+  en: null
+
+# Perfil complementario: sistemas, redes, hardware y soporte (confirmado por Mario)
+complementario:
+  es:
+    - Administración de sistemas Windows y Linux.
+    - Configuración, montaje y mantenimiento de equipos informáticos.
+    - Diagnóstico y resolución de incidencias de hardware y software.
+    - Redes básicas y administración de redes.
+    - Configuración de equipos, periféricos y aplicaciones.
+    - Atención y soporte técnico a usuarios.
+    - WSL y configuración de entornos de desarrollo.
+    - Instalación y configuración de software.
+    - Resolución de problemas de conectividad, sistemas y aplicaciones.
+  en: null

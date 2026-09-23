@@ -1,0 +1,11 @@
+# Datos comunes a todos los idiomas
+orden: 1
+destacado: true # pendiente de confirmar qué proyecto va primero
+estado: produccion
+anio: 2026
+tecnologias: [python, django, drf, vue, javascript, vite, tailwind, daisyui, postgresql, supabase, sqlite, gemini, vercel]
+repositorio: https://github.com/MFloresr/mi_jornada
+demo:
+  url: https://mi-jornada-flores9.vercel.app
+  requiereCuenta: true # no hay registro público: falta decidir cómo se muestra
+capturas: [] # pendientes: se harán con una cuenta de demostración, nunca con datos reales

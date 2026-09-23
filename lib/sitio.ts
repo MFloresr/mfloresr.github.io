@@ -8,22 +8,9 @@ export const SITE_URL = (process.env.SITE_URL ?? "https://marioflores.vercel.app
 
 export const NOMBRE = "Mario Flores";
 
-/**
- * Datos de contacto públicos. null = pendiente de que Mario los confirme:
- * se muestra como "pendiente" y no se puede publicar así (fase de calidad).
- */
-export const CONTACTO = {
-  email: "mrsitofull@gmail.com" as string | null,
-  linkedin: null as string | null, // pendiente: URL del perfil público
-  github: "https://github.com/MFloresr" as string | null,
-};
-
 /** Secciones de la web (mismo slug en todos los idiomas). */
 export const SECCIONES = ["", "/projects", "/about", "/technologies", "/blog", "/contact"] as const;
 export type Seccion = (typeof SECCIONES)[number];
-
-/** Proyectos publicados (el contenido llega en la fase 2). */
-export const PROYECTOS = ["mi-jornada", "sudokus", "agroclima-consultores"] as const;
 
 /** URL absoluta de una ruta en un idioma: urlAbsoluta("es", "/projects") */
 export function urlAbsoluta(idioma: Idioma, ruta: string) {

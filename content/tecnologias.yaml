@@ -1,0 +1,39 @@
+# Catálogo de tecnologías.
+# - destacada: true  → declarada por Mario como parte de su perfil (se muestra en primer plano).
+# - destacada: false → usada en alguno de sus proyectos publicados.
+# Los proyectos solo pueden citar ids de esta lista (se comprueba al compilar).
+# grupo: backend | frontend | datos | infraestructura | herramientas | ia
+
+- { id: python, nombre: Python, grupo: backend, destacada: true }
+- { id: django, nombre: Django, grupo: backend, destacada: true }
+- { id: drf, nombre: Django REST Framework, grupo: backend, destacada: true }
+- { id: php, nombre: PHP, grupo: backend, destacada: true }
+- { id: laravel, nombre: Laravel, grupo: backend, destacada: true }
+- { id: apis-rest, nombre: APIs REST, grupo: backend, destacada: true }
+
+- { id: vue, nombre: Vue 3, grupo: frontend, destacada: true }
+- { id: javascript, nombre: JavaScript, grupo: frontend, destacada: true }
+- { id: typescript, nombre: TypeScript, grupo: frontend, destacada: false }
+- { id: vite, nombre: Vite, grupo: frontend, destacada: false }
+- { id: tailwind, nombre: Tailwind CSS, grupo: frontend, destacada: false }
+- { id: daisyui, nombre: daisyUI, grupo: frontend, destacada: false }
+- { id: alpine, nombre: Alpine.js, grupo: frontend, destacada: false }
+- { id: astro, nombre: Astro, grupo: frontend, destacada: false }
+- { id: svelte, nombre: Svelte, grupo: frontend, destacada: false }
+
+- { id: bases-de-datos, nombre: Bases de datos, grupo: datos, destacada: true }
+- { id: postgresql, nombre: PostgreSQL, grupo: datos, destacada: false }
+- { id: sqlite, nombre: SQLite, grupo: datos, destacada: false }
+- { id: supabase, nombre: Supabase, grupo: datos, destacada: false }
+- { id: sanity, nombre: Sanity (CMS), grupo: datos, destacada: false }
+
+- { id: vercel, nombre: Vercel, grupo: infraestructura, destacada: false }
+- { id: linux, nombre: Linux, grupo: infraestructura, destacada: true }
+- { id: windows, nombre: Windows, grupo: infraestructura, destacada: true }
+- { id: redes, nombre: Redes, grupo: infraestructura, destacada: true }
+- { id: wsl, nombre: WSL, grupo: infraestructura, destacada: true }
+
+- { id: git, nombre: Git, grupo: herramientas, destacada: true }
+- { id: github, nombre: GitHub, grupo: herramientas, destacada: true }
+
+- { id: gemini, nombre: API de Gemini, grupo: ia, destacada: false }

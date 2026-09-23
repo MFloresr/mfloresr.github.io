@@ -1,21 +1,28 @@
-import { getTranslations } from "next-intl/server";
-import { CONTACTO, NOMBRE } from "@/lib/sitio";
+import { getLocale, getTranslations } from "next-intl/server";
+import { obtenerPerfil } from "@/lib/contenido/leer";
+import { enIdioma } from "@/lib/contenido/idioma";
 
 export default async function Pie() {
   const t = await getTranslations("footer");
   const tp = await getTranslations("pending");
+  const perfil = obtenerPerfil();
+  const rol = enIdioma(perfil.rol, await getLocale());
+  const { email, linkedin, github } = perfil.contacto;
 
   const enlaces = [
-    { clave: "email", url: CONTACTO.email ? `mailto:${CONTACTO.email}` : null },
-    { clave: "linkedin", url: CONTACTO.linkedin },
-    { clave: "github", url: CONTACTO.github },
+    { clave: "email", url: email ? `mailto:${email}` : null },
+    { clave: "linkedin", url: linkedin },
+    { clave: "github", url: github },
   ] as const;
 
   return (
     <footer className="border-t border-linea">
       <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <p>
-          <span className="font-semibold">{NOMBRE}</span> <span className="text-tenue">· {t("role")}</span>
+          <span className="font-semibold">{perfil.nombre}</span>{" "}
+          <span className="text-tenue">
+            · {rol ?? tp("label")} · {perfil.ubicacion.split(",")[0]}
+          </span>
         </p>
         <ul aria-label={t("links")} className="flex flex-wrap gap-4">
           {enlaces.map(({ clave, url }) => (
@@ -25,7 +32,7 @@ export default async function Pie() {
                   {t(clave)}
                 </a>
               ) : (
-                <span className="text-pendiente-texto" title={tp("contact")}>
+                <span className="text-pendiente-texto" title={tp("contactDetail")}>
                   {t(clave)} · {tp("label")}
                 </span>
               )}

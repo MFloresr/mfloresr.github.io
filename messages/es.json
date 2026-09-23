@@ -4,11 +4,26 @@
       "title": "Mario Flores · Desarrollador Full-Stack",
       "description": "Portfolio de Mario Flores, desarrollador full-stack en Barcelona con experiencia complementaria en sistemas, redes y soporte técnico."
     },
-    "projects": { "title": "Proyectos", "description": "Proyectos de Mario Flores: aplicaciones web completas, del backend al despliegue." },
-    "about": { "title": "Sobre mí", "description": "Quién es Mario Flores: desarrollo full-stack y formación en administración de sistemas en red." },
-    "technologies": { "title": "Tecnologías", "description": "Tecnologías que utiliza Mario Flores y en qué proyectos las ha aplicado." },
-    "blog": { "title": "Blog", "description": "Artículos técnicos sobre desarrollo web, sistemas, despliegue y los proyectos de Mario Flores." },
-    "contact": { "title": "Contacto", "description": "Cómo contactar con Mario Flores: email y perfiles profesionales." }
+    "projects": {
+      "title": "Proyectos",
+      "description": "Proyectos de Mario Flores: aplicaciones web completas, del backend al despliegue."
+    },
+    "about": {
+      "title": "Sobre mí",
+      "description": "Quién es Mario Flores: desarrollo full-stack y formación en administración de sistemas en red."
+    },
+    "technologies": {
+      "title": "Tecnologías",
+      "description": "Tecnologías que utiliza Mario Flores y en qué proyectos las ha aplicado."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Artículos técnicos sobre desarrollo web, sistemas, despliegue y los proyectos de Mario Flores."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Cómo contactar con Mario Flores: email y perfiles profesionales."
+    }
   },
   "nav": {
     "label": "Navegación principal",
@@ -32,7 +47,6 @@
     "toLight": "Cambiar a modo claro"
   },
   "footer": {
-    "role": "Desarrollador Full-Stack · Barcelona",
     "links": "Enlaces profesionales",
     "email": "Email",
     "linkedin": "LinkedIn",
@@ -40,25 +54,55 @@
   },
   "pending": {
     "label": "Pendiente",
-    "contact": "Dato de contacto pendiente de confirmar",
+    "contact": "Email y perfiles profesionales: pendientes de confirmar (fase 5).",
     "home": "Contenido del inicio: se redactará tras aprobar los bocetos (fase 4).",
     "projects": "Listado de proyectos: llega con el sistema de contenido (fase 2) y el diseño (fase 4).",
     "project": "Ficha del proyecto: se publicará cuando apruebes su borrador (fase 2).",
     "about": "Sobre mí: formación en ASIR, perfil full-stack y sistemas como complemento (fase 5).",
     "technologies": "Tecnologías agrupadas por uso y enlazadas a los proyectos (fase 5).",
     "blog": "Blog: listado de artículos en MDX (fase 6).",
-    "contact": "Email y perfiles profesionales: pendientes de confirmar (fase 5)."
+    "contactDetail": "Dato de contacto pendiente de confirmar",
+    "field": "dato pendiente de confirmar."
   },
   "projects": {
-    "names": {
-      "mi-jornada": "Mi Jornada",
-      "sudokus": "Sudokus",
-      "agroclima-consultores": "AgroClima Consultores"
-    }
+    "intro": "Proyectos reales, del backend al despliegue.",
+    "viewProject": "Ver proyecto",
+    "status": {
+      "produccion": "En producción",
+      "terminado": "Terminado",
+      "en-desarrollo": "En desarrollo"
+    },
+    "sections": {
+      "context": "Contexto",
+      "goal": "Objetivo",
+      "problem": "Problema que resuelve",
+      "user": "Usuario objetivo",
+      "technologies": "Tecnologías",
+      "features": "Funcionalidades",
+      "state": "Estado actual",
+      "challenges": "Retos técnicos",
+      "improvements": "Mejoras futuras",
+      "links": "Enlaces"
+    },
+    "code": "Ver código",
+    "demo": "Ver demo",
+    "demoAccount": "La demo requiere una cuenta.",
+    "draft": "Borrador pendiente de revisión por Mario: el texto puede cambiar.",
+    "translationPending": "Esta ficha aún no está traducida a este idioma.",
+    "readInSpanish": "Leer en castellano",
+    "back": "Todos los proyectos"
   },
   "notFound": {
     "title": "Página no encontrada",
     "text": "La página que buscas no existe o ha cambiado de dirección.",
     "back": "Volver al inicio"
+  },
+  "groups": {
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "datos": "Datos",
+    "infraestructura": "Infraestructura",
+    "herramientas": "Herramientas",
+    "ia": "IA"
   }
 }

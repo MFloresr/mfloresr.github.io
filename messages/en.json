@@ -4,11 +4,26 @@
       "title": "Mario Flores · Full-Stack Developer",
       "description": "Portfolio of Mario Flores, a full-stack developer in Barcelona with complementary experience in systems, networking and technical support."
     },
-    "projects": { "title": "Projects", "description": "Projects by Mario Flores: complete web applications, from backend to deployment." },
-    "about": { "title": "About", "description": "Who Mario Flores is: full-stack development and a background in network systems administration." },
-    "technologies": { "title": "Technologies", "description": "Technologies Mario Flores uses and the projects where he has applied them." },
-    "blog": { "title": "Blog", "description": "Technical articles on web development, systems, deployment and Mario Flores's projects." },
-    "contact": { "title": "Contact", "description": "How to contact Mario Flores: email and professional profiles." }
+    "projects": {
+      "title": "Projects",
+      "description": "Projects by Mario Flores: complete web applications, from backend to deployment."
+    },
+    "about": {
+      "title": "About",
+      "description": "Who Mario Flores is: full-stack development and a background in network systems administration."
+    },
+    "technologies": {
+      "title": "Technologies",
+      "description": "Technologies Mario Flores uses and the projects where he has applied them."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Technical articles on web development, systems, deployment and Mario Flores's projects."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "How to contact Mario Flores: email and professional profiles."
+    }
   },
   "nav": {
     "label": "Main navigation",
@@ -32,7 +47,6 @@
     "toLight": "Switch to light mode"
   },
   "footer": {
-    "role": "Full-Stack Developer · Barcelona",
     "links": "Professional links",
     "email": "Email",
     "linkedin": "LinkedIn",
@@ -40,25 +54,55 @@
   },
   "pending": {
     "label": "Pending",
-    "contact": "Contact detail pending confirmation",
+    "contact": "Email and professional profiles: pending confirmation (phase 5).",
     "home": "Home content: to be written once the mockups are approved (phase 4).",
     "projects": "Project list: arrives with the content system (phase 2) and the design (phase 4).",
     "project": "Project page: published once its draft is approved (phase 2).",
     "about": "About: network systems administration background, full-stack profile and systems as a plus (phase 5).",
     "technologies": "Technologies grouped by use and linked to projects (phase 5).",
     "blog": "Blog: list of MDX articles (phase 6).",
-    "contact": "Email and professional profiles: pending confirmation (phase 5)."
+    "contactDetail": "Contact detail pending confirmation",
+    "field": "detail pending confirmation."
   },
   "projects": {
-    "names": {
-      "mi-jornada": "Mi Jornada",
-      "sudokus": "Sudokus",
-      "agroclima-consultores": "AgroClima Consultores"
-    }
+    "intro": "Real projects, from backend to deployment.",
+    "viewProject": "View project",
+    "status": {
+      "produccion": "In production",
+      "terminado": "Finished",
+      "en-desarrollo": "In development"
+    },
+    "sections": {
+      "context": "Context",
+      "goal": "Goal",
+      "problem": "Problem it solves",
+      "user": "Target user",
+      "technologies": "Technologies",
+      "features": "Features",
+      "state": "Current status",
+      "challenges": "Technical challenges",
+      "improvements": "Future improvements",
+      "links": "Links"
+    },
+    "code": "View code",
+    "demo": "View demo",
+    "demoAccount": "The demo requires an account.",
+    "draft": "Draft pending Mario's review: the text may change.",
+    "translationPending": "This project page has not been translated into this language yet.",
+    "readInSpanish": "Read in Spanish",
+    "back": "All projects"
   },
   "notFound": {
     "title": "Page not found",
     "text": "The page you are looking for does not exist or has moved.",
     "back": "Back to home"
+  },
+  "groups": {
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "datos": "Data",
+    "infraestructura": "Infrastructure",
+    "herramientas": "Tools",
+    "ia": "AI"
   }
 }

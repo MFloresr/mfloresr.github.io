@@ -1,0 +1,10 @@
+orden: 2
+destacado: false
+estado: produccion
+anio: 2026
+tecnologias: [python, django, postgresql, supabase, sqlite, tailwind, daisyui, alpine, javascript, vercel]
+repositorio: https://github.com/MFloresr/sudoku
+demo:
+  url: https://sudoku-mflores.vercel.app
+  requiereCuenta: true # tiene registro abierto
+capturas: [] # pendientes: con una cuenta de demostración

@@ -1,0 +1,10 @@
+orden: 3
+destacado: false
+estado: terminado
+anio: 2026
+tecnologias: [astro, svelte, typescript, supabase, postgresql, sanity, vercel]
+repositorio: https://github.com/MFloresr/agroclima-consultores-web
+demo:
+  url: https://agroclima-consultores-prueba.vercel.app
+  requiereCuenta: false
+capturas: [] # pendientes
