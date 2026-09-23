@@ -27,7 +27,10 @@ retos:
     texto: The solution lives only on the server, each move locks the game in the database and there can't be two ongoing games of the same sudoku.
   - titulo: Secure credentials
     texto: The database password was generated locally and only its SCRAM hash was sent to Supabase.
-mejoras: null
+mejoras:
+  - Set up password recovery by email in production.
+  - Add more advanced techniques to the engine to offer an expert level.
+  - Add more games to the platform.
 arquitectura:
   nodos:
     - titulo: Browser
