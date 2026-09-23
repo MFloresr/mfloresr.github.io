@@ -18,12 +18,97 @@ contacto:
   linkedin: https://www.linkedin.com/in/mario-its-me
   github: https://github.com/MFloresr
 
+# Resumen del perfil (del CV de Mario, en primera persona)
+resumen:
+  es: Mi perfil combina infraestructura y desarrollo, lo que me permite comprender el ciclo completo de una solución informática, de los equipos y la conectividad a los servidores, las bases de datos, el backend, el frontend y el despliegue.
+  en: My profile combines infrastructure and development, which lets me understand the full lifecycle of an IT solution, from computers and connectivity to servers, databases, backend, frontend and deployment.
+
+# Experiencia profesional (del CV de Mario)
+experiencia:
+  - puesto: { es: Programador web, en: Web developer }
+    empresa: ICON SL
+    fechas: { es: Enero 2016 – Junio 2016, en: January 2016 – June 2016 }
+    tareas:
+      es:
+        - Gestioné servidores de aplicaciones para desplegar aplicaciones web.
+        - Desarrollé aplicaciones web conectadas a bases de datos según las especificaciones del proyecto.
+        - Instalé, configuré y mantuve WordPress, Joomla y Moodle.
+      en:
+        - Managed application servers to deploy web applications.
+        - Developed database-backed web applications to project specifications.
+        - Installed, configured and maintained WordPress, Joomla and Moodle.
+  - puesto: { es: Administrador de sistemas, en: Systems administrator }
+    empresa: Hospital Figueras
+    fechas: { es: Diciembre 2014 – Mayo 2015, en: December 2014 – May 2015 }
+    tareas:
+      es:
+        - Administré sistemas operativos de servidor y configuré software y servicios de red.
+        - Proporcioné soporte técnico remoto y presencial.
+        - Diagnostiqué incidencias y apliqué medidas correctivas.
+      en:
+        - Administered server operating systems and configured software and network services.
+        - Provided remote and on-site technical support.
+        - Diagnosed incidents and applied corrective measures.
+  - puesto: { es: Administrador informático, en: IT administrator }
+    empresa: La Salle Figueras
+    fechas: { es: Noviembre 2011 – Marzo 2012, en: November 2011 – March 2012 }
+    tareas:
+      es:
+        - Instalé y configuré aplicaciones, equipos y redes locales.
+        - Realicé tareas de mantenimiento de hardware y periféricos.
+        - Elaboré documentación técnica, presupuestos y asesoramiento.
+      en:
+        - Installed and configured applications, computers and local networks.
+        - Maintained hardware and peripherals.
+        - Prepared technical documentation and quotes, and gave technical advice.
+
 formacion:
   - titulo:
-      es: Formación profesional en Administración de Sistemas Informáticos en Red (ASIR)
-      en: Vocational training in Networked Computer Systems Administration (ASIR)
-    centro: null # pendiente
-    fechas: null # pendiente
+      es: Técnico Superior en Desarrollo de Aplicaciones Web (DAW)
+      en: Higher Technician in Web Application Development (DAW)
+    centro: IES Cendrassos
+    fechas: 2015 – 2016
+  - titulo:
+      es: Técnico Superior en Administración de Sistemas Informáticos en Red (ASIR)
+      en: Higher Technician in Networked Computer Systems Administration (ASIR)
+    centro: IES Cendrassos
+    fechas: 2013 – 2015
+  - titulo:
+      es: Técnico en Explotación de Sistemas Informáticos
+      en: Technician in Computer Systems Operation
+    centro: IES Cendrassos
+    fechas: 2010 – 2012
+
+certificaciones:
+  es:
+    - Formación Cisco CCNA1, CCNA2 y CCNA3.
+  en:
+    - Cisco CCNA1, CCNA2 and CCNA3 training.
+
+idiomas:
+  es:
+    - 'Español: nativo.'
+    - 'Catalán: intermedio.'
+    - 'Inglés: comprensión escrita intermedia y comunicación oral básica.'
+  en:
+    - 'Spanish: native.'
+    - 'Catalan: intermediate.'
+    - 'English: intermediate reading, basic speaking.'
+
+# Cómo trabaja (competencias profesionales del CV)
+competencias:
+  es:
+    - Adaptación rápida a nuevos entornos tecnológicos.
+    - Aprendizaje autónomo mediante documentación y práctica.
+    - Diagnóstico y resolución de incidencias.
+    - Capacidad para trabajar entre desarrollo, sistemas e infraestructura.
+    - Organización y documentación técnica.
+  en:
+    - Quick adaptation to new technology environments.
+    - Self-directed learning through documentation and practice.
+    - Incident diagnosis and resolution.
+    - Able to work across development, systems and infrastructure.
+    - Organisation and technical documentation.
 
 # Qué busca (confirmado por Mario)
 busca:
@@ -63,6 +148,8 @@ complementarioIntro:
 complementario:
   es:
     - Administración de sistemas Windows y Linux.
+    - Administración de servidores y servicios de red.
+    - Redes locales cableadas e inalámbricas y cableado.
     - Configuración, montaje y mantenimiento de equipos informáticos.
     - Diagnóstico y resolución de incidencias de hardware y software.
     - Redes básicas y administración de redes.
@@ -73,6 +160,8 @@ complementario:
     - Resolución de problemas de conectividad, sistemas y aplicaciones.
   en:
     - Windows and Linux systems administration.
+    - Server and network services administration.
+    - Wired and wireless local networks, and cabling.
     - Assembly, setup and maintenance of computers.
     - Diagnosis and resolution of hardware and software issues.
     - Basic networking and network administration.

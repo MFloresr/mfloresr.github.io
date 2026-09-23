@@ -10,7 +10,7 @@
     },
     "about": {
       "title": "Sobre mí",
-      "description": "Quién es Mario Flores: desarrollo full-stack y formación en administración de sistemas en red."
+      "description": "Quién es Mario Flores: desarrollo full-stack, experiencia en sistemas y formación en desarrollo web (DAW) y administración de sistemas en red (ASIR)."
     },
     "technologies": {
       "title": "Tecnologías",
@@ -159,7 +159,11 @@
     "development": "Desarrollo full-stack",
     "education": "Formación",
     "systems": "Sistemas, redes y soporte",
-    "projectsLink": "Ver los proyectos que lo demuestran"
+    "projectsLink": "Ver los proyectos que lo demuestran",
+    "experience": "Experiencia",
+    "certifications": "Certificaciones",
+    "skills": "Cómo trabajo",
+    "languages": "Idiomas"
   },
   "technologies": {
     "intro": "Agrupadas por uso y enlazadas a los proyectos donde las he aplicado. Sin porcentajes ni logos sueltos.",
