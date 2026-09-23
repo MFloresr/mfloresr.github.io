@@ -6,7 +6,7 @@ contexto: null
 objetivo: Log working days and automatically calculate the time worked and the amount earned for each entry.
 problema: Tracking hours and pay by hand (paper, notes or spreadsheets) is slow and error-prone, especially with split shifts, lunch breaks or several workplaces.
 usuario: Hourly workers who want to keep track of the jobs they do, how much they earn and where they work.
-estadoTexto: In production. In September 2026 it was migrated from PythonAnywhere to Vercel and Supabase. The backend has 16 automated tests. There is no public sign-up.
+estadoTexto: In production. In September 2026 it was migrated from PythonAnywhere to Vercel and Supabase. The backend has 22 automated tests. There is no public sign-up, but it can be tried with a demo account with fictional data that resets itself.
 funcionalidades:
   - Email login; the session persists across reloads.
   - Clock in and out with the exact time, with a lunch break that can be discarded; shifts that cross midnight are flagged for review.
@@ -20,6 +20,7 @@ funcionalidades:
   - Password recovery by email.
   - Light and dark mode; layout for mobile and desktop.
   - Admin panel with each user's hourly wage.
+  - Public demo account with fictional data that regenerates itself.
 retos:
   - titulo: Django and Vue on Vercel
     texto: The frontend is built and Django serves it as static files inside a Vercel Function.
@@ -30,7 +31,7 @@ retos:
   - titulo: Useful AI on a free plan
     texto: Structured output validated on the server, mandatory confirmation, fallback models when the main one is overloaded and a daily usage limit.
 mejoras:
-  - Public sign-up or a demo account, so it can be tried without requesting access.
+  - Public sign-up so anyone can create their own account.
   - Let each user change their hourly wage from their profile.
 arquitectura:
   nodos:

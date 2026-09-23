@@ -6,8 +6,8 @@ anio: 2026
 tecnologias: [python, django, drf, apis-rest, vue, javascript, axios, vite, tailwind, daisyui, postgresql, supabase, sqlite, gemini, vercel]
 repositorio: https://github.com/MFloresr/mi_jornada
 demo:
-  url: https://mi-jornada-flores9.vercel.app
-  requiereCuenta: true # no hay registro público: falta decidir cómo se muestra
+  url: https://mi-jornada-flores9.vercel.app/?demo=1 # entra con la cuenta de demostración
+  requiereCuenta: false
 capturas: # con una cuenta y datos de demostración, nunca con datos reales
   - archivo: hoy.webp
     alt:

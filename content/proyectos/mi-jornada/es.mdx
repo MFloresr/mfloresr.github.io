@@ -6,7 +6,7 @@ contexto: null
 objetivo: Registrar jornadas laborales y calcular automáticamente la duración trabajada y el importe de cada registro.
 problema: Llevar la cuenta de horas y sueldo a mano (papel, notas u hojas de cálculo) es lento y propenso a errores, sobre todo con horarios partidos, pausas para comer o varios lugares de trabajo.
 usuario: Trabajadores por horas que quieren llevar el control de los trabajos que hacen, cuánto cobran y dónde trabajan.
-estadoTexto: En producción. En septiembre de 2026 se migró de PythonAnywhere a Vercel y Supabase. El backend cuenta con 16 pruebas automáticas. No tiene registro público.
+estadoTexto: En producción. En septiembre de 2026 se migró de PythonAnywhere a Vercel y Supabase. El backend cuenta con 22 pruebas automáticas. No tiene registro público, pero se puede probar con una cuenta de demostración con datos ficticios que se reinicia sola.
 funcionalidades:
   - Inicio de sesión con email; la sesión se mantiene al recargar.
   - Fichar la jornada con la hora exacta, con pausa de comida y opción de descartarla; si cruza la medianoche se pide revisarla.
@@ -20,6 +20,7 @@ funcionalidades:
   - Recuperación de contraseña por email.
   - Modo claro y oscuro; diseño para móvil y escritorio.
   - Panel de administración con el sueldo por hora de cada usuario.
+  - Cuenta de demostración pública con datos ficticios que se regeneran solos.
 retos:
   - titulo: Django y Vue en Vercel
     texto: El frontend se compila y Django lo sirve como archivos estáticos dentro de una Vercel Function.
@@ -30,7 +31,7 @@ retos:
   - titulo: IA útil con un plan gratuito
     texto: Salida estructurada validada en el servidor, confirmación obligatoria, modelos de reserva si el principal está saturado y límite de usos diario.
 mejoras:
-  - Registro público o cuenta de demostración, para poder probarla sin pedir acceso.
+  - Registro público para que cualquiera pueda crear su propia cuenta.
   - Que cada usuario pueda cambiar su sueldo por hora desde su perfil.
 arquitectura:
   nodos:
