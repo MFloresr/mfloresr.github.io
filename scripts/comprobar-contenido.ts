@@ -19,7 +19,7 @@ const tecnologias = obtenerTecnologias();
 for (const [campo, valor] of Object.entries(perfil.contacto)) {
   if (valor === null) pendientes.push(`perfil.contacto.${campo}`);
 }
-for (const campo of ["rol", "mensaje", "busca", "desarrollo", "complementario"] as const) {
+for (const campo of ["rol", "mensaje", "busca", "desarrollo", "complementarioIntro", "complementario"] as const) {
   for (const idioma of idiomas) if (!perfil[campo][idioma]) pendientes.push(`perfil.${campo} [${idioma}]`);
 }
 perfil.formacion.forEach((f, i) => {
@@ -27,6 +27,11 @@ perfil.formacion.forEach((f, i) => {
   if (!f.fechas) pendientes.push(`perfil.formacion[${i}].fechas`);
   for (const idioma of idiomas) if (!f.titulo[idioma]) pendientes.push(`perfil.formacion[${i}].titulo [${idioma}]`);
 });
+
+for (const tec of tecnologias) {
+  if (!tec.contexto) continue;
+  for (const idioma of idiomas) if (!tec.contexto[idioma]) pendientes.push(`tecnologias.${tec.id}.contexto [${idioma}]`);
+}
 
 const proyectos = listarProyectos();
 for (const p of proyectos) {

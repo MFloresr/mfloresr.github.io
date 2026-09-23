@@ -22,13 +22,26 @@ const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "solo minúsculas, n
 export const GRUPOS = ["backend", "frontend", "datos", "infraestructura", "herramientas", "ia"] as const;
 
 export const esquemaTecnologia = z
-  .object({ id: slug, nombre: texto, grupo: z.enum(GRUPOS), destacada: z.boolean() })
+  .object({
+    id: slug,
+    nombre: texto,
+    grupo: z.enum(GRUPOS),
+    destacada: z.boolean(),
+    /** Otras tecnologías que cuentan como uso de esta (p. ej. Bases de datos → PostgreSQL). */
+    incluye: z.array(slug).optional(),
+    /** Dónde la usa cuando no aparece en ningún proyecto. */
+    contexto: traducible(texto).optional(),
+  })
   .strict();
 export const esquemaTecnologias = z.array(esquemaTecnologia).superRefine((lista, ctx) => {
+  const ids = new Set(lista.map((t) => t.id));
   const vistos = new Set<string>();
   for (const t of lista) {
     if (vistos.has(t.id)) ctx.addIssue({ code: "custom", message: `id repetido: ${t.id}` });
     vistos.add(t.id);
+    for (const otra of t.incluye ?? []) {
+      if (!ids.has(otra)) ctx.addIssue({ code: "custom", message: `${t.id}.incluye cita una tecnología que no existe: ${otra}` });
+    }
   }
 });
 
@@ -50,6 +63,7 @@ export const esquemaPerfil = z
     ),
     busca: traducible(z.array(texto).min(1)),
     desarrollo: traducible(z.array(texto).min(1)),
+    complementarioIntro: traducible(texto),
     complementario: traducible(z.array(texto).min(1)),
   })
   .strict();

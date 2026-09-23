@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
+import DatosEstructurados from "@/components/DatosEstructurados";
 import DiagramaPerfil from "@/components/inicio/DiagramaPerfil";
 import Pendiente from "@/components/Pendiente";
 import TarjetaProyecto from "@/components/proyectos/TarjetaProyecto";
@@ -40,6 +41,7 @@ export default async function Inicio() {
 
   return (
     <>
+      <DatosEstructurados idioma={idioma} />
       {/* Presentación */}
       <section className="contenedor grid gap-10 py-14 md:py-20 lg:grid-cols-[7fr_4fr] lg:items-end lg:gap-16">
         <div className="flex flex-col gap-6">

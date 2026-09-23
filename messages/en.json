@@ -62,7 +62,9 @@
     "technologies": "Technologies grouped by use and linked to projects (phase 5).",
     "blog": "Blog: list of MDX articles (phase 6).",
     "contactDetail": "Contact detail pending confirmation",
-    "field": "detail pending confirmation."
+    "field": "detail pending confirmation.",
+    "dates": "dates",
+    "school": "school"
   },
   "projects": {
     "intro": "Real projects, from backend to deployment.",
@@ -149,5 +151,28 @@
     "facts": "Overview",
     "year": "Year",
     "status": "Status"
+  },
+  "about": {
+    "intro": "About",
+    "lookingFor": "What I'm looking for",
+    "development": "Full-stack development",
+    "education": "Education",
+    "systems": "Systems, networking & support",
+    "projectsLink": "See the projects that show it"
+  },
+  "technologies": {
+    "intro": "Grouped by use and linked to the projects where I've applied them. No percentages, no loose logos.",
+    "noProject": "Knowledge · no public project yet",
+    "alsoTitle": "Also used in my projects",
+    "usedIn": "Where I use it"
+  },
+  "contact": {
+    "intro": "For job offers, freelance projects or any question, email me.",
+    "emailButton": "Send an email",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "cv": "CV",
+    "location": "Location"
   }
 }

@@ -62,7 +62,9 @@
     "technologies": "Tecnologías agrupadas por uso y enlazadas a los proyectos (fase 5).",
     "blog": "Blog: listado de artículos en MDX (fase 6).",
     "contactDetail": "Dato de contacto pendiente de confirmar",
-    "field": "dato pendiente de confirmar."
+    "field": "dato pendiente de confirmar.",
+    "dates": "fechas",
+    "school": "centro"
   },
   "projects": {
     "intro": "Proyectos reales, del backend al despliegue.",
@@ -149,5 +151,28 @@
     "facts": "Ficha",
     "year": "Año",
     "status": "Estado"
+  },
+  "about": {
+    "intro": "Sobre mí",
+    "lookingFor": "Qué busco",
+    "development": "Desarrollo full-stack",
+    "education": "Formación",
+    "systems": "Sistemas, redes y soporte",
+    "projectsLink": "Ver los proyectos que lo demuestran"
+  },
+  "technologies": {
+    "intro": "Agrupadas por uso y enlazadas a los proyectos donde las he aplicado. Sin porcentajes ni logos sueltos.",
+    "noProject": "Conocimientos · sin proyecto público todavía",
+    "alsoTitle": "También las he usado en mis proyectos",
+    "usedIn": "Dónde la uso"
+  },
+  "contact": {
+    "intro": "Para ofertas de empleo, proyectos freelance o cualquier consulta, escríbeme por email.",
+    "emailButton": "Escribir un email",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "cv": "CV",
+    "location": "Ubicación"
   }
 }

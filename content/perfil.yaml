@@ -42,6 +42,11 @@ desarrollo:
     - Gestión de proyectos con Git y GitHub.
   en: null
 
+# Por qué el perfil complementario suma (palabras de Mario)
+complementarioIntro:
+  es: Un perfil complementario que me permite entender mejor la infraestructura, el despliegue, el mantenimiento, las necesidades de los usuarios y la resolución de problemas técnicos.
+  en: null
+
 # Perfil complementario: sistemas, redes, hardware y soporte (confirmado por Mario)
 complementario:
   es:

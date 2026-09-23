@@ -133,3 +133,13 @@ export function listarProyectos(): Proyecto[] {
     .map((slug) => obtenerProyecto(slug)!)
     .sort((a, b) => a.datos.orden - b.datos.orden);
 }
+
+/**
+ * Proyectos donde se usa una tecnología (directamente o a través de las que "incluye"),
+ * en el orden de los proyectos. Se calcula del contenido: nunca se escribe a mano.
+ */
+export function proyectosQueUsan(idTecnologia: string): Proyecto[] {
+  const tecnologia = obtenerTecnologias().find((t) => t.id === idTecnologia);
+  const ids = new Set([idTecnologia, ...(tecnologia?.incluye ?? [])]);
+  return listarProyectos().filter((p) => p.datos.tecnologias.some((t) => ids.has(t)));
+}
