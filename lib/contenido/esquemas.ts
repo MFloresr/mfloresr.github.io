@@ -78,8 +78,6 @@ export const esquemaPerfil = z
     competencias: traducible(z.array(texto).min(1)),
     busca: traducible(z.array(texto).min(1)),
     desarrollo: traducible(z.array(texto).min(1)),
-    /** Cómo usa la IA al desarrollar (declarado por Mario). */
-    asistenciaIA: traducible(texto),
     complementarioIntro: traducible(texto),
     complementario: traducible(z.array(texto).min(1)),
   })

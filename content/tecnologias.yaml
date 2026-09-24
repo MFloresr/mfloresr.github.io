@@ -92,10 +92,4 @@
   destacada: true
   contexto: { es: Dependencias y compilación del frontend en mis proyectos, en: Frontend dependencies and builds in my projects }
 
-- id: claude-code
-  nombre: Claude Code
-  grupo: herramientas
-  destacada: true
-  contexto: { es: Asistente y soporte en el desarrollo de mis proyectos, en: Assistant and support while developing my projects }
-
 - { id: gemini, nombre: { es: API de Gemini, en: Gemini API }, grupo: ia, destacada: false }

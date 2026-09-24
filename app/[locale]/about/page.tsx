@@ -34,7 +34,6 @@ export default async function SobreMi() {
   const competencias = enIdioma(perfil.competencias, idioma);
   const busca = enIdioma(perfil.busca, idioma);
   const desarrollo = enIdioma(perfil.desarrollo, idioma);
-  const asistenciaIA = enIdioma(perfil.asistenciaIA, idioma);
   const intro = enIdioma(perfil.complementarioIntro, idioma);
   const complementario = enIdioma(perfil.complementario, idioma);
   const { email } = perfil.contacto;
@@ -67,7 +66,6 @@ export default async function SobreMi() {
 
         <Seccion titulo={t("development")}>
           {desarrollo ? <ListaGuion items={desarrollo} className="text-[17px]" /> : pendiente}
-          {asistenciaIA && <p className="text-[15px] leading-relaxed text-tenue">{asistenciaIA}</p>}
           <Link href="/projects" className="inline-flex items-center gap-1.5 text-[15px] font-medium text-acento">
             {t("projectsLink")}
             <Flecha />
