@@ -17,6 +17,14 @@ export function Flecha({ tam = 16 }: { tam?: number }) {
   );
 }
 
+export function Descargar({ tam = 14 }: { tam?: number }) {
+  return (
+    <svg width={tam} height={tam} viewBox="0 0 24 24" {...base}>
+      <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
+    </svg>
+  );
+}
+
 export function Externo({ tam = 14 }: { tam?: number }) {
   return (
     <svg width={tam} height={tam} viewBox="0 0 24 24" {...base}>

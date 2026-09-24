@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import EnlaceCV from "@/components/EnlaceCV";
 import Pendiente from "@/components/Pendiente";
 import Boton from "@/components/ui/Boton";
 import { obtenerPerfil } from "@/lib/contenido/leer";
@@ -10,7 +11,6 @@ export default async function Contacto() {
   const t = await getTranslations("contact");
   const tm = await getTranslations("meta.contact");
   const tp = await getTranslations("pending");
-  const tui = await getTranslations("ui");
   const perfil = obtenerPerfil();
   const { email, github, linkedin } = perfil.contacto;
   const sinProtocolo = (url: string) => url.replace(/^https:\/\/(www\.)?/, "");
@@ -46,7 +46,7 @@ export default async function Contacto() {
         <Pendiente>{tp("field")}</Pendiente>
       ),
     },
-    { etiqueta: t("cv"), valor: <Pendiente>{tui("cvPending")}</Pendiente> },
+    { etiqueta: t("cv"), valor: <EnlaceCV className="text-base" /> },
     { etiqueta: t("location"), valor: <span className="text-base">{perfil.ubicacion}</span> },
   ];
 
