@@ -134,11 +134,6 @@ desarrollo:
     - Databases.
     - Project management with Git and GitHub.
 
-# Uso de IA en el desarrollo (confirmado por Mario)
-asistenciaIA:
-  es: En el desarrollo de mis proyectos he utilizado Claude Code como asistente y soporte.
-  en: I have used Claude Code as an assistant and for support while developing my projects.
-
 # Por qué el perfil complementario suma (palabras de Mario)
 complementarioIntro:
   es: Un perfil complementario que me permite entender mejor la infraestructura, el despliegue, el mantenimiento, las necesidades de los usuarios y la resolución de problemas técnicos.
