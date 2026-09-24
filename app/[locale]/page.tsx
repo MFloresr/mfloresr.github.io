@@ -2,6 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import TarjetaArticulo from "@/components/blog/TarjetaArticulo";
 import DatosEstructurados from "@/components/DatosEstructurados";
 import DiagramaPerfil from "@/components/inicio/DiagramaPerfil";
+import EnlaceCV from "@/components/EnlaceCV";
 import Pendiente from "@/components/Pendiente";
 import TarjetaProyecto from "@/components/proyectos/TarjetaProyecto";
 import Boton from "@/components/ui/Boton";
@@ -18,7 +19,6 @@ export const generateMetadata = () => metadatosPagina("home", "");
 export default async function Inicio() {
   const idioma = (await getLocale()) as IdiomaContenido;
   const t = await getTranslations("home");
-  const tui = await getTranslations("ui");
   const tp = await getTranslations("pending");
   const tg = await getTranslations("groups");
   const perfil = obtenerPerfil();
@@ -73,7 +73,7 @@ export default async function Inicio() {
                   <Externo />
                 </a>
               )}
-              <Pendiente>{tui("cvPending")}</Pendiente>
+              <EnlaceCV />
             </div>
           </div>
         </div>

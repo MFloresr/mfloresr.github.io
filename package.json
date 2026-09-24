@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "contenido": "tsx scripts/comprobar-contenido.ts"
+    "contenido": "tsx scripts/comprobar-contenido.ts",
+    "cv": "node scripts/generar-cv.mjs"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.1",
@@ -27,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
+    "playwright-core": "^1.63.0",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.15",
     "typescript": "^5"

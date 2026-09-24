@@ -145,7 +145,7 @@
   },
   "ui": {
     "screenshotPending": "Captura pendiente · se hará con datos de demostración",
-    "cvPending": "CV en PDF",
+    "cvDownload": "Descargar CV (PDF)",
     "external": "(se abre en una pestaña nueva)",
     "more": "+{n}",
     "diagramLabel": "Diagrama de arquitectura",

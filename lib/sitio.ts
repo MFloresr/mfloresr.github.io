@@ -8,6 +8,12 @@ export const SITE_URL = (process.env.SITE_URL ?? "https://mfloresr-portfolio.ver
 
 export const NOMBRE = "Mario Flores";
 
+/** CV en PDF por idioma (se generan con `npm run cv`). */
+export const CV_PDF: Record<Idioma, string> = {
+  es: "/cv/mario-flores-cv-es.pdf",
+  en: "/cv/mario-flores-cv-en.pdf",
+};
+
 /** Secciones de la web (mismo slug en todos los idiomas). */
 export const SECCIONES = ["", "/projects", "/about", "/technologies", "/blog", "/contact"] as const;
 export type Seccion = (typeof SECCIONES)[number];

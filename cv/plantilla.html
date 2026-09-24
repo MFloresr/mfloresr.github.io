@@ -1,0 +1,142 @@
+<!doctype html>
+<!--
+  Plantilla del CV en PDF. Se abre con ?lang=es o ?lang=en y pinta el contenido de datos.js.
+  La convierte a PDF (A4, 1 página) scripts/generar-cv.mjs. Colores y fuentes del portfolio.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=block" rel="stylesheet">
+<style>
+  :root {
+    --fondo: #f7f6f3; --texto: #16181d; --tenue: #595e69; --linea: #e3e1db;
+    --chip: #efede8; --acento: #2b59c3; --acento-suave: #e8eefb;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body > * { min-height: 0; }
+  body {
+    font-family: Geist, sans-serif; color: var(--texto); font-size: 8.8pt; line-height: 1.4;
+    display: grid; grid-template-columns: 64mm 1fr; overflow: hidden;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* Columna lateral */
+  .lateral { background: var(--fondo); border-right: 1px solid var(--linea); padding: 11mm 7mm 9mm 9mm; display: flex; flex-direction: column; gap: 4.4mm; }
+  .foto { width: 33mm; height: 33mm; border-radius: 50%; object-fit: cover; align-self: center; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--linea); }
+  .lat-titulo { font-family: 'Geist Mono', monospace; font-size: 7.4pt; color: var(--tenue); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2.2mm; }
+  .contacto { display: flex; flex-direction: column; gap: 1.8mm; }
+  .contacto div { display: flex; flex-direction: column; }
+  .contacto span { font-family: 'Geist Mono', monospace; font-size: 6.8pt; color: var(--tenue); }
+  .contacto a { font-size: 8.4pt; font-weight: 500; overflow-wrap: anywhere; }
+  .grupo { margin-bottom: 2.4mm; }
+  .grupo b { display: block; font-size: 7.8pt; font-weight: 600; margin-bottom: 1mm; }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.1mm; }
+  .chips span { background: #fff; border: 1px solid var(--linea); border-radius: 1.4mm; padding: .3mm 1.6mm; font-size: 7.4pt; }
+  .idioma { margin-bottom: 1.2mm; line-height: 1.3; }
+  .idioma b { font-weight: 600; font-size: 8.4pt; }
+  .idioma span { color: var(--tenue); font-size: 7.8pt; }
+  .otros { font-size: 8.2pt; }
+  .cert { margin-bottom: 1.4mm; font-size: 8pt; }
+  .cert b { font-weight: 600; font-size: 8.4pt; }
+  .cert .sep { color: var(--tenue); }
+  .cert .fechas { font-size: 7pt; }
+  .cert-centro { font-family: 'Geist Mono', monospace; font-size: 6.9pt; color: var(--tenue); }
+
+  /* Columna principal */
+  .principal { padding: 11mm 11mm 9mm 9mm; display: flex; flex-direction: column; gap: 4.6mm; }
+  .cabecera { border-bottom: 1px solid var(--linea); padding-bottom: 4.5mm; }
+  .cabecera .ubic { font-family: 'Geist Mono', monospace; font-size: 7.6pt; color: var(--tenue); display: flex; align-items: center; gap: 1.6mm; }
+  .cabecera .ubic i { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--acento); display: inline-block; }
+  h1 { font-size: 23pt; font-weight: 600; letter-spacing: -.035em; line-height: 1.05; margin-top: 1.6mm; }
+  .rol { font-size: 13pt; font-weight: 500; letter-spacing: -.015em; margin-top: 1.2mm; }
+  .rol em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--acento); font-size: 14.5pt; }
+  .rol small { font-size: 10.5pt; color: var(--tenue); font-weight: 400; }
+  h2 { font-family: 'Geist Mono', monospace; font-size: 7.6pt; font-weight: 500; color: var(--acento); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 2.4mm; display: flex; align-items: center; gap: 2mm; }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--linea); }
+  .perfil { color: #2b2f37; }
+  .puesto { margin-bottom: 3.4mm; }
+  .puesto:last-child { margin-bottom: 0; }
+  .puesto-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; }
+  .puesto-cab b { font-size: 9.6pt; font-weight: 600; }
+  .fechas { font-family: 'Geist Mono', monospace; font-size: 7.3pt; color: var(--tenue); white-space: nowrap; }
+  .empresa { color: var(--tenue); font-size: 8.4pt; margin-bottom: 1mm; }
+  .empresa .tipo { background: var(--chip); border-radius: 1.2mm; padding: 0 1.4mm; font-size: 7.2pt; margin-left: 1mm; }
+  ul { padding-left: 3.6mm; }
+  li { margin-bottom: .6mm; }
+  li::marker { color: var(--acento); }
+  .intro { margin-bottom: 1.2mm; }
+  .proy { margin-bottom: 1.3mm; }
+  .proy b { font-weight: 600; }
+  .proy .nota { font-size: 7.2pt; color: var(--tenue); }
+  .proy .stack { display: block; font-family: 'Geist Mono', monospace; font-size: 7pt; color: var(--acento); margin-top: .3mm; }
+  .fila { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; margin-bottom: 1.6mm; }
+  .fila b { font-weight: 600; font-size: 8.7pt; }
+  .fila span.centro { display: block; color: var(--tenue); font-size: 8pt; }
+  .pie { margin-top: auto; font-family: 'Geist Mono', monospace; font-size: 7.2pt; color: var(--tenue); border-top: 1px solid var(--linea); padding-top: 2.4mm; }
+  .pie a { color: var(--acento); }
+</style>
+</head>
+<body>
+<script src="datos.js"></script>
+<script>
+  const idioma = new URLSearchParams(location.search).get('lang') || 'es';
+  const d = window.CV[idioma];
+  document.documentElement.lang = idioma;
+  document.title = d.titulo;
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const s = d.secciones;
+  document.body.innerHTML = `
+  <aside class="lateral">
+    <img class="foto" src="foto.jpg" alt="${esc(d.nombre)}">
+    <section>
+      <div class="lat-titulo">${esc(idioma === 'es' ? 'Contacto' : 'Contact')}</div>
+      <div class="contacto">${d.contacto.map(c => `<div><span>${esc(c.etiqueta)}</span><a href="${c.href}">${esc(c.valor)}</a></div>`).join('')}</div>
+    </section>
+    <section>
+      <div class="lat-titulo">${esc(s.habilidades)}</div>
+      ${d.habilidades.map(g => `<div class="grupo"><b>${esc(g.grupo)}</b><div class="chips">${g.items.map(i => `<span>${esc(i)}</span>`).join('')}</div></div>`).join('')}
+    </section>
+    <section>
+      <div class="lat-titulo">${esc(s.idiomas)}</div>
+      ${d.idiomas.map(i => `<div class="idioma"><b>${esc(i.idioma)}</b> <span>· ${esc(i.nivel)}</span></div>`).join('')}
+    </section>
+    <section>
+      <div class="lat-titulo">${esc(s.certificaciones)}</div>
+      <div class="cert">${d.certificaciones.map(c => `<b>${esc(c.titulo.split(' · ')[0])}</b> <span class="fechas">${esc(c.fechas)}</span>`).join('<span class="sep"> · </span>')}</div>
+      <div class="cert-centro">${esc(d.certificaciones[0].centro)}</div>
+    </section>
+    <section>
+      <div class="lat-titulo">${esc(s.otros)}</div>
+      <div class="otros">${d.otros.map(esc).join('<br>')}</div>
+    </section>
+  </aside>
+  <main class="principal">
+    <header class="cabecera">
+      <div class="ubic"><i></i>${esc(d.ubicacion)}</div>
+      <h1>${esc(d.nombre)}</h1>
+      <div class="rol">${d.rol /* HTML fijo de datos.js */} <small>· ${esc(d.rolExtra)}</small></div>
+    </header>
+    <section><h2>${esc(s.perfil)}</h2><p class="perfil">${esc(d.perfil)}</p></section>
+    <section><h2>${esc(s.experiencia)}</h2>
+      ${d.experiencia.map(e => `
+        <div class="puesto">
+          <div class="puesto-cab"><b>${esc(e.puesto)}</b><span class="fechas">${esc(e.fechas)}</span></div>
+          <div class="empresa">${esc(e.empresa)} · ${esc(e.lugar)}${e.tipo ? `<span class="tipo">${esc(e.tipo)}</span>` : ''}</div>
+          ${e.intro ? `<p class="intro">${esc(e.intro)}</p>` : ''}
+          ${e.proyectos ? `<ul>${e.proyectos.map(p => `<li class="proy"><b>${esc(p.nombre)}</b>${p.nota ? ` <span class="nota">(${esc(p.nota)})</span>` : ''}: ${esc(p.texto)}<span class="stack">${esc(p.stack)}</span></li>`).join('')}</ul>` : ''}
+          ${e.tareas ? `<ul>${e.tareas.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+        </div>`).join('')}
+    </section>
+    <section><h2>${esc(s.formacion)}</h2>
+      ${d.formacion.map(f => `<div class="fila"><div><b>${esc(f.titulo)}</b><span class="centro">${esc(f.centro)}</span></div><span class="fechas">${esc(f.fechas)}</span></div>`).join('')}
+    </section>
+    <div class="pie"><a href="${d.contacto[2].href}">${esc(d.pie)}</a></div>
+  </main>`;
+</script>
+</body>
+</html>

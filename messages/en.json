@@ -145,7 +145,7 @@
   },
   "ui": {
     "screenshotPending": "Screenshot pending · will be taken with demo data",
-    "cvPending": "CV (PDF)",
+    "cvDownload": "Download CV (PDF)",
     "external": "(opens in a new tab)",
     "more": "+{n}",
     "diagramLabel": "Architecture diagram",

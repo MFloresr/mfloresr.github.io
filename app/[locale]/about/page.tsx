@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
+import EnlaceCV from "@/components/EnlaceCV";
 import Pendiente from "@/components/Pendiente";
 import { ListaGuion } from "@/components/ui/Basicos";
 import { Flecha } from "@/components/ui/Iconos";
@@ -23,7 +24,6 @@ export default async function SobreMi() {
   const idioma = (await getLocale()) as IdiomaContenido;
   const t = await getTranslations("about");
   const tp = await getTranslations("pending");
-  const tui = await getTranslations("ui");
   const perfil = obtenerPerfil();
   const pendiente = <Pendiente>{tp("field")}</Pendiente>;
 
@@ -47,7 +47,7 @@ export default async function SobreMi() {
           <span className="font-mono text-[13px] text-tenue">{perfil.ubicacion}</span>
         </div>
         <div className="flex flex-col items-start gap-2.5">
-          <Pendiente>{tui("cvPending")}</Pendiente>
+          <EnlaceCV />
           {email && (
             <a href={`mailto:${email}`} className="text-[15px] font-medium text-acento">
               {email}
