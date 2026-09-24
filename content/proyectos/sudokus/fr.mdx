@@ -1,0 +1,44 @@
+---
+revisado: true
+titulo: Sudokus
+resumen: Jeu de sudoku en ligne avec comptes utilisateurs, parties sauvegardées, statistiques et un moteur maison qui génère et note tous les sudokus.
+contexto: null
+objetivo: Proposer un sudoku web complet où chaque joueur sauvegarde ses parties et suit sa progression.
+problema: Beaucoup de sudokus en ligne ne sauvegardent pas la progression, ont des niveaux mal calibrés ou permettent de tricher. Ici, chaque partie est enregistrée dans le compte, la difficulté est calculée en résolvant la grille comme le ferait une personne et chaque coup est validé sur le serveur.
+usuario: Toute personne qui veut jouer au sudoku sur mobile ou sur ordinateur et suivre sa progression.
+estadoTexto: Publié en septembre 2026 avec 424 sudokus (237 faciles, 127 moyens et 60 difficiles), tous générés par son propre moteur, et 27 tests automatisés. La récupération du mot de passe par e-mail reste à configurer en production.
+funcionalidades:
+  - Grille avec mise en évidence de la ligne, de la colonne, du bloc et des chiffres identiques.
+  - Clavier à l'écran avec les chiffres restants et clavier physique (chiffres, flèches, N pour les notes, Suppr, Ctrl+Z).
+  - Notes au crayon, annuler, effacer, indices, chronomètre avec pause et 3 vies.
+  - Chaque coup est validé sur le serveur ; la solution n'arrive jamais au navigateur.
+  - Parties sauvegardées par utilisateur, avec reprise et nouvel essai.
+  - Écran de victoire (temps, erreurs, indices et record) et de défaite.
+  - Liste par état et par difficulté avec miniatures ; nouvelle partie au hasard parmi les grilles non jouées.
+  - "Profil avec statistiques : grilles résolues, série de jours, pourcentage sans défaite, record et moyenne par difficulté."
+  - Inscription, connexion par e-mail et récupération du mot de passe.
+  - Moteur maison qui résout (solution unique), note la difficulté et génère les sudokus.
+retos:
+  - titulo: Noter la difficulté de façon objective
+    texto: Au lieu de compter les indices, un solveur applique des techniques humaines (singletons, candidats bloqués, paires) et attribue le niveau selon la technique la plus difficile nécessaire.
+  - titulo: Un contenu 100 % maison
+    texto: Tous les sudokus sont générés par le moteur avec une solution unique vérifiée ; ceux d'un jeu de données externe ont été écartés faute de pouvoir garantir leur licence.
+  - titulo: Ni triche ni conflits
+    texto: La solution reste sur le serveur, chaque coup verrouille la partie dans la base de données et il ne peut pas y avoir deux parties en cours sur la même grille.
+  - titulo: Des identifiants sécurisés
+    texto: Le mot de passe de la base de données a été généré en local et seul son hash SCRAM a été envoyé à Supabase.
+mejoras:
+  - Configurer en production la récupération du mot de passe par e-mail.
+  - Ajouter des techniques plus avancées au moteur pour proposer un niveau expert.
+  - Ajouter d'autres jeux à la plateforme.
+arquitectura:
+  nodos:
+    - titulo: Navigateur
+      detalle: Alpine.js · grille, notes et clavier
+    - titulo: Django
+      detalle: "vues + API JSON · moteur : résoudre, noter et générer"
+      destacado: true
+    - titulo: PostgreSQL
+      detalle: Supabase · schéma et rôle dédiés
+  nota: Django est déployé sur Vercel (Londres). La solution de chaque sudoku ne quitte jamais le serveur.
+---

@@ -94,7 +94,7 @@
   <aside class="lateral">
     <img class="foto" src="foto.jpg" alt="${esc(d.nombre)}">
     <section>
-      <div class="lat-titulo">${esc(idioma === 'es' ? 'Contacto' : 'Contact')}</div>
+      <div class="lat-titulo">${esc(s.contacto)}</div>
       <div class="contacto">${d.contacto.map(c => `<div><span>${esc(c.etiqueta)}</span><a href="${c.href}">${esc(c.valor)}</a></div>`).join('')}</div>
     </section>
     <section>

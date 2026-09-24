@@ -12,6 +12,8 @@ export const NOMBRE = "Mario Flores";
 export const CV_PDF: Record<Idioma, string> = {
   es: "/cv/mario-flores-cv-es.pdf",
   en: "/cv/mario-flores-cv-en.pdf",
+  ca: "/cv/mario-flores-cv-ca.pdf",
+  fr: "/cv/mario-flores-cv-fr.pdf",
 };
 
 /** Secciones de la web (mismo slug en todos los idiomas). */

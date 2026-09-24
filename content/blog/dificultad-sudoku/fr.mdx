@@ -1,0 +1,39 @@
+---
+borrador: false
+titulo: Comment mon moteur de sudokus décide si une grille est facile, moyenne ou difficile
+resumen: Compter les cases vides ne suffit pas pour savoir si un sudoku est difficile. Voici comment je l'ai résolu dans mon projet Sudokus, en résolvant la grille comme le ferait une personne.
+fecha: 2026-09-23
+categoria: proyectos
+etiquetas: [python, django, algoritmos]
+destacado: true
+proyectos: [sudokus]
+---
+
+Quand j'ai commencé le projet Sudokus, la difficulté de chaque grille venait d'un jeu de données externe et presque toutes étaient classées « faciles ». Le fond du problème, c'est que **le nombre de cases vides ne mesure pas la difficulté** : deux sudokus avec les mêmes trous peuvent demander des raisonnements très différents.
+
+## Résoudre comme une personne
+
+La solution a été d'écrire un second solveur, distinct de celui qui vérifie que la solution est unique. Celui-ci ne teste pas de combinaisons : il applique les techniques qu'utiliserait une personne et note la plus difficile dont il a eu besoin.
+
+1. **Niveau 1 :** les cases qui n'ont qu'un seul candidat possible et les chiffres qui ne peuvent aller que dans une case de leur ligne, colonne ou bloc.
+2. **Niveau 2 :** les candidats bloqués et les paires nues, qui éliminent des options sans placer de chiffres.
+3. **Niveau 3 :** si ces techniques ne suffisent pas à compléter la grille, il faut tâtonner ou recourir à des techniques avancées.
+
+Avec ce niveau et le nombre de trous, la note est attribuée ainsi :
+
+```python
+def calificar(celdas):
+    nivel = _tecnicas_necesarias(celdas)
+    huecos = celdas.count(0)
+    if nivel >= 3:
+        return "dificil"
+    if nivel == 2 or huecos >= 46:
+        return "media"
+    return "facil"
+```
+
+## Générer des sudokus de la difficulté demandée
+
+Le même moteur génère de nouvelles grilles : il part d'une grille résolue au hasard, retire des cases par paires symétriques tant que la solution reste unique et, à la fin, vérifie que la note correspond à la difficulté demandée. Sinon, il recommence.
+
+C'est ainsi qu'ont été générés les 424 sudokus publiés, sans dépendre de données tierces.

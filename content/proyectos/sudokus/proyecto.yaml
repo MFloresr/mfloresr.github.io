@@ -12,12 +12,18 @@ capturas: # con una cuenta y datos de demostración
     alt:
       es: Partida en curso de un sudoku de dificultad media con notas a lápiz, cronómetro, vidas y teclado numérico
       en: Ongoing medium sudoku game with pencil notes, timer, lives and number keypad
+      ca: 'Partida en curs d''un sudoku de dificultat mitjana amb notes a llapis, cronòmetre, vides i teclat numèric'
+      fr: 'Partie en cours d''un sudoku de difficulté moyenne avec notes au crayon, chronomètre, vies et pavé numérique'
   - archivo: perfil.webp
     alt:
       es: Perfil del jugador con sudokus resueltos, racha de días, porcentaje sin perder y récords por dificultad
       en: Player profile with solved sudokus, day streak, win rate and best times by difficulty
+      ca: 'Perfil del jugador amb sudokus resolts, ratxa de dies, percentatge sense perdre i rècords per dificultat'
+      fr: 'Profil du joueur avec les sudokus résolus, la série de jours, le pourcentage sans défaite et les records par difficulté'
   - archivo: partida-movil.webp
     movil: true
     alt:
       es: Partida en el móvil con el tablero, las herramientas y el teclado numérico
       en: Game on mobile with the board, tools and number keypad
+      ca: 'Partida al mòbil amb el tauler, les eines i el teclat numèric'
+      fr: 'Partie sur mobile avec la grille, les outils et le pavé numérique'

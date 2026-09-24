@@ -1,0 +1,46 @@
+---
+revisado: true
+titulo: Mi Jornada
+resumen: Aplicació web per registrar les jornades laborals i saber en tot moment quantes hores s'han treballat i quants diners s'han generat.
+contexto: null
+objetivo: Registrar les jornades laborals i calcular automàticament la durada treballada i l'import de cada registre.
+problema: Portar el compte d'hores i de sou a mà (paper, notes o fulls de càlcul) és lent i porta a errors, sobretot amb horaris partits, pauses per dinar o diversos llocs de feina.
+usuario: Treballadors per hores que volen controlar les feines que fan, quant cobren i on treballen.
+estadoTexto: En producció. El setembre de 2026 es va migrar de PythonAnywhere a Vercel i Supabase. El backend té 22 proves automàtiques. No té registre públic, però es pot provar amb un compte de demostració amb dades fictícies que es reinicia sol.
+funcionalidades:
+  - Inici de sessió amb correu; la sessió es manté en recarregar.
+  - Fitxar la jornada amb l'hora exacta, amb pausa per dinar i opció de descartar-la; si passa de la mitjanit, es demana revisar-la.
+  - Registres amb data, entrada, sortida, lloc, descripció i descans per dinar; durada i import calculats automàticament, conservant el sou per hora de cada registre.
+  - Validació d'horaris (la sortida ha de ser posterior a l'entrada).
+  - Formulari curt amb Avui/Ahir, llocs suggerits, repetir l'últim dia i duplicar un dia.
+  - Llistat filtrable per mes i lloc, amb exportació a CSV compatible amb Excel en castellà.
+  - Calendari mensual amb les hores de cada dia.
+  - "Estadístiques del mes: hores, import, mitjana diària, gràfic per dia i hores per lloc."
+  - Assistent amb IA «Escriu-ho o dicta-ho» que converteix frases com «ahir de 8 a 14 i de 16 a 19 a l'obra» en registres; no desa res fins que l'usuari ho confirma.
+  - Recuperació de la contrasenya per correu.
+  - Mode clar i fosc; disseny per a mòbil i escriptori.
+  - Panell d'administració amb el sou per hora de cada usuari.
+  - Compte de demostració públic amb dades fictícies que es regeneren soles.
+retos:
+  - titulo: Django i Vue a Vercel
+    texto: El frontend es compila i Django el serveix com a fitxers estàtics dins d'una Vercel Function.
+  - titulo: Connexions esgotades en producció
+    texto: El pooler de Supabase admet 15 clients i les connexions persistents l'omplien; es va resoldre tancant la connexió a cada petició i alliberant-la mentre la IA respon.
+  - titulo: Fitxar amb fiabilitat
+    texto: Zona horària de Madrid, com a màxim una jornada activa per usuari i tractament de les jornades que passen de la mitjanit.
+  - titulo: IA útil amb un pla gratuït
+    texto: Sortida estructurada validada al servidor, confirmació obligatòria, models de reserva si el principal està saturat i límit d'usos diari.
+mejoras:
+  - Registre públic perquè qualsevol persona pugui crear el seu propi compte.
+  - Que cada usuari pugui canviar el seu sou per hora des del perfil.
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Vue 3 + Vite · aplicació d'una sola pàgina
+    - titulo: Django + DRF
+      detalle: API REST · assistent d'IA amb Gemini
+      destacado: true
+    - titulo: PostgreSQL
+      detalle: Supabase · esquema i rol propis
+  nota: Django també serveix el frontend compilat i es desplega a Vercel.
+---

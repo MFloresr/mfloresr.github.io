@@ -40,7 +40,9 @@
   "language": {
     "label": "Idioma",
     "es": "Español",
-    "en": "English"
+    "en": "English",
+    "ca": "Català",
+    "fr": "Français"
   },
   "theme": {
     "toDark": "Cambiar a modo oscuro",

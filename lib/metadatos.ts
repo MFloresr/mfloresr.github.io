@@ -5,6 +5,9 @@ import { NOMBRE, SITE_URL, alternativas, urlAbsoluta } from "./sitio";
 
 type ClavePagina = "home" | "projects" | "about" | "technologies" | "blog" | "contact";
 
+/** Código Open Graph de cada idioma publicado. */
+const LOCALE_OG: Record<Idioma, string> = { es: "es_ES", en: "en_GB", ca: "ca_ES", fr: "fr_FR" };
+
 /**
  * Metadatos comunes de una página: título, descripción, canónica, hreflang y Open Graph.
  * `ruta` es la ruta sin idioma ("" para el inicio, "/projects", ...).
@@ -26,7 +29,7 @@ export async function metadatosPagina(clave: ClavePagina, ruta: string): Promise
       title: titulo,
       description: descripcion,
       url: urlAbsoluta(idioma, ruta),
-      locale: idioma === "es" ? "es_ES" : "en_GB",
+      locale: LOCALE_OG[idioma],
     },
   };
 }

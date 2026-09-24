@@ -13,12 +13,18 @@ capturas: # con una cuenta y datos de demostración, nunca con datos reales
     alt:
       es: Pantalla Hoy de Mi Jornada con una jornada en curso, las horas de la semana y del mes y los últimos días registrados
       en: Mi Jornada's Today screen with a shift in progress, the week's and month's hours and the latest logged days
+      ca: 'Pantalla «Hoy» de Mi Jornada amb una jornada en curs, les hores de la setmana i del mes i els últims dies registrats'
+      fr: 'Écran « Hoy » (Aujourd''hui) de Mi Jornada avec une journée en cours, les heures de la semaine et du mois et les derniers jours saisis'
   - archivo: estadisticas.webp
     alt:
       es: Estadísticas del mes con horas, importe, días trabajados, gráfico de horas por día y horas por lugar
       en: Monthly stats with hours, amount, days worked, a chart of hours per day and hours by place
+      ca: 'Estadístiques del mes amb hores, import, dies treballats, gràfic d''hores per dia i hores per lloc'
+      fr: 'Statistiques du mois avec les heures, le montant, les jours travaillés, un graphique des heures par jour et les heures par lieu'
   - archivo: hoy-movil.webp
     movil: true
     alt:
       es: Pantalla Hoy en el móvil con el botón para terminar la jornada
       en: Today screen on mobile with the button to end the shift
+      ca: 'Pantalla «Hoy» al mòbil amb el botó per acabar la jornada'
+      fr: 'Écran « Hoy » sur mobile avec le bouton pour terminer la journée'

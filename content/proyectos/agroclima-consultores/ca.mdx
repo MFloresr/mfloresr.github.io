@@ -1,0 +1,39 @@
+---
+revisado: true
+titulo: AgroClima Consultores
+resumen: Web corporativa amb un panell de dades climàtiques per a una consultoria meteorològica agrícola de Lleida, que el client pot gestionar sense coneixements tècnics.
+contexto: Projecte acadèmic plantejat com un encàrrec professional complet, de la proposta al lliurament.
+objetivo: Una web corporativa que el mateix consultor pugui actualitzar sense programar, amb un panell de dades climàtiques útil per als agricultors.
+problema: El consultor necessitava presentar els seus serveis, rebre sol·licituds de contacte de manera fiable i mostrar el valor de les seves estacions meteorològiques, sense dependre d'un programador per canviar textos o fotos.
+usuario: Agricultors i cooperatives de la zona (Segrià, Pla d'Urgell, Noguera) com a visitants, i el mateix consultor com a gestor del contingut.
+estadoTexto: Acabat i lliurat com a exercici; versió de demostració publicada. Lighthouse en mòbil amb 100 en rendiment, accessibilitat i bones pràctiques.
+funcionalidades:
+  - 15 pàgines, entre les quals serveis, casos d'èxit, contacte, pàgines legals i un blog preparat.
+  - Panell de dades climàtiques amb tres finques d'exemple; les dades són simulades i versemblants per a Lleida, i està preparat per connectar-se a estacions reals.
+  - Indicadors agronòmics (evapotranspiració, punt de rosada, hores de fulla humida, risc orientatiu de míldiu) i alertes amb recomanacions.
+  - Formulari de contacte que primer desa la sol·licitud i després avisa per correu, amb reintent diari i antispam.
+  - Gestor de continguts en castellà, simplificat per a algú sense coneixements tècnics; en publicar, la web es reconstrueix sola.
+  - Logo propi i fotos amb llicència lliure acreditades.
+retos:
+  - titulo: Un client sense coneixements tècnics
+    texto: Gestor de continguts simplificat, guia pas a pas per a ordinador i mòbil i publicació automàtica.
+  - titulo: No perdre cap sol·licitud
+    texto: Primer es desa a la base de dades i després s'envia l'avís; una tasca diària reintenta els avisos fallits i manté activa la base de dades gratuïta.
+  - titulo: Rendiment amb gràfiques i mapa
+    texto: Components interactius que només es carreguen on calen; es va corregir un salt visual del panell (CLS de 0,32 a 0,02).
+  - titulo: Preparat per a dades reals
+    texto: Totes les fonts de dades retornen el mateix format, així que connectar estacions reals només requereix una font nova.
+mejoras:
+  - Connectar el panell a les estacions meteorològiques reals mitjançant l'API de FieldClimate, amb memòria cau de 10–15 minuts.
+  - Posar en marxa el blog, que ja està preparat, amb articles del consultor.
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Astro · pàgines estàtiques amb illes Svelte (gràfiques i mapa)
+    - titulo: Funcions a Vercel
+      detalle: formulari de contacte i tasca diària
+      destacado: true
+    - titulo: Serveis
+      detalle: Sanity (contingut) · Supabase (sol·licituds) · Resend (avisos) · Turnstile (antispam)
+  nota: En publicar a Sanity, la web es reconstrueix sola.
+---
