@@ -1,0 +1,44 @@
+---
+revisado: true
+titulo: Sudokus
+resumen: Joc de sudoku web amb comptes d'usuari, partides desades, estadístiques i un motor propi que genera i qualifica tots els sudokus.
+contexto: null
+objetivo: Oferir un sudoku web complet en què cada jugador desa les seves partides i segueix la seva evolució.
+problema: Molts sudokus en línia no desen el progrés, tenen dificultats poc calibrades o permeten fer trampes. Aquí cada partida es desa al compte, la dificultat es calcula resolent el sudoku com ho faria una persona i cada jugada es valida al servidor.
+usuario: Qualsevol persona que vulgui jugar al sudoku des del mòbil o l'ordinador i seguir el seu progrés.
+estadoTexto: Publicat el setembre de 2026 amb 424 sudokus (237 fàcils, 127 mitjans i 60 difícils), tots generats pel seu propi motor, i 27 proves automàtiques. La recuperació de la contrasenya per correu està pendent de configurar en producció.
+funcionalidades:
+  - Tauler amb ressaltat de fila, columna, caixa i números iguals.
+  - Teclat en pantalla amb els números que queden i teclat físic (números, fletxes, N per a notes, Supr, Ctrl+Z).
+  - Notes a llapis, desfer, esborrar, pistes, cronòmetre amb pausa i 3 vides.
+  - Cada jugada es valida al servidor; la solució no arriba mai al navegador.
+  - Partides desades per usuari, amb continuar i tornar-ho a provar.
+  - Pantalla de victòria (temps, errors, pistes i rècord) i de derrota.
+  - Llistat per estat i dificultat amb miniatures; partida nova a l'atzar entre els no jugats.
+  - "Perfil amb estadístiques: resolts, ratxa de dies, percentatge sense perdre, rècord i mitjana per dificultat."
+  - Registre, inici de sessió amb correu i recuperació de la contrasenya.
+  - Motor propi que resol (solució única), qualifica la dificultat i genera sudokus.
+retos:
+  - titulo: Qualificar la dificultat de manera objectiva
+    texto: En lloc de comptar pistes, un resolutor aplica tècniques humanes (singles, candidats bloquejats, parelles) i assigna el nivell segons la tècnica més difícil que necessita.
+  - titulo: Contingut 100 % propi
+    texto: Tots els sudokus els genera el motor amb solució única comprovada; es van descartar els d'un dataset extern perquè no se'n podia garantir la llicència.
+  - titulo: Sense trampes ni conflictes
+    texto: La solució només és al servidor, cada jugada bloqueja la partida a la base de dades i no hi pot haver dues partides en curs del mateix sudoku.
+  - titulo: Credencials segures
+    texto: La contrasenya de la base de dades es va generar en local i a Supabase només se'n va enviar el hash SCRAM.
+mejoras:
+  - Configurar en producció la recuperació de la contrasenya per correu.
+  - Afegir tècniques més avançades al motor per oferir un nivell expert.
+  - Afegir més jocs a la plataforma.
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Alpine.js · tauler, notes i teclat
+    - titulo: Django
+      detalle: "vistes + API JSON · motor: resoldre, qualificar i generar"
+      destacado: true
+    - titulo: PostgreSQL
+      detalle: Supabase · esquema i rol propis
+  nota: Django es desplega a Vercel (Londres). La solució de cada sudoku no surt del servidor.
+---

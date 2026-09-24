@@ -1,0 +1,218 @@
+{
+  "meta": {
+    "home": {
+      "title": "Mario Flores · Développeur Full-Stack",
+      "description": "Portfolio de Mario Flores, développeur full-stack à Barcelone, avec une expérience complémentaire en systèmes, réseaux et support technique."
+    },
+    "projects": {
+      "title": "Projets",
+      "description": "Projets de Mario Flores : des applications web complètes, du backend au déploiement."
+    },
+    "about": {
+      "title": "À propos",
+      "description": "Qui est Mario Flores : développement full-stack, expérience en systèmes et formation en développement web (DAW) et en administration de systèmes en réseau (ASIR)."
+    },
+    "technologies": {
+      "title": "Technologies",
+      "description": "Les technologies qu'utilise Mario Flores et les projets dans lesquels il les a appliquées."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Articles techniques sur le développement web, les systèmes, le déploiement et les projets de Mario Flores."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Comment contacter Mario Flores : e-mail et profils professionnels."
+    }
+  },
+  "nav": {
+    "label": "Navigation principale",
+    "home": "Accueil",
+    "projects": "Projets",
+    "about": "À propos",
+    "technologies": "Technologies",
+    "blog": "Blog",
+    "contact": "Contact",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "skipToContent": "Aller au contenu"
+  },
+  "language": {
+    "label": "Langue",
+    "es": "Español",
+    "en": "English",
+    "ca": "Català",
+    "fr": "Français"
+  },
+  "theme": {
+    "toDark": "Passer en mode sombre",
+    "toLight": "Passer en mode clair"
+  },
+  "footer": {
+    "links": "Liens professionnels",
+    "email": "E-mail",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "pending": {
+    "label": "En attente",
+    "contact": "E-mail et profils professionnels : à confirmer (phase 5).",
+    "home": "Contenu de l'accueil : il sera rédigé après l'approbation des maquettes (phase 4).",
+    "projects": "Liste des projets : elle arrive avec le système de contenu (phase 2) et le design (phase 4).",
+    "project": "Fiche du projet : elle sera publiée quand tu auras approuvé le brouillon (phase 2).",
+    "about": "À propos : formation ASIR, profil full-stack et systèmes en complément (phase 5).",
+    "technologies": "Technologies regroupées par usage et reliées aux projets (phase 5).",
+    "blog": "Blog : liste d'articles en MDX (phase 6).",
+    "contactDetail": "Coordonnée à confirmer",
+    "field": "information à confirmer.",
+    "dates": "dates",
+    "school": "établissement"
+  },
+  "projects": {
+    "intro": "Des projets réels, du backend au déploiement.",
+    "viewProject": "Voir le projet",
+    "status": {
+      "produccion": "En production",
+      "terminado": "Terminé",
+      "en-desarrollo": "En développement"
+    },
+    "sections": {
+      "context": "Contexte",
+      "goal": "Objectif",
+      "problem": "Problème résolu",
+      "user": "Utilisateur cible",
+      "technologies": "Technologies",
+      "features": "Fonctionnalités",
+      "state": "État actuel",
+      "challenges": "Défis techniques",
+      "improvements": "Améliorations prévues",
+      "links": "Liens"
+    },
+    "code": "Voir le code",
+    "demo": "Voir la démo",
+    "demoAccount": "La démo nécessite un compte.",
+    "draft": "Brouillon en attente de relecture par Mario : le texte peut changer.",
+    "translationPending": "Cette fiche n'est pas encore traduite dans cette langue.",
+    "readInSpanish": "Lire en espagnol",
+    "back": "Tous les projets"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "text": "La page que vous cherchez n'existe pas ou a changé d'adresse.",
+    "back": "Retour à l'accueil"
+  },
+  "groups": {
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "datos": "Données",
+    "infraestructura": "Infrastructure",
+    "herramientas": "Outils",
+    "ia": "IA"
+  },
+  "home": {
+    "status": "Ouvert aux opportunités · {ciudad}",
+    "title": "{nombre},<br></br>développeur <acento>full-stack</acento>.",
+    "ctaProjects": "Voir les projets",
+    "ctaContact": "Me contacter",
+    "lookingFor": "Ce que je recherche",
+    "projectsLabel": "Projets",
+    "allProjects": "Tous les projets",
+    "offerLabel": "Ce que j'apporte",
+    "offerTitle": "Je développe des applications complètes et je comprends l'infrastructure sur laquelle elles tournent.",
+    "diagram": {
+      "frontend": "Frontend",
+      "backend": "Backend et API",
+      "database": "Base de données",
+      "deploy": "Déploiement",
+      "systems": "Systèmes et utilisateurs",
+      "main": "Développement full-stack · profil principal",
+      "plus": "Systèmes et support · complément",
+      "label": "Du frontend aux systèmes : le développement full-stack est le profil principal, les systèmes en sont le complément."
+    },
+    "devTitle": "Développement full-stack",
+    "sysTitle": "Systèmes, réseaux et support",
+    "sysNote": "formation ASIR",
+    "seeAbout": "Tout voir dans À propos",
+    "techLabel": "Technologies",
+    "techTitle": "Avec quoi je travaille.",
+    "techText": "Pas de pourcentages : chaque technologie renvoie aux projets où je l'ai utilisée.",
+    "techLink": "Les voir toutes et où je les utilise",
+    "blogLabel": "Blog",
+    "blogTitle": "Blog technique.",
+    "blogSoon": "Bientôt",
+    "blogText": "Des articles sur le développement de ces projets, les choix techniques et ce que j'en ai appris.",
+    "contactTitle": "On en parle<acento> ?</acento>",
+    "contactEmail": "Écrire un e-mail",
+    "blogAll": "Voir tous les articles"
+  },
+  "ui": {
+    "screenshotPending": "Capture en attente · elle sera faite avec des données de démonstration",
+    "cvDownload": "Télécharger le CV (PDF)",
+    "external": "(s'ouvre dans un nouvel onglet)",
+    "more": "+{n}",
+    "diagramLabel": "Schéma d'architecture",
+    "facts": "Fiche",
+    "year": "Année",
+    "status": "État"
+  },
+  "about": {
+    "intro": "À propos",
+    "lookingFor": "Ce que je recherche",
+    "development": "Développement full-stack",
+    "education": "Formation",
+    "systems": "Systèmes, réseaux et support",
+    "projectsLink": "Voir les projets qui le démontrent",
+    "experience": "Expérience",
+    "certifications": "Certifications",
+    "skills": "Ma façon de travailler",
+    "languages": "Langues"
+  },
+  "technologies": {
+    "intro": "Regroupées par usage et reliées aux projets où je les ai appliquées. Ni pourcentages ni logos isolés.",
+    "noProject": "Connaissances · pas encore de projet public",
+    "alsoTitle": "Je les ai aussi utilisées dans mes projets",
+    "usedIn": "Où je l'utilise"
+  },
+  "contact": {
+    "intro": "Pour une offre d'emploi, un projet freelance ou toute question, écrivez-moi par e-mail.",
+    "emailButton": "Écrire un e-mail",
+    "email": "E-mail",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "cv": "CV",
+    "location": "Localisation"
+  },
+  "blog": {
+    "intro": "Des articles sur le développement de mes projets, mes choix techniques, les systèmes, le déploiement et ce que j'apprends en chemin.",
+    "featured": "À la une",
+    "recent": "Récents",
+    "tags": "Étiquettes",
+    "categories": "Catégories",
+    "empty": "Aucun article publié pour l'instant. Bientôt.",
+    "readingTime": "{minutos} min de lecture",
+    "updated": "Mis à jour le {fecha}",
+    "onlyIn": "Uniquement en {idioma}",
+    "draft": "Brouillon",
+    "draftNotice": "Brouillon : visible uniquement en local et dans les aperçus, jamais en production.",
+    "notTranslated": "Cet article n'est pas encore traduit dans cette langue.",
+    "readOriginal": "Lire en {idioma}",
+    "related": "Projets liés",
+    "relatedArticles": "Articles liés",
+    "back": "Tous les articles",
+    "tagTitle": "Articles avec l'étiquette « {etiqueta} »",
+    "readArticle": "Lire l'article",
+    "languages": {
+      "es": "espagnol",
+      "en": "anglais",
+      "ca": "catalan",
+      "fr": "français"
+    },
+    "categoryNames": {
+      "proyectos": "Projets",
+      "desarrollo": "Développement",
+      "sistemas": "Systèmes",
+      "despliegue": "Déploiement",
+      "ia": "IA appliquée"
+    }
+  }
+}

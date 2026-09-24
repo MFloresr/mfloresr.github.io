@@ -1,0 +1,218 @@
+{
+  "meta": {
+    "home": {
+      "title": "Mario Flores · Desenvolupador Full-Stack",
+      "description": "Portfolio de Mario Flores, desenvolupador full-stack a Barcelona amb experiència complementària en sistemes, xarxes i suport tècnic."
+    },
+    "projects": {
+      "title": "Projectes",
+      "description": "Projectes de Mario Flores: aplicacions web completes, del backend al desplegament."
+    },
+    "about": {
+      "title": "Sobre mi",
+      "description": "Qui és Mario Flores: desenvolupament full-stack, experiència en sistemes i formació en desenvolupament web (DAW) i administració de sistemes en xarxa (ASIR)."
+    },
+    "technologies": {
+      "title": "Tecnologies",
+      "description": "Tecnologies que utilitza Mario Flores i en quins projectes les ha aplicat."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Articles tècnics sobre desenvolupament web, sistemes, desplegament i els projectes de Mario Flores."
+    },
+    "contact": {
+      "title": "Contacte",
+      "description": "Com contactar amb Mario Flores: correu electrònic i perfils professionals."
+    }
+  },
+  "nav": {
+    "label": "Navegació principal",
+    "home": "Inici",
+    "projects": "Projectes",
+    "about": "Sobre mi",
+    "technologies": "Tecnologies",
+    "blog": "Blog",
+    "contact": "Contacte",
+    "openMenu": "Obrir el menú",
+    "closeMenu": "Tancar el menú",
+    "skipToContent": "Anar al contingut"
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English",
+    "ca": "Català",
+    "fr": "Français"
+  },
+  "theme": {
+    "toDark": "Canviar al mode fosc",
+    "toLight": "Canviar al mode clar"
+  },
+  "footer": {
+    "links": "Enllaços professionals",
+    "email": "Correu",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "pending": {
+    "label": "Pendent",
+    "contact": "Correu i perfils professionals: pendents de confirmar (fase 5).",
+    "home": "Contingut de l'inici: es redactarà després d'aprovar els esbossos (fase 4).",
+    "projects": "Llistat de projectes: arriba amb el sistema de contingut (fase 2) i el disseny (fase 4).",
+    "project": "Fitxa del projecte: es publicarà quan aprovis l'esborrany (fase 2).",
+    "about": "Sobre mi: formació en ASIR, perfil full-stack i sistemes com a complement (fase 5).",
+    "technologies": "Tecnologies agrupades per ús i enllaçades als projectes (fase 5).",
+    "blog": "Blog: llistat d'articles en MDX (fase 6).",
+    "contactDetail": "Dada de contacte pendent de confirmar",
+    "field": "dada pendent de confirmar.",
+    "dates": "dates",
+    "school": "centre"
+  },
+  "projects": {
+    "intro": "Projectes reals, del backend al desplegament.",
+    "viewProject": "Veure el projecte",
+    "status": {
+      "produccion": "En producció",
+      "terminado": "Acabat",
+      "en-desarrollo": "En desenvolupament"
+    },
+    "sections": {
+      "context": "Context",
+      "goal": "Objectiu",
+      "problem": "Problema que resol",
+      "user": "Usuari objectiu",
+      "technologies": "Tecnologies",
+      "features": "Funcionalitats",
+      "state": "Estat actual",
+      "challenges": "Reptes tècnics",
+      "improvements": "Millores futures",
+      "links": "Enllaços"
+    },
+    "code": "Veure el codi",
+    "demo": "Veure la demo",
+    "demoAccount": "La demo requereix un compte.",
+    "draft": "Esborrany pendent de revisió per part de Mario: el text pot canviar.",
+    "translationPending": "Aquesta fitxa encara no està traduïda a aquest idioma.",
+    "readInSpanish": "Llegir en castellà",
+    "back": "Tots els projectes"
+  },
+  "notFound": {
+    "title": "Pàgina no trobada",
+    "text": "La pàgina que busques no existeix o ha canviat d'adreça.",
+    "back": "Tornar a l'inici"
+  },
+  "groups": {
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "datos": "Dades",
+    "infraestructura": "Infraestructura",
+    "herramientas": "Eines",
+    "ia": "IA"
+  },
+  "home": {
+    "status": "Obert a oportunitats · {ciudad}",
+    "title": "{nombre},<br></br>desenvolupador <acento>full-stack</acento>.",
+    "ctaProjects": "Veure els projectes",
+    "ctaContact": "Contactar",
+    "lookingFor": "Què busco",
+    "projectsLabel": "Projectes",
+    "allProjects": "Tots els projectes",
+    "offerLabel": "El que aporto",
+    "offerTitle": "Desenvolupo aplicacions completes i entenc la infraestructura on funcionen.",
+    "diagram": {
+      "frontend": "Frontend",
+      "backend": "Backend i API",
+      "database": "Base de dades",
+      "deploy": "Desplegament",
+      "systems": "Sistemes i usuaris",
+      "main": "Desenvolupament full-stack · perfil principal",
+      "plus": "Sistemes i suport · complement",
+      "label": "Del frontend als sistemes: el desenvolupament full-stack és el perfil principal i els sistemes, el complement."
+    },
+    "devTitle": "Desenvolupament full-stack",
+    "sysTitle": "Sistemes, xarxes i suport",
+    "sysNote": "formació ASIR",
+    "seeAbout": "Veure-ho tot a Sobre mi",
+    "techLabel": "Tecnologies",
+    "techTitle": "Amb què treballo.",
+    "techText": "Sense percentatges: cada tecnologia enllaça amb els projectes on l'he utilitzada.",
+    "techLink": "Veure-les totes i on les faig servir",
+    "blogLabel": "Blog",
+    "blogTitle": "Blog tècnic.",
+    "blogSoon": "Properament",
+    "blogText": "Articles sobre el desenvolupament d'aquests projectes, decisions tècniques i el que he après.",
+    "contactTitle": "En parlem<acento>?</acento>",
+    "contactEmail": "Escriure un correu",
+    "blogAll": "Veure tots els articles"
+  },
+  "ui": {
+    "screenshotPending": "Captura pendent · es farà amb dades de demostració",
+    "cvDownload": "Descarregar el CV (PDF)",
+    "external": "(s'obre en una pestanya nova)",
+    "more": "+{n}",
+    "diagramLabel": "Diagrama d'arquitectura",
+    "facts": "Fitxa",
+    "year": "Any",
+    "status": "Estat"
+  },
+  "about": {
+    "intro": "Sobre mi",
+    "lookingFor": "Què busco",
+    "development": "Desenvolupament full-stack",
+    "education": "Formació",
+    "systems": "Sistemes, xarxes i suport",
+    "projectsLink": "Veure els projectes que ho demostren",
+    "experience": "Experiència",
+    "certifications": "Certificacions",
+    "skills": "Com treballo",
+    "languages": "Idiomes"
+  },
+  "technologies": {
+    "intro": "Agrupades per ús i enllaçades als projectes on les he aplicades. Sense percentatges ni logos solts.",
+    "noProject": "Coneixements · encara sense projecte públic",
+    "alsoTitle": "També les he utilitzat en els meus projectes",
+    "usedIn": "On la faig servir"
+  },
+  "contact": {
+    "intro": "Per a ofertes de feina, projectes freelance o qualsevol consulta, escriu-me per correu.",
+    "emailButton": "Escriure un correu",
+    "email": "Correu",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "cv": "CV",
+    "location": "Ubicació"
+  },
+  "blog": {
+    "intro": "Articles sobre el desenvolupament dels meus projectes, decisions tècniques, sistemes, desplegament i el que vaig aprenent.",
+    "featured": "Destacats",
+    "recent": "Recents",
+    "tags": "Etiquetes",
+    "categories": "Categories",
+    "empty": "Encara no hi ha articles publicats. Properament.",
+    "readingTime": "{minutos} min de lectura",
+    "updated": "Actualitzat el {fecha}",
+    "onlyIn": "Només en {idioma}",
+    "draft": "Esborrany",
+    "draftNotice": "Esborrany: només visible en local i en previsualitzacions, mai en producció.",
+    "notTranslated": "Aquest article encara no està traduït a aquest idioma.",
+    "readOriginal": "Llegir en {idioma}",
+    "related": "Projectes relacionats",
+    "relatedArticles": "Articles relacionats",
+    "back": "Tots els articles",
+    "tagTitle": "Articles amb l'etiqueta «{etiqueta}»",
+    "readArticle": "Llegir l'article",
+    "languages": {
+      "es": "castellà",
+      "en": "anglès",
+      "ca": "català",
+      "fr": "francès"
+    },
+    "categoryNames": {
+      "proyectos": "Projectes",
+      "desarrollo": "Desenvolupament",
+      "sistemas": "Sistemes",
+      "despliegue": "Desplegament",
+      "ia": "IA aplicada"
+    }
+  }
+}

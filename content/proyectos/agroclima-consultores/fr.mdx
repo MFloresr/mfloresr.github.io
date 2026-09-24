@@ -1,0 +1,39 @@
+---
+revisado: true
+titulo: AgroClima Consultores
+resumen: Site vitrine avec un tableau de bord de données climatiques pour un cabinet de conseil en météorologie agricole de Lleida, que le client peut gérer sans connaissances techniques.
+contexto: Projet académique conçu comme une commande professionnelle complète, de la proposition à la livraison.
+objetivo: Un site vitrine que le consultant peut mettre à jour lui-même sans programmer, avec un tableau de bord de données climatiques utile aux agriculteurs.
+problema: Le consultant devait présenter ses services, recevoir des demandes de contact de façon fiable et montrer l'intérêt de ses stations météo, sans dépendre d'un développeur pour modifier un texte ou une photo.
+usuario: Les agriculteurs et coopératives de la région (Segrià, Pla d'Urgell, Noguera) en tant que visiteurs, et le consultant lui-même pour la gestion du contenu.
+estadoTexto: Terminé et livré comme exercice ; version de démonstration en ligne. Lighthouse sur mobile avec 100 en performance, accessibilité et bonnes pratiques.
+funcionalidades:
+  - 15 pages, dont les services, des études de cas, le contact, les pages légales et un blog prêt à l'emploi.
+  - Tableau de bord climatique avec trois exploitations d'exemple ; les données sont simulées mais réalistes pour Lleida, et il est prêt à se connecter à de vraies stations.
+  - Indicateurs agronomiques (évapotranspiration, point de rosée, heures d'humectation du feuillage, risque indicatif de mildiou) et alertes avec recommandations.
+  - Formulaire de contact qui enregistre d'abord la demande puis envoie une notification par e-mail, avec nouvelle tentative quotidienne et antispam.
+  - Gestionnaire de contenu en espagnol, simplifié pour une personne non technique ; à chaque publication, le site se reconstruit tout seul.
+  - Logo original et photos sous licence libre créditées.
+retos:
+  - titulo: Un client non technique
+    texto: Gestionnaire de contenu simplifié, guide pas à pas pour ordinateur et mobile, et publication automatique.
+  - titulo: Ne perdre aucune demande
+    texto: La demande est d'abord enregistrée dans la base de données, puis la notification est envoyée ; une tâche quotidienne relance les notifications en échec et maintient active la base de données gratuite.
+  - titulo: Performance avec graphiques et carte
+    texto: Des composants interactifs chargés uniquement là où ils sont utiles ; un décalage visuel du tableau de bord a été corrigé (CLS de 0,32 à 0,02).
+  - titulo: Prêt pour des données réelles
+    texto: Toutes les sources de données renvoient le même format ; connecter de vraies stations ne demande donc qu'une nouvelle source.
+mejoras:
+  - Connecter le tableau de bord aux vraies stations météo via l'API FieldClimate, avec un cache de 10 à 15 minutes.
+  - Lancer le blog, déjà prêt, avec des articles du consultant.
+arquitectura:
+  nodos:
+    - titulo: Navigateur
+      detalle: Astro · pages statiques avec des îlots Svelte (graphiques et carte)
+    - titulo: Fonctions sur Vercel
+      detalle: formulaire de contact et tâche quotidienne
+      destacado: true
+    - titulo: Services
+      detalle: Sanity (contenu) · Supabase (demandes) · Resend (notifications) · Turnstile (antispam)
+  nota: À chaque publication dans Sanity, le site se reconstruit tout seul.
+---

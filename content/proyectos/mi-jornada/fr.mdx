@@ -1,0 +1,46 @@
+---
+revisado: true
+titulo: Mi Jornada
+resumen: Application web pour enregistrer ses journées de travail et savoir à tout moment combien d'heures ont été travaillées et combien d'argent a été gagné.
+contexto: null
+objetivo: Enregistrer les journées de travail et calculer automatiquement la durée travaillée et le montant de chaque saisie.
+problema: Compter ses heures et son salaire à la main (papier, notes ou tableur) est lent et source d'erreurs, surtout avec des horaires coupés, des pauses déjeuner ou plusieurs lieux de travail.
+usuario: Les travailleurs payés à l'heure qui veulent suivre les missions qu'ils effectuent, ce qu'ils gagnent et où ils travaillent.
+estadoTexto: En production. En septembre 2026, l'application a migré de PythonAnywhere vers Vercel et Supabase. Le backend compte 22 tests automatisés. Il n'y a pas d'inscription publique, mais on peut l'essayer avec un compte de démonstration aux données fictives qui se réinitialise tout seul.
+funcionalidades:
+  - Connexion par e-mail ; la session est conservée au rechargement.
+  - Pointage de la journée à l'heure exacte, avec pause déjeuner que l'on peut annuler ; si la journée passe minuit, une vérification est demandée.
+  - "Saisies avec date, arrivée, départ, lieu, description et pause déjeuner : durée et montant calculés automatiquement, en conservant le taux horaire de chaque saisie."
+  - Validation des horaires (le départ doit être postérieur à l'arrivée).
+  - Formulaire court avec Aujourd'hui/Hier, lieux suggérés, reprise du dernier jour et duplication d'une journée.
+  - Liste filtrable par mois et par lieu, avec export CSV compatible avec Excel en espagnol.
+  - Calendrier mensuel avec les heures de chaque jour.
+  - "Statistiques du mois : heures, montant, moyenne quotidienne, graphique par jour et heures par lieu."
+  - Assistant IA « Écris-le ou dicte-le » qui transforme des phrases comme « hier de 8 h à 14 h et de 16 h à 19 h au chantier » en saisies ; rien n'est enregistré tant que l'utilisateur n'a pas confirmé.
+  - Récupération du mot de passe par e-mail.
+  - Mode clair et sombre ; interface adaptée au mobile et à l'ordinateur.
+  - Panneau d'administration avec le taux horaire de chaque utilisateur.
+  - Compte de démonstration public avec des données fictives qui se régénèrent toutes seules.
+retos:
+  - titulo: Django et Vue sur Vercel
+    texto: Le frontend est compilé et Django le sert comme fichiers statiques dans une Vercel Function.
+  - titulo: Connexions saturées en production
+    texto: Le pooler de Supabase accepte 15 clients et les connexions persistantes le saturaient ; la solution a été de fermer la connexion à chaque requête et de la libérer pendant que l'IA répond.
+  - titulo: Un pointage fiable
+    texto: Fuseau horaire de Madrid, une seule journée active par utilisateur au maximum et gestion des journées qui passent minuit.
+  - titulo: Une IA utile avec une offre gratuite
+    texto: Sortie structurée validée côté serveur, confirmation obligatoire, modèles de secours si le principal est saturé et limite d'utilisation quotidienne.
+mejoras:
+  - Inscription publique pour que chacun puisse créer son propre compte.
+  - Permettre à chaque utilisateur de modifier son taux horaire depuis son profil.
+arquitectura:
+  nodos:
+    - titulo: Navigateur
+      detalle: Vue 3 + Vite · application monopage
+    - titulo: Django + DRF
+      detalle: API REST · assistant IA avec Gemini
+      destacado: true
+    - titulo: PostgreSQL
+      detalle: Supabase · schéma et rôle dédiés
+  nota: Django sert aussi le frontend compilé et est déployé sur Vercel.
+---

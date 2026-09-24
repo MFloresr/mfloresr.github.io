@@ -1,0 +1,39 @@
+---
+borrador: false
+titulo: Com decideix el meu motor de sudokus si un tauler és fàcil, mitjà o difícil
+resumen: Comptar les caselles buides no n'hi ha prou per saber com de difícil és un sudoku. Així ho vaig resoldre al meu projecte Sudokus, resolent-lo com ho faria una persona.
+fecha: 2026-09-23
+categoria: proyectos
+etiquetas: [python, django, algoritmos]
+destacado: true
+proyectos: [sudokus]
+---
+
+Quan vaig començar el projecte Sudokus, la dificultat de cada tauler venia d'un dataset extern i gairebé tots sortien com a "fàcil". El problema de fons és que **el nombre de caselles buides no mesura la dificultat**: dos sudokus amb els mateixos forats poden necessitar raonaments molt diferents.
+
+## Resoldre com una persona
+
+La solució va ser escriure un segon resolutor, diferent del que comprova que la solució és única. Aquest no prova combinacions: aplica les tècniques que faria servir una persona i anota la més difícil que ha necessitat.
+
+1. **Nivell 1:** caselles amb un únic candidat possible i números que només caben en una casella de la seva fila, columna o caixa.
+2. **Nivell 2:** candidats bloquejats i parelles nues, que descarten opcions sense col·locar números.
+3. **Nivell 3:** si amb aquestes tècniques no es completa el tauler, cal temptejar o fer servir tècniques avançades.
+
+Amb aquest nivell i el nombre de forats, la qualificació queda així:
+
+```python
+def calificar(celdas):
+    nivel = _tecnicas_necesarias(celdas)
+    huecos = celdas.count(0)
+    if nivel >= 3:
+        return "dificil"
+    if nivel == 2 or huecos >= 46:
+        return "media"
+    return "facil"
+```
+
+## Generar sudokus de la dificultat demanada
+
+El mateix motor genera taulers nous: parteix d'un tauler resolt a l'atzar, treu caselles per parelles simètriques mentre la solució continuï sent única i, al final, comprova que la qualificació coincideix amb la dificultat demanada. Si no coincideix, ho torna a provar.
+
+Així es van generar els 424 sudokus publicats, sense dependre de dades de tercers.

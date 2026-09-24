@@ -1,4 +1,4 @@
-// Contenido del CV en PDF (castellano e inglés). Lo lee plantilla.html y lo convierte
+// Contenido del CV en PDF (castellano, inglés, catalán y francés). Lo lee plantilla.html y lo convierte
 // a PDF scripts/generar-cv.mjs. Sale del portfolio (content/) y del perfil de LinkedIn;
 // no se publica NIF, fecha de nacimiento ni dirección.
 window.CV = {
@@ -16,6 +16,7 @@ window.CV = {
       { etiqueta: "LinkedIn", valor: "linkedin.com/in/mario-its-me", href: "https://www.linkedin.com/in/mario-its-me" },
     ],
     secciones: {
+      contacto: "Contacto",
       perfil: "Perfil",
       experiencia: "Experiencia",
       formacion: "Formación",
@@ -129,6 +130,7 @@ window.CV = {
       { etiqueta: "LinkedIn", valor: "linkedin.com/in/mario-its-me", href: "https://www.linkedin.com/in/mario-its-me" },
     ],
     secciones: {
+      contacto: "Contact",
       perfil: "Profile",
       experiencia: "Experience",
       formacion: "Education",
@@ -226,5 +228,233 @@ window.CV = {
     ],
     otros: ["Driving licence (B)"],
     pie: "Projects with demos and code at mfloresr-portfolio.vercel.app",
+  },
+
+  ca: {
+    titulo: "Currículum · Mario Flores Rodríguez",
+    nombre: "Mario Flores Rodríguez",
+    rol: "Desenvolupador <em>full-stack</em>",
+    rolExtra: "Sistemes i xarxes",
+    ubicacion: "Barcelona",
+    contacto: [
+      { etiqueta: "Correu", valor: "mrsitofull@gmail.com", href: "mailto:mrsitofull@gmail.com" },
+      { etiqueta: "Telèfon", valor: "699 490 441", href: "tel:+34699490441" },
+      { etiqueta: "Portfolio", valor: "mfloresr-portfolio.vercel.app", href: "https://mfloresr-portfolio.vercel.app/ca" },
+      { etiqueta: "GitHub", valor: "github.com/MFloresr", href: "https://github.com/MFloresr" },
+      { etiqueta: "LinkedIn", valor: "linkedin.com/in/mario-its-me", href: "https://www.linkedin.com/in/mario-its-me" },
+    ],
+    secciones: {
+      contacto: "Contacte",
+      perfil: "Perfil",
+      experiencia: "Experiència",
+      formacion: "Formació",
+      certificaciones: "Certificacions",
+      habilidades: "Habilitats",
+      idiomas: "Idiomes",
+      otros: "Altres",
+    },
+    perfil:
+      "Desenvolupador full-stack, Tècnic Superior en Desenvolupament d'Aplicacions Web (DAW) i en Administració de Sistemes Informàtics en Xarxa (ASIX). El meu perfil combina infraestructura i desenvolupament, cosa que em permet entendre el cicle complet d'una solució informàtica: dels equips i la connectivitat als servidors, les bases de dades, el backend, el frontend i el desplegament.",
+    experiencia: [
+      {
+        puesto: "Desenvolupador web full-stack",
+        empresa: "Projectes propis",
+        fechas: "2017 – actualitat",
+        lugar: "Barcelona · en remot",
+        intro: "Desenvolupament pel meu compte d'aplicacions web completes, publicades i en producció:",
+        proyectos: [
+          {
+            nombre: "Mi Jornada",
+            texto: "registre de jornades laborals amb càlcul d'hores i d'import, i un assistent amb IA que converteix frases com «ahir de 8 a 14 a l'obra» en registres.",
+            stack: "Django REST Framework · Vue · PostgreSQL (Supabase) · Vercel",
+          },
+          {
+            nombre: "Sudokus",
+            texto: "joc web amb comptes i estadístiques; motor propi que genera els sudokus i en qualifica la dificultat amb tècniques humanes; cada jugada es valida al servidor.",
+            stack: "Django · Alpine.js · Tailwind · PostgreSQL",
+          },
+          {
+            nombre: "AgroClima Consultores",
+            nota: "projecte acadèmic",
+            texto: "web corporativa amb un panell de dades climàtiques i un gestor de continguts per a un client sense coneixements tècnics. Lighthouse en mòbil: 100.",
+            stack: "Astro · Svelte · Sanity · Supabase",
+          },
+        ],
+      },
+      {
+        puesto: "Programador web",
+        empresa: "Sistemes Informàtics ICON S.L.",
+        tipo: "Pràctiques",
+        fechas: "gen. 2016 – juny 2016",
+        lugar: "Figueres",
+        tareas: [
+          "Vaig gestionar servidors d'aplicacions per desplegar aplicacions web.",
+          "Vaig desenvolupar aplicacions web connectades a bases de dades segons les especificacions del projecte.",
+          "Vaig instal·lar, configurar i mantenir WordPress, Joomla i Moodle.",
+        ],
+      },
+      {
+        puesto: "Administrador de sistemes",
+        empresa: "Fundació Salut Empordà (Hospital de Figueres)",
+        tipo: "Pràctiques",
+        fechas: "des. 2014 – maig 2015",
+        lugar: "Figueres",
+        tareas: [
+          "Vaig administrar sistemes operatius de servidor i configurar programari i serveis de xarxa.",
+          "Vaig donar suport tècnic remot i presencial.",
+          "Vaig diagnosticar incidències i aplicar-hi mesures correctives.",
+        ],
+      },
+      {
+        puesto: "Administrador d'equips informàtics",
+        empresa: "La Salle Figueres",
+        tipo: "Pràctiques",
+        fechas: "nov. 2011 – març 2012",
+        lugar: "Figueres",
+        tareas: [
+          "Vaig instal·lar i configurar aplicacions, equips i xarxes locals.",
+          "Vaig fer el manteniment del maquinari i els perifèrics.",
+          "Vaig elaborar documentació tècnica i pressupostos, i vaig fer assessorament.",
+        ],
+      },
+    ],
+    formacion: [
+      { titulo: "Tècnic Superior en Desenvolupament d'Aplicacions Web (DAW)", centro: "IES Cendrassos, Figueres", fechas: "2015 – 2016" },
+      { titulo: "Tècnic Superior en Administració de Sistemes Informàtics en Xarxa (ASIX)", centro: "IES Cendrassos, Figueres", fechas: "2013 – 2015" },
+      { titulo: "Tècnic en Explotació de Sistemes Informàtics", centro: "IES Cendrassos, Figueres", fechas: "2010 – 2012" },
+    ],
+    certificaciones: [
+      { titulo: "CCNA1 · Introduction to Networks", centro: "Cisco Networking Academy", fechas: "2014" },
+      { titulo: "CCNA2 · Switching, Routing, and Wireless Essentials", centro: "Cisco Networking Academy", fechas: "2014" },
+      { titulo: "CCNA3 · Enterprise Networking, Security, and Automation", centro: "Cisco Networking Academy", fechas: "2015" },
+    ],
+    habilidades: [
+      { grupo: "Backend", items: ["Python", "Django", "Django REST Framework", "API REST", "PHP", "Laravel"] },
+      { grupo: "Frontend", items: ["JavaScript", "TypeScript", "Vue 3", "Astro", "Svelte", "Alpine.js", "HTML", "CSS", "Tailwind CSS"] },
+      { grupo: "Dades", items: ["PostgreSQL", "MySQL", "SQLite", "Supabase", "Sanity (CMS)"] },
+      { grupo: "Eines", items: ["Git", "GitHub", "Vercel", "VS Code", "npm", "WSL"] },
+      { grupo: "Sistemes", items: ["Windows i Windows Server", "Linux", "Directori Actiu", "Xarxes (Cisco, VLAN, Wi-Fi)", "Suport tècnic"] },
+    ],
+    idiomas: [
+      { idioma: "Castellà", nivel: "Nadiu" },
+      { idioma: "Català", nivel: "Nivell professional" },
+      { idioma: "Anglès", nivel: "Lectura intermèdia, conversa bàsica" },
+    ],
+    otros: ["Carnet de conduir B"],
+    pie: "Projectes amb demo i codi a mfloresr-portfolio.vercel.app",
+  },
+
+  fr: {
+    titulo: "CV · Mario Flores Rodríguez",
+    nombre: "Mario Flores Rodríguez",
+    rol: "Développeur <em>full-stack</em>",
+    rolExtra: "Systèmes et réseaux",
+    ubicacion: "Barcelone, Espagne",
+    contacto: [
+      { etiqueta: "E-mail", valor: "mrsitofull@gmail.com", href: "mailto:mrsitofull@gmail.com" },
+      { etiqueta: "Téléphone", valor: "+34 699 490 441", href: "tel:+34699490441" },
+      { etiqueta: "Portfolio", valor: "mfloresr-portfolio.vercel.app", href: "https://mfloresr-portfolio.vercel.app/fr" },
+      { etiqueta: "GitHub", valor: "github.com/MFloresr", href: "https://github.com/MFloresr" },
+      { etiqueta: "LinkedIn", valor: "linkedin.com/in/mario-its-me", href: "https://www.linkedin.com/in/mario-its-me" },
+    ],
+    secciones: {
+      contacto: "Contact",
+      perfil: "Profil",
+      experiencia: "Expérience",
+      formacion: "Formation",
+      certificaciones: "Certifications",
+      habilidades: "Compétences",
+      idiomas: "Langues",
+      otros: "Divers",
+    },
+    perfil:
+      "Développeur full-stack, technicien supérieur en développement d'applications web (DAW) et en administration de systèmes en réseau (ASIR). Mon profil associe infrastructure et développement, ce qui me permet de comprendre le cycle complet d'une solution informatique : des postes et de la connectivité jusqu'aux serveurs, aux bases de données, au backend, au frontend et au déploiement.",
+    experiencia: [
+      {
+        puesto: "Développeur web full-stack",
+        empresa: "Projets personnels",
+        fechas: "2017 – aujourd'hui",
+        lugar: "Barcelone · à distance",
+        intro: "Développement en autonomie d'applications web complètes, publiées et en production :",
+        proyectos: [
+          {
+            nombre: "Mi Jornada",
+            texto: "suivi des heures travaillées et du montant, avec un assistant IA qui transforme « hier de 8 h à 14 h au chantier » en saisies.",
+            stack: "Django REST Framework · Vue · PostgreSQL (Supabase) · Vercel",
+          },
+          {
+            nombre: "Sudokus",
+            texto: "jeu web avec comptes et statistiques ; moteur maison qui génère les grilles et note leur difficulté avec des techniques humaines ; chaque coup est validé sur le serveur.",
+            stack: "Django · Alpine.js · Tailwind · PostgreSQL",
+          },
+          {
+            nombre: "AgroClima Consultores",
+            nota: "projet académique",
+            texto: "site vitrine avec tableau de bord climatique et gestionnaire de contenu pour un client non technique. Lighthouse : 100.",
+            stack: "Astro · Svelte · Sanity · Supabase",
+          },
+        ],
+      },
+      {
+        puesto: "Développeur web",
+        empresa: "Sistemes Informàtics ICON S.L.",
+        tipo: "Stage",
+        fechas: "janv. 2016 – juin 2016",
+        lugar: "Figueres",
+        tareas: [
+          "Gestion de serveurs d'applications pour déployer des applications web.",
+          "Développement d'applications web reliées à des bases de données selon le cahier des charges.",
+          "Installation, configuration et maintenance de WordPress, Joomla et Moodle.",
+        ],
+      },
+      {
+        puesto: "Administrateur systèmes",
+        empresa: "Fundació Salut Empordà (hôpital de Figueres)",
+        tipo: "Stage",
+        fechas: "déc. 2014 – mai 2015",
+        lugar: "Figueres",
+        tareas: [
+          "Administration de systèmes d'exploitation serveur et configuration de logiciels et de services réseau.",
+          "Support technique à distance et sur site.",
+          "Diagnostic des incidents et mise en place de mesures correctives.",
+        ],
+      },
+      {
+        puesto: "Administrateur du parc informatique",
+        empresa: "La Salle Figueres",
+        tipo: "Stage",
+        fechas: "nov. 2011 – mars 2012",
+        lugar: "Figueres",
+        tareas: [
+          "Installation et configuration d'applications, de postes et de réseaux locaux.",
+          "Maintenance du matériel et des périphériques.",
+          "Rédaction de documentation technique et de devis, et conseil aux utilisateurs.",
+        ],
+      },
+    ],
+    formacion: [
+      { titulo: "Technicien supérieur en développement d'applications web (DAW)", centro: "IES Cendrassos, Figueres", fechas: "2015 – 2016" },
+      { titulo: "Technicien supérieur en administration de systèmes informatiques en réseau (ASIR)", centro: "IES Cendrassos, Figueres", fechas: "2013 – 2015" },
+      { titulo: "Technicien en exploitation de systèmes informatiques", centro: "IES Cendrassos, Figueres", fechas: "2010 – 2012" },
+    ],
+    certificaciones: [
+      { titulo: "CCNA1 · Introduction to Networks", centro: "Cisco Networking Academy", fechas: "2014" },
+      { titulo: "CCNA2 · Switching, Routing, and Wireless Essentials", centro: "Cisco Networking Academy", fechas: "2014" },
+      { titulo: "CCNA3 · Enterprise Networking, Security, and Automation", centro: "Cisco Networking Academy", fechas: "2015" },
+    ],
+    habilidades: [
+      { grupo: "Backend", items: ["Python", "Django", "Django REST Framework", "API REST", "PHP", "Laravel"] },
+      { grupo: "Frontend", items: ["JavaScript", "TypeScript", "Vue 3", "Astro", "Svelte", "Alpine.js", "HTML", "CSS", "Tailwind CSS"] },
+      { grupo: "Données", items: ["PostgreSQL", "MySQL", "SQLite", "Supabase", "Sanity (CMS)"] },
+      { grupo: "Outils", items: ["Git", "GitHub", "Vercel", "VS Code", "npm", "WSL"] },
+      { grupo: "Systèmes", items: ["Windows et Windows Server", "Linux", "Active Directory", "Réseaux (Cisco, VLAN, Wi-Fi)", "Support technique"] },
+    ],
+    idiomas: [
+      { idioma: "Espagnol", nivel: "Langue maternelle" },
+      { idioma: "Catalan", nivel: "Niveau professionnel" },
+      { idioma: "Anglais", nivel: "Lecture intermédiaire, conversation de base" },
+    ],
+    otros: ["Permis de conduire B"],
+    pie: "Projets avec démos et code sur mfloresr-portfolio.vercel.app",
   },
 };

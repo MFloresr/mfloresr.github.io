@@ -5,27 +5,27 @@
 # grupo: backend | frontend | datos | infraestructura | herramientas | ia
 # Opcionales:
 # - incluye: [ids]  → "dónde la uso" suma los proyectos que usan esas tecnologías (p. ej. Bases de datos → PostgreSQL)
-# - nombre puede ser { es, en } cuando el nombre se traduce (p. ej. Bases de datos → Databases)
-# - contexto: {es, en} → dónde la uso cuando no aparece en ningún proyecto (solo lo que Mario ha confirmado)
+# - nombre puede ser { es, en, ca, fr } cuando el nombre se traduce (p. ej. Bases de datos → Databases)
+# - contexto: {es, en, ca, fr} → dónde la uso cuando no aparece en ningún proyecto (solo lo que Mario ha confirmado)
 
 - { id: python, nombre: Python, grupo: backend, destacada: true }
 - { id: django, nombre: Django, grupo: backend, destacada: true }
 - { id: drf, nombre: Django REST Framework, grupo: backend, destacada: true }
 - { id: php, nombre: PHP, grupo: backend, destacada: true }
 - { id: laravel, nombre: Laravel, grupo: backend, destacada: true }
-- { id: apis-rest, nombre: { es: APIs REST, en: REST APIs }, grupo: backend, destacada: true }
+- { id: apis-rest, nombre: { es: APIs REST, en: REST APIs, ca: API REST, fr: API REST }, grupo: backend, destacada: true }
 
 - { id: vue, nombre: Vue 3, grupo: frontend, destacada: true }
 - id: html
   nombre: HTML
   grupo: frontend
   destacada: true
-  contexto: { es: En todos mis proyectos web, en: In all my web projects }
+  contexto: { es: En todos mis proyectos web, en: In all my web projects, ca: En tots els meus projectes web, fr: Dans tous mes projets web }
 - id: css
   nombre: CSS
   grupo: frontend
   destacada: true
-  contexto: { es: En todos mis proyectos web, en: In all my web projects }
+  contexto: { es: En todos mis proyectos web, en: In all my web projects, ca: En tots els meus projectes web, fr: Dans tous mes projets web }
 - { id: javascript, nombre: JavaScript, grupo: frontend, destacada: true }
 - { id: typescript, nombre: TypeScript, grupo: frontend, destacada: false }
 - { id: vite, nombre: Vite, grupo: frontend, destacada: false }
@@ -36,7 +36,7 @@
 - { id: astro, nombre: Astro, grupo: frontend, destacada: false }
 - { id: svelte, nombre: Svelte, grupo: frontend, destacada: false }
 
-- { id: bases-de-datos, nombre: { es: Bases de datos, en: Databases }, grupo: datos, destacada: true, incluye: [postgresql, mysql, sqlite, supabase] }
+- { id: bases-de-datos, nombre: { es: Bases de datos, en: Databases, ca: Bases de dades, fr: Bases de données }, grupo: datos, destacada: true, incluye: [postgresql, mysql, sqlite, supabase] }
 - { id: postgresql, nombre: PostgreSQL, grupo: datos, destacada: false }
 - { id: mysql, nombre: MySQL, grupo: datos, destacada: true }
 - { id: sqlite, nombre: SQLite, grupo: datos, destacada: false }
@@ -48,48 +48,48 @@
   nombre: PythonAnywhere
   grupo: infraestructura
   destacada: false
-  contexto: { es: 'Primer despliegue de Mi Jornada, antes de migrarla a Vercel', en: 'First deployment of Mi Jornada, before moving it to Vercel' }
+  contexto: { es: 'Primer despliegue de Mi Jornada, antes de migrarla a Vercel', en: 'First deployment of Mi Jornada, before moving it to Vercel', ca: 'Primer desplegament de Mi Jornada, abans de migrar-la a Vercel', fr: 'Premier déploiement de Mi Jornada, avant sa migration vers Vercel' }
 - id: linux
   nombre: Linux
   grupo: infraestructura
   destacada: true
-  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR y experiencia profesional), en: Systems administration and technical support (ASIR training and work experience) }
+  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR y experiencia profesional), en: Systems administration and technical support (ASIR training and work experience), ca: Administració de sistemes i suport tècnic (formació ASIX i experiència professional), fr: Administration de systèmes et support technique (formation ASIR et expérience professionnelle) }
 - id: windows
   nombre: Windows
   grupo: infraestructura
   destacada: true
-  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR y experiencia profesional), en: Systems administration and technical support (ASIR training and work experience) }
+  contexto: { es: Administración de sistemas y soporte técnico (formación ASIR y experiencia profesional), en: Systems administration and technical support (ASIR training and work experience), ca: Administració de sistemes i suport tècnic (formació ASIX i experiència professional), fr: Administration de systèmes et support technique (formation ASIR et expérience professionnelle) }
 - id: redes
-  nombre: { es: Redes, en: Networking }
+  nombre: { es: Redes, en: Networking, ca: Xarxes, fr: Réseaux }
   grupo: infraestructura
   destacada: true
-  contexto: { es: Redes locales y administración de redes (formación ASIR y experiencia profesional), en: Local networks and network administration (ASIR training and work experience) }
+  contexto: { es: Redes locales y administración de redes (formación ASIR y experiencia profesional), en: Local networks and network administration (ASIR training and work experience), ca: Xarxes locals i administració de xarxes (formació ASIX i experiència professional), fr: Réseaux locaux et administration réseau (formation ASIR et expérience professionnelle) }
 - id: wsl
   nombre: WSL
   grupo: infraestructura
   destacada: true
-  contexto: { es: Configuración de entornos de desarrollo, en: Development environment setup }
+  contexto: { es: Configuración de entornos de desarrollo, en: Development environment setup, ca: Configuració d'entorns de desenvolupament, fr: Configuration d'environnements de développement }
 
 - id: git
   nombre: Git
   grupo: herramientas
   destacada: true
-  contexto: { es: Control de versiones de todos mis proyectos, en: Version control for all my projects }
+  contexto: { es: Control de versiones de todos mis proyectos, en: Version control for all my projects, ca: Control de versions de tots els meus projectes, fr: Gestion de versions de tous mes projets }
 - id: github
   nombre: GitHub
   grupo: herramientas
   destacada: true
-  contexto: { es: Repositorios públicos de todos mis proyectos, en: Public repositories for all my projects }
+  contexto: { es: Repositorios públicos de todos mis proyectos, en: Public repositories for all my projects, ca: Repositoris públics de tots els meus projectes, fr: Dépôts publics de tous mes projets }
 
 - id: vscode
   nombre: VS Code
   grupo: herramientas
   destacada: true
-  contexto: { es: Mi editor de código, en: My code editor }
+  contexto: { es: Mi editor de código, en: My code editor, ca: El meu editor de codi, fr: Mon éditeur de code }
 - id: npm
   nombre: npm
   grupo: herramientas
   destacada: true
-  contexto: { es: Dependencias y compilación del frontend en mis proyectos, en: Frontend dependencies and builds in my projects }
+  contexto: { es: Dependencias y compilación del frontend en mis proyectos, en: Frontend dependencies and builds in my projects, ca: Dependències i compilació del frontend als meus projectes, fr: Dépendances et compilation du frontend dans mes projets }
 
-- { id: gemini, nombre: { es: API de Gemini, en: Gemini API }, grupo: ia, destacada: false }
+- { id: gemini, nombre: { es: API de Gemini, en: Gemini API, ca: API de Gemini, fr: API Gemini }, grupo: ia, destacada: false }

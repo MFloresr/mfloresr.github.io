@@ -7,11 +7,15 @@ ubicacion: Barcelona, Catalunya
 rol:
   es: Desarrollador Full-Stack
   en: Full-Stack Developer
+  ca: Desenvolupador Full-Stack
+  fr: Développeur Full-Stack
 
 # Mensaje principal acordado con Mario
 mensaje:
   es: Desarrollador Full-Stack con experiencia complementaria en sistemas, redes y soporte técnico, capaz de crear aplicaciones web completas y soluciones prácticas para empresas.
   en: Full-Stack Developer with complementary experience in systems, networking and technical support, able to build complete web applications and practical solutions for businesses.
+  ca: Desenvolupador Full-Stack amb experiència complementària en sistemes, xarxes i suport tècnic, capaç de crear aplicacions web completes i solucions pràctiques per a empreses.
+  fr: Développeur Full-Stack avec une expérience complémentaire en systèmes, réseaux et support technique, capable de créer des applications web complètes et des solutions pratiques pour les entreprises.
 
 contacto:
   email: mrsitofull@gmail.com
@@ -22,12 +26,14 @@ contacto:
 resumen:
   es: Mi perfil combina infraestructura y desarrollo, lo que me permite comprender el ciclo completo de una solución informática, de los equipos y la conectividad a los servidores, las bases de datos, el backend, el frontend y el despliegue.
   en: My profile combines infrastructure and development, which lets me understand the full lifecycle of an IT solution, from computers and connectivity to servers, databases, backend, frontend and deployment.
+  ca: El meu perfil combina infraestructura i desenvolupament, cosa que em permet entendre el cicle complet d'una solució informàtica, dels equips i la connectivitat als servidors, les bases de dades, el backend, el frontend i el desplegament.
+  fr: Mon profil associe infrastructure et développement, ce qui me permet de comprendre le cycle complet d'une solution informatique, des postes et de la connectivité jusqu'aux serveurs, aux bases de données, au backend, au frontend et au déploiement.
 
 # Experiencia profesional (del CV de Mario)
 experiencia:
-  - puesto: { es: Programador web, en: Web developer }
+  - puesto: { es: Programador web, en: Web developer, ca: Programador web, fr: Développeur web }
     empresa: ICON SL
-    fechas: { es: Enero 2016 – Junio 2016, en: January 2016 – June 2016 }
+    fechas: { es: Enero 2016 – Junio 2016, en: January 2016 – June 2016, ca: Gener 2016 – Juny 2016, fr: Janvier 2016 – Juin 2016 }
     tareas:
       es:
         - Gestioné servidores de aplicaciones para desplegar aplicaciones web.
@@ -37,9 +43,17 @@ experiencia:
         - Managed application servers to deploy web applications.
         - Developed database-backed web applications to project specifications.
         - Installed, configured and maintained WordPress, Joomla and Moodle.
-  - puesto: { es: Administrador de sistemas, en: Systems administrator }
+      ca:
+        - Vaig gestionar servidors d'aplicacions per desplegar aplicacions web.
+        - Vaig desenvolupar aplicacions web connectades a bases de dades segons les especificacions del projecte.
+        - Vaig instal·lar, configurar i mantenir WordPress, Joomla i Moodle.
+      fr:
+        - Gestion de serveurs d'applications pour déployer des applications web.
+        - Développement d'applications web reliées à des bases de données selon le cahier des charges du projet.
+        - Installation, configuration et maintenance de WordPress, Joomla et Moodle.
+  - puesto: { es: Administrador de sistemas, en: Systems administrator, ca: Administrador de sistemes, fr: Administrateur systèmes }
     empresa: Hospital Figueras
-    fechas: { es: Diciembre 2014 – Mayo 2015, en: December 2014 – May 2015 }
+    fechas: { es: Diciembre 2014 – Mayo 2015, en: December 2014 – May 2015, ca: Desembre 2014 – Maig 2015, fr: Décembre 2014 – Mai 2015 }
     tareas:
       es:
         - Administré sistemas operativos de servidor y configuré software y servicios de red.
@@ -49,9 +63,17 @@ experiencia:
         - Administered server operating systems and configured software and network services.
         - Provided remote and on-site technical support.
         - Diagnosed incidents and applied corrective measures.
-  - puesto: { es: Administrador informático, en: IT administrator }
+      ca:
+        - Vaig administrar sistemes operatius de servidor i configurar programari i serveis de xarxa.
+        - Vaig donar suport tècnic remot i presencial.
+        - Vaig diagnosticar incidències i aplicar-hi mesures correctives.
+      fr:
+        - Administration de systèmes d'exploitation serveur et configuration de logiciels et de services réseau.
+        - Support technique à distance et sur site.
+        - Diagnostic des incidents et mise en place de mesures correctives.
+  - puesto: { es: Administrador informático, en: IT administrator, ca: Administrador informàtic, fr: Administrateur informatique }
     empresa: La Salle Figueras
-    fechas: { es: Noviembre 2011 – Marzo 2012, en: November 2011 – March 2012 }
+    fechas: { es: Noviembre 2011 – Marzo 2012, en: November 2011 – March 2012, ca: Novembre 2011 – Març 2012, fr: Novembre 2011 – Mars 2012 }
     tareas:
       es:
         - Instalé y configuré aplicaciones, equipos y redes locales.
@@ -61,21 +83,35 @@ experiencia:
         - Installed and configured applications, computers and local networks.
         - Maintained hardware and peripherals.
         - Prepared technical documentation and quotes, and gave technical advice.
+      ca:
+        - Vaig instal·lar i configurar aplicacions, equips i xarxes locals.
+        - Vaig fer tasques de manteniment de maquinari i perifèrics.
+        - Vaig elaborar documentació tècnica i pressupostos, i vaig fer assessorament.
+      fr:
+        - Installation et configuration d'applications, de postes et de réseaux locaux.
+        - Maintenance du matériel et des périphériques.
+        - Rédaction de documentation technique et de devis, et conseil aux utilisateurs.
 
 formacion:
   - titulo:
       es: Técnico Superior en Desarrollo de Aplicaciones Web (DAW)
       en: Higher Technician in Web Application Development (DAW)
+      ca: Tècnic Superior en Desenvolupament d'Aplicacions Web (DAW)
+      fr: Technicien supérieur en développement d'applications web (DAW)
     centro: IES Cendrassos
     fechas: 2015 – 2016
   - titulo:
       es: Técnico Superior en Administración de Sistemas Informáticos en Red (ASIR)
       en: Higher Technician in Networked Computer Systems Administration (ASIR)
+      ca: Tècnic Superior en Administració de Sistemes Informàtics en Xarxa (ASIX)
+      fr: Technicien supérieur en administration de systèmes informatiques en réseau (ASIR)
     centro: IES Cendrassos
     fechas: 2013 – 2015
   - titulo:
       es: Técnico en Explotación de Sistemas Informáticos
       en: Technician in Computer Systems Operation
+      ca: Tècnic en Explotació de Sistemes Informàtics
+      fr: Technicien en exploitation de systèmes informatiques
     centro: IES Cendrassos
     fechas: 2010 – 2012
 
@@ -84,6 +120,10 @@ certificaciones:
     - Formación Cisco CCNA1, CCNA2 y CCNA3.
   en:
     - Cisco CCNA1, CCNA2 and CCNA3 training.
+  ca:
+    - Formació Cisco CCNA1, CCNA2 i CCNA3.
+  fr:
+    - Formation Cisco CCNA1, CCNA2 et CCNA3.
 
 idiomas:
   es:
@@ -94,6 +134,14 @@ idiomas:
     - 'Spanish: native.'
     - 'Catalan: professional working proficiency.'
     - 'English: intermediate reading, basic speaking.'
+  ca:
+    - 'Castellà: nadiu.'
+    - 'Català: nivell professional.'
+    - 'Anglès: comprensió escrita intermèdia i comunicació oral bàsica.'
+  fr:
+    - 'Espagnol : langue maternelle.'
+    - 'Catalan : niveau professionnel.'
+    - 'Anglais : compréhension écrite intermédiaire, oral de base.'
 
 # Cómo trabaja (competencias profesionales del CV)
 competencias:
@@ -109,6 +157,18 @@ competencias:
     - Incident diagnosis and resolution.
     - Able to work across development, systems and infrastructure.
     - Organisation and technical documentation.
+  ca:
+    - Adaptació ràpida a nous entorns tecnològics.
+    - Aprenentatge autònom amb documentació i pràctica.
+    - Diagnòstic i resolució d'incidències.
+    - Capacitat per treballar entre desenvolupament, sistemes i infraestructura.
+    - Organització i documentació tècnica.
+  fr:
+    - Adaptation rapide à de nouveaux environnements technologiques.
+    - Apprentissage autonome par la documentation et la pratique.
+    - Diagnostic et résolution d'incidents.
+    - Capacité à travailler entre développement, systèmes et infrastructure.
+    - Organisation et documentation technique.
 
 # Qué busca (confirmado por Mario)
 busca:
@@ -120,6 +180,14 @@ busca:
     - A job as a web developer, especially full-stack, backend or frontend.
     - Opportunities in systems, networking, technical support and infrastructure.
     - Freelance projects.
+  ca:
+    - Feina com a desenvolupador web, especialment full-stack, backend o frontend.
+    - Oportunitats en sistemes, xarxes, suport tècnic i infraestructura.
+    - Projectes freelance.
+  fr:
+    - Un poste de développeur web, de préférence full-stack, backend ou frontend.
+    - Des opportunités en systèmes, réseaux, support technique et infrastructure.
+    - Des projets freelance.
 
 # Perfil principal: desarrollo (resumen de lo que Mario declaró)
 desarrollo:
@@ -133,11 +201,23 @@ desarrollo:
     - REST APIs and frontend–backend integration.
     - Databases.
     - Project management with Git and GitHub.
+  ca:
+    - Aplicacions web completes, del backend al frontend.
+    - API REST i integració entre frontend i backend.
+    - Bases de dades.
+    - Gestió de projectes amb Git i GitHub.
+  fr:
+    - Applications web complètes, du backend au frontend.
+    - API REST et intégration entre frontend et backend.
+    - Bases de données.
+    - Gestion de projets avec Git et GitHub.
 
 # Por qué el perfil complementario suma (palabras de Mario)
 complementarioIntro:
   es: Un perfil complementario que me permite entender mejor la infraestructura, el despliegue, el mantenimiento, las necesidades de los usuarios y la resolución de problemas técnicos.
   en: A complementary profile that helps me better understand infrastructure, deployment, maintenance, user needs and technical troubleshooting.
+  ca: Un perfil complementari que em permet entendre millor la infraestructura, el desplegament, el manteniment, les necessitats dels usuaris i la resolució de problemes tècnics.
+  fr: Un profil complémentaire qui m'aide à mieux comprendre l'infrastructure, le déploiement, la maintenance, les besoins des utilisateurs et la résolution de problèmes techniques.
 
 # Perfil complementario: sistemas, redes, hardware y soporte (confirmado por Mario)
 complementario:
@@ -165,3 +245,27 @@ complementario:
     - WSL and development environment setup.
     - Software installation and configuration.
     - Troubleshooting connectivity, system and application issues.
+  ca:
+    - Administració de sistemes Windows i Linux.
+    - Administració de servidors i serveis de xarxa.
+    - Xarxes locals amb fil i sense fil, i cablejat.
+    - Configuració, muntatge i manteniment d'equips informàtics.
+    - Diagnòstic i resolució d'incidències de maquinari i programari.
+    - Xarxes bàsiques i administració de xarxes.
+    - Configuració d'equips, perifèrics i aplicacions.
+    - Atenció i suport tècnic als usuaris.
+    - WSL i configuració d'entorns de desenvolupament.
+    - Instal·lació i configuració de programari.
+    - Resolució de problemes de connectivitat, sistemes i aplicacions.
+  fr:
+    - Administration de systèmes Windows et Linux.
+    - Administration de serveurs et de services réseau.
+    - Réseaux locaux filaires et sans fil, et câblage.
+    - Configuration, montage et maintenance de postes informatiques.
+    - Diagnostic et résolution de pannes matérielles et logicielles.
+    - Réseaux de base et administration réseau.
+    - Configuration de postes, de périphériques et d'applications.
+    - Assistance et support technique aux utilisateurs.
+    - WSL et configuration d'environnements de développement.
+    - Installation et configuration de logiciels.
+    - Résolution de problèmes de connectivité, de systèmes et d'applications.

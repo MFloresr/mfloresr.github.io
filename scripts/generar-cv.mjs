@@ -1,6 +1,6 @@
-// Genera el CV en PDF (A4, una página) en castellano e inglés a partir de cv/plantilla.html
+// Genera el CV en PDF (A4, una página) en castellano, inglés, catalán y francés a partir de cv/plantilla.html
 // y cv/datos.js, con Microsoft Edge en modo headless (playwright-core, sin descargar navegadores).
-// Uso: npm run cv  →  public/cv/mario-flores-cv-es.pdf y public/cv/mario-flores-cv-en.pdf
+// Uso: npm run cv  →  public/cv/mario-flores-cv-<idioma>.pdf
 import { chromium } from "playwright-core";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -14,7 +14,7 @@ const ALTO_A4 = 1123; // px a 96 ppp
 await mkdir(salida, { recursive: true });
 const navegador = await chromium.launch({ channel: "msedge" });
 try {
-  for (const idioma of ["es", "en"]) {
+  for (const idioma of ["es", "en", "ca", "fr"]) {
     const pagina = await navegador.newPage();
     await pagina.goto(`${plantilla}?lang=${idioma}`, { waitUntil: "networkidle" });
     await pagina.evaluate(() => document.fonts.ready);
