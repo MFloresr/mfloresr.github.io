@@ -76,6 +76,10 @@ export default async function Inicio() {
               <EnlaceCV />
             </div>
           </div>
+          <Link href="/ask" className="inline-flex items-center gap-1.5 self-start text-[15px] font-medium text-acento">
+            {t("ctaAsk")}
+            <Flecha />
+          </Link>
         </div>
         <aside className="flex flex-col gap-3.5 rounded-2xl border border-linea bg-superficie p-5 sm:p-6">
           <h2 className="font-mono text-[13px] font-normal text-tenue">{t("lookingFor")}</h2>

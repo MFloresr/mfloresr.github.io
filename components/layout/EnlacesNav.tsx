@@ -9,6 +9,7 @@ const ENLACES = [
   { href: "/about", clave: "about" },
   { href: "/technologies", clave: "technologies" },
   { href: "/blog", clave: "blog" },
+  { href: "/ask", clave: "ask" },
   { href: "/contact", clave: "contact" },
 ] as const;
 
@@ -26,7 +27,7 @@ export default function EnlacesNav({ vertical = false }: { vertical?: boolean })
             <Link
               href={href}
               aria-current={actual ? "page" : undefined}
-              className={`block rounded-md px-3 py-2.5 text-sm font-medium ${
+              className={`block rounded-md px-3 py-2.5 text-sm font-medium whitespace-nowrap ${
                 actual ? "text-texto underline decoration-acento decoration-2 underline-offset-8" : "text-tenue hover:text-texto"
               } ${vertical ? "text-base" : ""}`}
             >

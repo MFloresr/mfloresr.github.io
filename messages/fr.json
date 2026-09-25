@@ -23,6 +23,10 @@
     "contact": {
       "title": "Contact",
       "description": "Comment contacter Mario Flores : e-mail et profils professionnels."
+    },
+    "ask": {
+      "title": "Demandez à l'IA",
+      "description": "Vérifiez avec l'IA si Mario Flores correspond à votre offre d'emploi ou posez vos questions sur son profil. Les réponses viennent uniquement du contenu de ce portfolio."
     }
   },
   "nav": {
@@ -32,6 +36,7 @@
     "about": "À propos",
     "technologies": "Technologies",
     "blog": "Blog",
+    "ask": "Demandez à l'IA",
     "contact": "Contact",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
@@ -143,7 +148,8 @@
     "blogText": "Des articles sur le développement de ces projets, les choix techniques et ce que j'en ai appris.",
     "contactTitle": "On en parle<acento> ?</acento>",
     "contactEmail": "Écrire un e-mail",
-    "blogAll": "Voir tous les articles"
+    "blogAll": "Voir tous les articles",
+    "ctaAsk": "Mon profil correspond-il à votre offre ? Vérifiez avec l'IA"
   },
   "ui": {
     "screenshotPending": "Capture en attente · elle sera faite avec des données de démonstration",
@@ -213,6 +219,63 @@
       "sistemas": "Systèmes",
       "despliegue": "Déploiement",
       "ia": "IA appliquée"
+    }
+  },
+  "ai": {
+    "intro": "Deux façons rapides de découvrir mon profil : comparez votre offre d'emploi avec mon expérience ou posez la question de votre choix. L'IA n'utilise que ce qui est publié dans ce portfolio et vous dira aussi ce qui me manque.",
+    "privacy": "Ce que vous saisissez est envoyé à l'API Gemini (Google) pour générer la réponse et n'est pas conservé sur ce site. N'y mettez pas de données personnelles. L'IA peut se tromper : en cas de doute, écrivez-moi.",
+    "fit": {
+      "section": "Mon profil correspond-il ?",
+      "title": "Collez votre offre et voyez la correspondance.",
+      "text": "Vous verrez les exigences que je remplis et le projet qui le prouve, celles que je remplis en partie et celles que je ne remplis pas.",
+      "label": "Offre d'emploi",
+      "placeholder": "Collez ici le texte de l'offre : poste, exigences, technologies…",
+      "tryExample": "Essayer avec un exemple",
+      "example": "Développeur/se Full-Stack (Barcelone, hybride)\n\nNous recherchons une personne pour développer et maintenir nos applications web internes.\n\nExigences :\n- Expérience avec Python et Django.\n- Frontend avec Vue.js ou React.\n- Bases de données PostgreSQL.\n- Conception et intégration d'API REST.\n- Gestion de versions avec Git.\n\nAtouts :\n- Docker et déploiement dans le cloud.\n- Connaissances des systèmes Linux.\n- Anglais intermédiaire.",
+      "minLength": "Encore {n} caractères pour pouvoir l'analyser.",
+      "length": "{n} / {max} caractères",
+      "submit": "Analyser la correspondance",
+      "loading": "Analyse en cours…",
+      "notAnOffer": "Ce texte ne ressemble pas à une offre d'emploi. Collez l'annonce complète avec le poste et les exigences.",
+      "level": {
+        "alto": "Bonne correspondance",
+        "medio": "Correspondance partielle",
+        "bajo": "Faible correspondance"
+      },
+      "meets": "Remplit",
+      "partial": "En partie",
+      "missing": "Absent de son profil",
+      "disclaimer": "Analyse automatique à partir du portfolio. Confirmez-la avec moi lors d'un entretien.",
+      "contact": "Écrire à Mario",
+      "mailSubject": "Offre d'emploi",
+      "mailSubjectRole": "Offre : {puesto}"
+    },
+    "ask": {
+      "section": "Interrogez mon portfolio",
+      "title": "Posez vos questions.",
+      "text": "Expérience, formation, technologies, projets ou ce qu'il recherche : l'IA répond avec ce qui est publié ici.",
+      "empty": "Essayez l'une de ces questions ou écrivez la vôtre :",
+      "suggestion1": "Quelle expérience a-t-il avec Django ?",
+      "suggestion2": "Quel projet montre le mieux son travail full-stack ?",
+      "suggestion3": "Que recherche-t-il pour son prochain emploi ?",
+      "conversation": "Conversation avec l'IA",
+      "you": "Vous",
+      "assistant": "IA",
+      "loading": "Réflexion…",
+      "label": "Votre question",
+      "placeholder": "Écrivez votre question…",
+      "submit": "Demander",
+      "clear": "Effacer"
+    },
+    "errors": {
+      "no-configurada": "L'IA n'est pas encore activée sur ce site. En attendant, vous pouvez m'écrire par e-mail.",
+      "limite": "L'IA gratuite a atteint sa limite pour le moment. Réessayez plus tard ou écrivez-moi par e-mail.",
+      "saturada": "L'IA est saturée en ce moment. Réessayez dans quelques minutes.",
+      "fallo": "La réponse n'a pas pu être générée. Réessayez ou écrivez-moi par e-mail.",
+      "origen": "Cette fonction ne peut être utilisée que depuis ce site.",
+      "demasiadas": "Vous avez envoyé beaucoup de demandes d'affilée. Attendez quelques minutes et réessayez.",
+      "datos": "Le texte n'est pas valide. Vérifiez qu'il n'est ni trop court ni trop long.",
+      "red": "Pas de connexion. Vérifiez votre réseau et réessayez."
     }
   }
 }

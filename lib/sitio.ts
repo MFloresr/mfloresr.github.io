@@ -17,7 +17,7 @@ export const CV_PDF: Record<Idioma, string> = {
 };
 
 /** Secciones de la web (mismo slug en todos los idiomas). */
-export const SECCIONES = ["", "/projects", "/about", "/technologies", "/blog", "/contact"] as const;
+export const SECCIONES = ["", "/projects", "/about", "/technologies", "/blog", "/ask", "/contact"] as const;
 export type Seccion = (typeof SECCIONES)[number];
 
 /** URL absoluta de una ruta en un idioma: urlAbsoluta("es", "/projects") */

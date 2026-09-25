@@ -22,6 +22,10 @@
   --pendiente-fondo: #fff4e5;
   --pendiente-borde: #d9a55e;
   --pendiente-texto: #7a4309;
+  --exito: #1e7047;
+  --exito-suave: #e6f4ec;
+  --falta: #a3372f;
+  --falta-suave: #fbeceb;
 }
 
 [data-theme="dark"] {
@@ -39,6 +43,10 @@
   --pendiente-fondo: #2a2116;
   --pendiente-borde: #9a6a2c;
   --pendiente-texto: #f2c38a;
+  --exito: #7fd3a6;
+  --exito-suave: #16281f;
+  --falta: #f2a29b;
+  --falta-suave: #2c1a19;
 }
 
 @theme inline {
@@ -56,6 +64,10 @@
   --color-pendiente-fondo: var(--pendiente-fondo);
   --color-pendiente-borde: var(--pendiente-borde);
   --color-pendiente-texto: var(--pendiente-texto);
+  --color-exito: var(--exito);
+  --color-exito-suave: var(--exito-suave);
+  --color-falta: var(--falta);
+  --color-falta-suave: var(--falta-suave);
   --font-sans: var(--fuente-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--fuente-mono), ui-monospace, monospace;
   --font-serif: var(--fuente-serif), Georgia, serif;

@@ -25,7 +25,7 @@ export default function MenuMovil({ children }: { children: React.ReactNode }) {
   }, [abierto]);
 
   return (
-    <div className="lg:hidden">
+    <div className="xl:hidden">
       <button
         type="button"
         onClick={() => setAbierto(!abierto)}

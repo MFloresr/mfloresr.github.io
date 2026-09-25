@@ -23,6 +23,10 @@
     "contact": {
       "title": "Contacte",
       "description": "Com contactar amb Mario Flores: correu electrònic i perfils professionals."
+    },
+    "ask": {
+      "title": "Pregunta a la IA",
+      "description": "Comprova amb IA si en Mario Flores encaixa en la teva oferta de feina o pregunta el que vulguis sobre el seu perfil. Les respostes surten només del contingut d'aquest portfolio."
     }
   },
   "nav": {
@@ -32,6 +36,7 @@
     "about": "Sobre mi",
     "technologies": "Tecnologies",
     "blog": "Blog",
+    "ask": "Pregunta a la IA",
     "contact": "Contacte",
     "openMenu": "Obrir el menú",
     "closeMenu": "Tancar el menú",
@@ -143,7 +148,8 @@
     "blogText": "Articles sobre el desenvolupament d'aquests projectes, decisions tècniques i el que he après.",
     "contactTitle": "En parlem<acento>?</acento>",
     "contactEmail": "Escriure un correu",
-    "blogAll": "Veure tots els articles"
+    "blogAll": "Veure tots els articles",
+    "ctaAsk": "Encaixo en la teva oferta? Comprova-ho amb IA"
   },
   "ui": {
     "screenshotPending": "Captura pendent · es farà amb dades de demostració",
@@ -213,6 +219,63 @@
       "sistemas": "Sistemes",
       "despliegue": "Desplegament",
       "ia": "IA aplicada"
+    }
+  },
+  "ai": {
+    "intro": "Dues maneres ràpides de conèixer el meu perfil: compara la teva oferta de feina amb la meva experiència o pregunta el que vulguis. La IA només fa servir el que està publicat en aquest portfolio i també et dirà el que no tinc.",
+    "privacy": "El que escrius s'envia a l'API de Gemini (Google) per generar la resposta i no es desa en aquesta web. No hi incloguis dades personals. La IA es pot equivocar: si tens cap dubte, escriu-me.",
+    "fit": {
+      "section": "Encaixo en la teva oferta?",
+      "title": "Enganxa la teva oferta i mira l'encaix.",
+      "text": "Veuràs quins requisits compleixo i amb quin projecte ho demostro, quins compleixo en part i quins no.",
+      "label": "Oferta de feina",
+      "placeholder": "Enganxa aquí el text de l'oferta: lloc, requisits, tecnologies…",
+      "tryExample": "Provar amb un exemple",
+      "example": "Desenvolupador/a Full-Stack (Barcelona, híbrid)\n\nBusquem una persona per desenvolupar i mantenir les nostres aplicacions web internes.\n\nRequisits:\n- Experiència amb Python i Django.\n- Frontend amb Vue.js o React.\n- Bases de dades PostgreSQL.\n- Disseny i integració d'API REST.\n- Control de versions amb Git.\n\nEs valorarà:\n- Docker i desplegament al núvol.\n- Coneixements de sistemes Linux.\n- Anglès intermedi.",
+      "minLength": "Falten {n} caràcters per poder analitzar-la.",
+      "length": "{n} / {max} caràcters",
+      "submit": "Analitzar l'encaix",
+      "loading": "Analitzant…",
+      "notAnOffer": "El text no sembla una oferta de feina. Enganxa l'anunci complet amb el lloc i els requisits.",
+      "level": {
+        "alto": "Encaix alt",
+        "medio": "Encaix mitjà",
+        "bajo": "Encaix baix"
+      },
+      "meets": "Compleix",
+      "partial": "En part",
+      "missing": "No apareix al seu perfil",
+      "disclaimer": "Anàlisi automàtica a partir del portfolio. Confirma-ho amb mi en una entrevista.",
+      "contact": "Escriure a en Mario",
+      "mailSubject": "Oferta de feina",
+      "mailSubjectRole": "Oferta: {puesto}"
+    },
+    "ask": {
+      "section": "Pregunta al meu portfolio",
+      "title": "Pregunta el que vulguis.",
+      "text": "Experiència, formació, tecnologies, projectes o què busca: la IA respon amb el que hi ha publicat aquí.",
+      "empty": "Prova alguna d'aquestes preguntes o escriu la teva:",
+      "suggestion1": "Quina experiència té amb Django?",
+      "suggestion2": "Quin projecte demostra millor la seva feina full-stack?",
+      "suggestion3": "Què busca en la seva propera feina?",
+      "conversation": "Conversa amb la IA",
+      "you": "Tu",
+      "assistant": "IA",
+      "loading": "Pensant…",
+      "label": "La teva pregunta",
+      "placeholder": "Escriu la teva pregunta…",
+      "submit": "Preguntar",
+      "clear": "Esborrar"
+    },
+    "errors": {
+      "no-configurada": "La IA encara no està activada en aquesta web. Mentrestant, pots escriure'm per correu.",
+      "limite": "La IA gratuïta ha arribat al seu límit de moment. Torna-ho a provar d'aquí a una estona o escriu-me per correu.",
+      "saturada": "La IA està saturada en aquest moment. Torna-ho a provar d'aquí a uns minuts.",
+      "fallo": "No s'ha pogut generar la resposta. Torna-ho a provar o escriu-me per correu.",
+      "origen": "Aquesta funció només es pot fer servir des de la mateixa web.",
+      "demasiadas": "Has fet moltes consultes seguides. Espera uns minuts i torna-ho a provar.",
+      "datos": "El text no és vàlid. Revisa que no sigui massa curt ni massa llarg.",
+      "red": "No hi ha connexió. Comprova la xarxa i torna-ho a provar."
     }
   }
 }
