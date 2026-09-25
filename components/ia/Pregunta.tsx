@@ -114,7 +114,7 @@ export default function Pregunta({ titulos }: { titulos: Record<string, string> 
           onChange={(e) => setTexto(e.target.value.slice(0, 500))}
           placeholder={t("placeholder")}
           autoComplete="off"
-          className="h-12 min-w-0 flex-1 rounded-[10px] border border-linea bg-fondo px-4 text-[15px] placeholder:text-tenue focus:border-acento focus:outline-none"
+          className="h-12 w-full min-w-0 shrink-0 rounded-[10px] border border-linea bg-fondo sm:w-auto sm:flex-1 px-4 text-[15px] placeholder:text-tenue focus:border-acento focus:outline-none"
         />
         <div className="flex gap-2">
           <button
