@@ -1,0 +1,42 @@
+---
+borrador: true
+titulo: Une IA qui ne dit que la vérité sur mon profil
+resumen: J'ai ajouté à mon portfolio une IA qui compare les offres d'emploi avec mon expérience et répond aux questions sur mon profil, sans jamais inventer ce qui n'est pas publié.
+fecha: 2026-09-25
+categoria: ia
+etiquetas: [gemini, nextjs, seguridad]
+destacado: true
+proyectos: []
+---
+
+Un recruteur qui ouvre mon portfolio doit lire plusieurs fiches de projet pour savoir si je corresponds à son offre. Je voulais lui épargner ce travail sans tomber dans le travers de beaucoup de chatbots "à propos de moi" : une IA qui exagère ce qu'elle sait et passe sous silence ce que je n'ai pas. J'ai donc ajouté deux fonctions à [/ask](/fr/ask) : **Mon profil correspond-il ?**, qui compare une offre d'emploi avec mon profil, et **Interrogez mon portfolio**, un court échange sur mon expérience.
+
+## L'empêcher d'inventer
+
+La condition qui comptait vraiment pour moi n'était pas que l'IA fasse bonne impression, mais qu'elle ne dise jamais rien de faux. La solution a été de ne lui laisser aucune marge : avant chaque requête, un module côté serveur parcourt tout ce qui est publié dans `content/` (profil, technologies, projets et blog) et le transforme en texte brut envoyé comme unique source de la réponse. On y trouve aussi une information absente des fiches de projet mais présente dans mon CV : quelles expériences étaient des stages et depuis quand je développe des projets en solo, pour qu'elle ne les confonde jamais avec un emploi.
+
+Les instructions système font le reste : décrire les exigences sans juger la personne, ne jamais déduire de détails que la fiche ne mentionne pas, et citer les projets par leur titre, jamais par leur identifiant interne. Ce qui est intéressant, c'est que les premières réponses ont dû être corrigées : face à une offre qui ne correspondait pas, l'IA est allée jusqu'à écrire que je "n'étais pas un candidat adapté". J'ai dû lui demander explicitement de décrire les exigences manquantes, pas la personne.
+
+## Un modèle de secours en cas de saturation du service gratuit
+
+J'utilise le niveau gratuit de l'API Gemini, donc la requête devait survivre à un modèle saturé ou à court de quota. Si le modèle principal échoue avec un code qu'il vaut la peine de retenter, le même appel passe au suivant :
+
+```ts
+const MODELES = ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"];
+const A_RETENTER = new Set([429, 500, 502, 503, 504]);
+
+for (const modele of MODELES) {
+  const res = await fetch(`${URL_API}/${modele}:generateContent`, { method: "POST", body: corps(modele) });
+  if (res.ok) return await res.json();
+  if (!A_RETENTER.has(res.status)) throw new ErreurIA("echec");
+  // passe au modèle suivant
+}
+```
+
+La réponse est toujours demandée en JSON selon un schéma fixe, si bien que chaque champ (le niveau de correspondance, les exigences que je remplis, les projets qui le prouvent) arrive déjà structuré et est validé avec `zod` avant d'être affiché.
+
+## Empêcher qu'elle serve à autre chose
+
+Comme elle est gratuite et publique, il lui fallait des limites : elle n'accepte que les requêtes venant de mon propre site, un champ caché détecte les robots qui remplissent les formulaires automatiquement, et chaque visiteur a un plafond de requêtes par minute et par jour. Et au cas où quelqu'un tenterait de l'utiliser à d'autres fins, les instructions lui interdisent explicitement de sortir de son rôle d'assistant du portfolio, même si on le lui demande directement.
+
+Le résultat, ce sont deux pages que j'utilise moi-même avant d'écrire à une entreprise : je colle l'offre, je vois ce qui me manque et je décide si cela vaut le coup. Que le même outil me serve pour cela était la preuve qu'il fonctionnait.

@@ -1,0 +1,42 @@
+---
+borrador: true
+titulo: Una IA que solo dice la verdad sobre mi perfil
+resumen: Añadí al portfolio una IA que compara ofertas de empleo con mi experiencia y responde preguntas sobre mi perfil, sin inventar nada que no esté publicado.
+fecha: 2026-09-25
+categoria: ia
+etiquetas: [gemini, nextjs, seguridad]
+destacado: true
+proyectos: []
+---
+
+Un reclutador que abre mi portfolio tiene que leer varias fichas de proyecto para saber si encajo en su oferta. Quería ahorrarle ese trabajo sin caer en lo que hacen muchos chatbots de "sobre mí": una IA que exagera lo que sabe y no dice lo que no tengo. Así que añadí dos funciones a [/ask](/es/ask): **¿Encajo en tu oferta?**, que compara un anuncio de empleo con mi perfil, y **Pregúntale a mi portfolio**, un chat corto sobre mi experiencia.
+
+## Que no pueda inventar
+
+La condición que me importaba de verdad no era que la IA quedara bien, sino que no dijera nada que no fuera cierto. La solución fue no dejarle margen: antes de cada petición, un módulo del lado del servidor recorre todo lo publicado en `content/` (perfil, tecnologías, proyectos y blog) y lo convierte en un texto plano que se envía como la única fuente de la respuesta. Ahí entra también algo que no está en las fichas de proyecto pero sí en mi CV: qué experiencias fueron prácticas y desde cuándo hago proyectos por mi cuenta, para que no las confunda con un empleo.
+
+Las instrucciones del sistema completan el resto: describir requisitos sin juzgar a la persona, no deducir detalles que la ficha no dice y citar los proyectos por su título, nunca por su identificador interno. Lo curioso es que las primeras respuestas necesitaron ajustes: con una oferta que no encajaba, la IA llegó a escribir que yo "no era un candidato adecuado". Tuve que pedirle explícitamente que describiera la falta de requisitos, no a la persona.
+
+## Un modelo de reserva por si el gratuito se satura
+
+Uso el plan gratuito de la API de Gemini, así que la petición tenía que sobrevivir a que el modelo esté saturado o sin cuota. Si el modelo principal falla con un código reintentable, la misma llamada prueba con el siguiente:
+
+```ts
+const MODELOS = ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"];
+const REINTENTABLES = new Set([429, 500, 502, 503, 504]);
+
+for (const modelo of MODELOS) {
+  const res = await fetch(`${URL_API}/${modelo}:generateContent`, { method: "POST", body: cuerpo(modelo) });
+  if (res.ok) return await res.json();
+  if (!REINTENTABLES.has(res.status)) throw new ErrorIA("fallo");
+  // sigue con el siguiente modelo
+}
+```
+
+La respuesta se pide siempre en JSON con un esquema fijo, así que cada campo (el nivel de encaje, los requisitos que cumplo, los proyectos que lo demuestran) llega ya estructurado y se valida con `zod` antes de mostrarse.
+
+## Que nadie la use para otra cosa
+
+Como es gratuita y pública, tenía que ponerle límites: solo acepta peticiones que vienen de mi propia web, un campo oculto detecta bots que rellenan formularios automáticamente y cada visitante tiene un tope de consultas por minuto y por día. Y por si alguien intenta usarla para otra cosa, las instrucciones le prohíben explícitamente salirse del papel de asistente del portfolio, aunque se lo pidan directamente.
+
+El resultado son dos páginas que uso yo mismo antes de escribir a una empresa: pego la oferta, veo qué me falta y decido si merece la pena. Que la misma herramienta sirva para eso era la prueba de que funcionaba.
