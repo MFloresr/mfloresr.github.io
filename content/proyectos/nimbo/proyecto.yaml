@@ -1,0 +1,29 @@
+orden: 4
+destacado: false
+estado: produccion
+anio: 2026
+tecnologias: [sveltekit, svelte, typescript, bootstrap, vite, open-meteo, vitest, vercel]
+repositorio: https://github.com/MFloresr/nimbo
+demo:
+  url: https://nimbo-mflores.vercel.app
+  requiereCuenta: false
+capturas: # datos reales de Open-Meteo el 25 de septiembre de 2026
+  - archivo: tokio-soleado.webp
+    alt:
+      es: Tiempo en Tokio con el tema soleado, la previsión de las próximas horas, los próximos 7 días y los datos de viento, humedad, UV, presión, amanecer y atardecer
+      en: Weather in Tokyo with the sunny theme, the hourly forecast, the next 7 days and wind, humidity, UV, pressure, sunrise and sunset data
+      ca: 'Temps a Tòquio amb el tema assolellat, la previsió de les pròximes hores, els pròxims 7 dies i les dades de vent, humitat, UV, pressió, sortida i posta del sol'
+      fr: 'Météo à Tokyo avec le thème ensoleillé, les prévisions heure par heure, les 7 prochains jours et les données de vent, humidité, UV, pression, lever et coucher du soleil'
+  - archivo: singapur-lluvia.webp
+    alt:
+      es: Tiempo en Singapur con llovizna, que cambia la página al tema de lluvia en azul petróleo
+      en: Weather in Singapore with drizzle, which switches the page to the teal rain theme
+      ca: 'Temps a Singapur amb plugim, que canvia la pàgina al tema de pluja en blau petroli'
+      fr: 'Météo à Singapour avec de la bruine, qui fait passer la page au thème pluie bleu pétrole'
+  - archivo: reikiavik-noche-movil.webp
+    movil: true
+    alt:
+      es: Tiempo en Reikiavik antes del amanecer en el móvil, con el tema de noche
+      en: Weather in Reykjavik before sunrise on mobile, with the night theme
+      ca: 'Temps a Reykjavík abans de la sortida del sol al mòbil, amb el tema de nit'
+      fr: 'Météo à Reykjavik avant le lever du soleil sur mobile, avec le thème nuit'
