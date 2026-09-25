@@ -6,7 +6,7 @@ contexto: null
 objetivo: Oferir un sudoku web complet en què cada jugador desa les seves partides i segueix la seva evolució.
 problema: Molts sudokus en línia no desen el progrés, tenen dificultats poc calibrades o permeten fer trampes. Aquí cada partida es desa al compte, la dificultat es calcula resolent el sudoku com ho faria una persona i cada jugada es valida al servidor.
 usuario: Qualsevol persona que vulgui jugar al sudoku des del mòbil o l'ordinador i seguir el seu progrés.
-estadoTexto: Publicat el setembre de 2026 amb 424 sudokus (237 fàcils, 127 mitjans i 60 difícils), tots generats pel seu propi motor, i 27 proves automàtiques. La recuperació de la contrasenya per correu està pendent de configurar en producció.
+estadoTexto: Publicat el setembre de 2026 amb 424 sudokus (237 fàcils, 127 mitjans i 60 difícils), tots generats pel seu propi motor, i 27 proves automàtiques.
 funcionalidades:
   - Tauler amb ressaltat de fila, columna, caixa i números iguals.
   - Teclat en pantalla amb els números que queden i teclat físic (números, fletxes, N per a notes, Supr, Ctrl+Z).
@@ -28,7 +28,6 @@ retos:
   - titulo: Credencials segures
     texto: La contrasenya de la base de dades es va generar en local i a Supabase només se'n va enviar el hash SCRAM.
 mejoras:
-  - Configurar en producció la recuperació de la contrasenya per correu.
   - Afegir tècniques més avançades al motor per oferir un nivell expert.
   - Afegir més jocs a la plataforma.
 arquitectura:
