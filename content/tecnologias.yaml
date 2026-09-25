@@ -35,6 +35,8 @@
 - { id: alpine, nombre: Alpine.js, grupo: frontend, destacada: false }
 - { id: astro, nombre: Astro, grupo: frontend, destacada: false }
 - { id: svelte, nombre: Svelte, grupo: frontend, destacada: false }
+- { id: sveltekit, nombre: SvelteKit, grupo: frontend, destacada: false }
+- { id: bootstrap, nombre: Bootstrap, grupo: frontend, destacada: false }
 
 - { id: bases-de-datos, nombre: { es: Bases de datos, en: Databases, ca: Bases de dades, fr: Bases de données }, grupo: datos, destacada: true, incluye: [postgresql, mysql, sqlite, supabase] }
 - { id: postgresql, nombre: PostgreSQL, grupo: datos, destacada: false }
@@ -42,6 +44,7 @@
 - { id: sqlite, nombre: SQLite, grupo: datos, destacada: false }
 - { id: supabase, nombre: Supabase, grupo: datos, destacada: false }
 - { id: sanity, nombre: Sanity (CMS), grupo: datos, destacada: false }
+- { id: open-meteo, nombre: { es: API de Open-Meteo, en: Open-Meteo API, ca: API d'Open-Meteo, fr: API Open-Meteo }, grupo: datos, destacada: false }
 
 - { id: vercel, nombre: Vercel, grupo: infraestructura, destacada: false }
 - id: pythonanywhere
@@ -80,6 +83,8 @@
   grupo: herramientas
   destacada: true
   contexto: { es: Repositorios públicos de todos mis proyectos, en: Public repositories for all my projects, ca: Repositoris públics de tots els meus projectes, fr: Dépôts publics de tous mes projets }
+
+- { id: vitest, nombre: Vitest, grupo: herramientas, destacada: false }
 
 - id: vscode
   nombre: VS Code

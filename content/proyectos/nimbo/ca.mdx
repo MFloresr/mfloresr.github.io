@@ -1,0 +1,42 @@
+---
+revisado: true
+titulo: Nimbo
+resumen: Aplicació del temps per a qualsevol lloc del món, amb colors que canvien segons el temps que fa.
+contexto: Projecte personal per aprendre SvelteKit i Bootstrap, de l'esbós a la publicació.
+objetivo: Consultar d'un cop d'ull el temps actual, les pròximes hores i els pròxims 7 dies de qualsevol lloc, al mòbil o a l'ordinador.
+problema: Moltes webs del temps estan plenes d'anuncis i dades i són lentes al mòbil. Nimbo mostra només el que és important, carrega ràpid i canvia de colors perquè se sàpiga quin temps fa abans de llegir res.
+usuario: Qualsevol persona que vulgui mirar el temps de la seva ciutat o d'un viatge sense registrar-se.
+estadoTexto: Publicat el setembre de 2026, amb dades reals d'Open-Meteo i 15 proves automàtiques.
+funcionalidades:
+  - Cercador de llocs de tot el món; si n'hi ha diversos amb el mateix nom, ofereix els altres com a alternatives.
+  - Temps a la ubicació del navegador, si s'hi dona permís.
+  - Temperatura actual, sensació tèrmica, màxima i mínima, i descripció del temps.
+  - Pròximes 8 hores amb la probabilitat de pluja i pròxims 7 dies amb el rang de temperatures de cada dia.
+  - Vent amb la seva direcció, humitat, índex UV, pressió, sortida i posta del sol.
+  - 'Cinc temes de color segons el temps real: assolellat, ennuvolat, pluja, nit i neu.'
+  - Canvi entre °C i °F que es recorda al navegador.
+  - Cada lloc té el seu propi enllaç per desar-lo o compartir-lo.
+retos:
+  - titulo: Bootstrap amb identitat pròpia
+    texto: Els colors de cada temps són variables CSS que substitueixen les de Bootstrap, així la graella i els components canvien de tema sense reescriure'n els estils.
+  - titulo: L'hora del lloc, no la del servidor
+    texto: Open-Meteo retorna l'hora local sense zona horària; es llegeix tal qual perquè la data i les hores siguin les del lloc consultat i no les del servidor ni les del navegador.
+  - titulo: Ràpida i sense JavaScript obligatori
+    texto: La pàgina arriba renderitzada des del servidor, el cercador és un formulari normal i la CDN de Vercel desa cada lloc 10 minuts, el mateix que triga Open-Meteo a actualitzar les dades.
+  - titulo: Pensada per al mòbil
+    texto: Es va provar en un mòbil emulat i es va corregir un desbordament horitzontal causat per un text ocult per a lectors de pantalla dins la fila d'hores.
+mejoras:
+  - Mostrar el nom de la ciutat quan s'utilitza la ubicació del navegador (ara hi apareix «Tu ubicación»).
+  - Desar llocs preferits.
+  - Afegir avisos de fenòmens adversos.
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Svelte 5 · Bootstrap 5.3 · temes segons el temps
+    - titulo: SvelteKit a Vercel
+      detalle: renderitzat al servidor i memòria cau de 10 minuts a la CDN
+      destacado: true
+    - titulo: Open-Meteo
+      detalle: previsió i cercador de llocs · sense clau d'API
+  nota: En canviar de lloc, el navegador demana les dades directament a Open-Meteo.
+---

@@ -6,7 +6,7 @@ contexto: null
 objetivo: Proposer un sudoku web complet où chaque joueur sauvegarde ses parties et suit sa progression.
 problema: Beaucoup de sudokus en ligne ne sauvegardent pas la progression, ont des niveaux mal calibrés ou permettent de tricher. Ici, chaque partie est enregistrée dans le compte, la difficulté est calculée en résolvant la grille comme le ferait une personne et chaque coup est validé sur le serveur.
 usuario: Toute personne qui veut jouer au sudoku sur mobile ou sur ordinateur et suivre sa progression.
-estadoTexto: Publié en septembre 2026 avec 424 sudokus (237 faciles, 127 moyens et 60 difficiles), tous générés par son propre moteur, et 27 tests automatisés. La récupération du mot de passe par e-mail reste à configurer en production.
+estadoTexto: Publié en septembre 2026 avec 424 sudokus (237 faciles, 127 moyens et 60 difficiles), tous générés par son propre moteur, et 27 tests automatisés.
 funcionalidades:
   - Grille avec mise en évidence de la ligne, de la colonne, du bloc et des chiffres identiques.
   - Clavier à l'écran avec les chiffres restants et clavier physique (chiffres, flèches, N pour les notes, Suppr, Ctrl+Z).
@@ -28,7 +28,6 @@ retos:
   - titulo: Des identifiants sécurisés
     texto: Le mot de passe de la base de données a été généré en local et seul son hash SCRAM a été envoyé à Supabase.
 mejoras:
-  - Configurer en production la récupération du mot de passe par e-mail.
   - Ajouter des techniques plus avancées au moteur pour proposer un niveau expert.
   - Ajouter d'autres jeux à la plateforme.
 arquitectura:
