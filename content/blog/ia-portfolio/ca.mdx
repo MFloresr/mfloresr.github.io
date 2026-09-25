@@ -1,0 +1,42 @@
+---
+borrador: true
+titulo: Una IA que només diu la veritat sobre el meu perfil
+resumen: Vaig afegir al portfolio una IA que compara ofertes de feina amb la meva experiència i respon preguntes sobre el meu perfil, sense inventar-se res que no estigui publicat.
+fecha: 2026-09-25
+categoria: ia
+etiquetas: [gemini, nextjs, seguridad]
+destacado: true
+proyectos: []
+---
+
+Un reclutador que obre el meu portfolio ha de llegir diverses fitxes de projecte per saber si encaixo en la seva oferta. Volia estalviar-li aquesta feina sense caure en el que fan molts chatbots de "sobre mi": una IA que exagera el que sap i no diu el que no tinc. Per això vaig afegir dues funcions a [/ask](/ca/ask): **Encaixo en la teva oferta?**, que compara un anunci de feina amb el meu perfil, i **Pregunta al meu portfolio**, un xat curt sobre la meva experiència.
+
+## Que no pugui inventar-se res
+
+La condició que em preocupava de debò no era que la IA quedés bé, sinó que no digués res que no fos cert. La solució va ser no deixar-li marge: abans de cada petició, un mòdul del costat del servidor recorre tot el que hi ha publicat a `content/` (perfil, tecnologies, projectes i blog) i ho converteix en un text pla que s'envia com l'única font de la resposta. Aquí també hi entra una cosa que no és a les fitxes de projecte però sí al meu CV: quines experiències van ser pràctiques i des de quan faig projectes pel meu compte, perquè no les confongui amb una feina.
+
+Les instruccions del sistema fan la resta: descriure requisits sense jutjar la persona, no deduir detalls que la fitxa no diu i citar els projectes pel seu títol, mai pel seu identificador intern. El curiós és que les primeres respostes van necessitar ajustos: amb una oferta que no encaixava, la IA va arribar a escriure que jo "no era un candidat adequat". Vaig haver de demanar-li explícitament que descrivís la manca de requisits, no la persona.
+
+## Un model de reserva per si el gratuït se satura
+
+Faig servir el pla gratuït de l'API de Gemini, així que la petició havia de sobreviure al fet que el model estigui saturat o sense quota. Si el model principal falla amb un codi que val la pena reintentar, la mateixa crida prova amb el següent:
+
+```ts
+const MODELS = ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"];
+const REINTENTABLES = new Set([429, 500, 502, 503, 504]);
+
+for (const model of MODELS) {
+  const res = await fetch(`${URL_API}/${model}:generateContent`, { method: "POST", body: cos(model) });
+  if (res.ok) return await res.json();
+  if (!REINTENTABLES.has(res.status)) throw new ErrorIA("error");
+  // continua amb el següent model
+}
+```
+
+La resposta es demana sempre en JSON amb un esquema fix, així que cada camp (el nivell d'encaix, els requisits que compleixo, els projectes que ho demostren) arriba ja estructurat i es valida amb `zod` abans de mostrar-se.
+
+## Que ningú la faci servir per a una altra cosa
+
+Com que és gratuïta i pública, li calien límits: només accepta peticions que vénen de la meva pròpia web, un camp ocult detecta bots que emplenen formularis automàticament i cada visitant té un límit de consultes per minut i per dia. I per si algú intenta fer-la servir per a una altra cosa, les instruccions li prohibeixen explícitament sortir del paper d'assistent del portfolio, encara que li ho demanin directament.
+
+El resultat són dues pàgines que faig servir jo mateix abans d'escriure a una empresa: enganxo l'oferta, veig què em falta i decideixo si val la pena. Que la mateixa eina em servís per a això era la prova que funcionava.

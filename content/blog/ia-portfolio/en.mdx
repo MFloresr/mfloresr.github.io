@@ -1,0 +1,42 @@
+---
+borrador: true
+titulo: An AI that only tells the truth about my profile
+resumen: I added an AI to my portfolio that compares job offers with my experience and answers questions about my profile, without inventing anything that isn't published.
+fecha: 2026-09-25
+categoria: ia
+etiquetas: [gemini, nextjs, seguridad]
+destacado: true
+proyectos: []
+---
+
+A recruiter opening my portfolio has to read through several project sheets to work out whether I fit their offer. I wanted to save them that work without falling into what many "about me" chatbots do: an AI that overstates what it knows and stays quiet about what I don't have. So I added two features to [/ask](/en/ask): **Do I fit your offer?**, which compares a job ad with my profile, and **Ask my portfolio**, a short chat about my experience.
+
+## Making it unable to invent
+
+The condition that actually mattered to me wasn't that the AI sound good — it was that it never say anything untrue. The solution was to leave it no room to do so: before every request, a server-side module walks everything published under `content/` (profile, technologies, projects and blog) and turns it into plain text sent as the only source for the answer. That also covers something that isn't in the project sheets but is in my CV: which roles were internships and since when I've been building projects on my own, so it never mistakes one for the other.
+
+The system instructions do the rest: describe requirements without judging the person, never infer details the sheet doesn't state, and cite projects by their title, never by their internal id. The interesting part is that the first answers needed fixing: given an offer that didn't fit, the AI went as far as writing that I "was not a suitable candidate." I had to explicitly ask it to describe the missing requirements, not the person.
+
+## A fallback model for when the free tier is overloaded
+
+I use the free tier of the Gemini API, so the request had to survive the model being overloaded or out of quota. If the main model fails with a retryable status, the same call tries the next one:
+
+```ts
+const MODELS = ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"];
+const RETRYABLE = new Set([429, 500, 502, 503, 504]);
+
+for (const model of MODELS) {
+  const res = await fetch(`${API_URL}/${model}:generateContent`, { method: "POST", body: body(model) });
+  if (res.ok) return await res.json();
+  if (!RETRYABLE.has(res.status)) throw new AiError("failed");
+  // move on to the next model
+}
+```
+
+The answer is always requested as JSON against a fixed schema, so every field (the fit level, the requirements I meet, the projects that prove it) arrives already structured and gets validated with `zod` before it's shown.
+
+## Keeping it from being used for anything else
+
+Since it's free and public, it needed limits: it only accepts requests coming from my own site, a hidden field catches bots that auto-fill forms, and each visitor has a cap on requests per minute and per day. And in case someone tries to use it for something else, the instructions explicitly forbid it from stepping outside the portfolio-assistant role, even if asked directly.
+
+The result is two pages I use myself before writing to a company: I paste the offer, see what's missing, and decide whether it's worth it. Having the same tool useful for that was the proof it worked.
