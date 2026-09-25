@@ -23,6 +23,10 @@
     "contact": {
       "title": "Contacto",
       "description": "Cómo contactar con Mario Flores: email y perfiles profesionales."
+    },
+    "ask": {
+      "title": "Pregunta a la IA",
+      "description": "Comprueba con IA si Mario Flores encaja en tu oferta de empleo o pregunta lo que quieras sobre su perfil. Las respuestas salen solo del contenido de este portfolio."
     }
   },
   "nav": {
@@ -32,6 +36,7 @@
     "about": "Sobre mí",
     "technologies": "Tecnologías",
     "blog": "Blog",
+    "ask": "Pregunta a la IA",
     "contact": "Contacto",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
@@ -143,7 +148,8 @@
     "blogText": "Artículos sobre el desarrollo de estos proyectos, decisiones técnicas y lo aprendido.",
     "contactTitle": "¿Hablamos<acento>?</acento>",
     "contactEmail": "Escribir un email",
-    "blogAll": "Ver todos los artículos"
+    "blogAll": "Ver todos los artículos",
+    "ctaAsk": "¿Encajo en tu oferta? Compruébalo con IA"
   },
   "ui": {
     "screenshotPending": "Captura pendiente · se hará con datos de demostración",
@@ -213,6 +219,63 @@
       "sistemas": "Sistemas",
       "despliegue": "Despliegue",
       "ia": "IA aplicada"
+    }
+  },
+  "ai": {
+    "intro": "Dos formas rápidas de conocer mi perfil: compara tu oferta de empleo con mi experiencia o pregunta lo que quieras. La IA solo usa lo que está publicado en este portfolio y también te dirá lo que no tengo.",
+    "privacy": "Lo que escribes se envía a la API de Gemini (Google) para generar la respuesta y no se guarda en esta web. No incluyas datos personales. La IA puede equivocarse: ante cualquier duda, escríbeme.",
+    "fit": {
+      "section": "¿Encajo en tu oferta?",
+      "title": "Pega tu oferta y mira el encaje.",
+      "text": "Verás qué requisitos cumplo y con qué proyecto lo demuestro, cuáles cumplo en parte y cuáles no.",
+      "label": "Oferta de empleo",
+      "placeholder": "Pega aquí el texto de la oferta: puesto, requisitos, tecnologías…",
+      "tryExample": "Probar con un ejemplo",
+      "example": "Desarrollador/a Full-Stack (Barcelona, híbrido)\n\nBuscamos una persona para desarrollar y mantener nuestras aplicaciones web internas.\n\nRequisitos:\n- Experiencia con Python y Django.\n- Frontend con Vue.js o React.\n- Bases de datos PostgreSQL.\n- Diseño e integración de APIs REST.\n- Control de versiones con Git.\n\nSe valorará:\n- Docker y despliegue en la nube.\n- Conocimientos de sistemas Linux.\n- Inglés intermedio.",
+      "minLength": "Faltan {n} caracteres para poder analizarla.",
+      "length": "{n} / {max} caracteres",
+      "submit": "Analizar el encaje",
+      "loading": "Analizando…",
+      "notAnOffer": "El texto no parece una oferta de empleo. Pega el anuncio completo con el puesto y los requisitos.",
+      "level": {
+        "alto": "Encaje alto",
+        "medio": "Encaje medio",
+        "bajo": "Encaje bajo"
+      },
+      "meets": "Cumple",
+      "partial": "En parte",
+      "missing": "No aparece en su perfil",
+      "disclaimer": "Análisis automático a partir del portfolio. Confírmalo conmigo en una entrevista.",
+      "contact": "Escribir a Mario",
+      "mailSubject": "Oferta de empleo",
+      "mailSubjectRole": "Oferta: {puesto}"
+    },
+    "ask": {
+      "section": "Pregúntale a mi portfolio",
+      "title": "Pregunta lo que quieras.",
+      "text": "Experiencia, formación, tecnologías, proyectos o qué busca: la IA responde con lo que hay publicado aquí.",
+      "empty": "Prueba con alguna de estas preguntas o escribe la tuya:",
+      "suggestion1": "¿Qué experiencia tiene con Django?",
+      "suggestion2": "¿Qué proyecto demuestra mejor su trabajo full-stack?",
+      "suggestion3": "¿Qué busca en su próximo empleo?",
+      "conversation": "Conversación con la IA",
+      "you": "Tú",
+      "assistant": "IA",
+      "loading": "Pensando…",
+      "label": "Tu pregunta",
+      "placeholder": "Escribe tu pregunta…",
+      "submit": "Preguntar",
+      "clear": "Borrar"
+    },
+    "errors": {
+      "no-configurada": "La IA todavía no está activada en esta web. Mientras tanto, puedes escribirme por email.",
+      "limite": "La IA gratuita ha llegado a su límite por ahora. Prueba dentro de un rato o escríbeme por email.",
+      "saturada": "La IA está saturada en este momento. Prueba de nuevo en unos minutos.",
+      "fallo": "No se ha podido generar la respuesta. Prueba de nuevo o escríbeme por email.",
+      "origen": "Esta función solo se puede usar desde la propia web.",
+      "demasiadas": "Has hecho muchas consultas seguidas. Espera unos minutos y vuelve a probar.",
+      "datos": "El texto no es válido. Revisa que no sea demasiado corto ni demasiado largo.",
+      "red": "No hay conexión. Comprueba tu red y vuelve a probar."
     }
   }
 }

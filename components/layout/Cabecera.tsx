@@ -19,7 +19,7 @@ export default async function Cabecera() {
           <span className="font-mono text-xs text-tenue">full-stack · {ciudad}</span>
         </Link>
 
-        <nav aria-label={t("label")} className="hidden lg:block">
+        <nav aria-label={t("label")} className="hidden xl:block">
           <EnlacesNav />
         </nav>
 

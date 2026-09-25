@@ -23,6 +23,10 @@
     "contact": {
       "title": "Contact",
       "description": "How to contact Mario Flores: email and professional profiles."
+    },
+    "ask": {
+      "title": "Ask the AI",
+      "description": "Use AI to check whether Mario Flores fits your job offer, or ask anything about his profile. Answers come only from this portfolio's content."
     }
   },
   "nav": {
@@ -32,6 +36,7 @@
     "about": "About",
     "technologies": "Technologies",
     "blog": "Blog",
+    "ask": "Ask the AI",
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -143,7 +148,8 @@
     "blogText": "Articles on how these projects were built, technical decisions and lessons learned.",
     "contactTitle": "Let's <acento>talk</acento>.",
     "contactEmail": "Send an email",
-    "blogAll": "See all articles"
+    "blogAll": "See all articles",
+    "ctaAsk": "Do I fit your job offer? Check with AI"
   },
   "ui": {
     "screenshotPending": "Screenshot pending · will be taken with demo data",
@@ -213,6 +219,63 @@
       "sistemas": "Systems",
       "despliegue": "Deployment",
       "ia": "Applied AI"
+    }
+  },
+  "ai": {
+    "intro": "Two quick ways to get to know my profile: compare your job offer with my experience, or ask anything you like. The AI only uses what is published in this portfolio, and it will also tell you what I don't have.",
+    "privacy": "What you type is sent to the Gemini API (Google) to generate the answer and is not stored on this site. Don't include personal data. The AI can make mistakes: if in doubt, email me.",
+    "fit": {
+      "section": "Do I fit your offer?",
+      "title": "Paste your job offer and see the fit.",
+      "text": "You'll see which requirements I meet and which project proves it, which I meet in part and which I don't.",
+      "label": "Job offer",
+      "placeholder": "Paste the job ad here: role, requirements, technologies…",
+      "tryExample": "Try an example",
+      "example": "Full-Stack Developer (Barcelona, hybrid)\n\nWe're looking for someone to build and maintain our internal web applications.\n\nRequirements:\n- Experience with Python and Django.\n- Frontend with Vue.js or React.\n- PostgreSQL databases.\n- Designing and integrating REST APIs.\n- Version control with Git.\n\nNice to have:\n- Docker and cloud deployment.\n- Linux systems knowledge.\n- Intermediate English.",
+      "minLength": "{n} more characters needed to analyse it.",
+      "length": "{n} / {max} characters",
+      "submit": "Analyse the fit",
+      "loading": "Analysing…",
+      "notAnOffer": "This doesn't look like a job offer. Paste the full ad with the role and requirements.",
+      "level": {
+        "alto": "Strong fit",
+        "medio": "Partial fit",
+        "bajo": "Weak fit"
+      },
+      "meets": "Meets",
+      "partial": "In part",
+      "missing": "Not in his profile",
+      "disclaimer": "Automatic analysis based on the portfolio. Confirm it with me in an interview.",
+      "contact": "Email Mario",
+      "mailSubject": "Job offer",
+      "mailSubjectRole": "Job offer: {puesto}"
+    },
+    "ask": {
+      "section": "Ask my portfolio",
+      "title": "Ask anything.",
+      "text": "Experience, education, technologies, projects or what he's looking for: the AI answers with what is published here.",
+      "empty": "Try one of these questions or write your own:",
+      "suggestion1": "What experience does he have with Django?",
+      "suggestion2": "Which project best shows his full-stack work?",
+      "suggestion3": "What is he looking for in his next job?",
+      "conversation": "Conversation with the AI",
+      "you": "You",
+      "assistant": "AI",
+      "loading": "Thinking…",
+      "label": "Your question",
+      "placeholder": "Type your question…",
+      "submit": "Ask",
+      "clear": "Clear"
+    },
+    "errors": {
+      "no-configurada": "The AI isn't switched on for this site yet. In the meantime, you can email me.",
+      "limite": "The free AI has reached its limit for now. Try again later or email me.",
+      "saturada": "The AI is overloaded right now. Try again in a few minutes.",
+      "fallo": "The answer couldn't be generated. Try again or email me.",
+      "origen": "This feature can only be used from this website.",
+      "demasiadas": "You've sent a lot of requests in a row. Wait a few minutes and try again.",
+      "datos": "The text isn't valid. Check that it isn't too short or too long.",
+      "red": "No connection. Check your network and try again."
     }
   }
 }

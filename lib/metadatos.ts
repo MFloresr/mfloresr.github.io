@@ -3,7 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import type { Idioma } from "@/i18n/routing";
 import { NOMBRE, SITE_URL, alternativas, urlAbsoluta } from "./sitio";
 
-type ClavePagina = "home" | "projects" | "about" | "technologies" | "blog" | "contact";
+type ClavePagina = "home" | "projects" | "about" | "technologies" | "blog" | "ask" | "contact";
 
 /** Código Open Graph de cada idioma publicado. */
 const LOCALE_OG: Record<Idioma, string> = { es: "es_ES", en: "en_GB", ca: "ca_ES", fr: "fr_FR" };
