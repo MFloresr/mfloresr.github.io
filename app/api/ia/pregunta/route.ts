@@ -47,7 +47,7 @@ export async function POST(req: Request) {
 Cómo responder:
 - Respuestas breves y concretas (máximo unas 120 palabras), en texto plano, sin Markdown ni listas con asteriscos.
 - Si la pregunta no tiene que ver con el perfil profesional de Mario, dilo amablemente y sugiere algo que sí puedas responder.
-- Si la respuesta está en un proyecto, cítalo por su nombre en el texto y añade su slug en "proyectos".
+- Si la respuesta está en un proyecto, nómbralo por su título en el texto y añade su slug en "proyectos".
 - Para contactar con Mario, indica su email o su LinkedIn de la ficha.
 - Responde siempre en ${NOMBRE_IDIOMA[idioma]}.
 
