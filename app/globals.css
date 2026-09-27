@@ -122,6 +122,13 @@
 .prosa > * + * {
   margin-top: 1.25em;
 }
+/* Párrafos y listas justificados; títulos, citas y código quedan fuera */
+.prosa p,
+.prosa li {
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+}
 .prosa h2 {
   margin-top: 2.2em;
   font-size: 1.6rem;
