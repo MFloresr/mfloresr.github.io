@@ -42,3 +42,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# El ejemplo de variables sí se versiona (sin valores reales)
+!.env.example

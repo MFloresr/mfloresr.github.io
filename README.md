@@ -2,8 +2,18 @@
 
 Portfolio profesional de Mario Flores, desarrollador full-stack en Barcelona.
 
-> **Estado:** en reconstrucción en la rama `v2` (fase 5: sobre mí, tecnologías y contacto).
-> La web publicada sigue siendo la de `main` hasta que la nueva versión esté aprobada.
+**Web publicada:** https://mfloresr-portfolio.vercel.app · en castellano, inglés, catalán y francés.
+
+## Capturas
+
+<p align="center">
+  <img src="docs/capturas/inicio.jpg" width="640" alt="Página de inicio del portfolio con el titular, los botones de contacto y qué busca Mario">
+  <img src="docs/capturas/inicio-movil.jpg" width="200" alt="La página de inicio en móvil">
+</p>
+<p align="center">
+  <img src="docs/capturas/proyectos.jpg" width="420" alt="Listado de proyectos con sus tecnologías y enlaces">
+  <img src="docs/capturas/pregunta-ia.jpg" width="420" alt="Página Pregunta a la IA para comparar una oferta de empleo con el perfil">
+</p>
 
 ## Tecnología
 
@@ -12,23 +22,27 @@ Portfolio profesional de Mario Flores, desarrollador full-stack en Barcelona.
 - [next-intl](https://next-intl.dev): rutas con prefijo de idioma (`/es`, `/en`).
   El idioma se lee con `next/root-params`, y `proxy.ts` (el antiguo *middleware*) redirige `/` según el navegador.
 - Tailwind CSS 4, con modo claro y oscuro sin dependencias extra.
+- Página «Pregunta a la IA» (`/ask`): compara una oferta de empleo con el perfil o responde preguntas,
+  usando la API de Gemini y solo el contenido publicado en el portfolio.
 - Vercel para el despliegue.
 
 ## Estructura
 
 ```text
 app/
-  [locale]/            páginas por idioma: inicio, projects, about, technologies, blog, contact
+  [locale]/            páginas por idioma: inicio, projects, about, technologies, blog, ask, contact
     projects/[slug]/   fichas de proyecto (mi-jornada, sudokus, agroclima-consultores)
     blog/[slug]/       artículos
     blog/tag/[tag]/    artículos por etiqueta
     [...rest]/         cualquier otra ruta → 404 traducido
+  api/ia/              rutas de la IA (encaje con una oferta y preguntas)
   sitemap.ts, robots.ts
 components/layout/     cabecera, navegación, menú móvil, selector de idioma, tema y pie
 i18n/                  idiomas (routing.ts), navegación y configuración por petición
 messages/              textos de la interfaz: es.json, en.json
 lib/sitio.ts           URL base, secciones y hreflang
 lib/contenido/         lectura y validación del contenido (esquemas zod, MDX)
+lib/ia/                cliente de Gemini y preparación del contexto de la IA
 content/               perfil, catálogo de tecnologías y proyectos (ver abajo)
 scripts/               comprobar-contenido.ts
 proxy.ts               redirección por idioma
@@ -36,10 +50,10 @@ proxy.ts               redirección por idioma
 
 ## Idiomas
 
-- **Publicados:** castellano (`es`) e inglés (`en`).
-- **Previstos:** catalán (`ca`) y francés (`fr`). Para añadir uno basta con incluirlo en `i18n/routing.ts`,
-  crear `messages/<idioma>.json` y traducir el contenido. Las rutas no cambian: son las mismas en todos
-  los idiomas (`/es/projects`, `/en/projects`...).
+- **Publicados:** castellano (`es`), inglés (`en`), catalán (`ca`) y francés (`fr`).
+- Para añadir uno basta con incluirlo en `i18n/routing.ts`, crear `messages/<idioma>.json` y traducir
+  el contenido. Las rutas no cambian: son las mismas en todos los idiomas (`/es/projects`,
+  `/en/projects`...).
 
 ## Contenido
 
@@ -86,9 +100,12 @@ npm run contenido
 
 ## Variables de entorno
 
+En `.env.example` tienes un ejemplo con todas (sin valores reales).
+
 | Variable | Descripción |
 |---|---|
 | `OCULTAR_BORRADORES` | Con `1`, oculta los borradores del blog también fuera de producción (para probar). |
+| `GEMINI_API_KEY` | Clave de la API de Gemini (Google AI Studio) para «Pregunta a la IA». Sin ella, esa función no está disponible. Va en las variables de Vercel, nunca en el código. |
 | `SITE_URL` | URL pública, para las URL canónicas, el sitemap y los hreflang. Por defecto `https://mfloresr-portfolio.vercel.app`. Cambiarla es lo único necesario para pasar a un dominio propio. |
 
 ## Despliegue
