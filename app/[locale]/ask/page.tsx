@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import Encaje from "@/components/ia/Encaje";
 import Pregunta from "@/components/ia/Pregunta";
+import { Link } from "@/i18n/navigation";
 import { Etiqueta } from "@/components/ui/Basicos";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
 import { listarProyectos, obtenerPerfil } from "@/lib/contenido/leer";
@@ -23,7 +24,12 @@ export default async function PaginaIA() {
       <header className="flex max-w-3xl flex-col gap-5">
         <h1 className="text-[44px] font-semibold tracking-[-0.03em] sm:text-6xl">{tm("title")}</h1>
         <p className="text-lg leading-relaxed text-tenue sm:text-xl">{t("intro")}</p>
-        <p className="text-sm leading-relaxed text-tenue">{t("privacy")}</p>
+        <p className="text-sm leading-relaxed text-tenue">
+          {t("privacy")}{" "}
+          <Link href="/privacy" className="underline underline-offset-4 hover:text-texto">
+            {t("privacyLink")}
+          </Link>
+        </p>
       </header>
 
       <section aria-labelledby="t-encaje" className="grid gap-8 lg:grid-cols-[4fr_7fr] lg:gap-16">

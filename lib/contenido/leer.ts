@@ -4,11 +4,14 @@ import { parse as parseYaml } from "yaml";
 import { z } from "zod";
 import {
   esquemaArticulo,
+  esquemaLegal,
   esquemaDatosProyecto,
   esquemaPerfil,
   esquemaTecnologias,
   esquemaTextoProyecto,
   type Articulo,
+  type DatosLegal,
+  type PaginaLegal,
   type DatosProyecto,
   type IdiomaContenido,
   type Perfil,
@@ -216,4 +219,14 @@ export function textoArticulo(entrada: EntradaBlog, idioma: IdiomaContenido) {
   if (propio) return { texto: propio, idioma, traducido: true };
   const [otroIdioma, texto] = Object.entries(entrada.textos)[0] as [IdiomaContenido, ArticuloIdioma];
   return { texto, idioma: otroIdioma, traducido: false };
+}
+
+// ---------- Páginas legales ----------
+
+/** Texto de una página legal (aviso legal, privacidad o cookies) en un idioma. */
+export function obtenerLegal(pagina: PaginaLegal, idioma: IdiomaContenido): { datos: DatosLegal; cuerpo: string } {
+  const archivo = path.join(RAIZ, "legal", pagina, `${idioma}.mdx`);
+  if (!existsSync(archivo)) throw new ContenidoInvalido(`Falta la página legal: ${path.relative(process.cwd(), archivo)}`);
+  const { datos, cuerpo } = separarFrontmatter(archivo);
+  return { datos: validar(esquemaLegal, datos, archivo), cuerpo };
 }
