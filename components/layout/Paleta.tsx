@@ -94,6 +94,7 @@ export default function Paleta({ datos }: { datos: DatosPaleta }) {
         ejecutar: () => router.replace(`${ruta}${window.location.search}` as never, { locale: i.codigo as "es" | "en" | "ca" | "fr" }),
       });
     }
+    acc.push({ id: "mensaje", grupo: "actions", titulo: textos.sendMessage, ejecutar: () => router.push("/contact#formulario" as never) });
     acc.push({ id: "cv", grupo: "actions", titulo: textos.cv, ejecutar: () => window.open(cv, "_blank", "noopener") });
     if (contacto.email) {
       const email = contacto.email;

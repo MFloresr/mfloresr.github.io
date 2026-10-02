@@ -48,7 +48,7 @@ export async function construirDatosPaleta(): Promise<DatosPaleta> {
       .map((tec) => ({ id: `t-${tec.id}`, grupo: "technologies" as const, titulo: nombreTecnologia(tec, idioma), detalle: tg(tec.grupo), href: `/technologies?tec=${tec.id}` })),
   ];
 
-  const claves = ["open", "title", "placeholder", "hint", "empty", "count", "groupPages", "groupProjects", "groupArticles", "groupTechnologies", "groupActions", "themeLight", "themeDark", "language", "cv", "copyEmail", "emailCopied", "emailFailed", "github", "linkedin", "verbs"];
+  const claves = ["open", "title", "placeholder", "hint", "empty", "count", "groupPages", "groupProjects", "groupArticles", "groupTechnologies", "groupActions", "themeLight", "themeDark", "language", "cv", "sendMessage", "copyEmail", "emailCopied", "emailFailed", "github", "linkedin", "verbs"];
   return {
     elementos,
     idiomas: routing.locales.map((codigo) => ({ codigo, nombre: tl(codigo) })),

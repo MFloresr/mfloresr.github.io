@@ -96,6 +96,7 @@
     }
   },
   "palette": {
+    "sendMessage": "Enviar-me un missatge",
     "open": "Cerca i comandes",
     "title": "Cerca i comandes",
     "placeholder": "Cerca una pàgina, un projecte o escriu una comanda…",

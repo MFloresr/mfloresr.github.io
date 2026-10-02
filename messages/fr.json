@@ -96,6 +96,7 @@
     }
   },
   "palette": {
+    "sendMessage": "M'envoyer un message",
     "open": "Recherche et commandes",
     "title": "Recherche et commandes",
     "placeholder": "Cherchez une page, un projet ou tapez une commande…",
