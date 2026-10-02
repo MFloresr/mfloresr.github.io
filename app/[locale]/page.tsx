@@ -4,15 +4,17 @@ import DatosEstructurados from "@/components/DatosEstructurados";
 import DiagramaPerfil from "@/components/inicio/DiagramaPerfil";
 import EnlaceCV from "@/components/EnlaceCV";
 import Pendiente from "@/components/Pendiente";
-import TarjetaProyecto from "@/components/proyectos/TarjetaProyecto";
+import { Consola, ListaProyectos, PanelConexiones, ProveedorExplorar, type DatosInicio } from "@/components/inicio/Explorar";
 import Boton from "@/components/ui/Boton";
 import { Chips, Etiqueta, ListaGuion } from "@/components/ui/Basicos";
 import { Externo, Flecha } from "@/components/ui/Iconos";
 import { Link } from "@/i18n/navigation";
 import { GRUPOS, type IdiomaContenido } from "@/lib/contenido/esquemas";
-import { enIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
+import { capturasEnIdioma, enIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
 import { listarArticulos, listarProyectos, obtenerPerfil, obtenerTecnologias } from "@/lib/contenido/leer";
 import { metadatosPagina } from "@/lib/metadatos";
+import { CV_PDF } from "@/lib/sitio";
+import type { Idioma } from "@/i18n/routing";
 
 export const generateMetadata = () => metadatosPagina("home", "");
 
@@ -38,85 +40,116 @@ export default async function Inicio() {
     (g) => g.nombres.length,
   );
 
-  const acento = (texto: React.ReactNode) => <span className="font-serif whitespace-nowrap text-acento">{texto}</span>;
+  const tproy = await getTranslations("projects");
+  const tecnologias = obtenerTecnologias();
+  const usadas = new Set(proyectos.flatMap((p) => p.datos.tecnologias));
+  const claves = ["panelTitle", "panelHint", "panelRegion", "panelUses", "panelTech", "panelOpen", "panelOpenAll", "listIdle", "listFilter", "listClear", "conTitle", "conOut", "conPlaceholder", "conGreeting", "conHelp", "conUnknown", "conNeedTech", "conNoTech", "conUseOk", "conNoProjects", "conCv"];
+  const datosInicio: DatosInicio = {
+    proyectos: proyectos.map((p) => {
+      const texto = p.textos[idioma]?.datos;
+      const captura = capturasEnIdioma(p.datos, idioma)[0];
+      return {
+        slug: p.slug,
+        titulo: texto?.titulo ?? p.textos.es!.datos.titulo,
+        estado: tproy(`status.${p.datos.estado}`),
+        estadoClave: p.datos.estado,
+        anio: p.datos.anio,
+        resumen: texto?.resumen ?? null,
+        contexto: texto?.contexto ?? null,
+        tecnologias: p.datos.tecnologias,
+        demo: p.datos.demo?.url ?? null,
+        repositorio: p.datos.repositorio ?? null,
+        captura: captura ? { src: `/proyectos/${p.slug}/${captura.archivo}`, alt: captura.alt } : null,
+      };
+    }),
+    tecnologias: tecnologias.filter((tec) => usadas.has(tec.id)).map((tec) => ({ id: tec.id, nombre: nombreTecnologia(tec, idioma) })),
+    textos: Object.fromEntries(claves.map((k) => [k, (t.raw as (clave: string) => string)(k)])),
+    ordenes: { help: t.raw("cmd.help"), projects: t.raw("cmd.projects"), stack: t.raw("cmd.stack"), use: t.raw("cmd.use"), path: t.raw("cmd.path"), contact: t.raw("cmd.contact"), cv: t.raw("cmd.cv"), clear: t.raw("cmd.clear") } as DatosInicio["ordenes"],
+    etiquetas: { verFicha: tproy("viewProject"), codigo: tproy("code"), demo: tproy("demo") },
+    recorrido: [
+      ...perfil.formacion.map((f) => `${f.fechas ?? ""} ${enIdioma(f.titulo, idioma) ?? ""}${f.centro ? `, ${f.centro}` : ""}`.trim()),
+      ...perfil.experiencia.map((x) => `${enIdioma(x.fechas, idioma) ?? ""} ${enIdioma(x.puesto, idioma) ?? ""}, ${x.empresa}`.trim()),
+    ],
+    contacto: perfil.contacto,
+    cv: CV_PDF[idioma as Idioma],
+  };
   const seccion = "border-t border-linea";
 
   return (
     <>
       <DatosEstructurados idioma={idioma} />
-      {/* Presentación */}
-      <section className="contenedor grid gap-10 py-14 md:py-20 lg:grid-cols-[7fr_4fr] lg:items-end lg:gap-16">
-        <div className="flex flex-col gap-6">
-          <span className="inline-flex items-center gap-2 font-mono text-xs text-tenue sm:text-[13px]">
-            <span aria-hidden="true" className="size-2 rounded-full bg-acento" />
-            {t("status", { ciudad })}
-          </span>
-          <h1 className="text-[42px] leading-[1.04] font-semibold tracking-[-0.03em] sm:text-6xl lg:text-[76px]">
-            {t.rich("title", { nombre: perfil.nombre, br: () => <br />, acento })}
-          </h1>
-          {mensaje ? (
-            <p className="max-w-2xl text-[17px] leading-relaxed text-tenue sm:text-xl">{mensaje}</p>
-          ) : (
-            <Pendiente>{tp("field")}</Pendiente>
-          )}
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <Boton href="/projects" flecha>
-              {t("ctaProjects")}
-            </Boton>
-            <Boton href="/contact" variante="secundario">
-              {t("ctaContact")}
-            </Boton>
-            <div className="flex flex-wrap items-center gap-4 sm:ml-2">
-              {github && (
-                <a href={github} target="_blank" rel="me noopener" className="inline-flex items-center gap-1 text-[15px] font-medium hover:text-acento">
-                  GitHub
-                  <Externo />
-                </a>
-              )}
-              <EnlaceCV />
+      <ProveedorExplorar datos={datosInicio}>
+        {/* Presentación y consola */}
+        <section className="contenedor grid gap-10 py-12 md:py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:items-center lg:gap-14">
+          <div className="flex flex-col gap-6">
+            <span className="inline-flex items-center gap-2 text-[13px] text-tenue">
+              <span aria-hidden="true" className="size-2 rounded-full bg-exito" />
+              {perfil.nombre} · {enIdioma(perfil.rol, idioma)} · {t("status", { ciudad })}
+            </span>
+            <h1 className="text-[34px] leading-[1.1] font-bold text-balance sm:text-5xl lg:text-[56px]">{t("title")}</h1>
+            {mensaje ? <p className="max-w-2xl text-lg leading-relaxed sm:text-xl">{mensaje}</p> : <Pendiente>{tp("field")}</Pendiente>}
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Boton href="/projects" flecha>
+                {t("ctaProjects")}
+              </Boton>
+              <Boton href="/contact" variante="secundario">
+                {t("ctaContact")}
+              </Boton>
+              <div className="flex flex-wrap items-center gap-4 sm:ml-2">
+                {github && (
+                  <a href={github} target="_blank" rel="me noopener" className="inline-flex min-h-11 items-center gap-1 text-[15px] font-medium hover:text-acento">
+                    GitHub
+                    <Externo />
+                  </a>
+                )}
+                <EnlaceCV />
+              </div>
             </div>
-          </div>
-          <Link href="/ask" className="inline-flex items-center gap-1.5 self-start text-[15px] font-medium text-acento">
-            {t("ctaAsk")}
-            <Flecha />
-          </Link>
-        </div>
-        <aside className="flex flex-col gap-3.5 rounded-2xl border border-linea bg-superficie p-5 sm:p-6">
-          <h2 className="font-mono text-[13px] font-normal text-tenue">{t("lookingFor")}</h2>
-          {busca ? <ListaGuion items={busca} className="text-[15px]" /> : <Pendiente>{tp("field")}</Pendiente>}
-        </aside>
-      </section>
-
-      {/* Proyectos */}
-      <section className={seccion} aria-labelledby="t-proyectos">
-        <div className="contenedor flex flex-col gap-8 py-14 md:py-18">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="flex flex-col gap-2.5">
-              <Etiqueta numero="01">{t("projectsLabel")}</Etiqueta>
-              <h2 id="t-proyectos" className="text-[28px] font-semibold tracking-tight sm:text-4xl lg:text-[40px]">
-                {(await getTranslations("projects"))("intro")}
-              </h2>
-            </div>
-            <Link href="/projects" className="inline-flex items-center gap-1.5 text-[15px] font-medium text-acento">
-              {t("allProjects")}
+            <Link href="/ask" className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-medium text-acento">
+              {t("ctaAsk")}
               <Flecha />
             </Link>
           </div>
-          <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {proyectos.map((p) => (
-              <li key={p.slug}>
-                <TarjetaProyecto proyecto={p} idioma={idioma} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+          <Consola />
+        </section>
+
+        {/* Cuadro de conexiones */}
+        <section className="contenedor pb-12 md:pb-16">
+          <PanelConexiones />
+        </section>
+
+        <section className="contenedor pb-12 md:pb-16">
+          <aside className="flex flex-col gap-3.5 rounded-2xl border border-linea bg-superficie p-5 sm:p-6">
+            <h2 className="text-[15px] font-semibold">{t("lookingFor")}</h2>
+            {busca ? <ListaGuion items={busca} className="text-[15px]" /> : <Pendiente>{tp("field")}</Pendiente>}
+          </aside>
+        </section>
+
+        {/* Proyectos */}
+        <section id="proyectos" className="border-t border-linea" aria-labelledby="t-proyectos">
+          <div className="contenedor flex flex-col gap-8 py-14 md:py-18">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div className="flex flex-col gap-2.5">
+                <Etiqueta>{t("projectsLabel")}</Etiqueta>
+                <h2 id="t-proyectos" className="text-[26px] font-bold sm:text-3xl lg:text-4xl">
+                  {tproy("intro")}
+                </h2>
+              </div>
+              <Link href="/projects" className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento">
+                {t("allProjects")}
+                <Flecha />
+              </Link>
+            </div>
+            <ListaProyectos />
+          </div>
+        </section>
+      </ProveedorExplorar>
 
       {/* Lo que aporto */}
       <section className={seccion} aria-labelledby="t-aporto">
         <div className="contenedor flex flex-col gap-9 py-14 md:py-18">
           <div className="flex flex-col gap-2.5">
-            <Etiqueta numero="02">{t("offerLabel")}</Etiqueta>
+            <Etiqueta>{t("offerLabel")}</Etiqueta>
             <h2 id="t-aporto" className="max-w-3xl text-[28px] font-semibold tracking-tight sm:text-4xl lg:text-[40px]">
               {t("offerTitle")}
             </h2>
@@ -129,10 +162,10 @@ export default async function Inicio() {
             </div>
             <div className="flex flex-col gap-3.5 rounded-2xl bg-chip p-6 sm:p-7">
               <h3 className="text-[22px] font-semibold">
-                {t("sysTitle")} <span className="font-mono text-[13px] font-normal text-tenue">· {t("sysNote")}</span>
+                {t("sysTitle")} <span className="text-[13px] font-normal text-tenue">· {t("sysNote")}</span>
               </h3>
               {complementario ? <ListaGuion items={complementario.slice(0, 4)} className="text-[15px]" /> : <Pendiente>{tp("field")}</Pendiente>}
-              <Link href="/about" className="text-[15px] font-medium text-acento">
+              <Link href="/about" className="inline-flex min-h-11 items-center text-[15px] font-medium text-acento">
                 {t("seeAbout")}
               </Link>
             </div>
@@ -144,12 +177,12 @@ export default async function Inicio() {
       <section className={seccion} aria-labelledby="t-tecnologias">
         <div className="contenedor grid gap-8 py-14 md:py-18 lg:grid-cols-[4fr_7fr] lg:gap-16">
           <div className="flex flex-col gap-3.5">
-            <Etiqueta numero="03">{t("techLabel")}</Etiqueta>
+            <Etiqueta>{t("techLabel")}</Etiqueta>
             <h2 id="t-tecnologias" className="text-[28px] font-semibold tracking-tight sm:text-4xl">
               {t("techTitle")}
             </h2>
             <p className="leading-relaxed text-tenue">{t("techText")}</p>
-            <Link href="/technologies" className="inline-flex items-center gap-1.5 text-[15px] font-medium text-acento">
+            <Link href="/technologies" className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento">
               {t("techLink")}
               <Flecha />
             </Link>
@@ -171,7 +204,7 @@ export default async function Inicio() {
       <section className={seccion} aria-labelledby="t-blog">
         <div className="contenedor grid gap-6 py-12 md:py-14 lg:grid-cols-[4fr_7fr] lg:gap-16">
           <div className="flex flex-col gap-3.5">
-            <Etiqueta numero="04">{t("blogLabel")}</Etiqueta>
+            <Etiqueta>{t("blogLabel")}</Etiqueta>
             <h2 id="t-blog" className="text-[28px] font-semibold tracking-tight sm:text-4xl">
               {t("blogTitle")}
             </h2>
@@ -185,7 +218,7 @@ export default async function Inicio() {
                   </li>
                 ))}
               </ul>
-              <Link href="/blog" className="inline-flex items-center gap-1.5 self-start text-[15px] font-medium text-acento">
+              <Link href="/blog" className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-medium text-acento">
                 {t("blogAll")}
                 <Flecha />
               </Link>
@@ -203,9 +236,9 @@ export default async function Inicio() {
       <section className="contenedor pt-4 pb-14 md:pb-18">
         <div className="flex flex-col gap-6 rounded-3xl bg-invertido p-7 text-sobre-invertido sm:p-10 md:flex-row md:items-center md:justify-between lg:p-14">
           <div className="flex flex-col gap-3">
-            <h2 className="text-[34px] font-semibold tracking-tight sm:text-5xl lg:text-[52px]">{t.rich("contactTitle", { acento: (x) => <span className="font-serif">{x}</span> })}</h2>
+            <h2 className="text-[34px] font-semibold tracking-tight sm:text-5xl lg:text-[52px]">{t.rich("contactTitle", { acento: (x) => x })}</h2>
             {email && (
-              <a href={`mailto:${email}`} className="font-mono text-[15px] sm:text-xl">
+              <a href={`mailto:${email}`} className="inline-flex min-h-11 items-center text-[15px] sm:text-xl">
                 {email}
               </a>
             )}

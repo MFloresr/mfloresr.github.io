@@ -4,24 +4,35 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /*
- * Diseño aprobado en los bocetos (fase 3): fondo blanco roto, tinta casi negra y un único acento.
+ * Rediseño futurista: azul profundo, acento azul eléctrico y cables luminosos (cable) como detalle.
  * Para cambiar el acento basta con --acento y --acento-suave en ambos modos.
  */
 :root {
-  --fondo: #f7f6f3;
+  --fondo: #ebf0ff;
   --superficie: #ffffff;
-  --texto: #16181d;
-  --tenue: #595e69;
-  --linea: #e3e1db;
-  --chip: #efede8;
-  --acento: #2b59c3;
-  --acento-suave: #e8eefb;
+  --texto: #0b1440;
+  --tenue: #43538f;
+  --linea: #b8c5f2;
+  --chip: #dce5ff;
+  --acento: #2646c9;
+  --acento-suave: #dce5ff;
   --sobre-acento: #ffffff;
-  --invertido: #16181d;
-  --sobre-invertido: #f7f6f3;
+  --invertido: #0b1440;
+  --sobre-invertido: #ebf0ff;
   --pendiente-fondo: #fff4e5;
   --pendiente-borde: #d9a55e;
   --pendiente-texto: #7a4309;
+  --borde-control: #6b7bbd;
+  --cable: #2646c9;
+  --cable-2: #8a2be2;
+  --cable-relleno: #7fa2ff;
+  --sobre-cable: #040a24;
+  --barra: #0b1440;
+  --sobre-barra: #e8eeff;
+  --terminal: #0b1440;
+  --brillo: rgba(38, 70, 201, 0.16);
+  --seleccion: #dce5ff;
+  --rejilla: rgba(50, 80, 200, 0.08);
   --exito: #1e7047;
   --exito-suave: #e6f4ec;
   --falta: #a3372f;
@@ -29,20 +40,31 @@
 }
 
 [data-theme="dark"] {
-  --fondo: #111214;
-  --superficie: #17191c;
-  --texto: #ecedee;
-  --tenue: #9ba1ab;
-  --linea: #2a2d32;
-  --chip: #1f2226;
-  --acento: #8fb0ff;
-  --acento-suave: #1b2438;
-  --sobre-acento: #111214;
-  --invertido: #ecedee;
-  --sobre-invertido: #111214;
+  --fondo: #071033;
+  --superficie: #101c52;
+  --texto: #e8eeff;
+  --tenue: #a9b8f0;
+  --linea: #2a3c8f;
+  --chip: #1b2a6b;
+  --acento: #6c9bff;
+  --acento-suave: #1b2e85;
+  --sobre-acento: #040a24;
+  --invertido: #e8eeff;
+  --sobre-invertido: #071033;
   --pendiente-fondo: #2a2116;
   --pendiente-borde: #9a6a2c;
   --pendiente-texto: #f2c38a;
+  --borde-control: #5d73d6;
+  --cable: #6c9bff;
+  --cable-2: #b97bff;
+  --cable-relleno: #6c9bff;
+  --sobre-cable: #040a24;
+  --barra: #040a24;
+  --sobre-barra: #e8eeff;
+  --terminal: #040a24;
+  --brillo: rgba(108, 155, 255, 0.3);
+  --seleccion: #1b2e85;
+  --rejilla: rgba(120, 150, 255, 0.1);
   --exito: #7fd3a6;
   --exito-suave: #16281f;
   --falta: #f2a29b;
@@ -64,13 +86,23 @@
   --color-pendiente-fondo: var(--pendiente-fondo);
   --color-pendiente-borde: var(--pendiente-borde);
   --color-pendiente-texto: var(--pendiente-texto);
+  --color-borde-control: var(--borde-control);
+  --color-cable: var(--cable);
+  --color-cable-2: var(--cable-2);
+  --color-cable-relleno: var(--cable-relleno);
+  --color-sobre-cable: var(--sobre-cable);
+  --color-barra: var(--barra);
+  --color-sobre-barra: var(--sobre-barra);
+  --color-terminal: var(--terminal);
+  --color-seleccion: var(--seleccion);
   --color-exito: var(--exito);
   --color-exito-suave: var(--exito-suave);
   --color-falta: var(--falta);
   --color-falta-suave: var(--falta-suave);
   --font-sans: var(--fuente-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--fuente-mono), ui-monospace, monospace;
-  --font-serif: var(--fuente-serif), Georgia, serif;
+  --font-mono: var(--fuente-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-codigo: var(--fuente-codigo), ui-monospace, monospace;
+  --font-display: var(--fuente-display), var(--fuente-sans), ui-sans-serif, sans-serif;
 }
 
 /* Ancho y márgenes comunes de las secciones */
@@ -97,6 +129,23 @@
   body {
     @apply bg-fondo font-sans text-texto antialiased;
   }
+  h1,
+  h2 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+    overflow-wrap: break-word;
+    letter-spacing: 0.01em;
+  }
+  button,
+  a,
+  summary,
+  input {
+    touch-action: manipulation;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
   :focus-visible {
     outline: 2px solid var(--acento);
     outline-offset: 3px;
@@ -105,6 +154,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
@@ -172,7 +224,7 @@
   border-radius: 6px;
   background: var(--chip);
   padding: 0.15em 0.4em;
-  font-family: var(--font-mono);
+  font-family: var(--font-codigo);
   font-size: 0.88em;
 }
 .prosa pre {
@@ -181,7 +233,7 @@
   border-radius: 12px;
   background: var(--superficie);
   padding: 1em 1.2em;
-  font-family: var(--font-mono);
+  font-family: var(--font-codigo);
   font-size: 0.875rem;
   line-height: 1.65;
 }
@@ -191,4 +243,43 @@
 }
 [data-theme="dark"] .prosa pre span {
   color: var(--shiki-dark);
+}
+
+/* ---------- Cuadro de conexiones y consola (inicio) ---------- */
+.cuadro {
+  background-image:
+    radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--brillo), transparent 70%),
+    linear-gradient(var(--rejilla) 1px, transparent 1px), linear-gradient(90deg, var(--rejilla) 1px, transparent 1px);
+  background-size: auto, 28px 28px, 28px 28px;
+  box-shadow: 0 0 48px -16px var(--brillo);
+}
+.cable {
+  fill: none;
+  stroke: url(#degradado-cable);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px var(--brillo));
+}
+.cable-anima {
+  stroke-dasharray: var(--largo);
+  stroke-dashoffset: var(--largo);
+  animation: enchufar 0.55s ease-out forwards;
+}
+.pulso {
+  fill: var(--cable-relleno);
+  filter: drop-shadow(0 0 5px var(--cable-relleno));
+}
+@keyframes enchufar {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes abrir {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+.ficha-abierta {
+  animation: abrir 0.3s ease-out;
 }

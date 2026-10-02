@@ -12,11 +12,11 @@ export default async function Cabecera() {
   const ciudad = perfil.ubicacion.split(",")[0].toLowerCase();
 
   return (
-    <header className="relative border-b border-linea">
-      <div className="contenedor flex h-16 items-center justify-between gap-4 md:h-19">
-        <Link href="/" className="flex flex-col gap-0.5">
-          <span className="text-[17px] font-semibold tracking-tight">{perfil.nombre}</span>
-          <span className="font-mono text-xs text-tenue">full-stack · {ciudad}</span>
+    <header className="sticky top-0 z-40 border-b-2 border-cable bg-barra text-sobre-barra shadow-[0_6px_28px_-10px_var(--brillo)]">
+      <div className="contenedor flex min-h-16 flex-wrap items-center justify-between gap-x-4 gap-y-2 py-2 md:min-h-19">
+        <Link href="/" className="flex min-h-11 flex-col justify-center gap-0.5">
+          <span className="font-display text-sm font-bold tracking-wide whitespace-nowrap sm:text-base">{perfil.nombre}</span>
+          <span className="hidden text-xs opacity-70 sm:block">full-stack · {ciudad}</span>
         </Link>
 
         <nav aria-label={t("label")} className="hidden xl:block">
@@ -24,12 +24,17 @@ export default async function Cabecera() {
         </nav>
 
         <div className="flex items-center gap-0.5">
-          <SelectorIdioma />
+          <div className="hidden sm:block">
+            <SelectorIdioma />
+          </div>
           <BotonTema />
           <MenuMovil>
             <nav aria-label={t("label")}>
               <EnlacesNav vertical />
             </nav>
+            <div className="pt-3 sm:hidden">
+              <SelectorIdioma />
+            </div>
           </MenuMovil>
         </div>
       </div>

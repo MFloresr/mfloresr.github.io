@@ -1,12 +1,7 @@
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Exo_2, JetBrains_Mono, Orbitron } from "next/font/google";
 
 // Fuentes descargadas al compilar y servidas desde el propio sitio (sin peticiones a Google)
-export const geist = Geist({ subsets: ["latin"], variable: "--fuente-sans", display: "swap" });
-export const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--fuente-mono", display: "swap" });
-export const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: "italic",
-  variable: "--fuente-serif",
-  display: "swap",
-});
+export const orbitron = Orbitron({ subsets: ["latin"], variable: "--fuente-display", display: "swap" });
+export const exo2 = Exo_2({ subsets: ["latin"], variable: "--fuente-sans", display: "swap" });
+// Consola del inicio y código dentro de los artículos
+export const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--fuente-codigo", display: "swap" });

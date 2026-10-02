@@ -14,7 +14,7 @@ export default async function EnlaceCV({ className = "" }: { className?: string 
     <a
       href={CV_PDF[idioma]}
       download
-      className={`inline-flex items-center gap-1.5 text-[15px] font-medium hover:text-acento ${className}`}
+      className={`inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium hover:text-acento ${className}`}
     >
       {t("cvDownload")}
       <Descargar />
