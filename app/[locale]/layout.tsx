@@ -1,8 +1,10 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import Cabecera from "@/components/layout/Cabecera";
+import Paleta from "@/components/layout/Paleta";
 import Pie from "@/components/layout/Pie";
 import { routing } from "@/i18n/routing";
+import { construirDatosPaleta } from "@/lib/datosPaleta";
 import { exo2, jetbrainsMono, orbitron } from "../fuentes";
 import "../globals.css";
 
@@ -42,6 +44,7 @@ export default async function LayoutIdioma({ children }: LayoutProps<"/[locale]"
             {children}
           </main>
           <Pie />
+          <Paleta datos={await construirDatosPaleta()} />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -95,6 +95,55 @@
       }
     }
   },
+  "palette": {
+    "sendMessage": "M'envoyer un message",
+    "open": "Recherche et commandes",
+    "title": "Recherche et commandes",
+    "placeholder": "Cherchez une page, un projet ou tapez une commande…",
+    "hint": "↑ ↓ pour naviguer · Entrée pour choisir · Échap pour fermer",
+    "empty": "Rien ne correspond à « {q} ». Essayez un autre mot.",
+    "count": "{n} résultats",
+    "groupPages": "Pages",
+    "groupProjects": "Projets",
+    "groupArticles": "Articles",
+    "groupTechnologies": "Technologies",
+    "groupActions": "Actions",
+    "themeLight": "Passer au thème clair",
+    "themeDark": "Passer au thème sombre",
+    "language": "Passer en {idioma}",
+    "cv": "Télécharger le CV (PDF)",
+    "copyEmail": "Copier l'e-mail",
+    "emailCopied": "E-mail copié : {email}",
+    "emailFailed": "Copie impossible. L'e-mail est {email}",
+    "github": "Ouvrir GitHub",
+    "linkedin": "Ouvrir LinkedIn",
+    "verbs": "aller,ouvrir,voir,va"
+  },
+  "filters": {
+    "search": "Chercher un projet",
+    "status": "Statut",
+    "technology": "Technologie",
+    "all": "Tous",
+    "allTech": "Toutes",
+    "count": "{n} projets sur {total}",
+    "clear": "Retirer les filtres",
+    "noResults": "Aucun projet ne correspond à ces filtres."
+  },
+  "article": {
+    "toc": "Dans cet article",
+    "copy": "Copier",
+    "copied": "Copié",
+    "copyCode": "Copier le code",
+    "progress": "Progression de la lecture"
+  },
+  "gallery": {
+    "open": "Agrandir la capture : {alt}",
+    "close": "Fermer",
+    "prev": "Capture précédente",
+    "next": "Capture suivante",
+    "counter": "{n} sur {total}",
+    "title": "Captures"
+  },
   "pending": {
     "label": "En attente",
     "contact": "E-mail et profils professionnels : à confirmer (phase 5).",
@@ -232,6 +281,8 @@
     "languages": "Langues"
   },
   "technologies": {
+    "mapTitle": "Carte des projets et des technologies",
+    "mapIntro": "Choisissez un projet pour voir les technologies qu'il utilise, ou survolez une technologie pour voir dans quels projets je l'ai utilisée.",
     "intro": "Regroupées par usage et reliées aux projets où je les ai appliquées. Ni pourcentages ni logos isolés.",
     "noProject": "Connaissances · pas encore de projet public",
     "alsoTitle": "Je les ai aussi utilisées dans mes projets",

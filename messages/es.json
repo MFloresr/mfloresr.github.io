@@ -95,6 +95,55 @@
       }
     }
   },
+  "palette": {
+    "sendMessage": "Escribirme un mensaje",
+    "open": "Buscar y comandos",
+    "title": "Buscar y comandos",
+    "placeholder": "Busca una página, un proyecto o escribe un comando…",
+    "hint": "↑ ↓ para moverte · Enter para elegir · Esc para cerrar",
+    "empty": "Nada coincide con «{q}». Prueba con otra palabra.",
+    "count": "{n} resultados",
+    "groupPages": "Páginas",
+    "groupProjects": "Proyectos",
+    "groupArticles": "Artículos",
+    "groupTechnologies": "Tecnologías",
+    "groupActions": "Acciones",
+    "themeLight": "Cambiar a tema claro",
+    "themeDark": "Cambiar a tema oscuro",
+    "language": "Cambiar a {idioma}",
+    "cv": "Descargar CV (PDF)",
+    "copyEmail": "Copiar email",
+    "emailCopied": "Email copiado: {email}",
+    "emailFailed": "No se pudo copiar. El email es {email}",
+    "github": "Abrir GitHub",
+    "linkedin": "Abrir LinkedIn",
+    "verbs": "ir,abrir,ver,ve"
+  },
+  "filters": {
+    "search": "Buscar proyecto",
+    "status": "Estado",
+    "technology": "Tecnología",
+    "all": "Todos",
+    "allTech": "Todas",
+    "count": "{n} de {total} proyectos",
+    "clear": "Quitar filtros",
+    "noResults": "Ningún proyecto coincide con esos filtros."
+  },
+  "article": {
+    "toc": "En este artículo",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "copyCode": "Copiar código",
+    "progress": "Progreso de lectura"
+  },
+  "gallery": {
+    "open": "Ampliar captura: {alt}",
+    "close": "Cerrar",
+    "prev": "Captura anterior",
+    "next": "Captura siguiente",
+    "counter": "{n} de {total}",
+    "title": "Capturas"
+  },
   "pending": {
     "label": "Pendiente",
     "contact": "Email y perfiles profesionales: pendientes de confirmar (fase 5).",
@@ -232,6 +281,8 @@
     "languages": "Idiomas"
   },
   "technologies": {
+    "mapTitle": "Mapa de proyectos y tecnologías",
+    "mapIntro": "Elige un proyecto para ver qué tecnologías usa, o pasa por una tecnología para ver en qué proyectos la he usado.",
     "intro": "Agrupadas por uso y enlazadas a los proyectos donde las he aplicado. Sin porcentajes ni logos sueltos.",
     "noProject": "Conocimientos · sin proyecto público todavía",
     "alsoTitle": "También las he usado en mis proyectos",

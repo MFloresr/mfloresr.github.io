@@ -48,7 +48,7 @@ export default async function SobreMi() {
         <div className="flex flex-col items-start gap-2.5">
           <EnlaceCV />
           {email && (
-            <a href={`mailto:${email}`} className="text-[15px] font-medium text-acento">
+            <a href={`mailto:${email}`} className="inline-flex min-h-11 items-center text-[15px] font-medium text-acento">
               {email}
             </a>
           )}
@@ -66,7 +66,7 @@ export default async function SobreMi() {
 
         <Seccion titulo={t("development")}>
           {desarrollo ? <ListaGuion items={desarrollo} className="text-[17px]" /> : pendiente}
-          <Link href="/projects" className="inline-flex items-center gap-1.5 text-[15px] font-medium text-acento">
+          <Link href="/projects" className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento">
             {t("projectsLink")}
             <Flecha />
           </Link>
@@ -74,17 +74,27 @@ export default async function SobreMi() {
 
         <Seccion titulo={t("experience")}>
           <ol className="border-y border-linea">
-            {perfil.experiencia.map((e) => {
+            {perfil.experiencia.map((e, i) => {
               const tareas = enIdioma(e.tareas, idioma);
               return (
-                <li key={e.empresa} className="grid gap-2 py-4.5 sm:grid-cols-[180px_1fr] sm:gap-4">
-                  <span className="font-mono text-[13px] leading-6 text-tenue">{enIdioma(e.fechas, idioma) ?? pendiente}</span>
-                  <div className="flex flex-col items-start gap-2">
-                    <strong className="text-[17px] font-semibold">
-                      {enIdioma(e.puesto, idioma) ?? pendiente} <span className="font-normal text-tenue">· {e.empresa}</span>
-                    </strong>
-                    {tareas && <ListaGuion items={tareas} className="text-[15px]" />}
-                  </div>
+                <li key={e.empresa} className="border-b border-linea last:border-b-0">
+                  <details open={i === 0} className="group">
+                    <summary className="grid min-h-11 cursor-pointer list-none grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-1 py-4.5 hover:bg-cable/5 sm:grid-cols-[180px_minmax(0,1fr)_auto] [&::-webkit-details-marker]:hidden">
+                      <span className="col-span-full text-[13px] leading-6 text-tenue sm:col-span-1">{enIdioma(e.fechas, idioma) ?? pendiente}</span>
+                      <strong className="text-[17px] font-semibold">
+                        {enIdioma(e.puesto, idioma) ?? pendiente} <span className="font-normal text-tenue">· {e.empresa}</span>
+                      </strong>
+                      <span aria-hidden="true" className="grid size-8 place-items-center rounded-full border-2 border-borde-control transition-transform group-open:rotate-45 group-open:border-cable">
+                        +
+                      </span>
+                    </summary>
+                    {tareas && (
+                      <div className="grid gap-2 pb-5 sm:grid-cols-[180px_1fr] sm:gap-4">
+                        <div className="hidden sm:block" />
+                        <ListaGuion items={tareas} className="text-[15px]" />
+                      </div>
+                    )}
+                  </details>
                 </li>
               );
             })}

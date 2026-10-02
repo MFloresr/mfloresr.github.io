@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import BarraProgreso from "@/components/blog/BarraProgreso";
+import IndiceLateral from "@/components/blog/IndiceLateral";
 import { fechaLocal } from "@/components/blog/TarjetaArticulo";
 import Pendiente from "@/components/Pendiente";
 import TarjetaProyecto from "@/components/proyectos/TarjetaProyecto";
@@ -8,7 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { routing, type Idioma } from "@/i18n/routing";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
 import { listarArticulos, obtenerProyecto, textoArticulo } from "@/lib/contenido/leer";
-import { Mdx } from "@/lib/contenido/mdx";
+import { Mdx, extraerIndice } from "@/lib/contenido/mdx";
 import { NOMBRE, SITE_URL, urlAbsoluta } from "@/lib/sitio";
 
 // Solo existen los artículos de content/blog (sin borradores en producción)
@@ -61,13 +63,16 @@ export default async function PaginaArticulo({ params }: PageProps<"/[locale]/bl
   const formato = await getFormatter();
   const { texto, idioma: idiomaTexto, traducido } = textoArticulo(entrada, idioma);
   const d = texto.datos;
+  const indice = extraerIndice(texto.cuerpo);
+  const tArticulo = await getTranslations("article");
   const relacionados = d.proyectos.map((p) => obtenerProyecto(p)!).filter(Boolean);
   const fecha = (iso: string) => formato.dateTime(fechaLocal(iso), { dateStyle: "long" });
 
   return (
     <article className="contenedor flex flex-col gap-10 py-10 md:py-14">
+      <BarraProgreso objetivo="#cuerpo-articulo" />
       <header className="flex max-w-3xl flex-col gap-5">
-        <Link href="/blog" className="text-sm text-tenue hover:text-texto">
+        <Link href="/blog" className="inline-flex min-h-11 items-center text-sm text-tenue hover:text-texto">
           ← {t("back")}
         </Link>
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[13px] text-tenue">
@@ -97,7 +102,7 @@ export default async function PaginaArticulo({ params }: PageProps<"/[locale]/bl
           <ul className="flex flex-wrap gap-2">
             {d.etiquetas.map((e) => (
               <li key={e}>
-                <Link href={`/blog/tag/${e}`} className="inline-flex rounded-md bg-chip px-2 py-0.5 font-mono text-[13px] hover:text-acento">
+                <Link href={`/blog/tag/${e}`} className="inline-flex min-h-11 items-center rounded-md bg-chip px-3 text-[13px] hover:text-acento">
                   #{e}
                 </Link>
               </li>
@@ -106,8 +111,15 @@ export default async function PaginaArticulo({ params }: PageProps<"/[locale]/bl
         )}
       </header>
 
-      <div className="prosa max-w-3xl" lang={idiomaTexto}>
-        <Mdx fuente={texto.cuerpo} />
+      <div className={indice.length > 1 ? "grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,48rem)_16rem] lg:gap-16" : undefined}>
+        {indice.length > 1 && (
+          <div className="min-w-0 lg:order-2">
+            <IndiceLateral indice={indice} titulo={tArticulo("toc")} />
+          </div>
+        )}
+        <div id="cuerpo-articulo" className="prosa min-w-0 max-w-3xl lg:order-1" lang={idiomaTexto}>
+          <Mdx fuente={texto.cuerpo} />
+        </div>
       </div>
 
       {relacionados.length > 0 && (

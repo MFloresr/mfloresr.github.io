@@ -1,9 +1,11 @@
 import { getLocale, getTranslations } from "next-intl/server";
+import { PanelConexiones, ProveedorExplorar } from "@/components/inicio/Explorar";
 import { Chips } from "@/components/ui/Basicos";
 import { Link } from "@/i18n/navigation";
 import { GRUPOS, type IdiomaContenido } from "@/lib/contenido/esquemas";
 import { enIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
 import { obtenerTecnologias, proyectosQueUsan } from "@/lib/contenido/leer";
+import { construirDatosInicio } from "@/lib/datosInicio";
 import { metadatosPagina } from "@/lib/metadatos";
 
 export const generateMetadata = () => metadatosPagina("technologies", "/technologies");
@@ -15,6 +17,7 @@ export default async function PaginaTecnologias() {
   const tg = await getTranslations("groups");
   const tp = await getTranslations("pending");
   const tecnologias = obtenerTecnologias();
+  const datosInicio = await construirDatosInicio(idioma);
 
   const porGrupo = (destacada: boolean) =>
     GRUPOS.map((grupo) => ({ grupo, lista: tecnologias.filter((tec) => tec.grupo === grupo && tec.destacada === destacada) })).filter(
@@ -27,6 +30,18 @@ export default async function PaginaTecnologias() {
         <h1 className="text-[44px] font-semibold tracking-[-0.03em] sm:text-6xl">{tm("title")}</h1>
         <p className="text-lg leading-relaxed text-tenue sm:text-xl">{t("intro")}</p>
       </header>
+
+      <section aria-labelledby="t-mapa" className="flex flex-col gap-4">
+        <div className="flex max-w-3xl flex-col gap-2">
+          <h2 id="t-mapa" className="text-2xl font-bold sm:text-3xl">
+            {t("mapTitle")}
+          </h2>
+          <p className="leading-relaxed text-tenue">{t("mapIntro")}</p>
+        </div>
+        <ProveedorExplorar datos={datosInicio}>
+          <PanelConexiones destino="pagina" />
+        </ProveedorExplorar>
+      </section>
 
       {porGrupo(true).map(({ grupo, lista }) => (
         <section key={grupo} aria-labelledby={`g-${grupo}`} className="grid gap-2 lg:grid-cols-[3fr_9fr] lg:gap-8">
@@ -46,7 +61,7 @@ export default async function PaginaTecnologias() {
                         <span className="sr-only">{t("usedIn")}:</span>
                         {proyectos.map((p, i) => (
                           <span key={p.slug}>
-                            <Link href={`/projects/${p.slug}`} className="text-texto underline decoration-linea underline-offset-4 hover:decoration-acento">
+                            <Link href={`/projects/${p.slug}`} className="inline-flex min-h-11 items-center text-texto underline decoration-linea underline-offset-4 hover:decoration-acento">
                               {p.textos[idioma]?.datos.titulo ?? p.textos.es!.datos.titulo}
                             </Link>
                             {i < proyectos.length - 1 && " ·"}

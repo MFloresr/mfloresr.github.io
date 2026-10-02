@@ -2,12 +2,14 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { obtenerPerfil } from "@/lib/contenido/leer";
 import BotonTema from "./BotonTema";
+import { BotonPaleta } from "./Paleta";
 import EnlacesNav from "./EnlacesNav";
 import MenuMovil from "./MenuMovil";
 import SelectorIdioma from "./SelectorIdioma";
 
 export default async function Cabecera() {
   const t = await getTranslations("nav");
+  const tPaleta = await getTranslations("palette");
   const perfil = obtenerPerfil();
   const ciudad = perfil.ubicacion.split(",")[0].toLowerCase();
 
@@ -24,6 +26,7 @@ export default async function Cabecera() {
         </nav>
 
         <div className="flex items-center gap-0.5">
+          <BotonPaleta etiqueta={tPaleta("open")} />
           <div className="hidden sm:block">
             <SelectorIdioma />
           </div>

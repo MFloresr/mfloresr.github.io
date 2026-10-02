@@ -115,7 +115,7 @@
     padding-inline: 2rem;
   }
   @media (width >= 64rem) {
-    padding-inline: 6rem;
+    padding-inline: 4rem;
   }
 }
 
