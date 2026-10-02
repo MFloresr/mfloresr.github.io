@@ -211,7 +211,7 @@ export default async function Inicio() {
             )}
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            {email && <Boton href={`mailto:${email}`}>{t("contactEmail")}</Boton>}
+            {email && <Boton href="/contact#formulario">{t("contactEmail")}</Boton>}
             {github && (
               <a
                 href={github}

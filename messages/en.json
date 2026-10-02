@@ -67,6 +67,34 @@
     "back": "Back to home",
     "updated": "Last reviewed: {fecha}"
   },
+  "contactForm": {
+    "title": "Send me a message",
+    "name": "Name",
+    "email": "Your email",
+    "message": "Message",
+    "messagePlaceholder": "Tell me what you need…",
+    "count": "{n} of {max}",
+    "consent": "I have read the <enlace>privacy policy</enlace> and agree to my message being used to reply to me.",
+    "send": "Send message",
+    "sending": "Sending…",
+    "sentTitle": "Message sent",
+    "sentText": "Thank you. I will reply to {email} as soon as possible.",
+    "another": "Send another message",
+    "errors": {
+      "name": "Enter your name (at least 2 letters).",
+      "email": "Enter a valid email, for example name@domain.com.",
+      "message": "Write at least 10 characters.",
+      "consent": "To send the message, accept the privacy policy.",
+      "server": {
+        "no-configurada": "The form is not available right now. Write to me at {email}.",
+        "demasiadas": "You have sent several messages in a row. Wait a few minutes or write to me at {email}.",
+        "origen": "The form can only be used from this website. Write to me at {email}.",
+        "datos": "Check the fields and try again.",
+        "fallo": "The message could not be sent. Try again or write to me at {email}.",
+        "red": "No connection. Check your network and try again."
+      }
+    }
+  },
   "palette": {
     "open": "Search and commands",
     "title": "Search and commands",
@@ -225,7 +253,7 @@
     "blogSoon": "Coming soon",
     "blogText": "Articles on how these projects were built, technical decisions and lessons learned.",
     "contactTitle": "Let's <acento>talk</acento>.",
-    "contactEmail": "Send an email",
+    "contactEmail": "Send a message",
     "blogAll": "See all articles",
     "ctaAsk": "Do I fit your job offer? Check with AI"
   },
@@ -260,7 +288,7 @@
     "usedIn": "Where I use it"
   },
   "contact": {
-    "intro": "For job offers, freelance projects or any question, email me.",
+    "intro": "For job offers, freelance projects or any question, write to me with the form or by email.",
     "emailButton": "Send an email",
     "email": "Email",
     "github": "GitHub",
