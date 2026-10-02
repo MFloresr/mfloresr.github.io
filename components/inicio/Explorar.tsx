@@ -207,7 +207,7 @@ export function PanelConexiones() {
                 elegir(proyectos[n].slug);
               }}
               className={`grid min-h-11 cursor-pointer grid-cols-[1fr_auto] items-center gap-x-3 rounded-md border bg-superficie/80 px-4 py-3 text-left transition-[transform,border-color,box-shadow,opacity] hover:translate-x-1 hover:border-cable motion-reduce:transition-none motion-reduce:hover:translate-x-0 ${
-                elegido ? "border-cable bg-seleccion shadow-[0_0_18px_-6px_var(--brillo)]" : toca ? "border-cable-relleno shadow-[0_0_18px_-4px_var(--brillo)]" : "border-linea"
+                elegido ? "border-cable bg-seleccion shadow-[0_0_18px_-6px_var(--brillo)]" : toca ? "border-cable-relleno shadow-[0_0_18px_-4px_var(--brillo)]" : "border-borde-control"
               } ${tecnologiaEnFoco && !toca ? "opacity-45" : ""}`}
             >
               <span className="text-lg font-semibold">{p.titulo}</span>
@@ -270,7 +270,7 @@ export function PanelConexiones() {
                   filtrar(fijada ? null : t.id);
                 }}
                 className={`flex min-h-9 w-full cursor-pointer items-center gap-2.5 rounded-sm border px-2.5 text-left transition-colors lg:min-h-7 ${
-                  activa ? "border-cable-relleno bg-cable-relleno font-semibold text-sobre-cable" : "border-linea text-tenue hover:border-cable hover:text-texto lg:border-transparent"
+                  activa ? "border-cable-relleno bg-cable-relleno font-semibold text-sobre-cable" : "border-borde-control text-tenue hover:border-cable hover:text-texto lg:border-transparent"
                 } ${fijada ? "outline-2 outline-offset-1 outline-cable-2" : ""}`}
               >
                 <i aria-hidden="true" className={`size-2.5 flex-none rounded-xs border-2 ${activa ? "border-sobre-cable bg-sobre-cable" : "border-linea"}`} />
@@ -339,10 +339,10 @@ export function ListaProyectos() {
                     </span>
                   </span>
                   <span className="min-w-0">
-                    <span className="block text-2xl font-semibold tracking-tight">{p.titulo}</span>
+                    <h3 className="text-2xl font-semibold tracking-tight">{p.titulo}</h3>
                     {p.contexto && <span className="block text-[15px] text-tenue">{p.contexto}</span>}
                   </span>
-                  <span aria-hidden="true" className={`grid size-8 place-items-center rounded-full border-2 transition-transform ${abierta ? "rotate-45 border-cable" : "border-linea"}`}>
+                  <span aria-hidden="true" className={`grid size-8 place-items-center rounded-full border-2 transition-transform ${abierta ? "rotate-45 border-cable" : "border-borde-control"}`}>
                     +
                   </span>
                 </summary>
@@ -358,7 +358,7 @@ export function ListaProyectos() {
                             type="button"
                             aria-pressed={filtro === id}
                             onClick={() => filtrar(filtro === id ? null : id)}
-                            className="min-h-8 cursor-pointer rounded-full border border-linea px-3 text-[13px] transition-colors hover:border-cable hover:bg-cable/10 aria-pressed:border-cable-relleno aria-pressed:bg-cable-relleno aria-pressed:font-semibold aria-pressed:text-sobre-cable"
+                            className="min-h-8 cursor-pointer rounded-full border border-borde-control px-3 text-[13px] transition-colors hover:border-cable hover:bg-cable/10 aria-pressed:border-cable-relleno aria-pressed:bg-cable-relleno aria-pressed:font-semibold aria-pressed:text-sobre-cable"
                           >
                             {nombreTec(datos, id)}
                           </button>
@@ -472,7 +472,7 @@ export function Consola() {
   }, [lineas]);
 
   return (
-    <div id="consola" className="overflow-hidden rounded-xl border border-linea bg-terminal font-codigo text-[14px] leading-relaxed text-[#e8eeff] shadow-[0_0_40px_-18px_var(--brillo)]">
+    <div id="consola" role="group" aria-label={textos.conTitle} className="overflow-hidden rounded-xl border border-linea bg-terminal font-codigo text-[14px] leading-relaxed text-[#e8eeff] shadow-[0_0_40px_-18px_var(--brillo)]">
       <div className="flex items-center gap-2 border-b border-[#1b2a6b] px-4 py-2.5 text-xs text-[#a9b8f0]">
         <i aria-hidden="true" className="size-2.5 rounded-full bg-[#b97bff]" />
         <i aria-hidden="true" className="size-2.5 rounded-full bg-[#f2b726]" />
@@ -510,6 +510,8 @@ export function Consola() {
         </label>
         <input
           id="consola-orden"
+          name="orden"
+          autoComplete="off"
           value={texto}
           onChange={(e) => setTexto(e.target.value)}
           onKeyDown={(e) => {
@@ -528,7 +530,7 @@ export function Consola() {
           spellCheck={false}
           autoCapitalize="off"
           placeholder={textos.conPlaceholder}
-          className="min-h-11 min-w-0 flex-1 border-b border-[#2a3c8f] bg-transparent px-1 text-white outline-none placeholder:text-[#a9b8f0]/60 focus:border-[#6c9bff] focus:shadow-[0_2px_0_0_#6c9bff]"
+          className="min-h-11 min-w-0 flex-1 border-b border-[#7087e6] bg-transparent px-1 text-white outline-none placeholder:text-[#a9b8f0]/60 focus:border-[#6c9bff] focus:shadow-[0_2px_0_0_#6c9bff]"
         />
       </form>
       <div className="flex flex-wrap gap-1.5 px-4 pb-4">
@@ -537,7 +539,7 @@ export function Consola() {
             key={k}
             type="button"
             onClick={() => ejecutar(ordenes[k])}
-            className="min-h-9 cursor-pointer rounded-md border border-[#2a3c8f] px-3 text-[13px] hover:border-[#6c9bff] hover:text-[#6c9bff]"
+            className="min-h-9 cursor-pointer rounded-md border border-[#7087e6] px-3 text-[13px] hover:border-[#6c9bff] hover:text-[#6c9bff]"
           >
             {ordenes[k]}
           </button>

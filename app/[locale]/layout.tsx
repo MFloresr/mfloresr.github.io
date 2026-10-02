@@ -9,6 +9,13 @@ import "../globals.css";
 // Aplica el tema guardado (o el del sistema) antes de pintar, para evitar parpadeos
 const scriptTema = `try{var t=localStorage.getItem("tema");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){}`;
 
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#071033" },
+    { media: "(prefers-color-scheme: light)", color: "#ebf0ff" },
+  ],
+};
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

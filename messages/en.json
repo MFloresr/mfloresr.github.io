@@ -129,7 +129,7 @@
     "listClear": "Clear filter",
     "conTitle": "Console",
     "conOut": "Console output",
-    "conPlaceholder": "type help",
+    "conPlaceholder": "type help…",
     "conGreeting": "Hi, I'm Mario. This console answers with the data on this site.",
     "conHelp": "Commands: {lista}",
     "conUnknown": "Unknown command «{cmd}». Type {ayuda}.",

@@ -129,7 +129,7 @@
     "listClear": "Quitar filtro",
     "conTitle": "Consola",
     "conOut": "Salida de la consola",
-    "conPlaceholder": "escribe ayuda",
+    "conPlaceholder": "escribe ayuda…",
     "conGreeting": "Hola, soy Mario. Esta consola responde con los datos de esta web.",
     "conHelp": "Comandos: {lista}",
     "conUnknown": "No conozco «{cmd}». Escribe {ayuda}.",

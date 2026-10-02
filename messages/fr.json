@@ -129,7 +129,7 @@
     "listClear": "Retirer le filtre",
     "conTitle": "Console",
     "conOut": "Sortie de la console",
-    "conPlaceholder": "tape aide",
+    "conPlaceholder": "tape aide…",
     "conGreeting": "Bonjour, je suis Mario. Cette console répond avec les données de ce site.",
     "conHelp": "Commandes : {lista}",
     "conUnknown": "Commande inconnue « {cmd} ». Tape {ayuda}.",
