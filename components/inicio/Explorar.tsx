@@ -181,14 +181,14 @@ export function PanelConexiones() {
         e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
         e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
       }}
-      className="cuadro grid gap-4 rounded-xl border border-linea bg-superficie p-4 sm:p-6 lg:grid-cols-[minmax(0,1fr)_clamp(60px,12vw,170px)_minmax(0,15rem)] lg:gap-0 lg:p-8"
+      className="cuadro grid grid-cols-1 gap-4 rounded-xl border border-linea bg-superficie p-4 sm:p-6 lg:grid-cols-[minmax(0,1fr)_clamp(60px,12vw,170px)_minmax(0,15rem)] lg:gap-0 lg:p-8"
     >
       <div className="flex flex-wrap justify-between gap-x-4 gap-y-1 text-[13px] text-tenue lg:col-span-full lg:mb-5">
         <strong className="font-semibold text-texto">{textos.panelTitle}</strong>
         <span>{textos.panelHint}</span>
       </div>
 
-      <div className="grid content-between gap-3">
+      <div className="grid min-w-0 grid-cols-1 content-between gap-3">
         {proyectos.map((p) => {
           const elegido = proyectoEnFoco?.slug === p.slug;
           const toca = !!tecnologiaEnFoco && p.tecnologias.includes(tecnologiaEnFoco);
@@ -206,7 +206,7 @@ export function PanelConexiones() {
                 (e.currentTarget.parentElement?.children[n] as HTMLElement).focus();
                 elegir(proyectos[n].slug);
               }}
-              className={`grid min-h-11 cursor-pointer grid-cols-[1fr_auto] items-center gap-x-3 rounded-md border bg-superficie/80 px-4 py-3 text-left transition-[transform,border-color,box-shadow,opacity] hover:translate-x-1 hover:border-cable motion-reduce:transition-none motion-reduce:hover:translate-x-0 ${
+              className={`grid min-h-11 min-w-0 cursor-pointer grid-cols-[minmax(0,1fr)_auto] items-center wrap-anywhere gap-x-3 rounded-md border bg-superficie/80 px-4 py-3 text-left transition-[transform,border-color,box-shadow,opacity] hover:translate-x-1 hover:border-cable motion-reduce:transition-none motion-reduce:hover:translate-x-0 ${
                 elegido ? "border-cable bg-seleccion shadow-[0_0_18px_-6px_var(--brillo)]" : toca ? "border-cable-relleno shadow-[0_0_18px_-4px_var(--brillo)]" : "border-borde-control"
               } ${tecnologiaEnFoco && !toca ? "opacity-45" : ""}`}
             >
