@@ -67,6 +67,34 @@
     "back": "Tornar a l'inici",
     "updated": "Última revisió: {fecha}"
   },
+  "contactForm": {
+    "title": "Envia'm un missatge",
+    "name": "Nom",
+    "email": "El teu email",
+    "message": "Missatge",
+    "messagePlaceholder": "Explica'm què necessites…",
+    "count": "{n} de {max}",
+    "consent": "He llegit la <enlace>política de privacitat</enlace> i accepto que es faci servir el meu missatge per respondre'm.",
+    "send": "Enviar missatge",
+    "sending": "Enviant…",
+    "sentTitle": "Missatge enviat",
+    "sentText": "Gràcies. Et respondré a {email} tan aviat com pugui.",
+    "another": "Enviar un altre missatge",
+    "errors": {
+      "name": "Escriu el teu nom (mínim 2 lletres).",
+      "email": "Escriu un email vàlid, per exemple nom@domini.com.",
+      "message": "Escriu almenys 10 caràcters.",
+      "consent": "Per enviar el missatge, accepta la política de privacitat.",
+      "server": {
+        "no-configurada": "El formulari no està disponible ara. Escriu-me a {email}.",
+        "demasiadas": "Has enviat diversos missatges seguits. Espera uns minuts o escriu-me a {email}.",
+        "origen": "El formulari només es pot fer servir des d'aquest web. Escriu-me a {email}.",
+        "datos": "Revisa els camps i torna-ho a provar.",
+        "fallo": "No s'ha pogut enviar el missatge. Torna-ho a provar o escriu-me a {email}.",
+        "red": "No hi ha connexió. Comprova la teva xarxa i torna-ho a provar."
+      }
+    }
+  },
   "pending": {
     "label": "Pendent",
     "contact": "Correu i perfils professionals: pendents de confirmar (fase 5).",
@@ -177,7 +205,7 @@
     "blogSoon": "Properament",
     "blogText": "Articles sobre el desenvolupament d'aquests projectes, decisions tècniques i el que he après.",
     "contactTitle": "En parlem<acento>?</acento>",
-    "contactEmail": "Escriure un correu",
+    "contactEmail": "Enviar un missatge",
     "blogAll": "Veure tots els articles",
     "ctaAsk": "Encaixo en la teva oferta? Comprova-ho amb IA"
   },
@@ -210,7 +238,7 @@
     "usedIn": "On la faig servir"
   },
   "contact": {
-    "intro": "Per a ofertes de feina, projectes freelance o qualsevol consulta, escriu-me per correu.",
+    "intro": "Per a ofertes de feina, projectes freelance o qualsevol consulta, escriu-me amb el formulari o per correu.",
     "emailButton": "Escriure un correu",
     "email": "Correu",
     "github": "GitHub",
