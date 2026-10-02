@@ -32,13 +32,13 @@ export default function MenuMovil({ children }: { children: React.ReactNode }) {
         aria-expanded={abierto}
         aria-controls="menu-movil"
         aria-label={abierto ? t("closeMenu") : t("openMenu")}
-        className="flex size-11 items-center justify-center rounded-[10px] text-texto hover:bg-chip"
+        className="flex size-11 items-center justify-center rounded-[10px] hover:bg-cable-relleno/15"
       >
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
           {abierto ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
         </svg>
       </button>
-      <div id="menu-movil" hidden={!abierto} className="absolute inset-x-0 top-full z-40 border-b border-linea bg-fondo px-5 pb-5 shadow-sm">
+      <div id="menu-movil" hidden={!abierto} className="absolute inset-x-0 top-full z-40 border-b-2 border-cable bg-barra px-5 pb-5 text-sobre-barra shadow-lg">
         {children}
       </div>
     </div>

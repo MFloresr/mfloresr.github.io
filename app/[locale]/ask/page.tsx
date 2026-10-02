@@ -28,7 +28,7 @@ export default async function PaginaIA() {
 
       <section aria-labelledby="t-encaje" className="grid gap-8 lg:grid-cols-[4fr_7fr] lg:gap-16">
         <div className="flex flex-col gap-3">
-          <Etiqueta numero="01">{t("fit.section")}</Etiqueta>
+          <Etiqueta>{t("fit.section")}</Etiqueta>
           <h2 id="t-encaje" className="text-[28px] font-semibold tracking-tight sm:text-4xl">
             {t("fit.title")}
           </h2>
@@ -39,7 +39,7 @@ export default async function PaginaIA() {
 
       <section aria-labelledby="t-pregunta" className="grid gap-8 border-t border-linea pt-14 md:pt-18 lg:grid-cols-[4fr_7fr] lg:gap-16">
         <div className="flex flex-col gap-3">
-          <Etiqueta numero="02">{t("ask.section")}</Etiqueta>
+          <Etiqueta>{t("ask.section")}</Etiqueta>
           <h2 id="t-pregunta" className="text-[28px] font-semibold tracking-tight sm:text-4xl">
             {t("ask.title")}
           </h2>

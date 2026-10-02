@@ -12,11 +12,11 @@ export default async function Cabecera() {
   const ciudad = perfil.ubicacion.split(",")[0].toLowerCase();
 
   return (
-    <header className="relative border-b border-linea">
+    <header className="sticky top-0 z-40 border-b-2 border-cable bg-barra text-sobre-barra shadow-[0_6px_28px_-10px_var(--brillo)]">
       <div className="contenedor flex h-16 items-center justify-between gap-4 md:h-19">
         <Link href="/" className="flex flex-col gap-0.5">
-          <span className="text-[17px] font-semibold tracking-tight">{perfil.nombre}</span>
-          <span className="font-mono text-xs text-tenue">full-stack · {ciudad}</span>
+          <span className="font-display text-sm font-bold tracking-wide whitespace-nowrap sm:text-base">{perfil.nombre}</span>
+          <span className="hidden text-xs opacity-70 sm:block">full-stack · {ciudad}</span>
         </Link>
 
         <nav aria-label={t("label")} className="hidden xl:block">

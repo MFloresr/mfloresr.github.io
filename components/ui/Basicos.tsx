@@ -1,13 +1,9 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
-/** Etiqueta de sección: "01 · Proyectos". */
-export function Etiqueta({ numero, children }: { numero: string; children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-[13px] text-acento">
-      {numero} · {children}
-    </span>
-  );
+/** Etiqueta de sección. Sin número: la numeración solo se usa donde el orden importa. */
+export function Etiqueta({ children }: { numero?: string; children: React.ReactNode }) {
+  return <span className="text-[13px] font-semibold text-acento">{children}</span>;
 }
 
 /** Lista con guiones de color de acento. */

@@ -3,7 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import Cabecera from "@/components/layout/Cabecera";
 import Pie from "@/components/layout/Pie";
 import { routing } from "@/i18n/routing";
-import { geist, geistMono, instrumentSerif } from "../fuentes";
+import { exo2, jetbrainsMono, orbitron } from "../fuentes";
 import "../globals.css";
 
 // Aplica el tema guardado (o el del sistema) antes de pintar, para evitar parpadeos
@@ -18,7 +18,7 @@ export default async function LayoutIdioma({ children }: LayoutProps<"/[locale]"
   const t = await getTranslations("nav");
 
   return (
-    <html lang={idioma} suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
+    <html lang={idioma} suppressHydrationWarning className={`${orbitron.variable} ${exo2.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
       </head>
