@@ -54,10 +54,18 @@
     "toLight": "Passer en mode clair"
   },
   "footer": {
+    "legalLinks": "Liens légaux",
+    "legalPage": "Mentions légales",
+    "privacyPage": "Confidentialité",
+    "cookiesPage": "Cookies",
     "links": "Liens professionnels",
     "email": "E-mail",
     "linkedin": "LinkedIn",
     "github": "GitHub"
+  },
+  "legal": {
+    "back": "Retour à l'accueil",
+    "updated": "Dernière révision : {fecha}"
   },
   "pending": {
     "label": "En attente",
@@ -246,6 +254,7 @@
   "ai": {
     "intro": "Deux façons rapides de découvrir mon profil : comparez votre offre d'emploi avec mon expérience ou posez la question de votre choix. L'IA n'utilise que ce qui est publié dans ce portfolio et vous dira aussi ce qui me manque.",
     "privacy": "Ce que vous saisissez est envoyé à l'API Gemini (Google) pour générer la réponse et n'est pas conservé sur ce site. N'y mettez pas de données personnelles. L'IA peut se tromper : en cas de doute, écrivez-moi.",
+    "privacyLink": "Plus de détails dans la politique de confidentialité.",
     "fit": {
       "section": "Mon profil correspond-il ?",
       "title": "Collez votre offre et voyez la correspondance.",

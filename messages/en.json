@@ -54,10 +54,18 @@
     "toLight": "Switch to light mode"
   },
   "footer": {
+    "legalLinks": "Legal links",
+    "legalPage": "Legal notice",
+    "privacyPage": "Privacy",
+    "cookiesPage": "Cookies",
     "links": "Professional links",
     "email": "Email",
     "linkedin": "LinkedIn",
     "github": "GitHub"
+  },
+  "legal": {
+    "back": "Back to home",
+    "updated": "Last reviewed: {fecha}"
   },
   "pending": {
     "label": "Pending",
@@ -246,6 +254,7 @@
   "ai": {
     "intro": "Two quick ways to get to know my profile: compare your job offer with my experience, or ask anything you like. The AI only uses what is published in this portfolio, and it will also tell you what I don't have.",
     "privacy": "What you type is sent to the Gemini API (Google) to generate the answer and is not stored on this site. Don't include personal data. The AI can make mistakes: if in doubt, email me.",
+    "privacyLink": "More details in the privacy policy.",
     "fit": {
       "section": "Do I fit your offer?",
       "title": "Paste your job offer and see the fit.",

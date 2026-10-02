@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import Pendiente from "@/components/Pendiente";
 import { enIdioma } from "@/lib/contenido/idioma";
+import { Link } from "@/i18n/navigation";
 import { obtenerPerfil } from "@/lib/contenido/leer";
 
 export default async function Pie() {
@@ -35,6 +36,17 @@ export default async function Pie() {
               ) : (
                 <Pendiente>{t(clave)}</Pendiente>
               )}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="contenedor border-t border-linea py-2 text-sm">
+        <ul aria-label={t("legalLinks")} className="flex flex-wrap items-center gap-x-5">
+          {(["legal", "privacy", "cookies"] as const).map((clave) => (
+            <li key={clave}>
+              <Link href={`/${clave}`} className="inline-flex min-h-11 items-center text-tenue hover:text-texto">
+                {t(`${clave}Page`)}
+              </Link>
             </li>
           ))}
         </ul>
