@@ -83,6 +83,19 @@ export const esquemaPerfil = z
   })
   .strict();
 
+/** Páginas legales (content/legal/<página>/<idioma>.mdx). */
+export const PAGINAS_LEGALES = ["legal", "privacy", "cookies"] as const;
+export type PaginaLegal = (typeof PAGINAS_LEGALES)[number];
+
+export const esquemaLegal = z
+  .object({
+    titulo: texto,
+    descripcion: texto,
+    actualizado: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Fecha AAAA-MM-DD"),
+  })
+  .strict();
+export type DatosLegal = z.infer<typeof esquemaLegal>;
+
 export const ESTADOS = ["produccion", "terminado", "en-desarrollo"] as const;
 
 /** Datos comunes de un proyecto (content/proyectos/<slug>/proyecto.yaml). */

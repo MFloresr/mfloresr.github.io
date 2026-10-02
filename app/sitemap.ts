@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { listarArticulos, listarSlugsProyectos } from "@/lib/contenido/leer";
-import { SECCIONES, alternativas, urlAbsoluta } from "@/lib/sitio";
+import { LEGALES, SECCIONES, alternativas, urlAbsoluta } from "@/lib/sitio";
 
 // Todas las páginas en cada idioma, con sus alternativas (hreflang)
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const etiquetas = new Set(articulos.flatMap((a) => Object.values(a.textos).flatMap((x) => x.datos.etiquetas)));
   const rutas = [
     ...SECCIONES,
+    ...LEGALES,
     ...listarSlugsProyectos().map((slug) => `/projects/${slug}`),
     ...[...etiquetas].map((e) => `/blog/tag/${e}`),
   ];

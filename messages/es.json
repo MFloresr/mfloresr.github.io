@@ -54,10 +54,18 @@
     "toLight": "Cambiar a modo claro"
   },
   "footer": {
+    "legalLinks": "Enlaces legales",
+    "legalPage": "Aviso legal",
+    "privacyPage": "Privacidad",
+    "cookiesPage": "Cookies",
     "links": "Enlaces profesionales",
     "email": "Email",
     "linkedin": "LinkedIn",
     "github": "GitHub"
+  },
+  "legal": {
+    "back": "Volver al inicio",
+    "updated": "Última revisión: {fecha}"
   },
   "pending": {
     "label": "Pendiente",
@@ -224,6 +232,7 @@
   "ai": {
     "intro": "Dos formas rápidas de conocer mi perfil: compara tu oferta de empleo con mi experiencia o pregunta lo que quieras. La IA solo usa lo que está publicado en este portfolio y también te dirá lo que no tengo.",
     "privacy": "Lo que escribes se envía a la API de Gemini (Google) para generar la respuesta y no se guarda en esta web. No incluyas datos personales. La IA puede equivocarse: ante cualquier duda, escríbeme.",
+    "privacyLink": "Más información en la política de privacidad.",
     "fit": {
       "section": "¿Encajo en tu oferta?",
       "title": "Pega tu oferta y mira el encaje.",

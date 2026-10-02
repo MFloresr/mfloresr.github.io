@@ -54,10 +54,18 @@
     "toLight": "Canviar al mode clar"
   },
   "footer": {
+    "legalLinks": "Enllaços legals",
+    "legalPage": "Avís legal",
+    "privacyPage": "Privacitat",
+    "cookiesPage": "Cookies",
     "links": "Enllaços professionals",
     "email": "Correu",
     "linkedin": "LinkedIn",
     "github": "GitHub"
+  },
+  "legal": {
+    "back": "Tornar a l'inici",
+    "updated": "Última revisió: {fecha}"
   },
   "pending": {
     "label": "Pendent",
@@ -224,6 +232,7 @@
   "ai": {
     "intro": "Dues maneres ràpides de conèixer el meu perfil: compara la teva oferta de feina amb la meva experiència o pregunta el que vulguis. La IA només fa servir el que està publicat en aquest portfolio i també et dirà el que no tinc.",
     "privacy": "El que escrius s'envia a l'API de Gemini (Google) per generar la resposta i no es desa en aquesta web. No hi incloguis dades personals. La IA es pot equivocar: si tens cap dubte, escriu-me.",
+    "privacyLink": "Més informació a la política de privacitat.",
     "fit": {
       "section": "Encaixo en la teva oferta?",
       "title": "Enganxa la teva oferta i mira l'encaix.",

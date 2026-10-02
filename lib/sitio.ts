@@ -20,6 +20,9 @@ export const CV_PDF: Record<Idioma, string> = {
 export const SECCIONES = ["", "/projects", "/about", "/technologies", "/blog", "/ask", "/contact"] as const;
 export type Seccion = (typeof SECCIONES)[number];
 
+/** Páginas legales enlazadas desde el pie (mismo slug en todos los idiomas). */
+export const LEGALES = ["/legal", "/privacy", "/cookies"] as const;
+
 /** URL absoluta de una ruta en un idioma: urlAbsoluta("es", "/projects") */
 export function urlAbsoluta(idioma: Idioma, ruta: string) {
   return `${SITE_URL}/${idioma}${ruta}`;
