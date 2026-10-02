@@ -105,6 +105,7 @@ En `.env.example` tienes un ejemplo con todas (sin valores reales).
 | Variable | Descripción |
 |---|---|
 | `OCULTAR_BORRADORES` | Con `1`, oculta los borradores del blog también fuera de producción (para probar). |
+| `RESEND_API_KEY` | Clave de la API de Resend para el formulario de contacto. Sin ella, el formulario muestra «no disponible» y ofrece el email. Va en las variables de Vercel. Opcionales: `CONTACT_TO` (correo que recibe los mensajes, por defecto el del perfil) y `CONTACT_FROM` (remitente; por defecto el de pruebas de Resend). |
 | `GEMINI_API_KEY` | Clave de la API de Gemini (Google AI Studio) para «Pregunta a la IA». Sin ella, esa función no está disponible. Va en las variables de Vercel, nunca en el código. |
 | `SITE_URL` | URL pública, para las URL canónicas, el sitemap y los hreflang. Por defecto `https://mfloresr-portfolio.vercel.app`. Cambiarla es lo único necesario para pasar a un dominio propio. |
 

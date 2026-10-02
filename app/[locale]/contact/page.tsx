@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import EnlaceCV from "@/components/EnlaceCV";
 import Pendiente from "@/components/Pendiente";
-import Boton from "@/components/ui/Boton";
+import FormularioContacto from "@/components/contacto/FormularioContacto";
 import { obtenerPerfil } from "@/lib/contenido/leer";
 import { metadatosPagina } from "@/lib/metadatos";
 
@@ -52,15 +52,13 @@ export default async function Contacto() {
 
   return (
     <div className="contenedor grid gap-10 py-14 md:py-18 lg:grid-cols-[5fr_6fr] lg:gap-18">
-      <header className="flex flex-col gap-5">
-        <h1 className="text-[44px] font-semibold tracking-[-0.03em] sm:text-6xl">{tm("title")}</h1>
-        <p className="text-lg leading-relaxed text-tenue sm:text-xl">{t("intro")}</p>
-        {email && (
-          <Boton href={`mailto:${email}`} className="w-full sm:w-fit">
-            {t("emailButton")}
-          </Boton>
-        )}
-      </header>
+      <div className="flex flex-col gap-8">
+        <header className="flex flex-col gap-5">
+          <h1 className="text-[44px] font-semibold tracking-[-0.03em] sm:text-6xl">{tm("title")}</h1>
+          <p className="text-lg leading-relaxed text-tenue sm:text-xl">{t("intro")}</p>
+        </header>
+        {email && <FormularioContacto email={email} />}
+      </div>
       <dl>
         {filas.map(({ etiqueta, valor }) => (
           <div key={etiqueta} className="flex flex-col gap-1.5 border-b border-linea py-4">

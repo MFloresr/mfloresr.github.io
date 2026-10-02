@@ -67,6 +67,34 @@
     "back": "Retour à l'accueil",
     "updated": "Dernière révision : {fecha}"
   },
+  "contactForm": {
+    "title": "Envoyez-moi un message",
+    "name": "Nom",
+    "email": "Votre e-mail",
+    "message": "Message",
+    "messagePlaceholder": "Dites-moi ce dont vous avez besoin…",
+    "count": "{n} sur {max}",
+    "consent": "J'ai lu la <enlace>politique de confidentialité</enlace> et j'accepte que mon message soit utilisé pour me répondre.",
+    "send": "Envoyer le message",
+    "sending": "Envoi…",
+    "sentTitle": "Message envoyé",
+    "sentText": "Merci. Je vous répondrai à {email} dès que possible.",
+    "another": "Envoyer un autre message",
+    "errors": {
+      "name": "Saisissez votre nom (2 lettres minimum).",
+      "email": "Saisissez un e-mail valide, par exemple nom@domaine.com.",
+      "message": "Écrivez au moins 10 caractères.",
+      "consent": "Pour envoyer le message, acceptez la politique de confidentialité.",
+      "server": {
+        "no-configurada": "Le formulaire n'est pas disponible pour le moment. Écrivez-moi à {email}.",
+        "demasiadas": "Vous avez envoyé plusieurs messages d'affilée. Attendez quelques minutes ou écrivez-moi à {email}.",
+        "origen": "Le formulaire ne peut être utilisé que depuis ce site. Écrivez-moi à {email}.",
+        "datos": "Vérifiez les champs et réessayez.",
+        "fallo": "Le message n'a pas pu être envoyé. Réessayez ou écrivez-moi à {email}.",
+        "red": "Pas de connexion. Vérifiez votre réseau et réessayez."
+      }
+    }
+  },
   "pending": {
     "label": "En attente",
     "contact": "E-mail et profils professionnels : à confirmer (phase 5).",
@@ -177,7 +205,7 @@
     "blogSoon": "Bientôt",
     "blogText": "Des articles sur le développement de ces projets, les choix techniques et ce que j'en ai appris.",
     "contactTitle": "On en parle<acento> ?</acento>",
-    "contactEmail": "Écrire un e-mail",
+    "contactEmail": "Envoyer un message",
     "blogAll": "Voir tous les articles",
     "ctaAsk": "Mon profil correspond-il à votre offre ? Vérifiez avec l'IA"
   },
@@ -210,7 +238,7 @@
     "usedIn": "Où je l'utilise"
   },
   "contact": {
-    "intro": "Pour une offre d'emploi, un projet freelance ou toute question, écrivez-moi par e-mail.",
+    "intro": "Pour une offre d'emploi, un projet freelance ou toute question, écrivez-moi avec le formulaire ou par e-mail.",
     "emailButton": "Écrire un e-mail",
     "email": "E-mail",
     "github": "GitHub",

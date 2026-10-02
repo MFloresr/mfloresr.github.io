@@ -67,6 +67,34 @@
     "back": "Volver al inicio",
     "updated": "Última revisión: {fecha}"
   },
+  "contactForm": {
+    "title": "Envíame un mensaje",
+    "name": "Nombre",
+    "email": "Tu email",
+    "message": "Mensaje",
+    "messagePlaceholder": "Cuéntame qué necesitas…",
+    "count": "{n} de {max}",
+    "consent": "He leído la <enlace>política de privacidad</enlace> y acepto que se use mi mensaje para responderme.",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "sentTitle": "Mensaje enviado",
+    "sentText": "Gracias. Te responderé a {email} lo antes posible.",
+    "another": "Enviar otro mensaje",
+    "errors": {
+      "name": "Escribe tu nombre (mínimo 2 letras).",
+      "email": "Escribe un email válido, por ejemplo nombre@dominio.com.",
+      "message": "Escribe al menos 10 caracteres.",
+      "consent": "Para enviar el mensaje, acepta la política de privacidad.",
+      "server": {
+        "no-configurada": "El formulario no está disponible ahora. Escríbeme a {email}.",
+        "demasiadas": "Has enviado varios mensajes seguidos. Espera unos minutos o escríbeme a {email}.",
+        "origen": "El formulario solo se puede usar desde esta web. Escríbeme a {email}.",
+        "datos": "Revisa los campos e inténtalo de nuevo.",
+        "fallo": "No se ha podido enviar el mensaje. Inténtalo de nuevo o escríbeme a {email}.",
+        "red": "No hay conexión. Comprueba tu red e inténtalo de nuevo."
+      }
+    }
+  },
   "pending": {
     "label": "Pendiente",
     "contact": "Email y perfiles profesionales: pendientes de confirmar (fase 5).",
@@ -177,7 +205,7 @@
     "blogSoon": "Próximamente",
     "blogText": "Artículos sobre el desarrollo de estos proyectos, decisiones técnicas y lo aprendido.",
     "contactTitle": "¿Hablamos<acento>?</acento>",
-    "contactEmail": "Escribir un email",
+    "contactEmail": "Enviar un mensaje",
     "blogAll": "Ver todos los artículos",
     "ctaAsk": "¿Encajo en tu oferta? Compruébalo con IA"
   },
@@ -210,7 +238,7 @@
     "usedIn": "Dónde la uso"
   },
   "contact": {
-    "intro": "Para ofertas de empleo, proyectos freelance o cualquier consulta, escríbeme por email.",
+    "intro": "Para ofertas de empleo, proyectos freelance o cualquier consulta, escríbeme con el formulario o por email.",
     "emailButton": "Escribir un email",
     "email": "Email",
     "github": "GitHub",
