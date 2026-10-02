@@ -29,7 +29,7 @@ export default async function Pie() {
           {enlaces.map(({ clave, url }) => (
             <li key={clave}>
               {url ? (
-                <a href={url} className="text-tenue hover:text-texto" {...(clave !== "email" && { rel: "me noopener", target: "_blank" })}>
+                <a href={url} className="inline-flex min-h-11 items-center text-tenue hover:text-texto" {...(clave !== "email" && { rel: "me noopener", target: "_blank" })}>
                   {t(clave)}
                 </a>
               ) : (

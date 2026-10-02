@@ -27,7 +27,7 @@ export default function EnlacesNav({ vertical = false }: { vertical?: boolean })
             <Link
               href={href}
               aria-current={actual ? "page" : undefined}
-              className={`block rounded-full border px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors ${
+              className={`flex min-h-11 items-center rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition-colors ${
                 actual
                   ? "border-cable-relleno bg-cable-relleno text-sobre-cable"
                   : "border-transparent hover:border-cable-relleno hover:bg-cable-relleno/15"

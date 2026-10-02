@@ -24,7 +24,7 @@ export default function SelectorIdioma() {
           lang={codigo}
           aria-current={codigo === idioma ? "true" : undefined}
           title={t(codigo)}
-          className={`flex min-h-9 min-w-8 items-center justify-center rounded-md px-1.5 sm:min-w-9 sm:px-2 text-xs font-semibold uppercase ${
+          className={`flex min-h-11 min-w-9 items-center justify-center rounded-md px-1.5 sm:min-w-11 sm:px-2 text-xs font-semibold uppercase ${
             codigo === idioma ? "bg-cable-relleno text-sobre-cable" : "hover:bg-cable-relleno/15"
           }`}
         >

@@ -97,7 +97,7 @@ export default async function Inicio() {
               </Boton>
               <div className="flex flex-wrap items-center gap-4 sm:ml-2">
                 {github && (
-                  <a href={github} target="_blank" rel="me noopener" className="inline-flex items-center gap-1 text-[15px] font-medium hover:text-acento">
+                  <a href={github} target="_blank" rel="me noopener" className="inline-flex min-h-11 items-center gap-1 text-[15px] font-medium hover:text-acento">
                     GitHub
                     <Externo />
                   </a>
@@ -105,7 +105,7 @@ export default async function Inicio() {
                 <EnlaceCV />
               </div>
             </div>
-            <Link href="/ask" className="inline-flex items-center gap-1.5 self-start text-[15px] font-medium text-acento">
+            <Link href="/ask" className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-medium text-acento">
               {t("ctaAsk")}
               <Flecha />
             </Link>
@@ -135,7 +135,7 @@ export default async function Inicio() {
                   {tproy("intro")}
                 </h2>
               </div>
-              <Link href="/projects" className="inline-flex items-center gap-1.5 text-[15px] font-medium text-acento">
+              <Link href="/projects" className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento">
                 {t("allProjects")}
                 <Flecha />
               </Link>
@@ -165,7 +165,7 @@ export default async function Inicio() {
                 {t("sysTitle")} <span className="text-[13px] font-normal text-tenue">· {t("sysNote")}</span>
               </h3>
               {complementario ? <ListaGuion items={complementario.slice(0, 4)} className="text-[15px]" /> : <Pendiente>{tp("field")}</Pendiente>}
-              <Link href="/about" className="text-[15px] font-medium text-acento">
+              <Link href="/about" className="inline-flex min-h-11 items-center text-[15px] font-medium text-acento">
                 {t("seeAbout")}
               </Link>
             </div>
@@ -182,7 +182,7 @@ export default async function Inicio() {
               {t("techTitle")}
             </h2>
             <p className="leading-relaxed text-tenue">{t("techText")}</p>
-            <Link href="/technologies" className="inline-flex items-center gap-1.5 text-[15px] font-medium text-acento">
+            <Link href="/technologies" className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento">
               {t("techLink")}
               <Flecha />
             </Link>
@@ -218,7 +218,7 @@ export default async function Inicio() {
                   </li>
                 ))}
               </ul>
-              <Link href="/blog" className="inline-flex items-center gap-1.5 self-start text-[15px] font-medium text-acento">
+              <Link href="/blog" className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-medium text-acento">
                 {t("blogAll")}
                 <Flecha />
               </Link>
@@ -238,7 +238,7 @@ export default async function Inicio() {
           <div className="flex flex-col gap-3">
             <h2 className="text-[34px] font-semibold tracking-tight sm:text-5xl lg:text-[52px]">{t.rich("contactTitle", { acento: (x) => x })}</h2>
             {email && (
-              <a href={`mailto:${email}`} className="font-mono text-[15px] sm:text-xl">
+              <a href={`mailto:${email}`} className="inline-flex min-h-11 items-center text-[15px] sm:text-xl">
                 {email}
               </a>
             )}

@@ -36,7 +36,7 @@ export default async function TarjetaArticulo({ entrada, idioma }: { entrada: En
         </Link>
       </h3>
       <p className="text-[15px] leading-relaxed text-tenue">{d.resumen}</p>
-      <Link href={`/blog/${entrada.slug}`} className="mt-auto inline-flex items-center gap-1.5 text-[15px] font-medium text-acento">
+      <Link href={`/blog/${entrada.slug}`} className="mt-auto inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento">
         {t("readArticle")}
         <Flecha />
       </Link>

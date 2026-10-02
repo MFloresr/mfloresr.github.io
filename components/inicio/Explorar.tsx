@@ -269,7 +269,7 @@ export function PanelConexiones() {
                   setAnima(true);
                   filtrar(fijada ? null : t.id);
                 }}
-                className={`flex min-h-9 w-full cursor-pointer items-center gap-2.5 rounded-sm border px-2.5 text-left transition-colors lg:min-h-7 ${
+                className={`flex min-h-11 w-full cursor-pointer items-center gap-2.5 rounded-sm border px-2.5 text-left transition-colors lg:min-h-7 ${
                   activa ? "border-cable-relleno bg-cable-relleno font-semibold text-sobre-cable" : "border-borde-control text-tenue hover:border-cable hover:text-texto lg:border-transparent"
                 } ${fijada ? "outline-2 outline-offset-1 outline-cable-2" : ""}`}
               >
@@ -286,7 +286,7 @@ export function PanelConexiones() {
         <a
           href="#proyectos"
           onClick={() => proyectoEnFoco && abrirFicha(proyectoEnFoco.slug)}
-          className="inline-flex items-center gap-1.5 py-2 text-[15px] font-medium text-acento"
+          className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento"
         >
           {proyectoEnFoco ? plantilla(textos.panelOpen, { proyecto: proyectoEnFoco.titulo }) : textos.panelOpenAll}
           <Flecha />
@@ -358,7 +358,7 @@ export function ListaProyectos() {
                             type="button"
                             aria-pressed={filtro === id}
                             onClick={() => filtrar(filtro === id ? null : id)}
-                            className="min-h-8 cursor-pointer rounded-full border border-borde-control px-3 text-[13px] transition-colors hover:border-cable hover:bg-cable/10 aria-pressed:border-cable-relleno aria-pressed:bg-cable-relleno aria-pressed:font-semibold aria-pressed:text-sobre-cable"
+                            className="min-h-11 cursor-pointer rounded-full border border-borde-control px-3 text-[13px] md:min-h-8 transition-colors hover:border-cable hover:bg-cable/10 aria-pressed:border-cable-relleno aria-pressed:bg-cable-relleno aria-pressed:font-semibold aria-pressed:text-sobre-cable"
                           >
                             {nombreTec(datos, id)}
                           </button>
@@ -366,17 +366,17 @@ export function ListaProyectos() {
                       ))}
                     </ul>
                     <div className="flex flex-wrap gap-x-6 gap-y-1 text-[15px] font-semibold">
-                      <Link href={`/projects/${p.slug}`} className="inline-flex items-center gap-1.5 py-2 text-acento">
+                      <Link href={`/projects/${p.slug}`} className="inline-flex min-h-11 items-center gap-1.5 text-acento">
                         {etiquetas.verFicha}
                         <Flecha />
                       </Link>
                       {p.demo && (
-                        <a href={p.demo} target="_blank" rel="noopener" className="py-2 hover:underline">
+                        <a href={p.demo} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center hover:underline">
                           {etiquetas.demo}
                         </a>
                       )}
                       {p.repositorio && (
-                        <a href={p.repositorio} target="_blank" rel="noopener" className="py-2 hover:underline">
+                        <a href={p.repositorio} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center hover:underline">
                           {etiquetas.codigo}
                         </a>
                       )}
@@ -539,7 +539,7 @@ export function Consola() {
             key={k}
             type="button"
             onClick={() => ejecutar(ordenes[k])}
-            className="min-h-9 cursor-pointer rounded-md border border-[#7087e6] px-3 text-[13px] hover:border-[#6c9bff] hover:text-[#6c9bff]"
+            className="min-h-11 cursor-pointer rounded-md border border-[#7087e6] px-3 text-[13px] md:min-h-9 hover:border-[#6c9bff] hover:text-[#6c9bff]"
           >
             {ordenes[k]}
           </button>
