@@ -5,6 +5,7 @@ import TarjetaArticulo from "@/components/blog/TarjetaArticulo";
 import Pendiente from "@/components/Pendiente";
 import Arquitectura from "@/components/proyectos/Arquitectura";
 import Boton from "@/components/ui/Boton";
+import GaleriaCapturas from "@/components/proyectos/GaleriaCapturas";
 import { Captura, Chips, ListaGuion } from "@/components/ui/Basicos";
 import { Link } from "@/i18n/navigation";
 import type { Idioma } from "@/i18n/routing";
@@ -76,7 +77,7 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
   if (!texto) {
     return (
       <article className="contenedor flex flex-col gap-6 py-14">
-        <Link href="/projects" className="text-sm text-tenue hover:text-texto">
+        <Link href="/projects" className="inline-flex min-h-11 items-center text-sm text-tenue hover:text-texto">
           ← {t("back")}
         </Link>
         <h1 className="text-[44px] font-semibold tracking-tight sm:text-6xl">{proyecto.textos.es!.datos.titulo}</h1>
@@ -89,16 +90,17 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
   }
 
   const d = texto.datos;
-  const [principal, ...resto] = capturasEnIdioma(datos, idioma);
-  const escritorio = resto.filter((c) => !c.movil);
-  const movil = resto.filter((c) => c.movil);
+  const capturas = capturasEnIdioma(datos, idioma);
+  const principal = capturas[0];
+  const tg = await getTranslations("gallery");
+  const galeria = capturas.map((c) => ({ src: `/proyectos/${slug}/${c.archivo}`, alt: c.alt, movil: Boolean(c.movil) }));
   // Artículos del blog que citan este proyecto
   const articulos = listarArticulos().filter((a) => Object.values(a.textos).some((x) => x.datos.proyectos.includes(slug)));
 
   return (
     <article>
       <header className="contenedor flex flex-col gap-5 pt-10 pb-8 md:pt-14">
-        <Link href="/projects" className="text-sm text-tenue hover:text-texto">
+        <Link href="/projects" className="inline-flex min-h-11 items-center text-sm text-tenue hover:text-texto">
           ← {t("back")}
         </Link>
         <span className="font-mono text-[13px] text-tenue">
@@ -120,16 +122,13 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
             </Boton>
           )}
         </div>
-        <Captura slug={slug} captura={principal} className="mt-4 aspect-[16/10]" sizes="(min-width: 1280px) 1200px, 100vw" prioridad />
-        {(escritorio.length > 0 || movil.length > 0) && (
-          <div className="flex items-start gap-4">
-            {escritorio.map((c) => (
-              <Captura key={c.archivo} slug={slug} captura={c} className="aspect-[16/10] flex-1" sizes="(min-width: 1280px) 900px, 75vw" />
-            ))}
-            {movil.map((c) => (
-              <Captura key={c.archivo} slug={slug} captura={c} className="aspect-[390/844] w-[22%] shrink-0" sizes="25vw" />
-            ))}
-          </div>
+        {galeria.length > 0 ? (
+          <GaleriaCapturas
+            capturas={galeria}
+            textos={{ open: tg("open"), close: tg("close"), prev: tg("prev"), next: tg("next"), counter: tg.raw("counter") as string, title: tg("title") }}
+          />
+        ) : (
+          <Captura slug={slug} captura={principal} className="mt-4 aspect-[16/10]" sizes="(min-width: 1280px) 1200px, 100vw" prioridad />
         )}
       </header>
 

@@ -67,6 +67,54 @@
     "back": "Back to home",
     "updated": "Last reviewed: {fecha}"
   },
+  "palette": {
+    "open": "Search and commands",
+    "title": "Search and commands",
+    "placeholder": "Search a page, a project or type a command…",
+    "hint": "↑ ↓ to move · Enter to choose · Esc to close",
+    "empty": "Nothing matches «{q}». Try another word.",
+    "count": "{n} results",
+    "groupPages": "Pages",
+    "groupProjects": "Projects",
+    "groupArticles": "Articles",
+    "groupTechnologies": "Technologies",
+    "groupActions": "Actions",
+    "themeLight": "Switch to light theme",
+    "themeDark": "Switch to dark theme",
+    "language": "Switch to {idioma}",
+    "cv": "Download CV (PDF)",
+    "copyEmail": "Copy email",
+    "emailCopied": "Email copied: {email}",
+    "emailFailed": "Could not copy. The email is {email}",
+    "github": "Open GitHub",
+    "linkedin": "Open LinkedIn",
+    "verbs": "go,open,see,show"
+  },
+  "filters": {
+    "search": "Search projects",
+    "status": "Status",
+    "technology": "Technology",
+    "all": "All",
+    "allTech": "All",
+    "count": "{n} of {total} projects",
+    "clear": "Clear filters",
+    "noResults": "No project matches those filters."
+  },
+  "article": {
+    "toc": "On this page",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyCode": "Copy code",
+    "progress": "Reading progress"
+  },
+  "gallery": {
+    "open": "Enlarge screenshot: {alt}",
+    "close": "Close",
+    "prev": "Previous screenshot",
+    "next": "Next screenshot",
+    "counter": "{n} of {total}",
+    "title": "Screenshots"
+  },
   "pending": {
     "label": "Pending",
     "contact": "Email and professional profiles: pending confirmation (phase 5).",
@@ -204,6 +252,8 @@
     "languages": "Languages"
   },
   "technologies": {
+    "mapTitle": "Map of projects and technologies",
+    "mapIntro": "Pick a project to see which technologies it uses, or hover a technology to see which projects I used it in.",
     "intro": "Grouped by use and linked to the projects where I've applied them. No percentages, no loose logos.",
     "noProject": "Knowledge · no public project yet",
     "alsoTitle": "Also used in my projects",

@@ -67,6 +67,54 @@
     "back": "Tornar a l'inici",
     "updated": "Última revisió: {fecha}"
   },
+  "palette": {
+    "open": "Cerca i comandes",
+    "title": "Cerca i comandes",
+    "placeholder": "Cerca una pàgina, un projecte o escriu una comanda…",
+    "hint": "↑ ↓ per moure't · Enter per triar · Esc per tancar",
+    "empty": "Res coincideix amb «{q}». Prova amb una altra paraula.",
+    "count": "{n} resultats",
+    "groupPages": "Pàgines",
+    "groupProjects": "Projectes",
+    "groupArticles": "Articles",
+    "groupTechnologies": "Tecnologies",
+    "groupActions": "Accions",
+    "themeLight": "Canviar al tema clar",
+    "themeDark": "Canviar al tema fosc",
+    "language": "Canviar a {idioma}",
+    "cv": "Descarregar CV (PDF)",
+    "copyEmail": "Copiar email",
+    "emailCopied": "Email copiat: {email}",
+    "emailFailed": "No s'ha pogut copiar. L'email és {email}",
+    "github": "Obrir GitHub",
+    "linkedin": "Obrir LinkedIn",
+    "verbs": "anar,obrir,veure,ves"
+  },
+  "filters": {
+    "search": "Cerca projectes",
+    "status": "Estat",
+    "technology": "Tecnologia",
+    "all": "Tots",
+    "allTech": "Totes",
+    "count": "{n} de {total} projectes",
+    "clear": "Treure filtres",
+    "noResults": "Cap projecte coincideix amb aquests filtres."
+  },
+  "article": {
+    "toc": "En aquest article",
+    "copy": "Copiar",
+    "copied": "Copiat",
+    "copyCode": "Copiar codi",
+    "progress": "Progrés de lectura"
+  },
+  "gallery": {
+    "open": "Ampliar captura: {alt}",
+    "close": "Tancar",
+    "prev": "Captura anterior",
+    "next": "Captura següent",
+    "counter": "{n} de {total}",
+    "title": "Captures"
+  },
   "pending": {
     "label": "Pendent",
     "contact": "Correu i perfils professionals: pendents de confirmar (fase 5).",
@@ -204,6 +252,8 @@
     "languages": "Idiomes"
   },
   "technologies": {
+    "mapTitle": "Mapa de projectes i tecnologies",
+    "mapIntro": "Tria un projecte per veure quines tecnologies fa servir, o passa per una tecnologia per veure en quins projectes l'he fet servir.",
     "intro": "Agrupades per ús i enllaçades als projectes on les he aplicades. Sense percentatges ni logos solts.",
     "noProject": "Coneixements · encara sense projecte públic",
     "alsoTitle": "També les he utilitzat en els meus projectes",

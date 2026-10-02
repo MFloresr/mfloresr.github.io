@@ -40,7 +40,7 @@ export default async function PaginaEtiqueta({ params }: PageProps<"/[locale]/bl
   return (
     <div className="contenedor flex flex-col gap-10 py-14 md:py-18">
       <header className="flex flex-col gap-4">
-        <Link href="/blog" className="text-sm text-tenue hover:text-texto">
+        <Link href="/blog" className="inline-flex min-h-11 items-center text-sm text-tenue hover:text-texto">
           ← {t("back")}
         </Link>
         <h1 className="text-[36px] font-semibold tracking-[-0.03em] sm:text-5xl">{t("tagTitle", { etiqueta: tag })}</h1>

@@ -67,6 +67,33 @@ export function ProveedorExplorar({ datos, children }: { datos: DatosInicio; chi
   const [filtro, setFiltro] = useState<string | null>(null);
   const [abiertas, setAbiertas] = useState<Set<string>>(() => new Set([datos.proyectos[0].slug]));
 
+  // El filtro por tecnología vive también en la URL (?tec=django) para poder compartirlo
+  const urlLeida = useRef(false);
+  const omitir = useRef(false);
+  useEffect(() => {
+    const tec = new URLSearchParams(window.location.search).get("tec");
+    if (tec && datos.tecnologias.some((t) => t.id === tec)) {
+      // Se lee la URL al montar (no existe en el servidor), así que no puede ser el estado inicial
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setFiltro(tec);
+      setFoco({ tipo: "tecnologia", id: tec });
+    }
+    urlLeida.current = true;
+    omitir.current = true;
+  }, [datos]);
+  useEffect(() => {
+    if (!urlLeida.current) return;
+    // La primera pasada va con el estado anterior a leer la URL: no se escribe
+    if (omitir.current) {
+      omitir.current = false;
+      return;
+    }
+    const url = new URL(window.location.href);
+    if (filtro) url.searchParams.set("tec", filtro);
+    else url.searchParams.delete("tec");
+    window.history.replaceState(null, "", url);
+  }, [filtro]);
+
   const valor = useMemo<Estado>(
     () => ({
       datos,
@@ -96,7 +123,7 @@ export function ProveedorExplorar({ datos, children }: { datos: DatosInicio; chi
 
 // ---------------------------------------------------------------- Panel de conexiones
 
-export function PanelConexiones() {
+export function PanelConexiones({ destino = "ficha" }: { destino?: "ficha" | "pagina" }) {
   const { datos, foco, enfocar, filtro, filtrar, abrirFicha } = useExplorar();
   const { proyectos, tecnologias, textos } = datos;
   const [vista, setVista] = useState<string | null>(null);
@@ -283,14 +310,21 @@ export function PanelConexiones() {
 
       <p aria-live="polite" className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 text-[13px] text-tenue lg:col-span-full lg:mt-5">
         <span>{resumen}</span>
-        <a
-          href="#proyectos"
-          onClick={() => proyectoEnFoco && abrirFicha(proyectoEnFoco.slug)}
-          className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento"
-        >
-          {proyectoEnFoco ? plantilla(textos.panelOpen, { proyecto: proyectoEnFoco.titulo }) : textos.panelOpenAll}
-          <Flecha />
-        </a>
+        {destino === "pagina" ? (
+          <Link href={proyectoEnFoco ? `/projects/${proyectoEnFoco.slug}` : "/projects"} className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento">
+            {proyectoEnFoco ? plantilla(textos.panelOpen, { proyecto: proyectoEnFoco.titulo }) : textos.panelOpenAll}
+            <Flecha />
+          </Link>
+        ) : (
+          <a
+            href="#proyectos"
+            onClick={() => proyectoEnFoco && abrirFicha(proyectoEnFoco.slug)}
+            className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento"
+          >
+            {proyectoEnFoco ? plantilla(textos.panelOpen, { proyecto: proyectoEnFoco.titulo }) : textos.panelOpenAll}
+            <Flecha />
+          </a>
+        )}
       </p>
     </div>
   );

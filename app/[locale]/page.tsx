@@ -4,17 +4,16 @@ import DatosEstructurados from "@/components/DatosEstructurados";
 import DiagramaPerfil from "@/components/inicio/DiagramaPerfil";
 import EnlaceCV from "@/components/EnlaceCV";
 import Pendiente from "@/components/Pendiente";
-import { Consola, ListaProyectos, PanelConexiones, ProveedorExplorar, type DatosInicio } from "@/components/inicio/Explorar";
+import { Consola, ListaProyectos, PanelConexiones, ProveedorExplorar } from "@/components/inicio/Explorar";
 import Boton from "@/components/ui/Boton";
 import { Chips, Etiqueta, ListaGuion } from "@/components/ui/Basicos";
 import { Externo, Flecha } from "@/components/ui/Iconos";
 import { Link } from "@/i18n/navigation";
 import { GRUPOS, type IdiomaContenido } from "@/lib/contenido/esquemas";
-import { capturasEnIdioma, enIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
-import { listarArticulos, listarProyectos, obtenerPerfil, obtenerTecnologias } from "@/lib/contenido/leer";
+import { enIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
+import { listarArticulos, obtenerPerfil, obtenerTecnologias } from "@/lib/contenido/leer";
 import { metadatosPagina } from "@/lib/metadatos";
-import { CV_PDF } from "@/lib/sitio";
-import type { Idioma } from "@/i18n/routing";
+import { construirDatosInicio } from "@/lib/datosInicio";
 
 export const generateMetadata = () => metadatosPagina("home", "");
 
@@ -24,7 +23,6 @@ export default async function Inicio() {
   const tp = await getTranslations("pending");
   const tg = await getTranslations("groups");
   const perfil = obtenerPerfil();
-  const proyectos = listarProyectos();
   const articulos = listarArticulos().slice(0, 2);
   const ciudad = perfil.ubicacion.split(",")[0];
 
@@ -41,38 +39,7 @@ export default async function Inicio() {
   );
 
   const tproy = await getTranslations("projects");
-  const tecnologias = obtenerTecnologias();
-  const usadas = new Set(proyectos.flatMap((p) => p.datos.tecnologias));
-  const claves = ["panelTitle", "panelHint", "panelRegion", "panelUses", "panelTech", "panelOpen", "panelOpenAll", "listIdle", "listFilter", "listClear", "conTitle", "conOut", "conPlaceholder", "conGreeting", "conHelp", "conUnknown", "conNeedTech", "conNoTech", "conUseOk", "conNoProjects", "conCv"];
-  const datosInicio: DatosInicio = {
-    proyectos: proyectos.map((p) => {
-      const texto = p.textos[idioma]?.datos;
-      const captura = capturasEnIdioma(p.datos, idioma)[0];
-      return {
-        slug: p.slug,
-        titulo: texto?.titulo ?? p.textos.es!.datos.titulo,
-        estado: tproy(`status.${p.datos.estado}`),
-        estadoClave: p.datos.estado,
-        anio: p.datos.anio,
-        resumen: texto?.resumen ?? null,
-        contexto: texto?.contexto ?? null,
-        tecnologias: p.datos.tecnologias,
-        demo: p.datos.demo?.url ?? null,
-        repositorio: p.datos.repositorio ?? null,
-        captura: captura ? { src: `/proyectos/${p.slug}/${captura.archivo}`, alt: captura.alt } : null,
-      };
-    }),
-    tecnologias: tecnologias.filter((tec) => usadas.has(tec.id)).map((tec) => ({ id: tec.id, nombre: nombreTecnologia(tec, idioma) })),
-    textos: Object.fromEntries(claves.map((k) => [k, (t.raw as (clave: string) => string)(k)])),
-    ordenes: { help: t.raw("cmd.help"), projects: t.raw("cmd.projects"), stack: t.raw("cmd.stack"), use: t.raw("cmd.use"), path: t.raw("cmd.path"), contact: t.raw("cmd.contact"), cv: t.raw("cmd.cv"), clear: t.raw("cmd.clear") } as DatosInicio["ordenes"],
-    etiquetas: { verFicha: tproy("viewProject"), codigo: tproy("code"), demo: tproy("demo") },
-    recorrido: [
-      ...perfil.formacion.map((f) => `${f.fechas ?? ""} ${enIdioma(f.titulo, idioma) ?? ""}${f.centro ? `, ${f.centro}` : ""}`.trim()),
-      ...perfil.experiencia.map((x) => `${enIdioma(x.fechas, idioma) ?? ""} ${enIdioma(x.puesto, idioma) ?? ""}, ${x.empresa}`.trim()),
-    ],
-    contacto: perfil.contacto,
-    cv: CV_PDF[idioma as Idioma],
-  };
+  const datosInicio = await construirDatosInicio(idioma);
   const seccion = "border-t border-linea";
 
   return (
