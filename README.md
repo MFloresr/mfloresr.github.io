@@ -87,6 +87,16 @@ npm run contenido                 # valida y lista todo lo pendiente
 npm run contenido -- --estricto   # falla si queda algo pendiente (usar antes de publicar)
 ```
 
+## Imágenes para compartir (og:image)
+
+Las imágenes de 1200×630 que salen al compartir un enlace están en `public/og/` (portada, proyectos y artículos, por idioma). Se generan con:
+
+```bash
+npm run og    # necesita Edge instalado e internet (tipografías de Google Fonts)
+```
+
+Hay que volver a ejecutarlo y subir los cambios cuando se añada o cambie un proyecto o artículo, o cuando cambie el dominio (aparece en el pie de la imagen).
+
 ## Desarrollo
 
 ```bash
