@@ -285,9 +285,6 @@
 }
 
 /* ---------- Entrada de la portada ---------- */
-.entrada-titulo {
-  text-shadow: 0 0 60px var(--brillo);
-}
 /* Solo desplazamiento: con opacidad 0 al inicio el título tardaría más en contar como contenido visible (LCP) */
 @keyframes entra-linea {
   from {
@@ -330,7 +327,6 @@
 .fondo-resplandor {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(90px);
   opacity: 0.55;
 }
 .fondo-resplandor-a {
@@ -383,7 +379,6 @@
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-dasharray: 36 420;
-  filter: drop-shadow(0 0 5px var(--cable));
   animation: viaja-dato linear infinite;
 }
 @keyframes viaja-dato {
