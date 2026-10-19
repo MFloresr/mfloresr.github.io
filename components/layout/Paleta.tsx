@@ -91,7 +91,7 @@ export default function Paleta({ datos }: { datos: DatosPaleta }) {
         grupo: "actions",
         titulo: plantilla(textos.language, { idioma: i.nombre }),
         detalle: i.codigo,
-        ejecutar: () => router.replace(`${ruta}${window.location.search}` as never, { locale: i.codigo as "es" | "en" | "ca" | "fr" }),
+        ejecutar: () => router.replace(`${ruta}${window.location.search}` as never, { locale: i.codigo as "es" | "en" }),
       });
     }
     acc.push({ id: "mensaje", grupo: "actions", titulo: textos.sendMessage, ejecutar: () => router.push("/contact#formulario" as never) });

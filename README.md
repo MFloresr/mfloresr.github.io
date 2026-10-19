@@ -2,7 +2,7 @@
 
 Portfolio profesional de Mario Flores, desarrollador full-stack en Barcelona.
 
-**Web publicada:** https://mfloresr.com · en castellano, inglés, catalán y francés.
+**Web publicada:** https://mfloresr.com · en castellano e inglés.
 
 ## Capturas
 
@@ -50,7 +50,7 @@ proxy.ts               redirección por idioma
 
 ## Idiomas
 
-- **Publicados:** castellano (`es`), inglés (`en`), catalán (`ca`) y francés (`fr`).
+- **Publicados:** castellano (`es`) e inglés (`en`).
 - Para añadir uno basta con incluirlo en `i18n/routing.ts`, crear `messages/<idioma>.json` y traducir
   el contenido. Las rutas no cambian: son las mismas en todos los idiomas (`/es/projects`,
   `/en/projects`...).

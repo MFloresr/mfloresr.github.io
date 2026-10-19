@@ -6,7 +6,7 @@ import { z } from "zod";
  * `null` significa "pendiente de confirmar" y se muestra como tal, nunca se inventa.
  */
 
-const IDIOMAS_CONTENIDO = ["es", "en", "ca", "fr"] as const;
+const IDIOMAS_CONTENIDO = ["es", "en"] as const;
 export type IdiomaContenido = (typeof IDIOMAS_CONTENIDO)[number];
 
 /** Un valor con una versión por idioma. Falta o null = pendiente en ese idioma. */

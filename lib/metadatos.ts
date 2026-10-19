@@ -6,7 +6,7 @@ import { NOMBRE, SITE_URL, alternativas, imagenCompartir, urlAbsoluta } from "./
 type ClavePagina = "home" | "projects" | "about" | "technologies" | "blog" | "ask" | "contact";
 
 /** Código Open Graph de cada idioma publicado. */
-const LOCALE_OG: Record<Idioma, string> = { es: "es_ES", en: "en_GB", ca: "ca_ES", fr: "fr_FR" };
+const LOCALE_OG: Record<Idioma, string> = { es: "es_ES", en: "en_GB" };
 
 /**
  * Metadatos comunes de una página: título, descripción, canónica, hreflang y Open Graph.

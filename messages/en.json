@@ -45,9 +45,7 @@
   "language": {
     "label": "Language",
     "es": "Español",
-    "en": "English",
-    "ca": "Català",
-    "fr": "Français"
+    "en": "English"
   },
   "theme": {
     "toDark": "Switch to dark mode",
@@ -318,9 +316,7 @@
     "readArticle": "Read article",
     "languages": {
       "es": "Spanish",
-      "en": "English",
-      "ca": "Catalan",
-      "fr": "French"
+      "en": "English"
     },
     "categoryNames": {
       "proyectos": "Projects",

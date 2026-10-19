@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   // Solo afecta a ese host; las vistas previas (otros hosts de vercel.app) siguen funcionando.
   async redirects() {
     return [
+      // Idiomas retirados (catalán y francés): las URL antiguas ya indexadas pasan a castellano e inglés
+      { source: "/ca/:path*", destination: "/es/:path*", permanent: true },
+      { source: "/fr/:path*", destination: "/en/:path*", permanent: true },
       {
         source: "/:path*",
         has: [{ type: "host", value: "mfloresr-portfolio.vercel.app" }],
