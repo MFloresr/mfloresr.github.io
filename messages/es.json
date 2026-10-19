@@ -45,9 +45,7 @@
   "language": {
     "label": "Idioma",
     "es": "Español",
-    "en": "English",
-    "ca": "Català",
-    "fr": "Français"
+    "en": "English"
   },
   "theme": {
     "toDark": "Cambiar a modo oscuro",
@@ -318,9 +316,7 @@
     "readArticle": "Leer artículo",
     "languages": {
       "es": "castellano",
-      "en": "inglés",
-      "ca": "catalán",
-      "fr": "francés"
+      "en": "inglés"
     },
     "categoryNames": {
       "proyectos": "Proyectos",

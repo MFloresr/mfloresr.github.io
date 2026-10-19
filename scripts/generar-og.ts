@@ -15,7 +15,7 @@ import { pathToFileURL } from "node:url";
 import { listarArticulos, listarProyectos, obtenerTecnologias, obtenerPerfil } from "../lib/contenido/leer";
 import { nombreTecnologia } from "../lib/contenido/idioma";
 
-const IDIOMAS = ["es", "en", "ca", "fr"] as const;
+const IDIOMAS = ["es", "en"] as const;
 type Idioma = (typeof IDIOMAS)[number];
 const RAIZ = process.cwd();
 const SALIDA = path.join(RAIZ, "public", "og");
@@ -30,9 +30,9 @@ const mensajes = Object.fromEntries(
 ) as Record<Idioma, Mensajes>;
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
-const ETIQUETA_PROYECTO: Record<Idioma, string> = { es: "Proyecto", en: "Project", ca: "Projecte", fr: "Projet" };
-const ETIQUETA_BLOG: Record<Idioma, string> = { es: "Artículo", en: "Article", ca: "Article", fr: "Article" };
-const MIN: Record<Idioma, string> = { es: "min de lectura", en: "min read", ca: "min de lectura", fr: "min de lecture" };
+const ETIQUETA_PROYECTO: Record<Idioma, string> = { es: "Proyecto", en: "Project" };
+const ETIQUETA_BLOG: Record<Idioma, string> = { es: "Artículo", en: "Article" };
+const MIN: Record<Idioma, string> = { es: "min de lectura", en: "min read" };
 
 const CSS = `
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=JetBrains+Mono:wght@400;600&family=Orbitron:wght@600;800&display=swap");

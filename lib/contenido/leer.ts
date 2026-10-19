@@ -124,7 +124,7 @@ export function obtenerProyecto(slug: string): Proyecto | null {
   const textos: Proyecto["textos"] = {};
   for (const archivo of readdirSync(dir).filter((f) => f.endsWith(".mdx"))) {
     const idioma = archivo.replace(/\.mdx$/, "");
-    if (!["es", "en", "ca", "fr"].includes(idioma)) {
+    if (!["es", "en"].includes(idioma)) {
       throw new ContenidoInvalido(`Idioma desconocido en el nombre del archivo: ${path.join("content/proyectos", slug, archivo)}`);
     }
     const ruta = path.join(dir, archivo);
@@ -193,7 +193,7 @@ export function listarArticulos(): EntradaBlog[] {
       for (const archivo of readdirSync(path.join(DIR_BLOG, dir.name)).filter((f) => f.endsWith(".mdx"))) {
         const idioma = archivo.replace(/\.mdx$/, "");
         const ruta = path.join(DIR_BLOG, dir.name, archivo);
-        if (!["es", "en", "ca", "fr"].includes(idioma)) {
+        if (!["es", "en"].includes(idioma)) {
           throw new ContenidoInvalido(`Idioma desconocido en el nombre del archivo: ${path.relative(process.cwd(), ruta)}`);
         }
         const { datos: frontmatter, cuerpo } = separarFrontmatter(ruta);

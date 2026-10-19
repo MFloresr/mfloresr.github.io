@@ -11,7 +11,7 @@ import { routing } from "@/i18n/routing";
 
 export const maxDuration = 60;
 
-const NOMBRE_IDIOMA = { es: "castellano", en: "inglés", ca: "catalán", fr: "francés" } as const;
+const NOMBRE_IDIOMA = { es: "castellano", en: "inglés" } as const;
 
 const entrada = z.object({
   oferta: z.string().trim().min(80).max(8000),
