@@ -200,6 +200,8 @@
   "home": {
     "status": "Open to opportunities · {ciudad}",
     "title": "From the cable to the browser.",
+    "heroLine1": "From the cable",
+    "heroLine2": "to the browser.",
     "panelTitle": "What each project uses",
     "panelHint": "Pick a project, or hover a technology to see who uses it. Click a technology to filter the projects.",
     "panelRegion": "Technologies each project uses",

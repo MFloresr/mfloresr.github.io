@@ -283,3 +283,116 @@
 .ficha-abierta {
   animation: abrir 0.3s ease-out;
 }
+
+/* ---------- Entrada de la portada ---------- */
+.entrada-titulo {
+  text-shadow: 0 0 60px var(--brillo);
+}
+/* Solo desplazamiento: con opacidad 0 al inicio el título tardaría más en contar como contenido visible (LCP) */
+@keyframes entra-linea {
+  from {
+    transform: translateY(22px);
+  }
+}
+.entrada-linea {
+  animation: entra-linea 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+/* El cable se dibuja tras el título; en reposo ya está completo */
+@keyframes dibujar-cable {
+  from {
+    stroke-dashoffset: var(--largo);
+  }
+}
+.entrada-cable {
+  stroke-dasharray: var(--largo);
+  filter: drop-shadow(0 0 6px var(--cable)) drop-shadow(0 0 16px var(--brillo));
+  animation: dibujar-cable 1.5s cubic-bezier(0.5, 0, 0.2, 1) 0.7s backwards;
+}
+@keyframes enciende-ventana {
+  from {
+    filter: none;
+  }
+}
+.entrada-ventana-viva {
+  filter: drop-shadow(0 0 10px var(--cable)) drop-shadow(0 0 26px var(--brillo));
+  animation: enciende-ventana 0.5s ease-out 2.1s backwards;
+}
+.entrada-ventana-viva svg {
+  animation: latido-ventana 3.3s ease-in-out 2.4s infinite;
+}
+@keyframes latido-ventana {
+  50% {
+    filter: brightness(1.35);
+  }
+}
+
+/* ---------- Fondo de la portada ---------- */
+.fondo-resplandor {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
+}
+.fondo-resplandor-a {
+  top: -18%;
+  left: -8%;
+  width: 52vw;
+  height: 52vw;
+  background: radial-gradient(circle, var(--cable) 0%, transparent 68%);
+  animation: deriva-a 22s ease-in-out infinite alternate;
+}
+.fondo-resplandor-b {
+  right: -12%;
+  bottom: -26%;
+  width: 56vw;
+  height: 56vw;
+  background: radial-gradient(circle, var(--cable-2) 0%, transparent 68%);
+  animation: deriva-b 26s ease-in-out infinite alternate;
+}
+@keyframes deriva-a {
+  to {
+    transform: translate(9vw, 7vw) scale(1.12);
+  }
+}
+@keyframes deriva-b {
+  to {
+    transform: translate(-8vw, -6vw) scale(1.08);
+  }
+}
+.fondo-rejilla {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--rejilla) 1px, transparent 1px), linear-gradient(90deg, var(--rejilla) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 78%);
+}
+.fondo-cables {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+}
+.fondo-cable {
+  stroke: var(--linea);
+  stroke-width: 1.5;
+  opacity: 0.55;
+}
+.fondo-datos {
+  stroke: var(--cable);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 36 420;
+  filter: drop-shadow(0 0 5px var(--cable));
+  animation: viaja-dato linear infinite;
+}
+@keyframes viaja-dato {
+  to {
+    stroke-dashoffset: -912;
+  }
+}
+@media (max-width: 40rem) {
+  .fondo-cables {
+    opacity: 0.4;
+  }
+}

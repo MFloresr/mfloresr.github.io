@@ -1,6 +1,8 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import TarjetaArticulo from "@/components/blog/TarjetaArticulo";
 import DatosEstructurados from "@/components/DatosEstructurados";
+import Entrada from "@/components/inicio/Entrada";
+import FondoRed from "@/components/inicio/FondoRed";
 import DiagramaPerfil from "@/components/inicio/DiagramaPerfil";
 import EnlaceCV from "@/components/EnlaceCV";
 import Pendiente from "@/components/Pendiente";
@@ -46,50 +48,54 @@ export default async function Inicio() {
     <>
       <DatosEstructurados idioma={idioma} />
       <ProveedorExplorar datos={datosInicio}>
-        {/* Presentación y consola */}
-        <section className="contenedor grid gap-10 py-12 md:py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:items-center lg:gap-14">
-          <div className="flex flex-col gap-6">
-            <span className="inline-flex items-center gap-2 text-[13px] text-tenue">
+        {/* Entrada: título con el cable, mensaje y accesos */}
+        <section className="relative isolate overflow-hidden">
+          <FondoRed />
+          <div className="contenedor flex min-h-[calc(100svh-5rem)] flex-col justify-center gap-10 py-14 md:gap-12 md:py-20">
+            <span className="inline-flex items-center gap-2 self-start rounded-full border border-linea bg-superficie/70 px-3.5 py-1.5 text-[13px] text-tenue backdrop-blur">
               <span aria-hidden="true" className="size-2 rounded-full bg-exito" />
               {perfil.nombre} · {enIdioma(perfil.rol, idioma)} · {t("status", { ciudad })}
             </span>
-            <h1 className="text-[34px] leading-[1.1] font-bold text-balance sm:text-5xl lg:text-[56px]">{t("title")}</h1>
-            {mensaje ? <p className="max-w-2xl text-lg leading-relaxed sm:text-xl">{mensaje}</p> : <Pendiente>{tp("field")}</Pendiente>}
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <Boton href="/projects" flecha>
-                {t("ctaProjects")}
-              </Boton>
-              <Boton href="/contact" variante="secundario">
-                {t("ctaContact")}
-              </Boton>
-              <div className="flex flex-wrap items-center gap-4 sm:ml-2">
-                {github && (
-                  <a href={github} target="_blank" rel="me noopener" className="inline-flex min-h-11 items-center gap-1 text-[15px] font-medium hover:text-acento">
-                    GitHub
-                    <Externo />
-                  </a>
-                )}
-                <EnlaceCV />
+            <Entrada linea1={t("heroLine1")} linea2={t("heroLine2")} />
+            <div className="flex max-w-3xl flex-col gap-7">
+              {mensaje ? <p className="text-lg leading-relaxed sm:text-xl lg:text-[22px]">{mensaje}</p> : <Pendiente>{tp("field")}</Pendiente>}
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                <Boton href="/projects" flecha>
+                  {t("ctaProjects")}
+                </Boton>
+                <Boton href="/contact" variante="secundario">
+                  {t("ctaContact")}
+                </Boton>
+                <div className="flex flex-wrap items-center gap-4 sm:ml-2">
+                  {github && (
+                    <a href={github} target="_blank" rel="me noopener" className="inline-flex min-h-11 items-center gap-1 text-[15px] font-medium hover:text-acento">
+                      GitHub
+                      <Externo />
+                    </a>
+                  )}
+                  <EnlaceCV />
+                </div>
               </div>
+              <Link href="/ask" className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-medium text-acento">
+                {t("ctaAsk")}
+                <Flecha />
+              </Link>
             </div>
-            <Link href="/ask" className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-medium text-acento">
-              {t("ctaAsk")}
-              <Flecha />
-            </Link>
           </div>
+        </section>
+
+        {/* Consola y lo que busco */}
+        <section className="contenedor grid gap-6 py-12 md:py-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-stretch">
           <Consola />
+          <aside className="flex flex-col gap-3.5 self-start rounded-2xl border border-linea bg-superficie p-5 sm:p-6">
+            <h2 className="text-[15px] font-semibold">{t("lookingFor")}</h2>
+            {busca ? <ListaGuion items={busca} className="text-[15px]" /> : <Pendiente>{tp("field")}</Pendiente>}
+          </aside>
         </section>
 
         {/* Cuadro de conexiones */}
         <section className="contenedor pb-12 md:pb-16">
           <PanelConexiones />
-        </section>
-
-        <section className="contenedor pb-12 md:pb-16">
-          <aside className="flex flex-col gap-3.5 rounded-2xl border border-linea bg-superficie p-5 sm:p-6">
-            <h2 className="text-[15px] font-semibold">{t("lookingFor")}</h2>
-            {busca ? <ListaGuion items={busca} className="text-[15px]" /> : <Pendiente>{tp("field")}</Pendiente>}
-          </aside>
         </section>
 
         {/* Proyectos */}
