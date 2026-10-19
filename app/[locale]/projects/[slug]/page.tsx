@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import TarjetaArticulo from "@/components/blog/TarjetaArticulo";
+import JsonLd, { migas } from "@/components/JsonLd";
 import Pendiente from "@/components/Pendiente";
 import Arquitectura from "@/components/proyectos/Arquitectura";
 import Boton from "@/components/ui/Boton";
@@ -99,8 +100,34 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
   // Artículos del blog que citan este proyecto
   const articulos = listarArticulos().filter((a) => Object.values(a.textos).some((x) => x.datos.proyectos.includes(slug)));
 
+  const url = urlAbsoluta(idioma, `/projects/${slug}`);
+  const autor = { "@type": "Person", name: NOMBRE, url: `${SITE_URL}/${idioma}` };
+  // Los proyectos son código con repositorio, o sitios con demo: se describen como obra creativa de software
+  const datosProyecto = {
+    "@context": "https://schema.org",
+    "@type": datos.repositorio ? "SoftwareSourceCode" : "CreativeWork",
+    name: d.titulo,
+    description: d.resumen,
+    url,
+    inLanguage: idioma,
+    dateCreated: String(datos.anio),
+    image: `${SITE_URL}/og/proyecto-${slug}-${idioma}.jpg`,
+    author: autor,
+    keywords: datos.tecnologias.map((id) => nombres.get(id)!).join(", "),
+    ...(datos.repositorio && { codeRepository: datos.repositorio }),
+    ...(datos.demo && { sameAs: datos.demo.url }),
+  };
+
   return (
     <article>
+      <JsonLd datos={datosProyecto} />
+      <JsonLd
+        datos={migas([
+          { nombre: NOMBRE, url: `${SITE_URL}/${idioma}` },
+          { nombre: t("back"), url: urlAbsoluta(idioma, "/projects") },
+          { nombre: d.titulo, url },
+        ])}
+      />
       <header className="contenedor flex flex-col gap-5 pt-10 pb-8 md:pt-14">
         <Link href="/projects" className="inline-flex min-h-11 items-center text-sm text-tenue hover:text-texto">
           ← {t("back")}

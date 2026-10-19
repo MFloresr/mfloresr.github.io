@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import BarraProgreso from "@/components/blog/BarraProgreso";
 import IndiceLateral from "@/components/blog/IndiceLateral";
 import { fechaLocal } from "@/components/blog/TarjetaArticulo";
+import JsonLd, { migas } from "@/components/JsonLd";
 import Pendiente from "@/components/Pendiente";
 import TarjetaProyecto from "@/components/proyectos/TarjetaProyecto";
 import { Link } from "@/i18n/navigation";
@@ -72,8 +73,36 @@ export default async function PaginaArticulo({ params }: PageProps<"/[locale]/bl
   const relacionados = d.proyectos.map((p) => obtenerProyecto(p)!).filter(Boolean);
   const fecha = (iso: string) => formato.dateTime(fechaLocal(iso), { dateStyle: "long" });
 
+  const url = urlAbsoluta(idioma, `/blog/${slug}`);
+  // Solo se describen las páginas que se indexan (traducidas y publicadas)
+  const indexable = traducido && !d.borrador;
+  const articulo = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: d.titulo,
+    description: d.resumen,
+    url,
+    mainEntityOfPage: url,
+    inLanguage: idiomaTexto,
+    datePublished: d.fecha,
+    dateModified: d.actualizado ?? d.fecha,
+    image: `${SITE_URL}/og/blog-${slug}-${idiomaTexto}.jpg`,
+    keywords: d.etiquetas.join(", "),
+    author: { "@type": "Person", name: NOMBRE, url: `${SITE_URL}/${idioma}` },
+  };
+
   return (
     <article className="contenedor flex flex-col gap-10 py-10 md:py-14">
+      {indexable && <JsonLd datos={articulo} />}
+      {indexable && (
+        <JsonLd
+          datos={migas([
+            { nombre: NOMBRE, url: `${SITE_URL}/${idioma}` },
+            { nombre: t("back"), url: urlAbsoluta(idioma, "/blog") },
+            { nombre: d.titulo, url },
+          ])}
+        />
+      )}
       <BarraProgreso objetivo="#cuerpo-articulo" />
       <header className="flex max-w-3xl flex-col gap-5">
         <Link href="/blog" className="inline-flex min-h-11 items-center text-sm text-tenue hover:text-texto">
