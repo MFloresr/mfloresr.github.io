@@ -11,7 +11,7 @@ window.CV = {
     contacto: [
       { etiqueta: "Email", valor: "mrsitofull@gmail.com", href: "mailto:mrsitofull@gmail.com" },
       { etiqueta: "Teléfono", valor: "699 490 441", href: "tel:+34699490441" },
-      { etiqueta: "Portfolio", valor: "mfloresr-portfolio.vercel.app", href: "https://mfloresr-portfolio.vercel.app/es" },
+      { etiqueta: "Portfolio", valor: "mfloresr.com", href: "https://mfloresr.com/es" },
       { etiqueta: "GitHub", valor: "github.com/MFloresr", href: "https://github.com/MFloresr" },
       { etiqueta: "LinkedIn", valor: "linkedin.com/in/mario-its-me", href: "https://www.linkedin.com/in/mario-its-me" },
     ],
@@ -113,7 +113,7 @@ window.CV = {
       { idioma: "Inglés", nivel: "Lectura intermedia, conversación básica" },
     ],
     otros: ["Carnet de conducir B"],
-    pie: "Proyectos con demo y código en mfloresr-portfolio.vercel.app",
+    pie: "Proyectos con demo y código en mfloresr.com",
   },
 
   en: {
@@ -125,7 +125,7 @@ window.CV = {
     contacto: [
       { etiqueta: "Email", valor: "mrsitofull@gmail.com", href: "mailto:mrsitofull@gmail.com" },
       { etiqueta: "Phone", valor: "+34 699 490 441", href: "tel:+34699490441" },
-      { etiqueta: "Portfolio", valor: "mfloresr-portfolio.vercel.app", href: "https://mfloresr-portfolio.vercel.app/en" },
+      { etiqueta: "Portfolio", valor: "mfloresr.com", href: "https://mfloresr.com/en" },
       { etiqueta: "GitHub", valor: "github.com/MFloresr", href: "https://github.com/MFloresr" },
       { etiqueta: "LinkedIn", valor: "linkedin.com/in/mario-its-me", href: "https://www.linkedin.com/in/mario-its-me" },
     ],
@@ -227,7 +227,7 @@ window.CV = {
       { idioma: "English", nivel: "Intermediate reading, basic conversation" },
     ],
     otros: ["Driving licence (B)"],
-    pie: "Projects with demos and code at mfloresr-portfolio.vercel.app",
+    pie: "Projects with demos and code at mfloresr.com",
   },
 
   ca: {
@@ -239,7 +239,7 @@ window.CV = {
     contacto: [
       { etiqueta: "Correu", valor: "mrsitofull@gmail.com", href: "mailto:mrsitofull@gmail.com" },
       { etiqueta: "Telèfon", valor: "699 490 441", href: "tel:+34699490441" },
-      { etiqueta: "Portfolio", valor: "mfloresr-portfolio.vercel.app", href: "https://mfloresr-portfolio.vercel.app/ca" },
+      { etiqueta: "Portfolio", valor: "mfloresr.com", href: "https://mfloresr.com/ca" },
       { etiqueta: "GitHub", valor: "github.com/MFloresr", href: "https://github.com/MFloresr" },
       { etiqueta: "LinkedIn", valor: "linkedin.com/in/mario-its-me", href: "https://www.linkedin.com/in/mario-its-me" },
     ],
@@ -341,7 +341,7 @@ window.CV = {
       { idioma: "Anglès", nivel: "Lectura intermèdia, conversa bàsica" },
     ],
     otros: ["Carnet de conduir B"],
-    pie: "Projectes amb demo i codi a mfloresr-portfolio.vercel.app",
+    pie: "Projectes amb demo i codi a mfloresr.com",
   },
 
   fr: {
@@ -353,7 +353,7 @@ window.CV = {
     contacto: [
       { etiqueta: "E-mail", valor: "mrsitofull@gmail.com", href: "mailto:mrsitofull@gmail.com" },
       { etiqueta: "Téléphone", valor: "+34 699 490 441", href: "tel:+34699490441" },
-      { etiqueta: "Portfolio", valor: "mfloresr-portfolio.vercel.app", href: "https://mfloresr-portfolio.vercel.app/fr" },
+      { etiqueta: "Portfolio", valor: "mfloresr.com", href: "https://mfloresr.com/fr" },
       { etiqueta: "GitHub", valor: "github.com/MFloresr", href: "https://github.com/MFloresr" },
       { etiqueta: "LinkedIn", valor: "linkedin.com/in/mario-its-me", href: "https://www.linkedin.com/in/mario-its-me" },
     ],
@@ -455,6 +455,6 @@ window.CV = {
       { idioma: "Anglais", nivel: "Lecture intermédiaire, conversation de base" },
     ],
     otros: ["Permis de conduire B"],
-    pie: "Projets avec démos et code sur mfloresr-portfolio.vercel.app",
+    pie: "Projets avec démos et code sur mfloresr.com",
   },
 };

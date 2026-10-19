@@ -5,7 +5,7 @@ import type { Idioma } from "@/i18n/routing";
 import type { IdiomaContenido, PaginaLegal } from "@/lib/contenido/esquemas";
 import { obtenerLegal } from "@/lib/contenido/leer";
 import { Mdx } from "@/lib/contenido/mdx";
-import { NOMBRE, SITE_URL, alternativas, urlAbsoluta } from "@/lib/sitio";
+import { NOMBRE, SITE_URL, alternativas, imagenCompartir, urlAbsoluta } from "@/lib/sitio";
 
 const RUTAS: Record<PaginaLegal, string> = { legal: "/legal", privacy: "/privacy", cookies: "/cookies" };
 
@@ -14,11 +14,15 @@ export async function metadatosLegal(pagina: PaginaLegal): Promise<Metadata> {
   const idioma = (await getLocale()) as Idioma;
   const { datos } = obtenerLegal(pagina, idioma);
   const ruta = RUTAS[pagina];
+  const titulo = `${datos.titulo} · ${NOMBRE}`;
+  const imagen = imagenCompartir(`site-${idioma}.jpg`, titulo);
   return {
     metadataBase: new URL(SITE_URL),
-    title: `${datos.titulo} · ${NOMBRE}`,
+    title: titulo,
     description: datos.descripcion,
     alternates: { canonical: urlAbsoluta(idioma, ruta), languages: alternativas(ruta) },
+    openGraph: { type: "website", siteName: NOMBRE, title: titulo, description: datos.descripcion, url: urlAbsoluta(idioma, ruta), images: imagen.openGraph },
+    twitter: { card: "summary_large_image", title: titulo, description: datos.descripcion, images: imagen.twitter },
   };
 }
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Idioma } from "@/i18n/routing";
-import { NOMBRE, SITE_URL, alternativas, urlAbsoluta } from "./sitio";
+import { NOMBRE, SITE_URL, alternativas, imagenCompartir, urlAbsoluta } from "./sitio";
 
 type ClavePagina = "home" | "projects" | "about" | "technologies" | "blog" | "ask" | "contact";
 
@@ -17,6 +17,7 @@ export async function metadatosPagina(clave: ClavePagina, ruta: string): Promise
   const t = await getTranslations("meta");
   const titulo = clave === "home" ? t("home.title") : `${t(`${clave}.title`)} · ${NOMBRE}`;
   const descripcion = t(`${clave}.description`);
+  const imagen = imagenCompartir(`site-${idioma}.jpg`, titulo);
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -30,6 +31,8 @@ export async function metadatosPagina(clave: ClavePagina, ruta: string): Promise
       description: descripcion,
       url: urlAbsoluta(idioma, ruta),
       locale: LOCALE_OG[idioma],
+      images: imagen.openGraph,
     },
+    twitter: { card: "summary_large_image", title: titulo, description: descripcion, images: imagen.twitter },
   };
 }

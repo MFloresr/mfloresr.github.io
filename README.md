@@ -2,7 +2,7 @@
 
 Portfolio profesional de Mario Flores, desarrollador full-stack en Barcelona.
 
-**Web publicada:** https://mfloresr-portfolio.vercel.app · en castellano, inglés, catalán y francés.
+**Web publicada:** https://mfloresr.com · en castellano, inglés, catalán y francés.
 
 ## Capturas
 
@@ -87,6 +87,16 @@ npm run contenido                 # valida y lista todo lo pendiente
 npm run contenido -- --estricto   # falla si queda algo pendiente (usar antes de publicar)
 ```
 
+## Imágenes para compartir (og:image)
+
+Las imágenes de 1200×630 que salen al compartir un enlace están en `public/og/` (portada, proyectos y artículos, por idioma). Se generan con:
+
+```bash
+npm run og    # necesita Edge instalado e internet (tipografías de Google Fonts)
+```
+
+Hay que volver a ejecutarlo y subir los cambios cuando se añada o cambie un proyecto o artículo, o cuando cambie el dominio (aparece en el pie de la imagen).
+
 ## Desarrollo
 
 ```bash
@@ -107,7 +117,7 @@ En `.env.example` tienes un ejemplo con todas (sin valores reales).
 | `OCULTAR_BORRADORES` | Con `1`, oculta los borradores del blog también fuera de producción (para probar). |
 | `RESEND_API_KEY` | Clave de la API de Resend para el formulario de contacto. Sin ella, el formulario muestra «no disponible» y ofrece el email. Va en las variables de Vercel. Opcionales: `CONTACT_TO` (correo que recibe los mensajes, por defecto el del perfil) y `CONTACT_FROM` (remitente; por defecto el de pruebas de Resend). |
 | `GEMINI_API_KEY` | Clave de la API de Gemini (Google AI Studio) para «Pregunta a la IA». Sin ella, esa función no está disponible. Va en las variables de Vercel, nunca en el código. |
-| `SITE_URL` | URL pública, para las URL canónicas, el sitemap y los hreflang. Por defecto `https://mfloresr-portfolio.vercel.app`. Cambiarla es lo único necesario para pasar a un dominio propio. |
+| `SITE_URL` | URL pública, para las URL canónicas, el sitemap y los hreflang. Por defecto `https://mfloresr.com`. Cambiarla es lo único necesario para pasar a un dominio propio. |
 
 ## Despliegue
 

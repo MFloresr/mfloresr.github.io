@@ -11,7 +11,7 @@ import { routing, type Idioma } from "@/i18n/routing";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
 import { listarArticulos, obtenerProyecto, textoArticulo } from "@/lib/contenido/leer";
 import { Mdx, extraerIndice } from "@/lib/contenido/mdx";
-import { NOMBRE, SITE_URL, urlAbsoluta } from "@/lib/sitio";
+import { NOMBRE, SITE_URL, imagenCompartir, urlAbsoluta } from "@/lib/sitio";
 
 // Solo existen los artículos de content/blog (sin borradores en producción)
 export const dynamicParams = false;
@@ -29,8 +29,10 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/blog/[sl
   const entrada = buscar(slug);
   if (!entrada) return {};
   const idioma = (await getLocale()) as Idioma;
-  const { texto, traducido } = textoArticulo(entrada, idioma);
+  const { texto, traducido, idioma: idiomaTexto } = textoArticulo(entrada, idioma);
   const ruta = `/blog/${slug}`;
+  // La imagen es la del idioma en el que está escrito el texto que se muestra
+  const imagen = imagenCompartir(`blog-${slug}-${idiomaTexto}.jpg`, texto.datos.titulo);
   // hreflang solo para los idiomas en los que existe el artículo
   const languages = Object.fromEntries(
     routing.locales.filter((i) => entrada.textos[i]).map((i) => [i, urlAbsoluta(i, ruta)]),
@@ -48,8 +50,10 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/blog/[sl
       description: texto.datos.resumen,
       url: urlAbsoluta(idioma, ruta),
       publishedTime: texto.datos.fecha,
+      images: imagen.openGraph,
       ...(texto.datos.actualizado && { modifiedTime: texto.datos.actualizado }),
     },
+    twitter: { card: "summary_large_image", title: texto.datos.titulo, description: texto.datos.resumen, images: imagen.twitter },
   };
 }
 

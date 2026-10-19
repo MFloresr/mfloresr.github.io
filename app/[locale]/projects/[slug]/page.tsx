@@ -13,7 +13,7 @@ import type { IdiomaContenido } from "@/lib/contenido/esquemas";
 import { capturasEnIdioma, nombreTecnologia } from "@/lib/contenido/idioma";
 import { listarArticulos, listarSlugsProyectos, obtenerProyecto, obtenerTecnologias } from "@/lib/contenido/leer";
 import { Mdx } from "@/lib/contenido/mdx";
-import { NOMBRE, SITE_URL, alternativas, urlAbsoluta } from "@/lib/sitio";
+import { NOMBRE, SITE_URL, alternativas, imagenCompartir, urlAbsoluta } from "@/lib/sitio";
 
 // Solo existen los proyectos de content/proyectos; cualquier otro slug da 404
 export const dynamicParams = false;
@@ -29,12 +29,14 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/projects
   const idioma = (await getLocale()) as Idioma;
   const texto = proyecto.textos[idioma]?.datos ?? proyecto.textos.es!.datos;
   const ruta = `/projects/${slug}`;
+  const imagen = imagenCompartir(`proyecto-${slug}-${idioma}.jpg`, texto.titulo);
   return {
     metadataBase: new URL(SITE_URL),
     title: `${texto.titulo} · ${NOMBRE}`,
     description: texto.resumen,
     alternates: { canonical: urlAbsoluta(idioma, ruta), languages: alternativas(ruta) },
-    openGraph: { type: "article", title: texto.titulo, description: texto.resumen, url: urlAbsoluta(idioma, ruta) },
+    openGraph: { type: "article", title: texto.titulo, description: texto.resumen, url: urlAbsoluta(idioma, ruta), images: imagen.openGraph },
+    twitter: { card: "summary_large_image", title: texto.titulo, description: texto.resumen, images: imagen.twitter },
   };
 }
 

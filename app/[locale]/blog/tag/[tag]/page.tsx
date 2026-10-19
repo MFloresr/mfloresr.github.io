@@ -5,7 +5,7 @@ import TarjetaArticulo from "@/components/blog/TarjetaArticulo";
 import { Link } from "@/i18n/navigation";
 import type { Idioma } from "@/i18n/routing";
 import { listarArticulos } from "@/lib/contenido/leer";
-import { NOMBRE, SITE_URL, alternativas, urlAbsoluta } from "@/lib/sitio";
+import { NOMBRE, SITE_URL, alternativas, imagenCompartir, urlAbsoluta } from "@/lib/sitio";
 
 // Solo las etiquetas que usa algún artículo publicado
 export const dynamicParams = false;
@@ -23,10 +23,14 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/blog/tag
   const idioma = (await getLocale()) as Idioma;
   const t = await getTranslations("blog");
   const ruta = `/blog/tag/${tag}`;
+  const titulo = `${t("tagTitle", { etiqueta: tag })} · ${NOMBRE}`;
+  const imagen = imagenCompartir(`site-${idioma}.jpg`, titulo);
   return {
     metadataBase: new URL(SITE_URL),
-    title: `${t("tagTitle", { etiqueta: tag })} · ${NOMBRE}`,
+    title: titulo,
     alternates: { canonical: urlAbsoluta(idioma, ruta), languages: alternativas(ruta) },
+    openGraph: { type: "website", siteName: NOMBRE, title: titulo, url: urlAbsoluta(idioma, ruta), images: imagen.openGraph },
+    twitter: { card: "summary_large_image", title: titulo, images: imagen.twitter },
   };
 }
 

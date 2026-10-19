@@ -4,7 +4,7 @@ import { routing, type Idioma } from "@/i18n/routing";
  * Datos del sitio. La URL base sale de SITE_URL para poder pasar a un dominio
  * propio (p. ej. https://marioflores.dev) cambiando solo esa variable.
  */
-export const SITE_URL = (process.env.SITE_URL ?? "https://mfloresr-portfolio.vercel.app").replace(/\/$/, "");
+export const SITE_URL = (process.env.SITE_URL ?? "https://mfloresr.com").replace(/\/$/, "");
 
 export const NOMBRE = "Mario Flores";
 
@@ -22,6 +22,19 @@ export type Seccion = (typeof SECCIONES)[number];
 
 /** Páginas legales enlazadas desde el pie (mismo slug en todos los idiomas). */
 export const LEGALES = ["/legal", "/privacy", "/cookies"] as const;
+
+/** Imágenes para compartir (Open Graph): se generan en public/og/ con `npm run og`. */
+export const OG_ANCHO = 1200;
+export const OG_ALTO = 630;
+
+/** Metadatos de imagen de una página: la imagen Open Graph y la de la tarjeta de X/Twitter. */
+export function imagenCompartir(archivo: string, alt: string) {
+  const url = `${SITE_URL}/og/${archivo}`;
+  return {
+    openGraph: [{ url, width: OG_ANCHO, height: OG_ALTO, alt }],
+    twitter: [url],
+  };
+}
 
 /** URL absoluta de una ruta en un idioma: urlAbsoluta("es", "/projects") */
 export function urlAbsoluta(idioma: Idioma, ruta: string) {
