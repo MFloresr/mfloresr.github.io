@@ -13,8 +13,8 @@ const scriptTema = `try{var t=localStorage.getItem("tema");if(!t)t=matchMedia("(
 
 export const viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#071033" },
-    { media: "(prefers-color-scheme: light)", color: "#ebf0ff" },
+    { media: "(prefers-color-scheme: dark)", color: "#04120c" },
+    { media: "(prefers-color-scheme: light)", color: "#eef7f1" },
   ],
 };
 
