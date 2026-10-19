@@ -237,6 +237,22 @@
   font-size: 0.875rem;
   line-height: 1.65;
 }
+.prosa figure {
+  margin-block: 1.75em;
+}
+.prosa figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  background: var(--chip);
+}
+.prosa figcaption {
+  margin-top: 0.6em;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--tenue);
+}
 /* Shiki con dos temas: se elige el color según el modo */
 .prosa pre span {
   color: var(--shiki-light);

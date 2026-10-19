@@ -4,6 +4,7 @@ import { isValidElement, type ReactNode } from "react";
 import * as runtime from "react/jsx-runtime";
 import rehypePrettyCode from "rehype-pretty-code";
 import BloqueCodigo from "@/components/blog/BloqueCodigo";
+import Figura from "@/components/blog/Figura";
 
 /** Texto plano de un nodo de React (para sacar el identificador de un título). */
 function textoDe(nodo: ReactNode): string {
@@ -55,6 +56,7 @@ export async function Mdx({ fuente }: { fuente: string }) {
     rehypePlugins: [[rehypePrettyCode, { theme: { light: "github-light", dark: "github-dark" }, keepBackground: false }]],
   });
   const componentes = {
+    Figura,
     h2: (props: React.ComponentProps<"h2">) => <h2 id={slugificar(textoDe(props.children))} {...props} />,
     h3: (props: React.ComponentProps<"h3">) => <h3 id={slugificar(textoDe(props.children))} {...props} />,
     pre: (props: React.ComponentProps<"pre">) => (

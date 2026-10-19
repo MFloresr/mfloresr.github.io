@@ -1,0 +1,209 @@
+---
+borrador: false
+titulo: De PythonAnywhere a Vercel y Supabase con una app Django, paso a paso
+resumen: Cómo migré Mi Jornada (Django + Vue) a Vercel y Supabase, con todos los errores que me salieron por el camino (requirements en UTF-16, 500 en el primer arranque, conexiones agotadas, Gmail rechazando la contraseña) y cómo arreglé cada uno.
+fecha: 2026-10-19
+categoria: despliegue
+etiquetas: [django, vercel, supabase, postgresql, despliegue]
+destacado: false
+proyectos: [mi-jornada]
+---
+
+[Mi Jornada](/es/projects/mi-jornada) es una app para registrar jornadas de trabajo, con Django y Django REST Framework en el backend y Vue en el frontend. Funcionaba en PythonAnywhere, pero quería moverla a Vercel con una base de datos PostgreSQL en Supabase: una URL propia por cada rama para probar cambios, despliegues automáticos al fusionar y una base de datos de verdad en vez de un archivo SQLite.
+
+Parecía un cambio de hosting. En la práctica fueron casi una semana de errores, cada uno con una causa distinta. Los cuento en el orden en que aparecieron, con lo que vi en pantalla y cómo lo resolví, por si te encuentras con alguno.
+
+<Figura src="/blog/mi-jornada-vercel-supabase/arquitectura.webp" alt="Diagrama de la arquitectura antes y después: PythonAnywhere con rutas del servidor escritas en el código, frente a Vercel con CDN para los estáticos, una función Python con Django y PostgreSQL en Supabase a través del pooler." ancho={1600} alto={1000} pie="Las piezas antes y después. Lo que cambia no es tanto el código como todo lo que el código daba por supuesto del servidor." />
+
+## 1. El primer despliegue ni siquiera arrancó: requirements.txt en UTF-16
+
+El repositorio ya estaba conectado a Vercel y el primer despliegue a producción falló en tres segundos, antes de instalar nada. El log del build decía:
+
+```text
+Failed to parse "requirements.txt". File content:
+��a s g i r e f = = 3 . 1 1 . 1
+ D j a n g o = = 6 . 0 . 5
+...
+Error: could not parse requirements.txt: Unexpected '�', expected '-c',
+'-e', '-r' or the start of a requirement at /vercel/path0/requirements.txt:1:1
+```
+
+Los espacios entre cada letra y el carácter raro del principio delatan el problema: **el archivo estaba guardado en UTF-16**. Es lo que ocurre en Windows al generarlo con una redirección de PowerShell (`pip freeze > requirements.txt`). pip lo lee sin quejarse, pero el instalador de Python de Vercel no.
+
+**Arreglo:** guardar el archivo como UTF-8. En el mismo commit en que preparé la base de datos lo convertí, y a partir de ahí Git deja de mostrar el archivo como binario. Es un error que conviene recordar: en el escritorio todo funciona y falla solo en el servidor.
+
+## 2. Django estaba escrito para otro servidor
+
+Con el requirements arreglado, el build pasaba, pero que compile no quiere decir que funcione. Leyendo `settings.py` encontré tres cosas que iban a fallar en cuanto la app corriera en Vercel:
+
+- **`ALLOWED_HOSTS`** solo aceptaba `localhost` y `*.pythonanywhere.com`, y con `DEBUG = False` Django responde **400 Bad Request** a cualquier otro dominio. Lo mismo con `CSRF_TRUSTED_ORIGINS`: el login habría fallado.
+- **`TEMPLATES` apuntaba a una ruta absoluta de PythonAnywhere:** `/home/mflores/mi_jornada/templates`. En Vercel esa ruta no existe, así que la página principal daría "plantilla no encontrada".
+- **SQLite no es una opción:** el sistema de archivos de una función de Vercel es de solo lectura y se descarta entre ejecuciones. Hace falta una base de datos externa.
+
+**Arreglo:** sacar del código todo lo que dependía del servidor y pasarlo a variables de entorno y rutas relativas al repositorio:
+
+```python
+# Vercel define VERCEL=1 tanto en el build como en ejecución
+ON_VERCEL = bool(os.environ.get("VERCEL"))
+
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+if not SECRET_KEY:
+    if ON_VERCEL:
+        raise RuntimeError("Falta la variable de entorno DJANGO_SECRET_KEY")
+    SECRET_KEY = "clave-solo-para-desarrollo"
+
+DEBUG = os.environ.get("DJANGO_DEBUG") == "1"
+
+ALLOWED_HOSTS = [
+    "localhost", "127.0.0.1", ".vercel.app",
+    *filter(None, os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",")),
+]
+
+if ON_VERCEL:
+    # Vercel termina el HTTPS y reenvía la petición a la función
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+```
+
+Dos decisiones que valen la pena. La primera: **en Vercel la `SECRET_KEY` es obligatoria y, si falta, la app no arranca.** Prefiero un error claro en el despliegue que una clave de desarrollo funcionando en producción sin que nadie se entere. La segunda: `DEBUG` ahora está apagado por defecto y se enciende solo con `DJANGO_DEBUG=1` en local.
+
+## 3. El primer error 500: Python arranca desde otra carpeta
+
+Con la configuración corregida, la preview respondió… con un **500**. El motivo: mi proyecto tiene el código dentro de `backend/`, pero **en Vercel el proceso arranca en la raíz del repositorio**, no en `backend/`, y Python no encuentra `mi_jornada.settings`.
+
+**Arreglo:** añadir `backend/` al path al principio de `wsgi.py`:
+
+```python
+import sys
+from pathlib import Path
+
+# En Vercel el proceso arranca en la raíz del repo, no en backend/
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+```
+
+Después de eso, la comprobación de rutas básicas ya salió como esperaba: la página principal y los estáticos con 200, `/admin/login/` con 200 y `/api/registros/` sin sesión con 403.
+
+## 4. Un solo dominio para la web y la API
+
+En PythonAnywhere el frontend llamaba a la API por una URL absoluta. En Vercel lo más cómodo es que **la web y la API compartan dominio**, así que no hace falta configurar CORS ni cookies entre orígenes distintos. Hice tres cambios:
+
+- La API del frontend pasó a `/api/` en el mismo dominio. En desarrollo, Vite reenvía `/api` a `runserver`.
+- **El build de Vue se escribe directamente en `backend/static/` y en `templates/index.html`**, y se versiona en el repositorio. Vercel ejecuta `collectstatic` solo (porque `STATIC_ROOT` está definido) y publica los archivos desde su CDN.
+- Se borró la carpeta `frontend/dist`, que ya no se usaba.
+
+El coste: tras tocar el frontend hay que acordarse de ejecutar `npm run build` antes de hacer commit, porque Vercel no compila Vue. Para un proyecto de este tamaño lo prefiero a montar un paso de build adicional.
+
+## 5. La base de datos: Supabase sin tocar la contraseña maestra
+
+Mi proyecto de Supabase ya tenía un PostgreSQL vacío. En Django las tablas las crean las migraciones, así que **no hay que crearlas a mano**; lo que sí hay que decidir es cómo se conecta la app. Tomé tres decisiones:
+
+- **Un usuario de base de datos propio para la app (`mi_jornada_app`)**, en lugar de la contraseña maestra del proyecto. La contraseña aleatoria se genera en local y a Supabase solo le llega su hash, así que no se ve en ningún sitio.
+- **Un esquema propio (`mi_jornada`) en vez de `public`.** La API REST de Supabase publica por defecto el esquema `public`; al meter las tablas de Django en otro, quedan fuera de su alcance. Las 13 tablas (usuarios, sesiones, admin y las de la app) no se pueden leer por la API pública, y el revisor de seguridad de Supabase no marcó ningún problema.
+- **Conexión por el pooler en modo sesión, no la directa.** La conexión directa de Supabase solo funciona por IPv6 y Vercel no la puede usar. El pooler (`aws-0-eu-west-2.pooler.supabase.com`) sí.
+
+La conexión se configura con una sola variable, y sin ella la app usa SQLite en local:
+
+```python
+DATABASES = {
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=0,
+        conn_health_checks=True,
+        ssl_require=bool(os.environ.get("DATABASE_URL")),
+    )
+}
+```
+
+(Ese `conn_max_age=0` merece su propia sección, más abajo.) Otro detalle: **las migraciones no se ejecutan en el despliegue.** Las lanzo desde mi ordenador con `DATABASE_URL` apuntando a producción:
+
+```powershell
+$env:DATABASE_URL = "<la cadena guardada en .env.local>"
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+La cadena de conexión vive solo en un `.env.local` ignorado por Git y en las variables de Vercel marcadas como **sensibles**, que no se pueden volver a leer una vez guardadas. Además, el login de la app pide email, así que al superusuario hay que ponerle uno.
+
+## 6. Previews protegidas y producción pública
+
+Vercel protege las vistas previas con su propio login (SSO), y está bien: no quiero que cualquiera vea una rama a medias. Pero esa protección estaba activada también en producción, de modo que quien abría la URL pública veía la pantalla de acceso de Vercel en lugar de mi app. La limité a las previews; producción quedó abierta. Es de esos ajustes que no rompen nada y que, si no los miras, te dejan con una web que "funciona" pero a la que nadie puede entrar.
+
+## 7. La recuperación de contraseña: un bug antiguo y un error 535
+
+Mientras migraba, añadí el envío del correo de recuperación de contraseña (el botón "¿Olvidaste la contraseña?" no hacía nada). Aparecieron dos problemas distintos.
+
+**Un bug que ya existía.** En `models.py` el método que comprueba si el enlace sigue vigente usaba `datetime.timezone` en lugar de `django.utils.timezone`, así que **confirmar cualquier enlace daba un 500, siempre**. Nunca había funcionado, simplemente nadie había llegado a ese paso. Un cambio de import lo arregló:
+
+```python
+from datetime import datetime, timedelta   # sin timezone
+from django.utils import timezone          # el de Django
+```
+
+**Gmail rechazaba la contraseña.** Con el envío configurado por SMTP, el envío fallaba con `535 Username and Password not accepted`. La conexión, el TLS y el usuario eran correctos; fallaba la autenticación. Mi primera sospecha fue que la contraseña de aplicación se había guardado con espacios, la guardé de nuevo sin ellos, y seguía igual. Para saber si fallaba la contraseña o lo que se había guardado en Vercel, la probé directamente contra Gmail desde mi ordenador, sin pasar por la app:
+
+```powershell
+python -c "import smtplib,getpass; s=smtplib.SMTP('smtp.gmail.com',587); s.starttls(); s.login('mi-cuenta@gmail.com', getpass.getpass('Contraseña: ').replace(' ','')); print('OK')"
+```
+
+La contraseña que había generado no era válida. Generé una nueva, comprobé que esa prueba daba `OK`, la guardé en Vercel sin espacios y la desplegué de nuevo. **Ese último paso es fácil de olvidar: las variables de entorno nuevas solo se aplican a partir de un despliegue nuevo.** Cambiar la variable no cambia lo que ya está corriendo; hay que ejecutar un `vercel redeploy`. Desde entonces el correo llega.
+
+## 8. Las conexiones agotadas: EMAXCONNSESSION
+
+Este fue el error más interesante, porque no salió en las primeras pruebas sino ya en producción, con el asistente de IA en marcha. En los logs de Vercel aparecía `EMAXCONNSESSION`: el pooler de Supabase en modo sesión **solo admite 15 clientes a la vez**, y la app los estaba agotando.
+
+La causa era una línea de configuración que en un servidor tradicional es una buena práctica: `conn_max_age=600`, que mantiene la conexión abierta diez minutos para reutilizarla. Pero **en Vercel no hay un proceso, sino muchas instancias de la función que aparecen y desaparecen**, y cada una se quedaba con su conexión a la base de datos durante diez minutos aunque no hiciera nada. Con unas pocas instancias, el pooler se llena.
+
+<Figura src="/blog/mi-jornada-vercel-supabase/conexiones.webp" alt="Diagrama de las conexiones al pooler de Supabase: antes, con conn_max_age=600, las 15 conexiones están ocupadas y aparece EMAXCONNSESSION; después, con conn_max_age=0, quedan huecos libres." ancho={1600} alto={971} pie="Con conexiones persistentes, cada instancia de la función retenía un hueco del pooler. Con una por petición, quedan libres." />
+
+**Arreglo en dos pasos:**
+
+1. `conn_max_age=0`: la conexión se cierra al acabar cada petición.
+2. En la vista del asistente de IA, que puede tardar varios segundos esperando a Gemini, cierro la conexión **antes** de llamar al modelo, para no tenerla ocupada mientras no la uso:
+
+```python
+# Libera la conexión a la base de datos mientras la IA responde (puede tardar)
+connection.close()
+
+try:
+    resultado = ia.interpretar(texto, hoy, lugares)
+```
+
+Cada petición paga el coste de abrir su conexión, pero para una app de este tamaño es un precio razonable por no quedarse sin conexiones. En una app con mucho tráfico habría que mirar el pooler en modo transacción, que admite muchos más clientes (con sus salvedades en Django, como desactivar los cursores del lado del servidor).
+
+## 9. Cuando la IA gratuita se satura
+
+El asistente usa el plan gratuito de la API de Gemini, y de vez en cuando el modelo responde con un 503 de alta demanda. En lugar de mostrar un error, la petición prueba con otros modelos gratuitos de reserva si recibe un 429 o un 5xx. Es la misma idea que cuento en [otro artículo sobre la IA del portfolio](/es/blog/ia-portfolio), aplicada aquí a registrar jornadas escribiendo en lenguaje natural.
+
+## 10. La cuenta de demostración que tardaba 30 segundos
+
+Para que cualquiera pueda probar la app sin registrarse, creé una cuenta de demostración con unas cinco semanas de registros ficticios que se regeneran sola cuando lleva más de una hora sin usarse. El primer acceso en producción **tardó más de 30 segundos**.
+
+El código creaba los registros de uno en uno, unos treinta, y cada consulta viaja de Vercel hasta la base de datos de Supabase, que está en Londres. Treinta viajes de ida y vuelta se notan. La solución fue calcular los registros en memoria y guardarlos de una vez con `bulk_create`:
+
+```python
+registros = []
+# ... se construyen los Registro en memoria, calculando duración e importe ...
+# Una sola consulta: la base de datos está lejos de las funciones de Vercel
+Registro.objects.bulk_create(registros)
+```
+
+Con eso, cada regeneración pasó de **44 consultas a 11**. Un detalle que casi se me pasa: `bulk_create` no llama a `save()`, así que el cálculo de la duración y del importe, que hacía el `save()` del modelo, hay que ejecutarlo a mano antes de insertar. Lo cubrí con una prueba que comprueba que los importes salen bien.
+
+## El resultado
+
+La app funciona en producción con la base de datos en Supabase, los correos de recuperación llegan y la demo se abre con un clic desde el portfolio. Midiendo de punta a punta el recorrido "Ver demo" desde el portfolio hasta tener el panel delante, incluyendo un arranque en frío justo después de desplegar, tardó unos diez segundos.
+
+<Figura src="/proyectos/mi-jornada/hoy.webp" alt="Pantalla Hoy de Mi Jornada con una jornada en curso, las horas de la semana y del mes y los últimos días registrados." ancho={1440} alto={900} pie="La pantalla Hoy, en producción, con la cuenta de demostración." />
+
+<Figura src="/proyectos/mi-jornada/estadisticas.webp" alt="Estadísticas del mes de Mi Jornada con horas, importe, días trabajados, gráfico de horas por día y horas por lugar." ancho={1440} alto={900} pie="Estadísticas del mes, calculadas por la API de Django sobre PostgreSQL." />
+
+## Lo que haría desde el principio
+
+- **Probar un despliegue vacío antes de migrar nada.** Los errores 1, 2 y 3 los habría encontrado el primer día con una app mínima.
+- **Cero rutas absolutas y cero dominios escritos en el código.** Todo lo que cambie de un servidor a otro, a variables de entorno.
+- **Pensar en funciones, no en procesos.** Cualquier cosa que asuma "un servidor que dura" (conexiones persistentes, archivos locales, estado en memoria) se rompe en Vercel.
+- **Acordarme de redesplegar tras cambiar variables.**
+- **Mirar la región.** El log de build de Vercel decía que se ejecutaba en Washington (`iad1`) y mi base de datos está en Londres. No he comprobado en qué región corren las funciones; es lo primero que revisaría para reducir la latencia de cada consulta.
+
+Puedes ver el resultado funcionando en [la demo](https://mi-jornada-flores9.vercel.app/?demo=1) (entra sola con la cuenta de prueba) y el código en [GitHub](https://github.com/MFloresr/mi_jornada).
