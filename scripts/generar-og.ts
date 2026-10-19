@@ -141,7 +141,7 @@ function plantillaBlog(idioma: Idioma, host: string, slug: string) {
 
 async function main() {
   obtenerPerfil(); // valida el contenido antes de dibujar
-  const host = new URL(process.env.SITE_URL ?? "https://mfloresr-portfolio.vercel.app").host;
+  const host = new URL(process.env.SITE_URL ?? "https://mfloresr.com").host;
   mkdirSync(SALIDA, { recursive: true });
   const trabajos: { archivo: string; html: string }[] = [];
   for (const i of IDIOMAS) trabajos.push({ archivo: `site-${i}.jpg`, html: plantillaSitio(i, host) });
