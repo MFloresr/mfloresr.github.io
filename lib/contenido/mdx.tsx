@@ -53,7 +53,7 @@ export async function Mdx({ fuente }: { fuente: string }) {
   const { default: Contenido } = await evaluate(fuente, {
     ...runtime,
     baseUrl: import.meta.url,
-    rehypePlugins: [[rehypePrettyCode, { theme: { light: "github-light", dark: "github-dark" }, keepBackground: false }]],
+    rehypePlugins: [[rehypePrettyCode, { theme: { light: "github-light-high-contrast", dark: "github-dark" }, keepBackground: false }]],
   });
   const componentes = {
     Figura,

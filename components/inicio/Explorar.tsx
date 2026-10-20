@@ -506,18 +506,18 @@ export function Consola() {
   }, [lineas]);
 
   return (
-    <div id="consola" role="group" aria-label={textos.conTitle} className="overflow-hidden rounded-xl border border-linea bg-terminal font-codigo text-[14px] leading-relaxed text-[#e8eeff] shadow-[0_0_40px_-18px_var(--brillo)]">
-      <div className="flex items-center gap-2 border-b border-[#1b2a6b] px-4 py-2.5 text-xs text-[#a9b8f0]">
-        <i aria-hidden="true" className="size-2.5 rounded-full bg-[#b97bff]" />
+    <div id="consola" role="group" aria-label={textos.conTitle} className="overflow-hidden rounded-xl border border-linea bg-terminal font-codigo text-[14px] leading-relaxed text-[#e6f7ee] shadow-[0_0_40px_-18px_var(--brillo)]">
+      <div className="flex items-center gap-2 border-b border-[#123323] px-4 py-2.5 text-xs text-[#9cc7b0]">
+        <i aria-hidden="true" className="size-2.5 rounded-full bg-[#bef264]" />
         <i aria-hidden="true" className="size-2.5 rounded-full bg-[#f2b726]" />
         <i aria-hidden="true" className="size-2.5 rounded-full bg-[#5be7b0]" />
         <span>mario@portfolio · {textos.conTitle}</span>
       </div>
       <div ref={salida} role="log" aria-live="polite" tabIndex={0} aria-label={textos.conOut} className="h-64 overflow-y-auto p-4 wrap-anywhere whitespace-pre-wrap">
         {lineas.map((l, i) => (
-          <div key={i} className={l.clase === "orden" ? "text-[#6c9bff]" : l.clase === "error" ? "text-[#ff9ad8]" : undefined}>
+          <div key={i} className={l.clase === "orden" ? "text-[#34d399]" : l.clase === "error" ? "text-[#ff9ad8]" : undefined}>
             {l.href ? (
-              <a href={l.href} {...(l.href.startsWith("http") && { target: "_blank", rel: "noopener" })} className="text-[#6c9bff] underline">
+              <a href={l.href} {...(l.href.startsWith("http") && { target: "_blank", rel: "noopener" })} className="text-[#34d399] underline">
                 {l.texto}
               </a>
             ) : (
@@ -539,7 +539,7 @@ export function Consola() {
         }}
         className="flex items-center gap-2.5 px-4 pb-3"
       >
-        <label htmlFor="consola-orden" className="whitespace-nowrap text-[#6c9bff]">
+        <label htmlFor="consola-orden" className="whitespace-nowrap text-[#34d399]">
           mario@portfolio ~ $
         </label>
         <input
@@ -564,7 +564,7 @@ export function Consola() {
           spellCheck={false}
           autoCapitalize="off"
           placeholder={textos.conPlaceholder}
-          className="min-h-11 min-w-0 flex-1 border-b border-[#7087e6] bg-transparent px-1 text-white outline-none placeholder:text-[#a9b8f0]/60 focus:border-[#6c9bff] focus:shadow-[0_2px_0_0_#6c9bff]"
+          className="min-h-11 min-w-0 flex-1 border-b border-[#3f9d73] bg-transparent px-1 text-white outline-none placeholder:text-[#9cc7b0]/60 focus:border-[#34d399] focus:shadow-[0_2px_0_0_#34d399]"
         />
       </form>
       <div className="flex flex-wrap gap-1.5 px-4 pb-4">
@@ -573,7 +573,7 @@ export function Consola() {
             key={k}
             type="button"
             onClick={() => ejecutar(ordenes[k])}
-            className="min-h-11 cursor-pointer rounded-md border border-[#7087e6] px-3 text-[13px] md:min-h-9 hover:border-[#6c9bff] hover:text-[#6c9bff]"
+            className="min-h-11 cursor-pointer rounded-md border border-[#3f9d73] px-3 text-[13px] md:min-h-9 hover:border-[#34d399] hover:text-[#34d399]"
           >
             {ordenes[k]}
           </button>
