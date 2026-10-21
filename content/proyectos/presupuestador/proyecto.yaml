@@ -3,7 +3,7 @@ destacado: false
 estado: produccion
 anio: 2026
 tecnologias: [php, laravel, apis-rest, angular, typescript, jspdf, resend, phpunit, vitest, vercel]
-repositorio: null # el proyecto todavía no está en GitHub; pendiente de decidir si se publica
+repositorio: https://github.com/MFloresr/presupuestador
 demo:
   url: https://presupuestador-web-eta.vercel.app
   requiereCuenta: false
