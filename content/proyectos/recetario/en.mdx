@@ -1,0 +1,47 @@
+---
+revisado: false
+titulo: Recetario
+resumen: App to find out what to cook with the ingredients you have at home, with recipes in Spanish, a shopping list and optional help from an AI.
+contexto: Personal full-stack project, from design to launch, with its own API and a frontend made to be used on a phone while cooking.
+objetivo: Add what is in the pantry and instantly see which recipes can be made, sorted by the percentage of ingredients already at hand.
+problema: Deciding what to cook with what is left at home takes time and ends in extra shopping. Recetario matches the pantry against TheMealDB's recipes, shows what is missing in each one and adds it to the shopping list.
+usuario: Anyone who wants to cook with what they already have and buy only what is missing.
+estadoTexto: Released in October 2026, with its own API and database and 312 automated tests (245 backend and 67 frontend).
+funcionalidades:
+  - Accounts with sign-up and login by email or username, and account deletion together with all its data.
+  - Pantry by category, with autocomplete of common ingredients and quantities.
+  - Recipe search in TheMealDB by ingredients, with filters and the match percentage, the ingredients you have and the ones you lack.
+  - Everything in Spanish, even though the recipe source only exists in English.
+  - Recipe detail with a button to add all the missing ingredients to the shopping list at once.
+  - Favourites with personal notes in "Mis recetas".
+  - AI suggestions with full recipes (ingredients with quantities, steps, times and tips), adapting a recipe to the pantry and a weekly meal plan; saved ones get timers on the steps that need waiting.
+  - A sample photo of each dish with credit to its author, or none if no reliable one is found.
+  - Light and dark theme, and bottom navigation on mobile.
+retos:
+  - titulo: An English catalogue, a Spanish app
+    texto: TheMealDB only exists in English. The backend translates what the user types with a table of common ingredients and returns the recipes in Spanish using category and measure tables plus an automatic translator; each text is translated once and stored, and if the translator fails the recipe is still shown and says what was left in English.
+  - titulo: A reliable photo or none
+    texto: The sample photo is searched in several sources in a row (Wikipedia, Pexels, Unsplash, Openverse and Wikimedia Commons) and only accepted if its name matches the dish; it is better to show no photo than the photo of another dish. Each photo links to its origin.
+  - titulo: The limits of Supabase's free plan
+    texto: The session-mode pooler allows 15 connections at once. Each request opens and closes its own, and the threads the search uses to query TheMealDB do not touch the database, which an automated test checks; before that, a few simultaneous searches used up the pooler.
+  - titulo: An AI that doesn't take the app down
+    texto: The AI is optional and configured through environment variables for any OpenAI-compatible API. It validates its response before using it, is limited to 40 requests per hour per user and, if it fails, the normal search keeps working.
+  - titulo: Each user only sees their own data
+    texto: Saved AI recipes carry an identifier tied to the user and the detail returns 404 to everyone else; there are isolation tests between accounts, and the server adds security headers with a strict content policy that had to be extended for each photo origin that was added.
+mejoras:
+  - Expand the Spanish ingredient table, which is what improves search results the most.
+  - Make it an installable app (PWA) and add timer notifications.
+  - Show time and difficulty for TheMealDB recipes too, which it doesn't provide.
+arquitectura:
+  nodos:
+    - titulo: Browser
+      detalle: Vue 3 · Vuetify · Pinia · light and dark theme
+    - titulo: Django API
+      detalle: Django REST Framework · JWT · services for recipes, translation, photos and AI
+      destacado: true
+    - titulo: Supabase
+      detalle: PostgreSQL with its own schema and role
+    - titulo: External sources
+      detalle: TheMealDB, free photos and the AI
+  nota: The browser only talks to the Django API; the keys and the calls to TheMealDB and the AI never leave the server.
+---

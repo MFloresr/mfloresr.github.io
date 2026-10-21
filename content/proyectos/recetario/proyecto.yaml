@@ -1,0 +1,27 @@
+orden: 5
+destacado: false
+estado: produccion
+anio: 2026
+tecnologias: [python, django, drf, apis-rest, vue, typescript, vite, vuetify, pinia, axios, postgresql, supabase, sqlite, themealdb, pytest, vitest, vercel]
+repositorio: null # el repositorio es privado; pendiente de decidir si se hace público
+demo:
+  url: https://recetario-web-mu.vercel.app
+  requiereCuenta: true # el registro es público, con aviso de privacidad
+capturas: # datos reales de TheMealDB el 21 de octubre de 2026, con una cuenta de demostración
+  - archivo: despensa-y-busqueda.webp
+    alt:
+      es: Pantalla de inicio de Recetario con ocho ingredientes en la despensa, los botones para buscar recetas y pedir ideas a la IA, y las primeras recetas encontradas
+      en: Recetario home screen with eight pantry ingredients, the buttons to search recipes and ask the AI for ideas, and the first recipes found
+  - archivo: recetas-segun-despensa.webp
+    alt:
+      es: Tarjetas de recetas con el porcentaje de ingredientes que ya se tienen, los que se tienen y los que faltan
+      en: Recipe cards showing the percentage of ingredients already at hand, which ones you have and which are missing
+  - archivo: lista-de-la-compra.webp
+    alt:
+      es: Lista de la compra agrupada por categorías con los ingredientes que faltaban de una receta
+      en: Shopping list grouped by category with the ingredients missing from a recipe
+  - archivo: receta-movil.webp
+    movil: true
+    alt:
+      es: Detalle de una receta en el móvil, con su foto, etiquetas y el porcentaje de ingredientes disponibles
+      en: Recipe detail on mobile, with its photo, tags and the percentage of available ingredients

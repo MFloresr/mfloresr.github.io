@@ -1,0 +1,42 @@
+---
+revisado: false
+titulo: Presupuestador
+resumen: 'Calculadora de presupuestos de páginas web: se elige un pack, se ve página a página qué incluye y el precio se calcula al momento.'
+contexto: Proyecto personal con Laravel y Angular, con los packs y los precios de Mario, de la idea a la publicación.
+objetivo: Que quien quiere una web vea qué va a recibir y cuánto cuesta sin registrarse ni pedir cita, y pueda llevarse el presupuesto en PDF o pedirlo por correo.
+problema: Un presupuesto de una web suele llegar días después y sin detalle. Aquí el cliente ve al momento las páginas de cada pack, ajusta idiomas y extras y ve el desglose con IVA, y el precio lo calcula siempre el servidor para que no se pueda manipular desde el navegador.
+usuario: Autónomos y negocios que necesitan una web y quieren saber el precio antes de hablar.
+estadoTexto: Publicado en octubre de 2026, con 39 pruebas automáticas (23 de la API y 16 de la web).
+funcionalidades:
+  - Tres packs (Web esencial, Web corporativa y Web corporativa con panel) con el número de páginas y lo que incluye cada uno.
+  - Explorador de páginas con una maqueta de cada una y un recorrido guiado.
+  - Ajuste de páginas extra, idiomas y extras, y mantenimiento mensual opcional.
+  - Total con IVA que se anima al cambiar y que queda a la vista mientras se baja por la página.
+  - Presupuesto con desglose, IVA del 21 %, número, fecha y validez de 30 días.
+  - Descarga del presupuesto en PDF, que se genera en el navegador y no se envía a ningún sitio.
+  - Petición del presupuesto por correo, con consentimiento y política de privacidad.
+  - Tres paletas de colores intercambiables, que se recuerdan en el navegador.
+retos:
+  - titulo: El precio lo decide el servidor
+    texto: El navegador solo envía las opciones elegidas; la API Laravel vuelve a calcular el total en cada petición, también al enviar el presupuesto por correo, así que nadie puede cambiar el precio desde las herramientas del navegador. Los precios viven en un archivo de configuración y una prueba comprueba que cada pack lista tantas páginas como dice incluir.
+  - titulo: Laravel en Vercel, sin base de datos
+    texto: Vercel no tiene un runtime de PHP oficial, así que la API usa uno de la comunidad, con sistema de archivos de solo lectura y arranque en frío. Por eso no hay base de datos ni sesiones, y el directorio de la función no puede llamarse api porque Laravel tomaba /api como base de la URL y todas las rutas daban 404.
+  - titulo: Mucha animación sin perder accesibilidad
+    texto: Maquetas animadas, tarjetas con inclinación en 3D, total que cuenta y elementos que aparecen al hacer scroll, todo con CSS y señales de Angular, sin librerías de animación; se respeta la preferencia de reducir movimiento y hay una comprobación automática en Edge de la web publicada.
+  - titulo: Un formulario público que no se llene de spam
+    texto: El envío por correo lleva una casilla trampa, un límite de 5 envíos cada 10 minutos y una comprobación del origen de la petición; el PDF no necesita servidor, así que quien solo quiere descargarlo no deja ningún dato.
+mejoras:
+  - Enviar también una copia con el PDF al cliente, algo que exige verificar un dominio en Resend.
+  - Añadir el NIF al PDF y al aviso legal si se factura con él.
+  - Subir el proyecto a GitHub.
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Angular 22 · signals · PDF con jsPDF
+    - titulo: API en Laravel
+      detalle: PHP 8.5 · catálogo de precios · cálculo en el servidor
+      destacado: true
+    - titulo: Resend
+      detalle: aviso por correo con el presupuesto
+  nota: Dos proyectos de Vercel; la web reenvía /api a la API, así que el navegador solo habla con un origen y no hace falta CORS.
+---

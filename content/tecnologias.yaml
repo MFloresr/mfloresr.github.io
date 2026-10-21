@@ -37,6 +37,10 @@
 - { id: svelte, nombre: Svelte, grupo: frontend, destacada: false }
 - { id: sveltekit, nombre: SvelteKit, grupo: frontend, destacada: false }
 - { id: bootstrap, nombre: Bootstrap, grupo: frontend, destacada: false }
+- { id: vuetify, nombre: Vuetify, grupo: frontend, destacada: false }
+- { id: pinia, nombre: Pinia, grupo: frontend, destacada: false }
+- { id: angular, nombre: Angular, grupo: frontend, destacada: false }
+- { id: jspdf, nombre: jsPDF, grupo: frontend, destacada: false }
 
 - { id: bases-de-datos, nombre: { es: Bases de datos, en: Databases}, grupo: datos, destacada: true, incluye: [postgresql, mysql, sqlite, supabase] }
 - { id: postgresql, nombre: PostgreSQL, grupo: datos, destacada: false }
@@ -45,7 +49,9 @@
 - { id: supabase, nombre: Supabase, grupo: datos, destacada: false }
 - { id: sanity, nombre: Sanity (CMS), grupo: datos, destacada: false }
 - { id: open-meteo, nombre: { es: API de Open-Meteo, en: Open-Meteo API}, grupo: datos, destacada: false }
+- { id: themealdb, nombre: { es: API de TheMealDB, en: TheMealDB API}, grupo: datos, destacada: false }
 
+- { id: resend, nombre: Resend, grupo: infraestructura, destacada: false }
 - { id: vercel, nombre: Vercel, grupo: infraestructura, destacada: false }
 - id: pythonanywhere
   nombre: PythonAnywhere
@@ -85,6 +91,8 @@
   contexto: { es: Repositorios públicos de todos mis proyectos, en: Public repositories for all my projects}
 
 - { id: vitest, nombre: Vitest, grupo: herramientas, destacada: false }
+- { id: pytest, nombre: pytest, grupo: herramientas, destacada: false }
+- { id: phpunit, nombre: PHPUnit, grupo: herramientas, destacada: false }
 
 - id: vscode
   nombre: VS Code
