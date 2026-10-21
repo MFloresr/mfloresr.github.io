@@ -1,0 +1,27 @@
+orden: 6
+destacado: false
+estado: produccion
+anio: 2026
+tecnologias: [php, laravel, apis-rest, angular, typescript, jspdf, resend, phpunit, vitest, vercel]
+repositorio: null # el proyecto todavía no está en GitHub; pendiente de decidir si se publica
+demo:
+  url: https://presupuestador-web-eta.vercel.app
+  requiereCuenta: false
+capturas: # la web publicada el 21 de octubre de 2026, con el pack Web corporativa elegido
+  - archivo: inicio.webp
+    alt:
+      es: Inicio del Presupuestador con el titular «Mira cómo se construye tu web», una maqueta animada de una página y los tres packs con su precio
+      en: Presupuestador home with the headline "Mira cómo se construye tu web", an animated mock-up of a page and the three packs with their price
+  - archivo: paginas-del-pack.webp
+    alt:
+      es: Explorador de páginas del pack Web corporativa, con una maqueta de cada página y el total con IVA siempre a la vista
+      en: Page explorer for the Web corporativa pack, with a wireframe of each page and the total with VAT always in view
+  - archivo: presupuesto-con-iva.webp
+    alt:
+      es: Presupuesto con el desglose, el IVA del 21 % y el total, con los botones para descargar el PDF o recibirlo por correo
+      en: Quote with the breakdown, 21 % VAT and total, with the buttons to download the PDF or receive it by email
+  - archivo: packs-movil.webp
+    movil: true
+    alt:
+      es: Los packs en el móvil, con su precio, el número de páginas y lo que incluye cada uno
+      en: The packs on mobile, with their price, number of pages and what each one includes

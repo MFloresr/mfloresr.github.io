@@ -1,0 +1,47 @@
+---
+revisado: false
+titulo: Recetario
+resumen: Aplicación para saber qué cocinar con los ingredientes que tienes en casa, con recetas en español, lista de la compra y ayuda opcional de una IA.
+contexto: Proyecto personal full-stack, del diseño a la publicación, con una API propia y un frontend pensado para usarse desde el móvil mientras se cocina.
+objetivo: Añadir lo que hay en la despensa y ver al instante qué recetas se pueden preparar, ordenadas por el porcentaje de ingredientes que ya se tienen.
+problema: Decidir qué cocinar con lo que queda en casa lleva tiempo y acaba en compras de más. Recetario cruza la despensa con las recetas de TheMealDB, dice qué falta en cada una y lo añade a la lista de la compra.
+usuario: Cualquier persona que quiera cocinar con lo que ya tiene y comprar solo lo que le falta.
+estadoTexto: Publicado en octubre de 2026, con API y base de datos propias y 312 pruebas automáticas (245 del backend y 67 del frontend).
+funcionalidades:
+  - Cuentas con registro y acceso por correo o usuario, y borrado de la cuenta con todos sus datos.
+  - Despensa por categorías, con autocompletado de ingredientes frecuentes y cantidades.
+  - Búsqueda de recetas en TheMealDB por ingredientes, con filtros y el porcentaje de coincidencia, los ingredientes que se tienen y los que faltan.
+  - Todo en español, aunque la fuente de recetas solo existe en inglés.
+  - Detalle de receta con un botón para añadir de golpe los ingredientes que faltan a la lista de la compra.
+  - Favoritos con notas personales en «Mis recetas».
+  - Sugerencias de la IA con recetas completas (ingredientes con cantidades, pasos, tiempos y consejos), adaptación de una receta a la despensa y dieta semanal; las que se guardan llevan temporizadores en los pasos con espera.
+  - Foto de muestra de cada plato con crédito a su autor, o ninguna si no se encuentra una fiable.
+  - Tema claro y oscuro, y navegación inferior en el móvil.
+retos:
+  - titulo: Un catálogo en inglés, una app en español
+    texto: TheMealDB solo existe en inglés. El backend traduce lo que escribe el usuario con una tabla de ingredientes comunes y devuelve las recetas en español con tablas de categorías y medidas y un traductor automático; cada texto se traduce una vez y se guarda, y si el traductor falla la receta sigue visible y avisa de lo que quedó en inglés.
+  - titulo: Una foto fiable o ninguna
+    texto: La foto de muestra se busca en varias fuentes seguidas (Wikipedia, Pexels, Unsplash, Openverse y Wikimedia Commons) y solo se acepta si el nombre coincide con el plato; es mejor no mostrar foto que mostrar la de otro plato. Cada foto enlaza a su origen.
+  - titulo: Los límites del plan gratuito de Supabase
+    texto: El pooler en modo sesión admite 15 conexiones a la vez. Cada petición abre y cierra la suya y los hilos con los que la búsqueda consulta TheMealDB no tocan la base de datos, algo que comprueba una prueba automática; antes, unas pocas búsquedas simultáneas agotaban el pooler.
+  - titulo: Una IA que no tumba la aplicación
+    texto: La IA es opcional y se configura por variables de entorno para cualquier API compatible con OpenAI. Valida su respuesta antes de usarla, tiene un límite de 40 peticiones por hora y usuario y, si falla, la búsqueda normal sigue funcionando.
+  - titulo: Cada usuario solo ve lo suyo
+    texto: Las recetas de la IA que se guardan llevan un identificador propio del usuario y el detalle responde 404 a los demás; hay pruebas de aislamiento entre cuentas, y el servidor añade cabeceras de seguridad con una política de contenido estricta que hubo que ampliar al añadir cada origen de fotos.
+mejoras:
+  - Ampliar la tabla de ingredientes en español, que es lo que más mejora los resultados de la búsqueda.
+  - Convertirla en una aplicación instalable (PWA) y añadir avisos de los temporizadores.
+  - Mostrar tiempo y dificultad también en las recetas de TheMealDB, que no los ofrece.
+arquitectura:
+  nodos:
+    - titulo: Navegador
+      detalle: Vue 3 · Vuetify · Pinia · tema claro y oscuro
+    - titulo: API en Django
+      detalle: Django REST Framework · JWT · servicios para recetas, traducción, fotos e IA
+      destacado: true
+    - titulo: Supabase
+      detalle: PostgreSQL con esquema y rol propios
+    - titulo: Fuentes externas
+      detalle: TheMealDB, fotos libres y la IA
+  nota: El navegador solo habla con la API de Django; las claves y las llamadas a TheMealDB y a la IA nunca salen del servidor.
+---

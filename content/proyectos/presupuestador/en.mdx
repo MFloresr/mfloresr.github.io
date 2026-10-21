@@ -1,0 +1,42 @@
+---
+revisado: false
+titulo: Presupuestador
+resumen: 'Website quote calculator: you pick a pack, see page by page what it includes and the price is calculated instantly.'
+contexto: Personal project with Laravel and Angular, using Mario's own packs and prices, from idea to launch.
+objetivo: Let anyone who wants a website see what they will get and how much it costs without signing up or booking a call, and take the quote as a PDF or request it by email.
+problema: A website quote usually arrives days later and without detail. Here the client instantly sees the pages of each pack, adjusts languages and extras and sees the breakdown with VAT, and the server always calculates the price so it can't be tampered with from the browser.
+usuario: Freelancers and businesses that need a website and want to know the price before talking.
+estadoTexto: Released in October 2026, with 39 automated tests (23 for the API and 16 for the web app).
+funcionalidades:
+  - Three packs (Web esencial, Web corporativa and Web corporativa con panel) with the number of pages and what each one includes.
+  - Page explorer with a wireframe of each page and a guided tour.
+  - Adjustment of extra pages, languages and extras, and optional monthly maintenance.
+  - A total with VAT that animates when it changes and stays in view while scrolling down the page.
+  - Quote with breakdown, 21 % VAT, number, date and 30-day validity.
+  - PDF download of the quote, generated in the browser and not sent anywhere.
+  - Quote request by email, with consent and a privacy policy.
+  - Three interchangeable colour palettes, remembered in the browser.
+retos:
+  - titulo: The server decides the price
+    texto: The browser only sends the chosen options; the Laravel API recalculates the total on every request, also when the quote is sent by email, so nobody can change the price from the browser's tools. Prices live in a configuration file and a test checks that each pack lists as many pages as it claims to include.
+  - titulo: Laravel on Vercel, with no database
+    texto: Vercel has no official PHP runtime, so the API uses a community one, with a read-only file system and cold starts. That is why there is no database or sessions, and the function directory can't be called api because Laravel took /api as the URL base and every route returned 404.
+  - titulo: Lots of animation without losing accessibility
+    texto: Animated mock-ups, 3D tilt cards, a counting total and elements that appear on scroll, all with CSS and Angular signals, with no animation library; the reduced-motion preference is respected and there is an automated Edge check of the published site.
+  - titulo: A public form that doesn't fill up with spam
+    texto: Sending by email has a honeypot field, a limit of 5 submissions every 10 minutes and a check of the request's origin; the PDF needs no server, so anyone who only wants to download it leaves no data behind.
+mejoras:
+  - Also send the client a copy with the PDF, which requires verifying a domain in Resend.
+  - Add the tax ID to the PDF and the legal notice if invoicing with it.
+  - Put the project on GitHub.
+arquitectura:
+  nodos:
+    - titulo: Browser
+      detalle: Angular 22 · signals · PDF with jsPDF
+    - titulo: Laravel API
+      detalle: PHP 8.5 · price catalogue · calculation on the server
+      destacado: true
+    - titulo: Resend
+      detalle: email notice with the quote
+  nota: Two Vercel projects; the web app forwards /api to the API, so the browser only talks to one origin and CORS isn't needed.
+---
