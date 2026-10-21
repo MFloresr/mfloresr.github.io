@@ -3,7 +3,7 @@ destacado: false
 estado: produccion
 anio: 2026
 tecnologias: [python, django, drf, apis-rest, vue, typescript, vite, vuetify, pinia, axios, postgresql, supabase, sqlite, themealdb, pytest, vitest, vercel]
-repositorio: null # el repositorio es privado; pendiente de decidir si se hace público
+repositorio: https://github.com/MFloresr/recetario
 demo:
   url: https://recetario-web-mu.vercel.app
   requiereCuenta: true # el registro es público, con aviso de privacidad
