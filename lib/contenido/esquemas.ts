@@ -111,6 +111,8 @@ export const esquemaDatosProyecto = z
       .object({ url: z.url({ protocol: /^https$/ }), requiereCuenta: z.boolean() })
       .strict()
       .nullable(),
+    /** Vídeo de presentación (enlace público, p. ej. TikTok o YouTube). */
+    video: z.url({ protocol: /^https$/ }).nullable().optional(),
     /**
      * Capturas en public/proyectos/<slug>/ (hechas con datos de demostración).
      * La primera es la principal (escritorio); `movil: true` marca las de móvil.

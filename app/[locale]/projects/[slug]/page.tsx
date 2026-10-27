@@ -150,6 +150,11 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
               {t("code")}
             </Boton>
           )}
+          {datos.video && (
+            <Boton href={datos.video} externo variante="secundario">
+              {t("video")}
+            </Boton>
+          )}
         </div>
         {galeria.length > 0 ? (
           <GaleriaCapturas
@@ -216,6 +221,11 @@ export default async function PaginaProyecto({ params }: PageProps<"/[locale]/pr
                 {datos.repositorio && (
                   <a href={datos.repositorio} target="_blank" rel="noopener" className="font-medium break-all text-acento">
                     {sinProtocolo(datos.repositorio)}
+                  </a>
+                )}
+                {datos.video && (
+                  <a href={datos.video} target="_blank" rel="noopener" className="font-medium break-all text-acento">
+                    {sinProtocolo(datos.video)}
                   </a>
                 )}
                 {datos.demo?.requiereCuenta && <span className="text-[13px] text-tenue">{t("demoAccount")}</span>}

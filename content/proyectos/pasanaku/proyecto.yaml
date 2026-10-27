@@ -7,6 +7,7 @@ repositorio: null # el repositorio es privado por ahora
 demo:
   url: https://pasanaku-web.vercel.app
   requiereCuenta: true # el registro es público, con aviso de privacidad
+video: https://www.tiktok.com/@s_mario_flores/video/7701323069717040406
 capturas: # copia local con datos de demostración (grupo ficticio de cuatro personas), 27 de octubre de 2026
   - archivo: rueda-de-turnos.webp
     alt:
