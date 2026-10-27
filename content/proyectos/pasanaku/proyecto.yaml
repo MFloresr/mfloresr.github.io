@@ -1,0 +1,31 @@
+orden: 7
+destacado: false
+estado: produccion
+anio: 2026
+tecnologias: [python, django, drf, simplejwt, apis-rest, reportlab, vue, typescript, vite, tailwind, daisyui, pinia, zod, pwa, web-push, postgresql, supabase, docker, pytest, vitest, github-actions, resend, vercel]
+repositorio: null # el repositorio es privado por ahora
+demo:
+  url: https://pasanaku-web.vercel.app
+  requiereCuenta: true # el registro es público, con aviso de privacidad
+capturas: # copia local con datos de demostración (grupo ficticio de cuatro personas), 27 de octubre de 2026
+  - archivo: rueda-de-turnos.webp
+    alt:
+      es: Página de un pasanaku en marcha con las reglas de multas y avisos y la rueda de turnos, que marca la ronda 2 de 4 y quién cobra
+      en: Page of a running pasanaku with the late-fee and reminder rules and the turn wheel, showing round 2 of 4 and who collects
+  - archivo: aportes-y-multas.webp
+    alt:
+      es: Ronda en curso con el estado de cada aporte (pendiente, pagado o retrasado) y la multa pendiente de cada participante con los botones para marcarla como cobrada o perdonarla
+      en: Current round with the status of each contribution (pending, paid or late) and each participant's pending fee with buttons to mark it collected or waive it
+  - archivo: invitacion-y-orden.webp
+    alt:
+      es: Grupo sin iniciar con el enlace de invitación para compartir, la lista de participantes con su orden de cobro y la elección entre sorteo u orden propio
+      en: Group not started yet with the invitation link to share, the list of participants with their payout order and the choice between a draw or a custom order
+  - archivo: inicio-y-avisos.webp
+    alt:
+      es: Pantalla de inicio con el aviso para activar los recordatorios en el móvil, el próximo aporte, las multas pendientes y lo aportado y recibido hasta hoy
+      en: Home screen with the prompt to turn on phone reminders, the next contribution, pending fees and what has been paid in and received so far
+  - archivo: ronda-movil.webp
+    movil: true
+    alt:
+      es: La ronda en curso en el móvil, con el estado de cada aporte y sus multas pendientes
+      en: The current round on mobile, with the status of each contribution and its pending fees

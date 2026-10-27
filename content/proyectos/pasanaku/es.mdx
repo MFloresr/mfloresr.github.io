@@ -1,0 +1,45 @@
+---
+revisado: false
+titulo: Pasanaku
+resumen: "Aplicación para organizar pasanakus, los grupos de ahorro rotativo, sin manejar dinero: turnos, aportes, multas por retraso y recordatorios al móvil."
+contexto: Proyecto personal full-stack, con una API propia en Django y una aplicación Vue que se instala en el móvil, del diseño a la publicación.
+objetivo: Que quien administra un pasanaku lleve los turnos, los aportes y las multas en un solo sitio y que todos vean el estado de la ronda sin preguntar por el chat.
+problema: En un pasanaku varias personas aportan una cantidad fija cada cierto tiempo y, en cada ronda, una de ellas cobra el total. Llevarlo en un cuaderno y un chat de grupo da pie a dudas sobre quién ha pagado, a quién le toca o cuánto se debe por pagar tarde. Pasanaku organiza los turnos y los aportes sin tocar el dinero, que se entrega fuera de la aplicación.
+usuario: Grupos de amigos, familia o compañeros que hacen un pasanaku, y la persona que lo administra.
+estadoTexto: En producción desde octubre de 2026, con 312 pruebas automáticas (245 del backend y 67 del frontend).
+funcionalidades:
+  - Cuentas con registro, acceso, recuperación de contraseña por correo y borrado de la cuenta.
+  - Grupos con importe, moneda, frecuencia, fecha de inicio y máximo de participantes, con invitación por enlace o por código.
+  - Orden de cobro a mano o por sorteo; al iniciar se crea una ronda por participante.
+  - Aportes pendientes, pagados o retrasados en cada ronda, y cierre de la ronda solo cuando todos están pagados.
+  - Multas por retraso configurables por grupo (cantidad fija, porcentaje o cantidad por día, con días de gracia y un máximo), que el administrador marca como cobradas o perdona.
+  - Recordatorios al móvil con notificaciones push, por correo y dentro de la aplicación, con los días de antelación que elija el grupo.
+  - Historial de rondas y registro de actividad, con exportación a CSV y a PDF.
+  - Aplicación instalable (PWA) en Android, iPhone y ordenador, con aviso de versión nueva y página sin conexión.
+  - Panel de administración en español para quien gestiona la plataforma.
+  - Tema claro y oscuro.
+retos:
+  - titulo: Una app de dinero que no maneja dinero
+    texto: No hay pasarelas de pago ni datos bancarios; la aplicación solo registra si cada aporte está pendiente, pagado o retrasado, y lo marca una persona. Las multas por retraso se calculan con las reglas del grupo, que quedan fijas al iniciar para que todos las conozcan; se recalculan cada día, se congelan al pagar y no bloquean el cierre de la ronda.
+  - titulo: Recordatorios al móvil sin pagar un proveedor
+    texto: Se usan las notificaciones web (Web Push) con claves propias, sin SMS ni servicios de pago, y una tarea diaria en GitHub Actions marca los retrasos, calcula las multas y envía los avisos. Windows rechazaba los avisos con caducidad de cero segundos sin dar explicación, así que cada aviso lleva ahora una caducidad de doce horas; en iPhone hay que instalar antes la aplicación.
+  - titulo: Cambiar la aplicación con usuarios dentro
+    texto: Con personas ya registradas, las novedades (recuperar la contraseña por correo, cambiar la cantidad de participantes o quitar a alguien antes de empezar) se hicieron sin migraciones ni cambios en la base de datos. El enlace de recuperación usa los tokens de Django, de un solo uso y válidos una hora, y la respuesta es la misma exista o no la cuenta.
+  - titulo: Privacidad desde el diseño
+    texto: El service worker de la aplicación instalable solo guarda en caché archivos estáticos; las peticiones a la API van siempre a la red y no queda ningún dato privado en el dispositivo. Al cerrar sesión se desactivan los avisos de ese móvil, al borrar la cuenta se anonimizan sus datos y se eliminan sus suscripciones, y los teléfonos no aparecen en el panel de administración.
+mejoras:
+  - Revisar el texto de privacidad con un profesional antes de dar a conocer la aplicación.
+  - Añadir el SMS como canal opcional de recordatorios, que el código ya deja previsto.
+arquitectura:
+  nodos:
+    - titulo: Navegador o móvil
+      detalle: Vue 3 · TypeScript · Tailwind 4 · DaisyUI 5 · Pinia · aplicación instalable (PWA)
+    - titulo: API en Django
+      detalle: Django REST Framework · SimpleJWT · servicios para rondas, multas, avisos y exportación
+      destacado: true
+    - titulo: Supabase
+      detalle: PostgreSQL con esquema y rol propios
+    - titulo: Avisos
+      detalle: Web Push, correo con Resend y una tarea diaria en GitHub Actions
+  nota: El dinero nunca pasa por la aplicación; solo se registran estados.
+---

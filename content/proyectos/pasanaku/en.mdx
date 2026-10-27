@@ -1,0 +1,45 @@
+---
+revisado: false
+titulo: Pasanaku
+resumen: "App to organise pasanakus, rotating savings groups, without handling any money: turns, contributions, late fees and phone reminders."
+contexto: Personal full-stack project, with its own Django API and a Vue app that installs on the phone, from design to release.
+objetivo: Let whoever runs a pasanaku keep turns, contributions and fees in one place, so everyone can see the state of the round without asking in the group chat.
+problema: In a pasanaku several people pay in a fixed amount at regular intervals and, in each round, one of them collects the total. Keeping track in a notebook and a group chat leads to doubts about who has paid, whose turn it is or how much is owed for paying late. Pasanaku organises turns and contributions without touching the money, which is handed over outside the app.
+usuario: Groups of friends, family or colleagues who run a pasanaku, and the person who administers it.
+estadoTexto: In production since October 2026, with 312 automated tests (245 backend and 67 frontend).
+funcionalidades:
+  - Accounts with sign-up, sign-in, password recovery by email and account deletion.
+  - Groups with amount, currency, frequency, start date and maximum number of participants, with an invitation by link or code.
+  - Payout order set by hand or drawn at random; starting the group creates one round per participant.
+  - Contributions that are pending, paid or late in each round, and a round can only be closed when all of them are paid.
+  - Late fees configurable per group (fixed amount, percentage or amount per day, with grace days and a cap), which the administrator marks as collected or waives.
+  - Reminders on the phone through push notifications, by email and inside the app, with the lead time each group chooses.
+  - Round history and activity log, with export to CSV and PDF.
+  - Installable app (PWA) on Android, iPhone and desktop, with a new-version prompt and an offline page.
+  - Administration panel in Spanish for whoever runs the platform.
+  - Light and dark theme.
+retos:
+  - titulo: A money app that never handles money
+    texto: There are no payment gateways or bank details; the app only records whether each contribution is pending, paid or late, and a person marks it. Late fees are calculated with the group's rules, which are fixed when the group starts so everyone knows them; they are recalculated every day, frozen once paid and never block closing the round.
+  - titulo: Phone reminders without paying a provider
+    texto: It uses web notifications (Web Push) with its own keys, with no SMS or paid service, and a daily GitHub Actions job marks the late ones, calculates the fees and sends the reminders. Windows rejected notifications with a zero-second expiry and gave no explanation, so every notification now carries a twelve-hour expiry; on iPhone the app has to be installed first.
+  - titulo: Changing the app with users inside
+    texto: With people already signed up, the new features (password recovery by email, changing the number of participants or removing someone before the start) were shipped without migrations or any database change. The recovery link uses Django's tokens, single-use and valid for one hour, and the answer is the same whether the account exists or not.
+  - titulo: Privacy by design
+    texto: The installable app's service worker only caches static files; API requests always go to the network and no private data is left on the device. Signing out turns off the notifications on that phone, deleting the account anonymises its data and removes its subscriptions, and phone numbers do not appear in the administration panel.
+mejoras:
+  - Have the privacy text reviewed by a professional before promoting the app.
+  - Add SMS as an optional reminder channel, which the code already leaves room for.
+arquitectura:
+  nodos:
+    - titulo: Browser or phone
+      detalle: Vue 3 · TypeScript · Tailwind 4 · DaisyUI 5 · Pinia · installable app (PWA)
+    - titulo: Django API
+      detalle: Django REST Framework · SimpleJWT · services for rounds, fees, reminders and export
+      destacado: true
+    - titulo: Supabase
+      detalle: PostgreSQL with its own schema and role
+    - titulo: Reminders
+      detalle: Web Push, email with Resend and a daily GitHub Actions job
+  nota: Money never goes through the app; only states are recorded.
+---

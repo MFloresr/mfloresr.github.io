@@ -11,6 +11,8 @@
 - { id: python, nombre: Python, grupo: backend, destacada: true }
 - { id: django, nombre: Django, grupo: backend, destacada: true }
 - { id: drf, nombre: Django REST Framework, grupo: backend, destacada: true }
+- { id: simplejwt, nombre: SimpleJWT, grupo: backend, destacada: false }
+- { id: reportlab, nombre: ReportLab, grupo: backend, destacada: false }
 - { id: php, nombre: PHP, grupo: backend, destacada: true }
 - { id: laravel, nombre: Laravel, grupo: backend, destacada: true }
 - { id: apis-rest, nombre: { es: APIs REST, en: REST APIs}, grupo: backend, destacada: true }
@@ -39,6 +41,9 @@
 - { id: bootstrap, nombre: Bootstrap, grupo: frontend, destacada: false }
 - { id: vuetify, nombre: Vuetify, grupo: frontend, destacada: false }
 - { id: pinia, nombre: Pinia, grupo: frontend, destacada: false }
+- { id: zod, nombre: Zod, grupo: frontend, destacada: false }
+- { id: pwa, nombre: PWA (Workbox), grupo: frontend, destacada: false }
+- { id: web-push, nombre: Web Push, grupo: frontend, destacada: false }
 - { id: angular, nombre: Angular, grupo: frontend, destacada: false }
 - { id: jspdf, nombre: jsPDF, grupo: frontend, destacada: false }
 
@@ -53,6 +58,8 @@
 
 - { id: resend, nombre: Resend, grupo: infraestructura, destacada: false }
 - { id: vercel, nombre: Vercel, grupo: infraestructura, destacada: false }
+- { id: docker, nombre: Docker, grupo: infraestructura, destacada: false }
+- { id: github-actions, nombre: GitHub Actions, grupo: infraestructura, destacada: false }
 - id: pythonanywhere
   nombre: PythonAnywhere
   grupo: infraestructura
