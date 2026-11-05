@@ -45,7 +45,7 @@
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "skipToContent": "Saltar al contenido",
-    "examples": "Webs de ejemplo"
+    "examples": "Ejemplos"
   },
   "language": {
     "label": "Idioma",
@@ -271,7 +271,11 @@
     "contactTitle": "¿Hablamos<acento>?</acento>",
     "contactEmail": "Enviar un mensaje",
     "blogAll": "Ver todos los artículos",
-    "ctaAsk": "¿Encajo en tu oferta? Compruébalo con IA"
+    "ctaAsk": "¿Encajo en tu oferta? Compruébalo con IA",
+    "examplesLabel": "Webs de ejemplo",
+    "examplesTitle": "Once webs para negocios, cada una con su diseño y una función útil.",
+    "examplesText": "Concesionario, tienda, clínica, restaurante, peluquería, gimnasio... Demostraciones con datos ficticios, con el código público.",
+    "examplesCta": "Ver las 11 webs de ejemplo"
   },
   "ui": {
     "screenshotPending": "Captura pendiente · se hará con datos de demostración",
