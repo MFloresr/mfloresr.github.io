@@ -1,0 +1,123 @@
+# Webs de ejemplo para negocios (serie hecha en noviembre de 2026). Datos ficticios, hechas con Astro y preparadas para un CMS (Sanity).
+# Cada una es una demostración: los negocios no existen. Código y web publicados.
+- id: motos-valles
+  sector: motor
+  nombre: Vallès Motos
+  url: https://motos-valles.vercel.app
+  repositorio: https://github.com/MFloresr/motos-valles
+  tagline:
+    es: Concesionario con buscador por carnet y calculadora de financiación
+    en: Dealership with a licence-based search and a financing calculator
+  detalle:
+    es: Catálogo con filtros, taller, blog y 31 páginas.
+    en: Catalogue with filters, workshop, blog and 31 pages.
+- id: relojeria-cuerda
+  sector: comercio
+  nombre: Cuerda
+  url: https://relojeria-cuerda.vercel.app
+  repositorio: https://github.com/MFloresr/relojeria-cuerda
+  tagline:
+    es: Tienda de relojes con carrito, comparador y encaje según la muñeca
+    en: Watch shop with a cart, comparison tool and wrist-fit finder
+  detalle:
+    es: 18 relojes, vintage de piezas únicas, taller con cita y 43 páginas.
+    en: 18 watches, one-off vintage pieces, workshop booking and 43 pages.
+- id: clinica-dental
+  sector: salud
+  nombre: Clínica Alba
+  url: https://clinica-dental-alpha-mauve.vercel.app
+  repositorio: https://github.com/MFloresr/clinica-dental
+  tagline:
+    es: Clínica dental con guía de síntomas y cita sin datos clínicos
+    en: Dental clinic with a symptom guide and booking with no clinical data
+  detalle:
+    es: Consentimiento de salud separado y textos sin superlativos.
+    en: Separate health consent and wording without superlatives.
+- id: restaurante-brasa
+  sector: hosteleria
+  nombre: Brasa Nova
+  url: https://restaurante-brasa.vercel.app
+  repositorio: https://github.com/MFloresr/restaurante-brasa
+  tagline:
+    es: Restaurante con carta tipo TPV, pedido para llevar y reservas
+    en: Restaurant with a POS-style menu, takeaway orders and bookings
+  detalle:
+    es: Ticket en vivo, tabla de los 14 alérgenos y menú del día.
+    en: Live receipt, table of the 14 allergens and a daily menu.
+- id: peluqueria-nuca
+  sector: belleza
+  nombre: Nuca
+  url: https://peluqueria-nuca.vercel.app
+  repositorio: https://github.com/MFloresr/peluqueria-nuca
+  tagline:
+    es: Peluquería con cita en cuatro pasos y diez cortes ilustrados
+    en: Hair salon with four-step booking and ten illustrated cuts
+  detalle:
+    es: Cuestionario «¿Qué corte me va?» con ilustraciones propias.
+    en: A "which cut suits me?" quiz with original illustrations.
+- id: peluqueria-nuca-clasica
+  sector: belleza
+  nombre: Nuca (versión clásica)
+  url: https://peluqueria-nuca-clasica.vercel.app
+  repositorio: https://github.com/MFloresr/peluqueria-nuca-clasica
+  tagline:
+    es: La misma peluquería con un diseño sobrio y más tradicional
+    en: The same salon with a sober, more traditional design
+  detalle:
+    es: Sirve para comparar dos estilos sobre el mismo contenido.
+    en: Useful to compare two styles over the same content.
+- id: veterinaria-zarpa
+  sector: salud
+  nombre: Zarpa
+  url: https://veterinaria-zarpa.vercel.app
+  repositorio: https://github.com/MFloresr/veterinaria-zarpa
+  tagline:
+    es: Veterinaria en neobrutalismo, con guía «¿Es urgente?»
+    en: Veterinary clinic in neobrutalism, with an "Is it urgent?" guide
+  detalle:
+    es: Calendario de vacunas y diseño de pegatinas.
+    en: Vaccination calendar and a sticker-style design.
+- id: gimnasio-vatio
+  sector: deporte
+  nombre: Vatio
+  url: https://gimnasio-vatio.vercel.app
+  repositorio: https://github.com/MFloresr/gimnasio-vatio
+  tagline:
+    es: Gimnasio con horario tipo marcador de estadio y reserva de plaza
+    en: Gym with a stadium-scoreboard timetable and class booking
+  detalle:
+    es: Calculadora de tarifas y tipografía de puntos sobre hormigón.
+    en: Fee calculator and dot-matrix type over concrete.
+- id: rural-mas-de-la-roca
+  sector: turismo
+  nombre: Mas de la Roca
+  url: https://rural-mas-de-la-roca.vercel.app
+  repositorio: https://github.com/MFloresr/rural-mas-de-la-roca
+  tagline:
+    es: Casa rural con aire de revista y almanaque de reservas
+    en: Country house with a magazine feel and a booking almanac
+  detalle:
+    es: Disponibilidad por temporada y fase de la luna.
+    en: Availability by season and moon phase.
+- id: inmobiliaria-eje
+  sector: inmobiliaria
+  nombre: Eje
+  url: https://inmobiliaria-eje.vercel.app
+  repositorio: https://github.com/MFloresr/inmobiliaria-eje
+  tagline:
+    es: Inmobiliaria en estilo suizo, con buscador y calculadora de hipoteca
+    en: Swiss-style estate agency with search and a mortgage calculator
+  detalle:
+    es: Favoritos guardados en el navegador y formulario de tasación.
+    en: Favourites saved in the browser and a valuation form.
+- id: abogados-ribas-vidal
+  sector: servicios
+  nombre: Ribas Vidal
+  url: https://abogados-ribas-vidal.vercel.app
+  repositorio: https://github.com/MFloresr/abogados-ribas-vidal
+  tagline:
+    es: Despacho de abogados con guía «¿Qué necesito?» y calculadora de plazos
+    en: Law firm with a "What do I need?" guide and a deadline calculator
+  detalle:
+    es: Estilo de documento jurídico con cláusulas numeradas.
+    en: Legal-document style with numbered clauses.

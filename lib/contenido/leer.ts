@@ -6,6 +6,7 @@ import {
   esquemaArticulo,
   esquemaLegal,
   esquemaDatosProyecto,
+  esquemaEjemplos,
   esquemaPerfil,
   esquemaTecnologias,
   esquemaTextoProyecto,
@@ -13,6 +14,7 @@ import {
   type DatosLegal,
   type PaginaLegal,
   type DatosProyecto,
+  type Ejemplo,
   type IdiomaContenido,
   type Perfil,
   type Tecnologia,
@@ -66,6 +68,19 @@ export function obtenerTecnologias(): Tecnologia[] {
   const archivo = path.join(RAIZ, "tecnologias.yaml");
   tecnologias ??= validar(esquemaTecnologias, leerYaml(archivo), archivo);
   return tecnologias;
+}
+
+let ejemplos: Ejemplo[] | undefined;
+/** Webs de ejemplo para negocios (content/ejemplos.yaml); comprueba que cada una tiene su miniatura. */
+export function listarEjemplos(): Ejemplo[] {
+  const archivo = path.join(RAIZ, "ejemplos.yaml");
+  if (!ejemplos) {
+    const lista = validar(esquemaEjemplos, leerYaml(archivo), archivo);
+    const faltan = lista.filter((e) => !existsSync(path.join(process.cwd(), "public", "ejemplos", `${e.id}.webp`)));
+    if (faltan.length) throw new ContenidoInvalido(`Faltan miniaturas en public/ejemplos/: ${faltan.map((e) => e.id).join(", ")}`);
+    ejemplos = lista;
+  }
+  return ejemplos;
 }
 
 let perfil: Perfil | undefined;

@@ -9,6 +9,7 @@ import { CV_PDF } from "@/lib/sitio";
 const PAGINAS = [
   ["/", "home"],
   ["/projects", "projects"],
+  ["/examples", "examples"],
   ["/about", "about"],
   ["/technologies", "technologies"],
   ["/blog", "blog"],

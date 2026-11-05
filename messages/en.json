@@ -27,6 +27,10 @@
     "ask": {
       "title": "Ask the AI",
       "description": "Use AI to check whether Mario Flores fits your job offer, or ask anything about his profile. Answers come only from this portfolio's content."
+    },
+    "examples": {
+      "title": "Example websites",
+      "description": "Eleven example websites for small businesses (motor, shop, health, hospitality, beauty...) built by Mario Flores: each with its own design, its own features and public code."
     }
   },
   "nav": {
@@ -40,7 +44,8 @@
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "examples": "Example sites"
   },
   "language": {
     "label": "Language",
@@ -224,7 +229,16 @@
     "conUseOk": "{tecnologia} is used by: {proyectos}. The panel below shows it and the project list is filtered.",
     "conNoProjects": "none",
     "conCv": "CV (PDF): {url}",
-    "cmd": {"help": "help", "projects": "projects", "stack": "stack", "use": "use", "path": "path", "contact": "contact", "cv": "cv", "clear": "clear"},
+    "cmd": {
+      "help": "help",
+      "projects": "projects",
+      "stack": "stack",
+      "use": "use",
+      "path": "path",
+      "contact": "contact",
+      "cv": "cv",
+      "clear": "clear"
+    },
     "ctaProjects": "View projects",
     "ctaContact": "Get in touch",
     "lookingFor": "What I'm looking for",
@@ -386,5 +400,36 @@
       "datos": "The text isn't valid. Check that it isn't too short or too long.",
       "red": "No connection. Check your network and try again."
     }
+  },
+  "examples": {
+    "intro": "Eleven websites for different kinds of business, each with its own design and a useful feature (search, booking, calculator, ordering...). They are demos with fictional data, ready to plug into a content management system.",
+    "note": "The businesses do not exist: these are examples to show what is possible. No cookies and no external services.",
+    "sector": "Sector",
+    "all": "All",
+    "count": "{n} of {total} sites",
+    "clear": "Clear filter",
+    "noResults": "No site matches that filter.",
+    "visit": "Visit site",
+    "code": "Code",
+    "page": "Page {n} of {total}",
+    "prev": "Previous",
+    "next": "Next",
+    "pagination": "Example sites pagination",
+    "goPage": "Go to page {n}",
+    "thumbAlt": "Home page of the example site {nombre}",
+    "pageSize": "6 per page",
+    "sectors": {
+      "motor": "Motor",
+      "comercio": "Retail",
+      "salud": "Health",
+      "hosteleria": "Hospitality",
+      "belleza": "Beauty",
+      "deporte": "Sport",
+      "turismo": "Tourism",
+      "inmobiliaria": "Real estate",
+      "servicios": "Services"
+    },
+    "teaser": "Looking for website examples for businesses?",
+    "teaserLink": "See the 11 example sites"
   }
 }
