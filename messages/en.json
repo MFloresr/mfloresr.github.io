@@ -45,7 +45,7 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "skipToContent": "Skip to content",
-    "examples": "Example sites"
+    "examples": "Examples"
   },
   "language": {
     "label": "Language",
@@ -271,7 +271,11 @@
     "contactTitle": "Let's <acento>talk</acento>.",
     "contactEmail": "Send a message",
     "blogAll": "See all articles",
-    "ctaAsk": "Do I fit your job offer? Check with AI"
+    "ctaAsk": "Do I fit your job offer? Check with AI",
+    "examplesLabel": "Example websites",
+    "examplesTitle": "Eleven websites for businesses, each with its own design and a useful feature.",
+    "examplesText": "Dealership, shop, clinic, restaurant, hair salon, gym... Demos with fictional data and public code.",
+    "examplesCta": "See the 11 example sites"
   },
   "ui": {
     "screenshotPending": "Screenshot pending · will be taken with demo data",

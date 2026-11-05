@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import TarjetaArticulo from "@/components/blog/TarjetaArticulo";
 import DatosEstructurados from "@/components/DatosEstructurados";
@@ -117,6 +118,29 @@ export default async function Inicio() {
           </div>
         </section>
       </ProveedorExplorar>
+
+      {/* Webs de ejemplo para negocios */}
+      <section className={seccion} aria-labelledby="t-ejemplos">
+        <div className="contenedor grid gap-8 py-14 md:grid-cols-[5fr_6fr] md:items-center md:gap-12 md:py-18">
+          <div className="flex flex-col gap-4">
+            <Etiqueta>{t("examplesLabel")}</Etiqueta>
+            <h2 id="t-ejemplos" className="text-[26px] font-bold sm:text-3xl lg:text-4xl">
+              {t("examplesTitle")}
+            </h2>
+            <p className="text-[17px] leading-relaxed text-tenue">{t("examplesText")}</p>
+            <Boton href="/examples" flecha>
+              {t("examplesCta")}
+            </Boton>
+          </div>
+          <div aria-hidden="true" className="grid grid-cols-2 gap-3">
+            {["motos-valles", "gimnasio-vatio", "restaurante-brasa", "peluqueria-nuca"].map((id) => (
+              <div key={id} className="relative aspect-[8/5] overflow-hidden rounded-xl border border-linea bg-chip">
+                <Image src={`/ejemplos/${id}.webp`} alt="" fill sizes="(min-width: 768px) 25vw, 45vw" className="object-cover object-top" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Lo que aporto */}
       <section className={seccion} aria-labelledby="t-aporto">

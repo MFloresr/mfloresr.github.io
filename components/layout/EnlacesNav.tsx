@@ -6,6 +6,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 const ENLACES = [
   { href: "/", clave: "home" },
   { href: "/projects", clave: "projects" },
+  { href: "/examples", clave: "examples" },
   { href: "/about", clave: "about" },
   { href: "/technologies", clave: "technologies" },
   { href: "/blog", clave: "blog" },
