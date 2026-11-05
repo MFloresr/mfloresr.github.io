@@ -43,6 +43,8 @@ export default async function PaginaEjemplos() {
           noResults: t("noResults"),
           visit: t("visit"),
           code: t("code"),
+          page: t.raw("page") as string,
+          newTab: t("newTab"),
           prev: t("prev"),
           next: t("next"),
           pagination: t("pagination"),

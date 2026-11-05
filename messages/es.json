@@ -417,7 +417,7 @@
     "pagination": "Paginación de las webs de ejemplo",
     "goPage": "Ir a la página {n}",
     "thumbAlt": "Portada de la web de ejemplo {nombre}",
-    "pageSize": "6 por página",
+    "newTab": "se abre en una pestaña nueva",
     "sectors": {
       "motor": "Motor",
       "comercio": "Comercio",

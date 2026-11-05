@@ -417,7 +417,7 @@
     "pagination": "Example sites pagination",
     "goPage": "Go to page {n}",
     "thumbAlt": "Home page of the example site {nombre}",
-    "pageSize": "6 per page",
+    "newTab": "opens in a new tab",
     "sectors": {
       "motor": "Motor",
       "comercio": "Retail",

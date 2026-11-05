@@ -22,6 +22,8 @@ type Textos = {
   noResults: string;
   visit: string;
   code: string;
+  page: string;
+  newTab: string;
   prev: string;
   next: string;
   pagination: string;
@@ -100,6 +102,8 @@ export default function RejillaEjemplos({ ejemplos, sectores, textos }: { ejempl
 
       <div aria-live="polite" className="flex min-h-11 flex-wrap items-center gap-3 text-[15px] text-tenue">
         <span>{plantilla(textos.count, { n: filtrados.length, total: ejemplos.length })}</span>
+        {/* Solo para lectores de pantalla: anuncia la página al paginar (la región es aria-live) */}
+        {total > 1 && <span className="sr-only">{plantilla(textos.page, { n: actual, total })}</span>}
         {sector && (
           <button type="button" onClick={() => elegir("")} className="min-h-11 cursor-pointer rounded-full bg-cable-relleno px-4 font-semibold text-sobre-cable">
             {textos.clear}
@@ -122,11 +126,11 @@ export default function RejillaEjemplos({ ejemplos, sectores, textos }: { ejempl
                 <p className="text-[15px] leading-relaxed">{e.tagline}</p>
                 <p className="text-[14px] leading-relaxed text-tenue">{e.detalle}</p>
                 <div className="mt-auto flex flex-wrap items-center gap-x-5 pt-1">
-                  <a href={e.url} target="_blank" rel="noopener" aria-label={`${textos.visit}: ${e.nombre}`} className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento">
+                  <a href={e.url} target="_blank" rel="noopener" aria-label={`${textos.visit}: ${e.nombre} (${textos.newTab})`} className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-acento">
                     {textos.visit}
                     <Flecha />
                   </a>
-                  <a href={e.repositorio} target="_blank" rel="noopener" aria-label={`${textos.code}: ${e.nombre}`} className="inline-flex min-h-11 items-center text-[15px] hover:text-acento">
+                  <a href={e.repositorio} target="_blank" rel="noopener" aria-label={`${textos.code}: ${e.nombre} (${textos.newTab})`} className="inline-flex min-h-11 items-center text-[15px] hover:text-acento">
                     {textos.code}
                   </a>
                 </div>
