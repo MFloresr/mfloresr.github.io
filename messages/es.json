@@ -27,6 +27,10 @@
     "ask": {
       "title": "Pregunta a la IA",
       "description": "Comprueba con IA si Mario Flores encaja en tu oferta de empleo o pregunta lo que quieras sobre su perfil. Las respuestas salen solo del contenido de este portfolio."
+    },
+    "examples": {
+      "title": "Webs de ejemplo",
+      "description": "Once webs de ejemplo para negocios (motor, tienda, salud, hostelería, belleza...) hechas por Mario Flores: cada una con su diseño, funciones propias y código público."
     }
   },
   "nav": {
@@ -40,7 +44,8 @@
     "contact": "Contacto",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "skipToContent": "Saltar al contenido"
+    "skipToContent": "Saltar al contenido",
+    "examples": "Webs de ejemplo"
   },
   "language": {
     "label": "Idioma",
@@ -224,7 +229,16 @@
     "conUseOk": "{tecnologia} la usan: {proyectos}. El panel de abajo lo muestra y la lista de proyectos queda filtrada.",
     "conNoProjects": "ninguno",
     "conCv": "CV en PDF: {url}",
-    "cmd": {"help": "ayuda", "projects": "proyectos", "stack": "stack", "use": "usa", "path": "recorrido", "contact": "contacto", "cv": "cv", "clear": "limpiar"},
+    "cmd": {
+      "help": "ayuda",
+      "projects": "proyectos",
+      "stack": "stack",
+      "use": "usa",
+      "path": "recorrido",
+      "contact": "contacto",
+      "cv": "cv",
+      "clear": "limpiar"
+    },
     "ctaProjects": "Ver proyectos",
     "ctaContact": "Contactar",
     "lookingFor": "Qué busco",
@@ -386,5 +400,36 @@
       "datos": "El texto no es válido. Revisa que no sea demasiado corto ni demasiado largo.",
       "red": "No hay conexión. Comprueba tu red y vuelve a probar."
     }
+  },
+  "examples": {
+    "intro": "Once webs para distintos tipos de negocio, cada una con su propio diseño y una función útil (buscador, cita, calculadora, pedido...). Son demostraciones con datos ficticios, listas para conectar a un gestor de contenidos.",
+    "note": "Los negocios no existen: son ejemplos para enseñar lo que se puede hacer. Sin cookies ni servicios externos.",
+    "sector": "Sector",
+    "all": "Todos",
+    "count": "{n} de {total} webs",
+    "clear": "Quitar filtro",
+    "noResults": "Ninguna web coincide con ese filtro.",
+    "visit": "Ver la web",
+    "code": "Código",
+    "page": "Página {n} de {total}",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "pagination": "Paginación de las webs de ejemplo",
+    "goPage": "Ir a la página {n}",
+    "thumbAlt": "Portada de la web de ejemplo {nombre}",
+    "newTab": "se abre en una pestaña nueva",
+    "sectors": {
+      "motor": "Motor",
+      "comercio": "Comercio",
+      "salud": "Salud",
+      "hosteleria": "Hostelería",
+      "belleza": "Belleza",
+      "deporte": "Deporte",
+      "turismo": "Turismo",
+      "inmobiliaria": "Inmobiliaria",
+      "servicios": "Servicios"
+    },
+    "teaser": "¿Buscas ejemplos de webs para negocios?",
+    "teaserLink": "Ver las 11 webs de ejemplo"
   }
 }

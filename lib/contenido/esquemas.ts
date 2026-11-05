@@ -177,3 +177,22 @@ export const esquemaArticulo = z
   .strict();
 
 export type Articulo = z.infer<typeof esquemaArticulo>;
+
+/** Webs de ejemplo para negocios (content/ejemplos.yaml). */
+export const SECTORES_EJEMPLO = ["motor", "comercio", "salud", "hosteleria", "belleza", "deporte", "turismo", "inmobiliaria", "servicios"] as const;
+export const esquemaEjemplos = z
+  .array(
+    z
+      .object({
+        id: slug,
+        sector: z.enum(SECTORES_EJEMPLO),
+        nombre: texto,
+        url: z.url({ protocol: /^https$/ }),
+        repositorio: z.url({ protocol: /^https$/ }),
+        tagline: traducible(texto),
+        detalle: traducible(texto),
+      })
+      .strict(),
+  )
+  .min(1);
+export type Ejemplo = z.infer<typeof esquemaEjemplos>[number];

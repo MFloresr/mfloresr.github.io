@@ -3,6 +3,8 @@ import ListaFiltrable from "@/components/proyectos/ListaFiltrable";
 import type { IdiomaContenido } from "@/lib/contenido/esquemas";
 import { listarProyectos } from "@/lib/contenido/leer";
 import { construirDatosInicio } from "@/lib/datosInicio";
+import { Flecha } from "@/components/ui/Iconos";
+import { Link } from "@/i18n/navigation";
 import { metadatosPagina } from "@/lib/metadatos";
 
 export const generateMetadata = () => metadatosPagina("projects", "/projects");
@@ -24,6 +26,13 @@ export default async function PaginaProyectos() {
       <header className="flex flex-col gap-3.5 pb-8">
         <h1 className="text-[40px] font-bold sm:text-6xl">{t("meta.projects.title")}</h1>
         <p className="text-lg text-tenue sm:text-xl">{t("projects.intro")}</p>
+        <p className="text-[15px] text-tenue">
+          {t("examples.teaser")}{" "}
+          <Link href="/examples" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-acento">
+            {t("examples.teaserLink")}
+            <Flecha />
+          </Link>
+        </p>
       </header>
 
       <ListaFiltrable
